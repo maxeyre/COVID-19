@@ -128,7 +128,8 @@ shinyUI(
                h6("Made by Max Eyre"),
                h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                uiOutput("twitter2"),
-               uiOutput("data_source2")
+               uiOutput("data_source2"),
+               h6("Population data source - Office for National Statistics")
              )
            )
   ),
@@ -158,8 +159,7 @@ shinyUI(
                h6("Made by Max Eyre"),
                h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                uiOutput("twitter3"),
-               uiOutput("data_source3"),
-               h6("Population data source - Office for National Statistics")
+               uiOutput("data_source3")
                )
            )
            ),
