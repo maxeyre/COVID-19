@@ -95,7 +95,14 @@ for (i in 1:length(uni.region)){
   out <- c(out,0,diff(x$total_cases))
 }
 data.region$new_cases <- out
+# get per 100,000 population results
+pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/NHS_england_regions_pop.csv")
+data.region.pop <- left_join(data.region,pop.data, by="region")
+data.region.pop <- data.region.pop %>%
+  mutate(total_cases = 100000*total_cases/pop, new_cases=100000*new_cases/pop)
+
 data.region <- gather(data.region,key="type",value="number",4:ncol(data.region))
+data.region.pop <- gather(data.region.pop,key="type",value="number",4:(ncol(data.region.pop)-1))
 
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
@@ -153,11 +160,16 @@ shinyServer(function(input, output) {
     tagList(url)
   })
   
-  url_data <- a("Data sources", href="https://github.com/CSSEGISandData/COVID-19")
+  url_data <- a("JHU CSSE Data sources", href="https://github.com/CSSEGISandData/COVID-19")
+  url_data_andrew <- a("Thanks to Andrew Lilley for scraping international data", href="https://twitter.com/alil9145")
   url_data2 <- a("Data source", href="https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public")
   
   output$data_source <- renderUI({
     tagList(url_data)
+  })
+  
+  output$data_source_andrew <- renderUI({
+    tagList(url_data_andrew)
   })
   
   output$data_source2 <- renderUI({
@@ -215,9 +227,12 @@ shinyServer(function(input, output) {
     
     lines <- c(as.character(input$checkGroup_region))
     
+    if (input$pop=="pop_yes"){
+      data.region <- data.region.pop
+    }
     data.region<- data.region[data.region$type %in% lines, ]
   
-    ggplot(data.region) + geom_point(aes(x=date, y=number, col=region),size=1.5) +
+    p.pop <- ggplot(data.region) + geom_point(aes(x=date, y=number, col=region),size=1.5) +
       geom_line(aes(x=date, y=number, col=region, linetype=type),size=1) +
       scale_x_date(limits=c(input$dateRange_region[1],input$dateRange_region[2])) + xlab(label = "") +ylab(label="Cases") +
       theme_classic()+
@@ -229,11 +244,14 @@ shinyServer(function(input, output) {
             legend.text = element_text(size=13),
             legend.position = 'top', 
             legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +
-      scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2),
-                            breaks=c("total_cases","new_cases"),
-                            labels=c("Cases (total)","Cases (daily)")) +
+            panel.grid.major.y=element_line(size=0.05)) + scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2),
+                                                                                breaks=c("total_cases","new_cases"),
+                                                                                labels=c("Cases (total)","Cases (daily)")) +
       guides(linetype = guide_legend(label.position = "top", keywidth = 2))
+    if (input$pop=="pop_yes"){
+      p.pop <- p.pop +  ylab(label="Cases (per 100,000)")
+    }
+      p.pop
   })
   
   # England county plots

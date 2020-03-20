@@ -99,7 +99,8 @@ shinyUI(
                   h6("Made by Max Eyre"),
                   h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                   uiOutput("twitter"),
-                  uiOutput("data_source")
+                  uiOutput("data_source"),
+                  uiOutput("data_source_andrew")
                   )
                 )
              
@@ -117,7 +118,10 @@ shinyUI(
                               start  = min(data.region$date),
                               end    = max(data.region$date), 
                               min    = min(data.region$date),
-                              max    = max(data.region$date))
+                              max    = max(data.region$date)),
+               radioButtons("pop", "Cases",
+                            choices=c('Number of cases'="pop_no",
+                                      'Per 100,000 population'='pop_yes'))
              ),
              mainPanel(
                plotOutput("EnglandRegionPlot"),
@@ -141,6 +145,7 @@ shinyUI(
                selectInput("county", "County (UA):",list.county),
                checkboxGroupInput("checkGroup_county", "", choices = list("Cases (daily)" = "new_cases", 
                                                                    "Cases (total)" = "total_cases"),selected = 1),
+               
                dateRangeInput("dateRange_county", "Date range",
                               start  = min(data.county$date),
                               end    = max(data.county$date), #max(data.confirmed$date)
