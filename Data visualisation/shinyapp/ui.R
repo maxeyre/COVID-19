@@ -163,6 +163,7 @@ shinyUI(
            h6("Data source: Public Health England (updated every 24hrs)"),
            sidebarLayout(
              sidebarPanel(
+               h4("Testing rates"),
                checkboxGroupInput("checkGroup_test", "", choices = list("Tested (daily)" = "new_tested", 
                                                                           "Tested (total)" = "total_tested"),selected = 1),
                dateRangeInput("dateRange_test", "Date range",
@@ -174,12 +175,27 @@ shinyUI(
                             choices=c('Linear'="log_no",
                                       'Log'='log_yes'))
              ),
-             mainPanel(plotOutput("UKtestingPlot"),
+             mainPanel(plotOutput("UKtestingPlot")
+                       )
+           ),
+           br(),
+           sidebarLayout(
+             sidebarPanel(
+               h4("Proportion positive"),
+               checkboxGroupInput("checkGroup_test2", "", choices = list("% positive (daily)" = "new_prop_pos", 
+                                                                        "% positive (total)" = "total_prop_pos"),selected = 1),
+               dateRangeInput("dateRange_test2", "Date range",
+                              start  = min(data.test$date),
+                              end    = max(data.test$date), 
+                              min    = min(data.test$date),
+                              max    = max(data.test$date))
+             ),
+             mainPanel(plotOutput("UKtestingPlot2"),
                        h6("Made by Max Eyre"),
                        h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                        uiOutput("twitter4"),
                        uiOutput("data_source4")
-                       )
+             )
            )
            )
   )

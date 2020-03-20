@@ -100,9 +100,12 @@ data.region <- gather(data.region,key="type",value="number",4:ncol(data.region))
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
 data.test <- data.test %>%
-  select(date, total_tested = tested)
+  select(date, total_tested = tested, total_cases=cases, new_cases)
 data.test$date = as.Date(data.test$date, "%d/%m/%Y")
 data.test$new_tested <- c(NA,diff(data.test$total_tested))
+data.test$total_prop_pos <- 100*data.test$total_cases/data.test$total_tested
+data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_tested
+
 data.test <- gather(data.test, key="type", value="number",2:ncol(data.test))
 
 # UK data
@@ -283,6 +286,30 @@ shinyServer(function(input, output) {
       p.test <- p.test + scale_y_continuous(trans='log10')
     }
     p.test
+  })
+  
+  output$UKtestingPlot2 <- renderPlot({
+    
+    lines <- c(as.character(input$checkGroup_test2))
+    
+    data.test <- data.test[data.test$type %in% lines, ]
+    
+    ggplot(data.test) + geom_point(aes(x=date, y=number, col=type),size=1.5)+ 
+      geom_line(aes(x=date, y=number, col=type, group=type),size=1) +
+      scale_x_date(limits=c(input$dateRange_test2[1],input$dateRange_test2[2])) + xlab(label = "") +ylab(label="Prop. positive (%)") +
+      theme_classic()+
+      theme(axis.text=element_text(size=13),
+            axis.title=element_text(size=16), 
+            axis.title.x = element_text(vjust=-1.5),
+            axis.title.y = element_text(vjust=2),
+            legend.text = element_text(size=13),
+            legend.position = 'top', 
+            legend.spacing.x = unit(0.4, 'cm'),
+            panel.grid.major.y=element_line(size=0.05)) +
+      scale_colour_manual(name="",values = c("total_prop_pos" = "#000000", "new_prop_pos" = "#e41a1c"),
+                          breaks=c("new_prop_pos","total_prop_pos"),
+                          labels=c("Daily", "Total"))
+    
   })
   
   
