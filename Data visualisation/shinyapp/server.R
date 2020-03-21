@@ -251,6 +251,10 @@ shinyServer(function(input, output) {
     if (input$pop=="pop_yes"){
       p.pop <- p.pop +  ylab(label="Cases (per 100,000)")
     }
+    
+    if(input$log_region=='log_yes'){
+      p.pop <- p.pop + scale_y_continuous(trans='log10')
+    }
       p.pop
   })
   

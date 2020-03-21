@@ -69,6 +69,7 @@ shinyUI(
   # and to specify whether outliers should be included
     tabPanel("By country",
              headerPanel("COVID-19 Data Visualisation"),   
+             h5("Please use the menu bar to visualise by country, NHS England region, English county and to see UK testing rates"),
              h3("Live epidemic curves by country"),
               h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
               h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
@@ -107,6 +108,7 @@ shinyUI(
     ),
   tabPanel("NHS England regions",
            headerPanel("COVID-19 Data Visualisation"),   
+           h5("Please use the menu bar to visualise by country, NHS England region, English county and to see UK testing rates"),
            h3("Live epidemic curves by NHS England regions"),
            h6("Data source: Public Health England (updated every 24hrs)"),
            h6("Please note: Confirmed cases in the UK are now generally individuals presenting at hospitals"),
@@ -121,7 +123,10 @@ shinyUI(
                               max    = max(data.region$date)),
                radioButtons("pop", "Cases",
                             choices=c('Number of cases'="pop_no",
-                                      'Per 100,000 population'='pop_yes'))
+                                      'Per 100,000 population'='pop_yes')),
+               radioButtons("log_region", "y-axis scale:",
+                            choices=c('Linear'="log_no",
+                                      'Log'='log_yes'))
              ),
              mainPanel(
                plotOutput("EnglandRegionPlot"),
@@ -136,6 +141,7 @@ shinyUI(
            
     tabPanel("England counties",
            headerPanel("COVID-19 Data Visualisation"),   
+           h5("Please use the menu bar to visualise by country, NHS England region, English county and to see UK testing rates"),
            h3("Live epidemic curves for counties of England (Unitary Areas)"),
            h6("Data source: Public Health England (updated every 24hrs)"),
            h6("Please note:"),
@@ -165,6 +171,7 @@ shinyUI(
            ),
   tabPanel("UK Testing",
            headerPanel("COVID-19 Data Visualisation"),   
+           h5("Please use the menu bar to visualise by country, NHS England region, English county and to see UK testing rates"),
            h3("Live diagnostic testing rates for UK"),
            h6("Data source: Public Health England (updated every 24hrs)"),
            sidebarLayout(
