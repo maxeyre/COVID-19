@@ -144,6 +144,29 @@ shinyServer(function(input, output) {
     formulaText_county()
   })
   
+  red <- data.county[data.county$date == max(data.county$date) & data.county$type == "new_cases",]
+  red <- red[order(red$number,decreasing=TRUE),]
+  
+  red2 <- data.county[data.county$date == max(data.county$date) & data.county$type == "total_cases",]
+  red2 <- red2[order(red2$number,decreasing=TRUE),]
+  
+  output$county_newcase_update <- renderText({
+    paste("Top 5 highest new daily cases: ", as.character(red$county_UA[1])," (", red$number[1],"), ",
+          as.character(red$county_UA[2])," (", red$number[2],"), ",
+          as.character(red$county_UA[3])," (", red$number[3],"), ",
+          as.character(red$county_UA[4])," (", red$number[4],"), ",
+          as.character(red$county_UA[5])," (", red$number[5],"), ", sep="")
+  })
+  
+  output$county_totalcase_update <- renderText({
+    paste("Top 5 highest total cases: ", as.character(red2$county_UA[1])," (", red2$number[1],"), ",
+          as.character(red2$county_UA[2])," (", red2$number[2],"), ",
+          as.character(red2$county_UA[3])," (", red2$number[3],"), ",
+          as.character(red2$county_UA[4])," (", red2$number[4],"), ",
+          as.character(red2$county_UA[5])," (", red2$number[5],"), ", sep="")
+  })
+  
+  
   url <- a("Twitter", href="https://twitter.com/maxeyre3")
   
   output$twitter <- renderUI({

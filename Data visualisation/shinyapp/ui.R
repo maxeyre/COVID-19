@@ -160,6 +160,8 @@ shinyUI(
                               max    = max(data.county$date))
                ),
              mainPanel(
+               h5(textOutput("county_newcase_update")),
+               h5(textOutput("county_totalcase_update")),
                h3(textOutput("caption_county")),
                plotOutput("englandcountyPlot"),
                h6("Made by Max Eyre"),
