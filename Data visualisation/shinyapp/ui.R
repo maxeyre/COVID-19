@@ -24,7 +24,7 @@ for (i in 1:length(country.list)){
 names(list.50) <- country.list
 
 # read in UK county data
-data.county <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTNL88hteOvWd8ZafF_h0-38Mg1Z3PJdcBkNI3fvORLbuqIlWzc3btPPmD1sB_xqL6jCHcgU1i50ukX/pub?gid=0&single=true&output=csv"
+data.county <- "https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/england_countyUA.csv"
 data.county <- read_csv(data.county)
 data.county <- gather(data.county, key="date", value="cases",3:ncol(data.county))
 data.county$date = as.Date(data.county$date, "%d/%m/%Y")
