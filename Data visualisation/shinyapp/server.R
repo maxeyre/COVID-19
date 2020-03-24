@@ -16,9 +16,21 @@ data <- data %>%
   select(Region, date, Transmissions, Deaths, Recoveries, Active) %>%
   rename(country = Region, total_cases = Transmissions, total_deaths = Deaths, total_recovered = Recoveries, total_active = Active)
 
+data$country[data$country=="US"]<-"United States"
+data$country[data$country=="UK"]<-"United Kingdom"
+data$country[data$country=="UAE"]<-"United Arab Emirates"
+
 data$date = as.Date(data$date, "%Y-%m-%d")
 
 data <- data[order(data$country),]
+test <- tibble(country=unique(data$country))
+# read in country population data
+country.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/country_pop.csv")
+data <- left_join(data,country.pop.data, by="country")
+data.region.pop <- data.region.pop %>%
+  mutate(total_cases = 100000*total_cases/pop, new_cases=100000*new_cases/pop)
+
+test2 <- left_join(test,country.pop.data, by="country")
 
 # calculate new daily cases, deaths, recoveries
 data$new_cases <- c()
@@ -48,7 +60,7 @@ uni.country.100 <- c(unique(data.100$country))
 data.100.out <- NULL
 date.100 <- c(as.Date("2020-01-01","%Y-%m-%d"))
 for (i in 1:length(uni.country.100)){
-  x <- data2[data2$country==uni.country.100[i],]
+  x <- data.100[data.100$country==uni.country.100[i],]
   out <- as.Date(x$date[which(x$number>=100)],"%Y-%m-%d")
   out <- min(out)
   x$date_rel <- x$date - out
@@ -113,8 +125,8 @@ for (i in 1:length(uni.region)){
 }
 data.region$new_cases <- out
 # get per 100,000 population results
-pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/NHS_england_regions_pop.csv")
-data.region.pop <- left_join(data.region,pop.data, by="region")
+region.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/NHS_england_regions_pop.csv")
+data.region.pop <- left_join(data.region,region.pop.data, by="region")
 data.region.pop <- data.region.pop %>%
   mutate(total_cases = 100000*total_cases/pop, new_cases=100000*new_cases/pop)
 

@@ -12,6 +12,10 @@ data <- data %>%
 
 data$date = as.Date(data$date, "%Y-%m-%d")
 
+data$country[data$country=="US"]<-"United States"
+data$country[data$country=="UK"]<-"United Kingdom"
+data$country[data$country=="UAE"]<-"United Arab Emirates"
+
 data <- data[order(data$country),]
 
 # list of countries
