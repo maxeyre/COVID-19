@@ -23,6 +23,34 @@ for (i in 1:length(country.list)){
 }
 names(list.50) <- country.list
 
+# list of countries with >100 cases
+data.100 <- data[data$total_cases>=100,]
+country.list.100 <- c(unique(data.100$country))
+list.100 <- list()
+for (i in 1:length(country.list.100)){
+  list.100[i] <- country.list.100[i]
+}
+names(list.100) <- country.list.100
+
+data <- gather(data, key="type", value="number",4:ncol(data))
+
+# relative dates
+data.100 <- data[data$type=="total_cases",]
+data.100 <- data.100[data.100$number>=100,]
+uni.country.100 <- c(unique(data.100$country))
+data.100.out <- NULL
+date.100 <- c(as.Date("2020-01-01","%Y-%m-%d"))
+for (i in 1:length(uni.country.100)){
+  x <- data2[data2$country==uni.country.100[i],]
+  out <- as.Date(x$date[which(x$number>=100)],"%Y-%m-%d")
+  out <- min(out)
+  x$date_rel <- x$date - out
+  x <- x[x$date_rel>=0,]
+  data.100.out <- rbind(data.100.out, x)
+}
+data.100 <- data.100.out
+data.100$date_rel <- as.numeric(data.100$date_rel)
+
 # read in UK county data
 data.county <- "https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/england_countyUA.csv"
 data.county <- read_csv(data.county)
@@ -62,14 +90,15 @@ data.test$new_tested <- c(NA,diff(data.test$total_tested))
 data.test <- gather(data.test, key="type", value="number",2:ncol(data.test))
 
 # Define UI 
-shinyUI(
-  navbarPage("Navbar",
+shinyUI(fluidPage(
+  headerPanel("COVID-19 Data Visualisation"),
+  navlistPanel(widths=c(2,9),
   # Application title
   # Sidebar with controls to select the variable to plot against mpg
   # and to specify whether outliers should be included
+    "Worldwide",  
     tabPanel("By country",
-             headerPanel("COVID-19 Data Visualisation"),   
-             h5("Please use the menu bar to visualise by country, NHS England region, English county and to see UK testing rates"),
+             h5("Please use the menu bar on the left to navigate to different sections"),
              h3("Live epidemic curves by country"),
               h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
               h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
@@ -101,14 +130,41 @@ shinyUI(
                   h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                   uiOutput("twitter"),
                   uiOutput("data_source"),
-                  uiOutput("data_source_andrew")
+                  uiOutput("data_source_andrew"),
+                  h6("Population data source - United Nations Population Division estimates (2020")
                   )
-                )
-             
+                ),
     ),
+  tabPanel("Country comparison",
+           h5("Please use the menu bar on the left to navigate to different sections"),    
+           h3("Live comparison of countries from beginning of outbreaks"),
+              h5("Plotted for countries with at least 100 cases (day 0 is the first day >100 cases were reported)"),
+               h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
+               h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
+             sidebarLayout(
+               sidebarPanel(
+                 sliderInput("dateRange.100", "Number of days into outbreak (range)", 
+                             min = min(data.100$date_rel), 
+                             max = max(data.100$date_rel), value = c(min(data.100$date_rel), max(data.100$date_rel))),
+                 radioButtons("log2", "y-axis scale:",
+                              choices=c('Linear'="log_no",
+                                        'Log'='log_yes')),
+                 checkboxGroupInput("checkGroup_countryCompare", "Countries", choices = list.100, selected = 1)
+               ),
+               mainPanel(plotOutput("countryPlot_compare"),
+                         h6("Made by Max Eyre"),
+                         h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+                         uiOutput("twitter_comp"),
+                         uiOutput("data_source_comp"),
+                         uiOutput("data_source_andrew_comp"),
+                         h6("Population data source - United Nations Population Division estimates (2020")
+               )
+             ),
+      
+    ),
+  "United Kingdom",
   tabPanel("NHS England regions",
-           headerPanel("COVID-19 Data Visualisation"),   
-           h5("Please use the menu bar to visualise by country, NHS England region, English county and to see UK testing rates"),
+           h5("Please use the menu bar on the left to navigate to different sections"),
            h3("Live epidemic curves by NHS England regions"),
            h6("Data source: Public Health England (updated every 24hrs)"),
            h6("Please note: Confirmed cases in the UK are now generally individuals presenting at hospitals"),
@@ -138,10 +194,8 @@ shinyUI(
              )
            )
   ),
-           
     tabPanel("England counties",
-           headerPanel("COVID-19 Data Visualisation"),   
-           h5("Please use the menu bar to visualise by country, NHS England region, English county and to see UK testing rates"),
+             h5("Please use the menu bar on the left to navigate to different sections"),
            h3("Live epidemic curves for counties of England (Unitary Areas)"),
            h6("Data source: Public Health England (updated every 24hrs)"),
            h6("Please note:"),
@@ -172,8 +226,7 @@ shinyUI(
            )
            ),
   tabPanel("UK Testing",
-           headerPanel("COVID-19 Data Visualisation"),   
-           h5("Please use the menu bar to visualise by country, NHS England region, English county and to see UK testing rates"),
+           h5("Please use the menu bar on the left to navigate to different sections"),
            h3("Live diagnostic testing rates for UK"),
            h6("Data source: Public Health England (updated every 24hrs)"),
            sidebarLayout(
@@ -213,6 +266,7 @@ shinyUI(
              )
            )
            )
+  )
   )
   )
 

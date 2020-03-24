@@ -41,6 +41,23 @@ data$new_recovered <- out.recovered
 
 data <- gather(data, key="type", value="number",3:ncol(data))
 
+# list of countries with >=100 cases
+data.100 <- data[data$type=="total_cases",]
+data.100 <- data.100[data.100$number>=100,]
+uni.country.100 <- c(unique(data.100$country))
+data.100.out <- NULL
+date.100 <- c(as.Date("2020-01-01","%Y-%m-%d"))
+for (i in 1:length(uni.country.100)){
+  x <- data2[data2$country==uni.country.100[i],]
+  out <- as.Date(x$date[which(x$number>=100)],"%Y-%m-%d")
+  out <- min(out)
+  x$date_rel <- x$date - out
+  x <- x[x$date_rel>=0,]
+  data.100.out <- rbind(data.100.out, x)
+}
+
+data.100 <- data.100.out
+
 # UK county data
 # read in UK county data
 data.county <- "https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/england_countyUA.csv"
@@ -176,6 +193,9 @@ shinyServer(function(input, output) {
   output$twitter2 <- renderUI({
     tagList(url)
   })
+  output$twitter_comp <- renderUI({
+    tagList(url)
+  })
   output$twitter3 <- renderUI({
     tagList(url)
   })
@@ -190,8 +210,14 @@ shinyServer(function(input, output) {
   output$data_source <- renderUI({
     tagList(url_data)
   })
+  output$data_source_comp <- renderUI({
+    tagList(url_data)
+  })
   
   output$data_source_andrew <- renderUI({
+    tagList(url_data_andrew)
+  })
+  output$data_source_andrew_comp <- renderUI({
     tagList(url_data_andrew)
   })
   
@@ -215,6 +241,8 @@ shinyServer(function(input, output) {
   output$checkGroup_region <- renderText({
     paste(as.character(c(input$checkGroup_region)))
   })
+
+  output$dateRange.100 <- renderPrint({ input$dateRange.100 })  
     
   # Single country plots
   output$countryPlot <- renderPlot({
@@ -243,6 +271,31 @@ shinyServer(function(input, output) {
         p <- p + scale_y_continuous(trans='log10')
       }
       p
+  })
+  
+  output$countryPlot_compare <- renderPlot({
+    lines2 <- c(as.character(input$checkGroup_countryCompare))
+    
+    data.100<- data.100[data.100$country %in% lines2, ]
+    
+    p2 <- ggplot(data.100) + geom_point(aes(x=date_rel, y=number, col=country),size=1.5) +
+      geom_line(aes(x=date_rel, y=number, col=country),size=1) +
+      scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + xlab(label = "Days (after first 100 cases)") +ylab(label="Cases") +
+      theme_classic()+
+      theme(axis.text=element_text(size=13),
+            axis.title=element_text(size=16), 
+            axis.title.x = element_text(vjust=-0.5),
+            axis.title.y = element_text(vjust=2),
+            legend.title = element_blank(),
+            legend.text = element_text(size=13),
+            legend.position = 'top', 
+            legend.spacing.x = unit(0.4, 'cm'),
+            panel.grid.major.y=element_line(size=0.05)) +
+      guides(linetype = guide_legend(override.aes = list(size = 20)))
+    if(input$log2=='log_yes'){
+        p2 <- p2 + scale_y_continuous(trans='log10')
+        }
+    p2
   })
 
   # England NHS regions plots
