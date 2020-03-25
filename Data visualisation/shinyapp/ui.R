@@ -87,6 +87,7 @@ names(list.region) <- region.list
 
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
+data.test <-na.omit(data.test)
 data.test <- data.test %>%
   select(date, total_tested = tested)
 data.test$date = as.Date(data.test$date, "%d/%m/%Y")
@@ -95,7 +96,183 @@ data.test <- gather(data.test, key="type", value="number",2:ncol(data.test))
 
 # Define UI 
 shinyUI(fluidPage(
-  headerPanel("COVID-19 Data Visualisation - being updated (complete at 11:00 GMT)"),
+  headerPanel("COVID-19 Data Visualisation"),
+  navlistPanel(widths=c(2,9),
+  # Application title
+  # Sidebar with controls to select the variable to plot against mpg
+  # and to specify whether outliers should be included
+    "Worldwide",  
+    tabPanel("By country",
+             h5("Please use the menu bar on the left to navigate to different sections"),
+             h3("Live epidemic curves by country"),
+              h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
+              h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
+                sidebarLayout(
+                  sidebarPanel(
+                    selectInput("country", "Country:",list.50),
+                    
+                    checkboxGroupInput("checkGroup", "", choices = list("Cases (daily)" = "new_cases", 
+                                                  "Cases (total)" = "total_cases", 
+                                                  "Deaths (daily)" = "new_deaths",
+                                                  "Deaths (total)" = "total_deaths"),
+                                       selected = 1),
+                    dateRangeInput("dateRange", "Date range",
+                               start  = min(data$date),
+                               end    = max(data$date), 
+                               min    = min(data$date),
+                               max    = max(data$date)),
+                    radioButtons("log", "y-axis scale:",
+                                 choices=c('Linear'="log_no",
+                                           'Log'='log_yes')),
+                    radioButtons("pop_country", "Cases",
+                                 choices=c('Number of cases'="pop_no",
+                                           'Per 100,000 population'='pop_yes'))
+                  ),
+                mainPanel( # don't want this in the side bar!
+                  h3(textOutput("caption")),
+                  textOutput("startdate"),
+                  plotOutput("countryPlot"),
+                  h6("Made by Max Eyre"),
+                  h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+                  uiOutput("twitter"),
+                  uiOutput("data_source"),
+                  uiOutput("data_source_andrew"),
+                  h6("Population data source - United Nations Population Division estimates (2020")
+                  )
+                ),
+    ),
+  tabPanel("Country comparison",
+           #h5("Please use the menu bar on the left to navigate to different sections"),    
+           #h3("Live comparison of countries from beginning of outbreaks"),
+              #h5("Plotted for countries with at least 100 cases (day 0 is the first day >100 cases were reported)"),
+               #h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
+               #h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
+             sidebarLayout(
+               sidebarPanel(
+                 sliderInput("dateRange.100", "Number of days into outbreak (range)", 
+                             min = min(data.100$date_rel), 
+                             max = max(data.100$date_rel), value = c(min(data.100$date_rel), max(data.100$date_rel))),
+                 radioButtons("log_compare", "y-axis scale:",
+                              choices=c('Linear'="log_no",
+                                        'Log'='log_yes')),
+                 
+                 checkboxGroupInput("checkGroup_countryCompare", "Countries", choices = list.100, selected = 1)
+               ), 
+               mainPanel(plotOutput("countryPlot_compare"),
+                         h6("Made by Max Eyre"),
+                         h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+                         uiOutput("twitter_comp"),
+                         uiOutput("data_source_comp"),
+                         uiOutput("data_source_andrew_comp"),
+                         h6("Population data source - United Nations Population Division estimates (2019)")
+                )
+             ),
+  ),
+  "United Kingdom",
+  tabPanel("NHS England regions",
+           h5("Please use the menu bar on the left to navigate to different sections"),
+           h3("Live epidemic curves by NHS England regions"),
+           h6("Data source: Public Health England (updated every 24hrs)"),
+           h6("Please note: Confirmed cases in the UK are now generally individuals presenting at hospitals"),
+           sidebarLayout(
+             sidebarPanel(
+               checkboxGroupInput("checkGroup_region", "", choices = list("Cases (daily)" = "new_cases", 
+                                                                          "Cases (total)" = "total_cases"),selected = 2),
+               dateRangeInput("dateRange_region", "Date range",
+                              start  = min(data.region$date),
+                              end    = max(data.region$date), 
+                              min    = min(data.region$date),
+                              max    = max(data.region$date)),
+               radioButtons("pop", "Cases",
+                            choices=c('Number of cases'="pop_no",
+                                      'Per 100,000 population'='pop_yes')),
+               radioButtons("log_region", "y-axis scale:",
+                            choices=c('Linear'="log_no",
+                                      'Log'='log_yes'))
+             ),
+             mainPanel(
+               plotOutput("EnglandRegionPlot"),
+               h6("Made by Max Eyre"),
+               h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+               uiOutput("twitter2"),
+               uiOutput("data_source2"),
+               h6("Population data source - Office for National Statistics")
+             )
+           )
+  ),
+    tabPanel("England counties",
+             h5("Please use the menu bar on the left to navigate to different sections"),
+           h3("Live epidemic curves for counties of England (Unitary Areas)"),
+           h6("Data source: Public Health England (updated every 24hrs)"),
+           h6("Please note:"),
+           h6("1. PHE data sometimes lose cases between days (hence negative new cases), hopefully this will improve with time."),
+           h6("2. Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
+            sidebarLayout(
+             sidebarPanel(
+               selectInput("county", "County (UA):",list.county),
+               checkboxGroupInput("checkGroup_county", "", choices = list("Cases (daily)" = "new_cases", 
+                                                                   "Cases (total)" = "total_cases"),selected = 1),
+               
+               dateRangeInput("dateRange_county", "Date range",
+                              start  = min(data.county$date),
+                              end    = max(data.county$date), #max(data.confirmed$date)
+                              min    = min(data.county$date),
+                              max    = max(data.county$date))
+               ),
+             mainPanel(
+               h5(textOutput("county_newcase_update")),
+               h5(textOutput("county_totalcase_update")),
+               h3(textOutput("caption_county")),
+               plotOutput("englandcountyPlot"),
+               h6("Made by Max Eyre"),
+               h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+               uiOutput("twitter3"),
+               uiOutput("data_source3")
+               )
+           )
+           ),
+  tabPanel("UK Testing",
+           h5("Please use the menu bar on the left to navigate to different sections"),
+           h3("Live diagnostic testing rates for UK"),
+           h6("Data source: Public Health England (updated every 24hrs)"),
+           sidebarLayout(
+             sidebarPanel(
+               h4("Testing rates"),
+               checkboxGroupInput("checkGroup_test", "", choices = list("Tested (daily)" = "new_tested", 
+                                                                          "Tested (total)" = "total_tested"),selected = 1),
+               dateRangeInput("dateRange_test", "Date range",
+                              start  = min(data.test$date),
+                              end    = max(data.test$date), 
+                              min    = min(data.test$date),
+                              max    = max(data.test$date)),
+               radioButtons("log_test", "y-axis scale:",
+                            choices=c('Linear'="log_no",
+                                      'Log'='log_yes'))
+             ),
+             mainPanel(plotOutput("UKtestingPlot")
+                       )
+           ),
+           br(),
+           sidebarLayout(
+             sidebarPanel(
+               h4("Proportion positive"),
+               checkboxGroupInput("checkGroup_test2", "", choices = list("% positive (daily)" = "new_prop_pos", 
+                                                                        "% positive (total)" = "total_prop_pos"),selected = 1),
+               dateRangeInput("dateRange_test2", "Date range",
+                              start  = min(data.test$date),
+                              end    = max(data.test$date), 
+                              min    = min(data.test$date),
+                              max    = max(data.test$date))
+             ),
+             mainPanel(plotOutput("UKtestingPlot2"),
+                       h6("Made by Max Eyre"),
+                       h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+                       uiOutput("twitter4"),
+                       uiOutput("data_source4")
+             )
+           )
+           )
+  )
 )
 )
   

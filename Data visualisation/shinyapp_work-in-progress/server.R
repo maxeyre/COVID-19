@@ -24,6 +24,9 @@ data$date = as.Date(data$date, "%Y-%m-%d")
 
 data <- data[order(data$country),]
 
+
+
+
 # calculate new daily cases, deaths, recoveries
 data$new_cases <- c()
 data$new_deaths <- c()
@@ -38,8 +41,15 @@ for (i in 1:length(uni.country)){
   out.deaths <- c(out.deaths,0,diff(x$total_deaths))
 
 }
+
 data$new_cases <- out.cases
 data$new_deaths <- out.deaths
+
+# read in country population data
+country.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/country_pop.csv")
+data <- left_join(data,country.pop.data, by="country")
+data <- data %>%
+  mutate(total_cases = 100000*total_cases/pop, new_cases=100000*new_cases/pop)
 
 data <- gather(data, key="type", value="number",3:ncol(data))
 
@@ -246,174 +256,6 @@ shinyServer(function(input, output) {
 
   output$dateRange.100 <- renderPrint({ input$dateRange.100 })  
     
-  # Single country plots
-  output$countryPlot <- renderPlot({
-    lines <- c(as.character(input$checkGroup))
-    
-    data<- data[data$type %in% lines, ]
-    
-      p <- ggplot(data[data$country==paste(formulaText(),sep=""),]) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
-        geom_line(aes(x=date, y=number, col=type),size=1) +
-      scale_x_date(limits=c(input$dateRange[1],input$dateRange[2])) + xlab(label = "") +ylab(label="Cases") +
-        theme_classic()+
-        theme(axis.text=element_text(size=13),
-              axis.title=element_text(size=16), 
-              axis.title.x = element_text(vjust=-1.5),
-              axis.title.y = element_text(vjust=2),
-              legend.text = element_text(size=13),
-              legend.position = 'top', 
-              legend.spacing.x = unit(0.4, 'cm'),
-              panel.grid.major.y=element_line(size=0.05)) +
-        scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c", "total_deaths"="#ff7f00", 
-                                               "new_deaths"="#a65628"),
-                            breaks=c("new_cases","total_cases","new_deaths","total_deaths"),
-                            labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
-        guides(linetype = guide_legend(override.aes = list(size = 20)))
-      if(input$log=='log_yes'){
-        p <- p + scale_y_continuous(trans='log10')
-      }
-      p
-  })
-  
-  # country comparisons
-  output$countryPlot_compare <- renderPlot({
-    lines2 <- c(as.character(input$checkGroup_countryCompare))
-    
-    data.100<- data.100[data.100$country %in% lines2, ]
-    
-    p2 <- ggplot(data.100) + geom_point(aes(x=date_rel, y=number, col=country),size=1.5) +
-      geom_line(aes(x=date_rel, y=number, col=country),size=1) +
-      scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + xlab(label = "Days (after first 100 cases)") +ylab(label="Cases") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-0.5),
-            axis.title.y = element_text(vjust=2),
-            legend.title = element_blank(),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +
-      guides(linetype = guide_legend(override.aes = list(size = 20)))
-    if(input$log_compare=='log_yes'){
-        p2 <- p2 + scale_y_continuous(trans='log10')
-        }
-    p2
-  })
-
-  # England NHS regions plots
-  output$EnglandRegionPlot <- renderPlot({
-    
-    lines <- c(as.character(input$checkGroup_region))
-    
-    if (input$pop=="pop_yes"){
-      data.region <- data.region.pop
-    }
-    data.region<- data.region[data.region$type %in% lines, ]
-  
-    p.pop <- ggplot(data.region) + geom_point(aes(x=date, y=number, col=region),size=1.5) +
-      geom_line(aes(x=date, y=number, col=region, linetype=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_region[1],input$dateRange_region[2])) + xlab(label = "") +ylab(label="Cases") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.title = element_blank(),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) + scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2),
-                                                                                breaks=c("total_cases","new_cases"),
-                                                                                labels=c("Cases (total)","Cases (daily)")) +
-      guides(linetype = guide_legend(label.position = "top", keywidth = 2))
-    if (input$pop=="pop_yes"){
-      p.pop <- p.pop +  ylab(label="Cases (per 100,000)")
-    }
-    
-    if(input$log_region=='log_yes'){
-      p.pop <- p.pop + scale_y_continuous(trans='log10')
-    }
-      p.pop
-  })
-  
-  # England county plots
-  output$englandcountyPlot <- renderPlot({
-    lines <- c(as.character(input$checkGroup_county))
-    
-    data.county <- data.county[data.county$type %in% lines, ]
-    
-    ggplot(data.county[data.county$county_UA==paste(formulaText_county(),sep=""),]) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
-      geom_line(aes(x=date, y=number, col=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_county[1],input$dateRange_county[2])) + xlab(label = "") +ylab(label="Cases") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +
-      scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c"),
-                          breaks=c("new_cases","total_cases"),
-                          labels=c("Cases (daily)", "Cases (total)")) +
-      guides(linetype = guide_legend(override.aes = list(size = 20)))
-  })
-  
-  # UK testing plot
-  output$UKtestingPlot <- renderPlot({
-    
-    lines <- c(as.character(input$checkGroup_test))
-    
-    data.test <- data.test[data.test$type %in% lines, ]
-    
-    p.test <- ggplot(data.test) + geom_point(aes(x=date, y=number, col=type),size=1.5)+ 
-      geom_line(aes(x=date, y=number, col=type, group=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_test[1],input$dateRange_test[2])) + xlab(label = "") +ylab(label="Number tested") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +
-      scale_colour_manual(name="",values = c("total_tested" = "#000000", "new_tested" = "#e41a1c"),
-                          breaks=c("new_tested","total_tested"),
-                          labels=c("Daily", "Total"))
-    if(input$log_test=='log_yes'){
-      p.test <- p.test + scale_y_continuous(trans='log10')
-    }
-    p.test
-  })
-  
-  output$UKtestingPlot2 <- renderPlot({
-    
-    lines <- c(as.character(input$checkGroup_test2))
-    
-    data.test <- data.test[data.test$type %in% lines, ]
-    
-    p.test <- ggplot(data.test) + geom_point(aes(x=date, y=number, col=type),size=1.5)+ 
-      geom_line(aes(x=date, y=number, col=type, group=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_test2[1],input$dateRange_test2[2])) + xlab(label = "") +ylab(label="Prop. positive (%)") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +
-      scale_colour_manual(name="",values = c("total_prop_pos" = "#000000", "new_prop_pos" = "#e41a1c"),
-                          breaks=c("new_prop_pos","total_prop_pos"),
-                          labels=c("Daily", "Total"))
-    p.test
-    
-  })
-  
   
 })
 
