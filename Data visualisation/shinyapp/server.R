@@ -296,7 +296,7 @@ shinyServer(function(input, output) {
                               labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
           guides(linetype = guide_legend(override.aes = list(size = 20)))
         if(input$log=='log_yes'){
-          p <- p + scale_y_log10() 
+          p <- p + scale_y_log10(labels = scales::comma) 
       }
     }
       p
@@ -324,7 +324,7 @@ shinyServer(function(input, output) {
               panel.grid.major.y=element_line(size=0.05)) +
         guides(linetype = guide_legend(override.aes = list(size = 20))) 
       if(input$log_compare=='log_yes'){
-        p2 <- p2 + scale_y_log10()
+        p2 <- p2 + scale_y_log10(labels = scales::comma)
       }
       
     p2
@@ -361,7 +361,7 @@ shinyServer(function(input, output) {
     }
     
     if(input$log_region=='log_yes'){
-      p.pop <- p.pop + scale_y_log10()
+      p.pop <- p.pop + scale_y_log10(labels = scales::comma)
     }
       p.pop
   })
@@ -413,7 +413,7 @@ shinyServer(function(input, output) {
                           breaks=c("new_tested","total_tested"),
                           labels=c("Daily", "Total"))
     if(input$log_test=='log_yes'){
-      p.test <- p.test + scale_y_log10()
+      p.test <- p.test + scale_y_log10(labels = scales::comma)
     }
     p.test
   })

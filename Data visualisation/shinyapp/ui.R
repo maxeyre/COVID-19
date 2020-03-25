@@ -137,16 +137,16 @@ shinyUI(fluidPage(
                   uiOutput("twitter"),
                   uiOutput("data_source"),
                   uiOutput("data_source_andrew"),
-                  h6("Population data source - United Nations Population Division estimates (2020")
+                  h6("Population data source - United Nations Population Division estimates (2019)")
                   )
                 ),
     ),
   tabPanel("Country comparison",
-           #h5("Please use the menu bar on the left to navigate to different sections"),    
-           #h3("Live comparison of countries from beginning of outbreaks"),
-              #h5("Plotted for countries with at least 100 cases (day 0 is the first day >100 cases were reported)"),
-               #h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
-               #h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
+           h5("Please use the menu bar on the left to navigate to different sections"),    
+           h3("Live comparison of countries from beginning of outbreaks"),
+              h5("Plotted for countries with at least 100 cases (day 0 is the first day >100 cases were reported)"),
+               h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
+               h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
              sidebarLayout(
                sidebarPanel(
                  sliderInput("dateRange.100", "Number of days into outbreak (range)", 
