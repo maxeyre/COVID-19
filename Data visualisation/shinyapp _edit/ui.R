@@ -87,6 +87,7 @@ names(list.region) <- region.list
 
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
+data.test <-na.omit(data.test)
 data.test <- data.test %>%
   select(date, total_tested = tested)
 data.test$date = as.Date(data.test$date, "%d/%m/%Y")
