@@ -23,14 +23,13 @@ data$country[data$country=="UAE"]<-"United Arab Emirates"
 data$date = as.Date(data$date, "%Y-%m-%d")
 
 data <- data[order(data$country),]
-test <- tibble(country=unique(data$country))
+
 # read in country population data
 country.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/country_pop.csv")
 data <- left_join(data,country.pop.data, by="country")
-data.region.pop <- data.region.pop %>%
+data <- data %>%
   mutate(total_cases = 100000*total_cases/pop, new_cases=100000*new_cases/pop)
 
-test2 <- left_join(test,country.pop.data, by="country")
 
 # calculate new daily cases, deaths, recoveries
 data$new_cases <- c()
