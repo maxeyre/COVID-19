@@ -7,13 +7,24 @@ library(tidyverse)
 # read in Andrew Lilley data
 data <- read_csv("https://raw.githubusercontent.com/andrewlilley/tool_COVID-19/master/output_data/country_level.csv?token=ANJMHSDBYB4LQYORA77LET26PTC74")
 
+if(any(colnames(data)=="X1")){
+  data <- data %>%
+    select(-X1)
+}
+
 data <- data %>%
   rename(country = Region, total_cases = Transmissions, total_deaths = Deaths)
 
+data <- data[data$country!="UK",]
 data$date = as.Date(data$date, "%Y-%m-%d")
 
+UK.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_total.csv")
+UK.data$date = as.Date(UK.data$date, "%d/%m/%Y")
+UK.data$country <- "United Kingdom"
+
+data <- rbind(data, UK.data)
+
 data$country[data$country=="US"]<-"United States"
-data$country[data$country=="UK"]<-"United Kingdom"
 data$country[data$country=="UAE"]<-"United Arab Emirates"
 
 data <- data[order(data$country),]
@@ -36,7 +47,7 @@ for (i in 1:length(country.list.100)){
 }
 names(list.100) <- country.list.100
 
-data <- gather(data, key="type", value="number",4:ncol(data))
+data <- gather(data, key="type", value="number",3:ncol(data))
 
 # relative dates
 data.100 <- data[data$type=="total_cases",]
