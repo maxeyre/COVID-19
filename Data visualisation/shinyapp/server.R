@@ -10,7 +10,7 @@ library(gridExtra)
 library(gtable)
 
 # read in global data
-data <- read_csv("https://raw.githubusercontent.com/andrewlilley/tool_COVID-19/master/output_data/country_level.csv?token=ANJMHSDBYB4LQYORA77LET26PTC74")
+data <- read_csv("https://raw.githubusercontent.com/andrewlilley/tool_COVID-19/master/output_data/country_level.csv?token=ANJMHSHHDNKDPF4UV6YNJ4C6QYNTA")
 
 if(any(colnames(data)=="X1")){
   data <- data %>%
@@ -259,6 +259,16 @@ shinyServer(function(input, output) {
   })
 
   output$dateRange.100 <- renderPrint({ input$dateRange.100 })  
+  
+  output$counter <- renderText({
+    if(!file.exists("counter.Rdata"))
+      counter <-0
+    else
+      load(file="counter.Rdata")
+    counter <- counter + 1
+    save(counter, file="counter.Rdata")
+    paste0(counter," site visits (since 17:00 on 26/03/2020)")
+  })
     
   # Single country plots
   output$countryPlot <- renderPlot({
@@ -284,7 +294,7 @@ shinyServer(function(input, output) {
                             labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
         guides(linetype = guide_legend(override.aes = list(size = 20)))
       if(input$log=='log_yes'){
-        p <- p + scale_y_log10()
+        p <- p + scale_y_log10(labels = scales::comma)
       }
       }
     else{

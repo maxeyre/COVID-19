@@ -5,7 +5,7 @@ library(dplyr)
 library(tidyverse)
 
 # read in Andrew Lilley data
-data <- read_csv("https://raw.githubusercontent.com/andrewlilley/tool_COVID-19/master/output_data/country_level.csv?token=ANJMHSDBYB4LQYORA77LET26PTC74")
+data <- read_csv("https://raw.githubusercontent.com/andrewlilley/tool_COVID-19/master/output_data/country_level.csv?token=ANJMHSHHDNKDPF4UV6YNJ4C6QYNTA")
 
 if(any(colnames(data)=="X1")){
   data <- data %>%
@@ -139,7 +139,7 @@ shinyUI(fluidPage(
                                  choices=c('Number of cases'="pop_no",
                                            'Per 100,000 population'='pop_yes'))
                   ),
-                mainPanel( # don't want this in the side bar!
+                mainPanel( 
                   h3(textOutput("caption")),
                   textOutput("startdate"),
                   plotOutput("countryPlot"),
@@ -282,7 +282,8 @@ shinyUI(fluidPage(
                        uiOutput("data_source4")
              )
            )
-           )
+           ),
+  h5(textOutput("counter"))
   )
 )
 )
