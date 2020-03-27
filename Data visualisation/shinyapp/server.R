@@ -261,13 +261,13 @@ shinyServer(function(input, output) {
   output$dateRange.100 <- renderPrint({ input$dateRange.100 })  
   
   output$counter <- renderText({
-    if(!file.exists("counter.Rdata"))
-      counter <-0
-    else
-      load(file="counter.Rdata")
-    counter <- counter + 1
-    save(counter, file="counter.Rdata")
-    paste0(counter," site visits (since 17:00 on 26/03/2020)")
+    library(rdrop2)
+    token <- readRDS("token.rds")
+    counter <- drop_read_csv("counter.csv",dtoken = token)
+    counter$count <- counter$count + 1
+    write.csv(counter, file = "counter.csv")
+    drop_upload("counter.csv",dtoken = token)
+    paste0(counter$count," site visits (since 17:00 on 26/03/2020)")
   })
     
   # Single country plots
