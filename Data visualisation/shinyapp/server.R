@@ -139,6 +139,7 @@ data.region.pop <- gather(data.region.pop,key="type",value="number",4:(ncol(data
 
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
+data.test <- data.test[,1:4]
 data.test <- data.test %>%
   select(date, total_tested = tested, total_cases=cases, new_cases)
 data.test$date = as.Date(data.test$date, "%d/%m/%Y")
