@@ -49,7 +49,7 @@ names(list.100) <- country.list.100
 
 data <- gather(data, key="type", value="number",3:ncol(data))
 
-# relative dates
+# relative dates - cases
 data.100 <- data[data$type=="total_cases",]
 data.100 <- data.100[data.100$number>=100,]
 uni.country.100 <- c(unique(data.100$country))
@@ -65,6 +65,23 @@ for (i in 1:length(uni.country.100)){
 }
 data.100 <- data.100.out
 data.100$date_rel <- as.numeric(data.100$date_rel)
+
+# relative dates - deaths
+data.deaths10 <- data[data$type=="total_deaths",]
+data.deaths10 <- data.deaths10[data.deaths10$number>=10,]
+uni.country.deaths10 <- c(unique(data.deaths10$country))
+data.deaths10.out <- NULL
+date.deaths10 <- c(as.Date("2020-01-01","%Y-%m-%d"))
+for (i in 1:length(uni.country.deaths10)){
+  x <- data.deaths10[data.deaths10$country==uni.country.deaths10[i],]
+  out <- as.Date(x$date[which(x$number>=10)],"%Y-%m-%d")
+  out <- min(out)
+  x$date_rel <- x$date - out
+  x <- x[x$date_rel>=0,]
+  data.deaths10.out <- rbind(data.deaths10.out, x)
+}
+data.deaths10 <- data.deaths10.out
+data.deaths10$date_rel <- as.numeric(data.deaths10$date_rel)
 
 # read in UK county data
 data.county <- "https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/england_countyUA.csv"

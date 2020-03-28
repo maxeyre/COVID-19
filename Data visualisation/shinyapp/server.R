@@ -74,6 +74,23 @@ for (i in 1:length(uni.country.100)){
 
 data.100 <- data.100.out
 
+# relative dates - deaths
+data.deaths10 <- data[data$type=="total_deaths",]
+data.deaths10 <- data.deaths10[data.deaths10$number>=10,]
+uni.country.deaths10 <- c(unique(data.deaths10$country))
+data.deaths10.out <- NULL
+date.deaths10 <- c(as.Date("2020-01-01","%Y-%m-%d"))
+for (i in 1:length(uni.country.deaths10)){
+  x <- data.deaths10[data.deaths10$country==uni.country.deaths10[i],]
+  out <- as.Date(x$date[which(x$number>=10)],"%Y-%m-%d")
+  out <- min(out)
+  x$date_rel <- x$date - out
+  x <- x[x$date_rel>=0,]
+  data.deaths10.out <- rbind(data.deaths10.out, x)
+}
+data.deaths10 <- data.deaths10.out
+data.deaths10$date_rel <- as.numeric(data.deaths10$date_rel)
+
 # UK county data
 # read in UK county data
 data.county <- "https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/england_countyUA.csv"
@@ -266,6 +283,8 @@ shinyServer(function(input, output) {
     token <- readRDS("token.rds")
     counter <- drop_read_csv("counter.csv",dtoken = token)
     counter$count <- counter$count + 1
+    counter <- counter%>%
+      select(count)
     write.csv(counter, file = "counter.csv")
     drop_upload("counter.csv",dtoken = token)
     paste0(counter$count," site visits (since 17:00 on 26/03/2020)")
