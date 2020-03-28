@@ -49,6 +49,8 @@ names(list.100) <- country.list.100
 
 data <- gather(data, key="type", value="number",3:ncol(data))
 
+UK.data <- data[data$country=="United Kingdom",]
+
 # relative dates - cases
 data.100 <- data[data$type=="total_cases",]
 data.100 <- data.100[data.100$number>=100,]
@@ -198,6 +200,38 @@ shinyUI(fluidPage(
              ),
   ),
   "United Kingdom",
+  tabPanel("UK curve and overview",
+           h5("Please use the menu bar on the left to navigate to different sections"),
+           h3("UK Overview"),
+           h6("Data source: Public Health England (updated every 24hrs)"),
+           h6("Please note: Confirmed cases in the UK are now generally individuals presenting at hospitals"),
+           sidebarLayout(
+             sidebarPanel(
+               checkboxGroupInput("checkGroup_UK", "", choices = list("Cases (daily)" = "new_cases", 
+                                                                          "Cases (total)" = "total_cases"),selected = 2),
+               dateRangeInput("dateRange_UK", "Date range",
+                              start  = min(UK.data$date),
+                              end    = max(UK.data$date), 
+                              min    = min(UK.data$date),
+                              max    = max(UK.data$date)),
+               radioButtons("log_UK", "y-axis scale:",
+                            choices=c('Linear'="log_no",
+                                      'Log'='log_yes'))
+             ),
+             mainPanel(
+               h5(textOutput("UK_newcase_update")),
+               h5(textOutput("UK_totalcase_update")),
+               h5(textOutput("UK_totalcase_update")),
+               h3("Live epidemic curve of UK"),
+               plotOutput("UKPlot"),
+               h6("Made by Max Eyre"),
+               h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+               uiOutput("twitter_UK"),
+               uiOutput("data_source_UK"),
+               h6("Population data source - Office for National Statistics")
+             )
+           )
+  ),
   tabPanel("NHS England regions",
            h5("Please use the menu bar on the left to navigate to different sections"),
            h3("Live epidemic curves by NHS England regions"),

@@ -52,6 +52,12 @@ data$new_cases <- out.cases
 data$new_deaths <- out.deaths
 data <- gather(data, key="type", value="number",3:ncol(data))
 
+UK.data <- data[data$country=="United Kingdom",]
+
+# UK breakdown data
+UK_break <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_breakdown.csv")
+
+
 # read in country population data
 country.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/country_pop.csv")
 data <- left_join(data,country.pop.data, by="country")
@@ -217,6 +223,13 @@ shinyServer(function(input, output) {
           as.character(red2$county_UA[5])," (", red2$number[5],"), ", sep="")
   })
   
+  output$UK_totalcase_update <- renderText({
+    paste("Top 5 highest new daily cases: ", as.character(red$county_UA[1])," (", red$number[1],"), ",
+          as.character(red$county_UA[2])," (", red$number[2],"), ",
+          as.character(red$county_UA[3])," (", red$number[3],"), ",
+          as.character(red$county_UA[4])," (", red$number[4],"), ",
+          as.character(red$county_UA[5])," (", red$number[5],"), ", sep="")
+  })
   
   url <- a("Twitter", href="https://twitter.com/maxeyre3")
   
@@ -234,6 +247,10 @@ shinyServer(function(input, output) {
     tagList(url)
   })
   output$twitter4 <- renderUI({
+    tagList(url)
+  })
+  
+  output$twitter_UK <- renderUI({
     tagList(url)
   })
   
@@ -258,6 +275,10 @@ shinyServer(function(input, output) {
   output$data_source2 <- renderUI({
     tagList(url_data2)
   })
+  output$data_source_UK <- renderUI({
+    tagList(url_data2)
+  })
+  
   output$data_source3 <- renderUI({
     tagList(url_data2)
   })
@@ -298,7 +319,7 @@ shinyServer(function(input, output) {
     if(input$pop_country=="pop_yes"){
       p <- ggplot(data[data$country==paste(formulaText(),sep=""),]) + geom_point(aes(x=date, y=number_pop, col=type),size=1.5) +
         geom_line(aes(x=date, y=number_pop, col=type),size=1) +
-        scale_x_date(limits=c(input$dateRange[1],input$dateRange[2])) + xlab(label = "") +ylab(label="Cases") +
+        scale_x_date(limits=c(input$dateRange[1],input$dateRange[2])) + xlab(label = "") +ylab(label="Cases (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -370,6 +391,35 @@ shinyServer(function(input, output) {
     p2
   })
 
+  # UK plot
+  output$UKPlot <- renderPlot({
+    lines <- c(as.character(input$checkGroup_UK))
+    
+    UK.data<- UK.data[UK.data$type %in% lines, ]
+    
+      p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
+        geom_line(aes(x=date, y=number, col=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-1.5),
+              axis.title.y = element_text(vjust=2),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) +
+        scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c", "total_deaths"="#ff7f00", 
+                                               "new_deaths"="#a65628"),
+                            breaks=c("new_cases","total_cases","new_deaths","total_deaths"),
+                            labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
+        guides(linetype = guide_legend(override.aes = list(size = 20)))
+      if(input$log_UK=='log_yes'){
+        p <- p + scale_y_log10(labels = scales::comma)
+      }
+    p
+  })
+  
   # England NHS regions plots
   output$EnglandRegionPlot <- renderPlot({
     
