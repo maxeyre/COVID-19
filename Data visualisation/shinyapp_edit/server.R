@@ -392,6 +392,35 @@ shinyServer(function(input, output) {
   })
 
   
+  # UK plot
+  output$UKPlot <- renderPlot({
+    lines <- c(as.character(input$checkGroup_UK))
+    
+    UK.data<- UK.data[UK.data$type %in% lines, ]
+    
+    p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
+      geom_line(aes(x=date, y=number, col=type),size=1) +
+      scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases") +
+      theme_classic()+
+      theme(axis.text=element_text(size=13),
+            axis.title=element_text(size=16), 
+            axis.title.x = element_text(vjust=-1.5),
+            axis.title.y = element_text(vjust=2),
+            legend.text = element_text(size=13),
+            legend.position = 'top', 
+            legend.spacing.x = unit(0.4, 'cm'),
+            panel.grid.major.y=element_line(size=0.05)) +
+      scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c", "total_deaths"="#ff7f00", 
+                                             "new_deaths"="#a65628"),
+                          breaks=c("new_cases","total_cases","new_deaths","total_deaths"),
+                          labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
+      guides(linetype = guide_legend(override.aes = list(size = 20)))
+    if(input$log_UK=='log_yes'){
+      p <- p + scale_y_log10(labels = scales::comma)
+    }
+    p
+  })
+  
   # England NHS regions plots
   output$EnglandRegionPlot <- renderPlot({
     

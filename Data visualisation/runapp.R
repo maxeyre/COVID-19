@@ -6,5 +6,5 @@ rsconnect::setAccountInfo(name='maxeyre',
                           secret='SECRET')
 
 
-rsconnect::deployApp('shinyapp/')
+rsconnect::deployApp('shinyapp/', account='maxeyre')
 

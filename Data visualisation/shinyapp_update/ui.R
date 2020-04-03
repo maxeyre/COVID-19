@@ -8,7 +8,7 @@ library(tidyverse)
 
 # Define UI 
 shinyUI(fluidPage(
-  headerPanel("COVID-19 Data Visualisation - being updated (complete at 19:00 GMT)"),
+  headerPanel("COVID-19 Data Visualisation - being updated (complete at 11:30 BST)"),
 )
 )
   
