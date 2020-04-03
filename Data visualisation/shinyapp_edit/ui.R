@@ -219,9 +219,7 @@ shinyUI(fluidPage(
                                       'Log'='log_yes'))
              ),
              mainPanel(
-               h5(textOutput("UK_newcase_update")),
-               h5(textOutput("UK_totalcase_update")),
-               h5(textOutput("UK_totalcase_update")),
+
                h3("Live epidemic curve of UK"),
                plotOutput("UKPlot"),
                h6("Made by Max Eyre"),
@@ -230,7 +228,27 @@ shinyUI(fluidPage(
                uiOutput("data_source_UK"),
                h6("Population data source - Office for National Statistics")
              )
-           )
+           ),
+           br(),
+           sidebarLayout(
+             sidebarPanel(
+               checkboxGroupInput("checkGroup_UK_by_country", "", choices = list("Cases (daily)" = "new_cases", 
+                                                                      "Cases (total)" = "total_cases"),selected = 2),
+               dateRangeInput("dateRange_UK_by_country", "Date range",
+                              start  = min(UK.data$date),
+                              end    = max(UK.data$date), 
+                              min    = min(UK.data$date),
+                              max    = max(UK.data$date)),
+               radioButtons("log_UK_by_country", "y-axis scale:",
+                            choices=c('Linear'="log_no",
+                                      'Log'='log_yes'))
+             ),
+             mainPanel(
+               h3("Live epidemic curve of UK by country"),
+               plotOutput("UKPlot_by_country"),
+             )
+           ),
+           
   ),
   tabPanel("NHS England regions",
            h5("Please use the menu bar on the left to navigate to different sections"),

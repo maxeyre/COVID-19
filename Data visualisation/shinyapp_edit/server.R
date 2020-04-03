@@ -1,9 +1,9 @@
 # server.R
 library(shiny)
 library(datasets)
+library(tidyverse)
 library(dplyr)
 library(readr)
-library(tidyverse)
 library(grid)
 library(ggplot2)
 library(gridExtra)
@@ -55,8 +55,8 @@ data <- gather(data, key="type", value="number",3:ncol(data))
 UK.data <- data[data$country=="United Kingdom",]
 
 # UK breakdown data
-UK_break <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_breakdown.csv")
-
+UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_breakdown.csv")
+my_data <- read_excel("https://fingertips.phe.org.uk/documents/Historic%20COVID-19%20Dashboard%20Data.xls", sheet = "Countries")
 
 # read in country population data
 country.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/country_pop.csv")
@@ -223,13 +223,6 @@ shinyServer(function(input, output) {
           as.character(red2$county_UA[5])," (", red2$number[5],"), ", sep="")
   })
   
-  output$UK_totalcase_update <- renderText({
-    paste("Top 5 highest new daily cases: ", as.character(red$county_UA[1])," (", red$number[1],"), ",
-          as.character(red$county_UA[2])," (", red$number[2],"), ",
-          as.character(red$county_UA[3])," (", red$number[3],"), ",
-          as.character(red$county_UA[4])," (", red$number[4],"), ",
-          as.character(red$county_UA[5])," (", red$number[5],"), ", sep="")
-  })
   
   url <- a("Twitter", href="https://twitter.com/maxeyre3")
   
@@ -308,7 +301,7 @@ shinyServer(function(input, output) {
       select(count)
     write.csv(counter, file = "counter.csv")
     drop_upload("counter.csv",dtoken = token)
-    paste0(counter$count," site visits (since 17:00 on 26/03/2020)")
+    paste0(counter$count," site visits", sep="")
   })
     
   # Single country plots
@@ -416,6 +409,34 @@ shinyServer(function(input, output) {
                           labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
       guides(linetype = guide_legend(override.aes = list(size = 20)))
     if(input$log_UK=='log_yes'){
+      p <- p + scale_y_log10(labels = scales::comma)
+    }
+    p
+  })
+  
+  # UK plot
+  output$UKPlot_by_country <- renderPlot({
+    lines <- c(as.character(input$checkGroup_UK_by_country))
+    
+    UK.data<- UK.data[UK.data$type %in% lines, ]
+    
+    p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=region),size=1.5) +
+      geom_line(aes(x=date, y=number, col=region, linetype=type),size=1) +
+      scale_x_date(limits=c(input$dateRange_UK_by_country[1],input$dateRange_UK_by_country[2])) + xlab(label = "") +ylab(label="Cases") +
+      theme_classic()+
+      theme(axis.text=element_text(size=13),
+            axis.title=element_text(size=16), 
+            axis.title.x = element_text(vjust=-1.5),
+            axis.title.y = element_text(vjust=2),
+            legend.text = element_text(size=13),
+            legend.position = 'top', 
+            legend.spacing.x = unit(0.4, 'cm'),
+            panel.grid.major.y=element_line(size=0.05)) + + scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2),
+                                                                                  breaks=c("total_cases","new_cases"),
+                                                                                  labels=c("Cases (total)","Cases (daily)")) +
+      guides(linetype = guide_legend(label.position = "top", keywidth = 2))
+
+    if(input$log_UK_by_country=='log_yes'){
       p <- p + scale_y_log10(labels = scales::comma)
     }
     p
