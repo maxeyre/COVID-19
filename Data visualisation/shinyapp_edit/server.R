@@ -46,7 +46,6 @@ for (i in 1:length(uni.country)){
   x <- data[data$country==uni.country[i],]
   out.cases <- c(out.cases,0,diff(x$total_cases))
   out.deaths <- c(out.deaths,0,diff(x$total_deaths))
-
 }
 data$new_cases <- out.cases
 data$new_deaths <- out.deaths
@@ -55,8 +54,34 @@ data <- gather(data, key="type", value="number",3:ncol(data))
 UK.data <- data[data$country=="United Kingdom",]
 
 # UK breakdown data
-UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_breakdown.csv")
-my_data <- read_excel("https://fingertips.phe.org.uk/documents/Historic%20COVID-19%20Dashboard%20Data.xls", sheet = "Countries")
+UK_by_country_cases <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_countries_cases.csv")
+UK_by_country_pop <- data.frame(country=c("England","Scotland","Wales","Northern Ireland"), pop=c(55980000,5438000,3139000,1882000))
+UK_by_country_cases$pop <- UK_by_country_pop$pop
+UK_by_country_cases <- gather(UK_by_country_cases, key="date", value="total_cases",2:(ncol(UK_by_country_cases)-1))
+
+UK_by_country_deaths <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_countries_deaths.csv")
+UK_by_country_deaths <- UK_by_country_deaths[,c(1,3:6)]
+UK_by_country_deaths <- gather(UK_by_country_deaths, key="country", value="total_deaths",2:(ncol(UK_by_country_deaths)))
+UK_by_country_deaths <- UK_by_country_deaths %>%
+  rename(date = Date)
+  
+UK_by_country <- left_join(UK_by_country_cases,UK_by_country_deaths,by=c("date","country"))
+UK_by_country <- UK_by_country[order(UK_by_country$country),]
+
+out.cases <- c()
+out.deaths <- c()
+for (i in 1:nrow(UK_by_country_pop)){
+  x <- UK_by_country[UK_by_country$country==UK_by_country_pop$country[order(UK_by_country_pop$country)][i],]
+  out.cases <- c(out.cases,0,diff(x$total_cases))
+  out.deaths <- c(out.deaths,NA,diff(x$total_deaths))
+}
+UK_by_country$new_cases <- out.cases
+UK_by_country$new_deaths <- out.deaths
+
+UK_by_country <- gather(UK_by_country, key="type", value="number", 4:7)
+UK_by_country$date <- as.Date(UK_by_country$date, "%d/%m/%Y")
+
+
 
 # read in country population data
 country.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/country_pop.csv")
@@ -171,8 +196,6 @@ data.test$total_prop_pos <- 100*data.test$total_cases/data.test$total_tested
 data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_tested
 
 data.test <- gather(data.test, key="type", value="number",2:ncol(data.test))
-
-# UK data
 
 
 # Define server logic required to plot various variables against mpg
@@ -418,23 +441,25 @@ shinyServer(function(input, output) {
   output$UKPlot_by_country <- renderPlot({
     lines <- c(as.character(input$checkGroup_UK_by_country))
     
-    UK.data<- UK.data[UK.data$type %in% lines, ]
+    UK_by_country<- UK_by_country[UK_by_country$type %in% lines, ]
     
-    p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=region),size=1.5) +
-      geom_line(aes(x=date, y=number, col=region, linetype=type),size=1) +
+    p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
+      geom_line(aes(x=date, y=number, col=country, linetype=type),size=1) +
       scale_x_date(limits=c(input$dateRange_UK_by_country[1],input$dateRange_UK_by_country[2])) + xlab(label = "") +ylab(label="Cases") +
       theme_classic()+
       theme(axis.text=element_text(size=13),
             axis.title=element_text(size=16), 
             axis.title.x = element_text(vjust=-1.5),
             axis.title.y = element_text(vjust=2),
+            legend.title = element_blank(),
             legend.text = element_text(size=13),
             legend.position = 'top', 
             legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) + + scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2),
-                                                                                  breaks=c("total_cases","new_cases"),
-                                                                                  labels=c("Cases (total)","Cases (daily)")) +
-      guides(linetype = guide_legend(label.position = "top", keywidth = 2))
+            panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
+                                                                                  breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
+                                                                                  labels=c("Cases (total)","Cases (daily)","Deaths (total)","Deaths (daily)")) +
+      guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+      theme(legend.direction = "vertical")
 
     if(input$log_UK_by_country=='log_yes'){
       p <- p + scale_y_log10(labels = scales::comma)

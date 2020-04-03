@@ -222,22 +222,18 @@ shinyUI(fluidPage(
 
                h3("Live epidemic curve of UK"),
                plotOutput("UKPlot"),
-               h6("Made by Max Eyre"),
-               h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
-               uiOutput("twitter_UK"),
-               uiOutput("data_source_UK"),
-               h6("Population data source - Office for National Statistics")
              )
            ),
            br(),
            sidebarLayout(
              sidebarPanel(
                checkboxGroupInput("checkGroup_UK_by_country", "", choices = list("Cases (daily)" = "new_cases", 
-                                                                      "Cases (total)" = "total_cases"),selected = 2),
+                                                                      "Cases (total)" = "total_cases","Deaths (daily)" = "new_deaths",
+                                                                      "Deaths (total)" = "total_deaths"),selected = 2),
                dateRangeInput("dateRange_UK_by_country", "Date range",
-                              start  = min(UK.data$date),
+                              start  = as.Date("09/03/2020", "%d/%m/%Y"),
                               end    = max(UK.data$date), 
-                              min    = min(UK.data$date),
+                              min    = as.Date("09/03/2020", "%d/%m/%Y"),
                               max    = max(UK.data$date)),
                radioButtons("log_UK_by_country", "y-axis scale:",
                             choices=c('Linear'="log_no",
@@ -246,6 +242,11 @@ shinyUI(fluidPage(
              mainPanel(
                h3("Live epidemic curve of UK by country"),
                plotOutput("UKPlot_by_country"),
+               h6("Made by Max Eyre"),
+               h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+               uiOutput("twitter_UK"),
+               uiOutput("data_source_UK"),
+               h6("Population data source - Office for National Statistics")
              )
            ),
            
