@@ -443,27 +443,52 @@ shinyServer(function(input, output) {
     
     UK_by_country<- UK_by_country[UK_by_country$type %in% lines, ]
     
-    p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
-      geom_line(aes(x=date, y=number, col=country, linetype=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_UK_by_country[1],input$dateRange_UK_by_country[2])) + xlab(label = "") +ylab(label="Cases") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.title = element_blank(),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
-                                                                                  breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
-                                                                                  labels=c("Cases (total)","Cases (daily)","Deaths (total)","Deaths (daily)")) +
-      guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
-      theme(legend.direction = "vertical")
-
-    if(input$log_UK_by_country=='log_yes'){
-      p <- p + scale_y_log10(labels = scales::comma)
-    }
+    if (input$pop_UK=="pop_yes"){
+      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
+        geom_line(aes(x=date, y=number, col=country, linetype=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_UK_by_country[1],input$dateRange_UK_by_country[2])) + xlab(label = "") +ylab(label="Cases") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-1.5),
+              axis.title.y = element_text(vjust=2),
+              legend.title = element_blank(),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
+                                                                                   breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
+                                                                                   labels=c("Cases (total)","Cases (daily)","Deaths (total)","Deaths (daily)")) +
+        guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+        theme(legend.direction = "horizontal",legend.box = "vertical")
+      
+      if(input$log_UK_by_country=='log_yes'){
+        p <- p + scale_y_log10(labels = scales::comma)
+      }
+    }else{
+      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
+        geom_line(aes(x=date, y=number, col=country, linetype=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_UK_by_country[1],input$dateRange_UK_by_country[2])) + xlab(label = "") +ylab(label="Cases") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-1.5),
+              axis.title.y = element_text(vjust=2),
+              legend.title = element_blank(),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
+                                                                                   breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
+                                                                                   labels=c("Cases (total)","Cases (daily)","Deaths (total)","Deaths (daily)")) +
+        guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+        theme(legend.direction = "horizontal",legend.box = "vertical")
+      
+      if(input$log_UK_by_country=='log_yes'){
+        p <- p + scale_y_log10(labels = scales::comma)
+      }
+      }
+    
     p
   })
   

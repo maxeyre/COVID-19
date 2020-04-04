@@ -237,7 +237,10 @@ shinyUI(fluidPage(
                               max    = max(UK.data$date)),
                radioButtons("log_UK_by_country", "y-axis scale:",
                             choices=c('Linear'="log_no",
-                                      'Log'='log_yes'))
+                                      'Log'='log_yes')),
+               radioButtons("pop_UK", "Cases",
+                            choices=c('Number of cases'="pop_no",
+                                      'Per 100,000 population'='pop_yes'))
              ),
              mainPanel(
                h3("Live epidemic curve of UK by country"),
