@@ -199,8 +199,13 @@ data.test <- gather(data.test, key="type", value="number",2:ncol(data.test))
 
 
 # Define server logic required to plot various variables against mpg
-shinyServer(function(input, output) {
+shinyServer(function(input, output, session) {
   
+  # Change date range for by country UK graphs
+  
+  output$test <- renderText({
+    paste("test",input$checkGroup,sep="")
+  })
   # Compute the forumla text in a reactive expression since it is 
   # shared by the output$caption and output$mpgPlot expressions
   formulaText <- reactive({
@@ -413,40 +418,62 @@ shinyServer(function(input, output) {
     lines <- c(as.character(input$checkGroup_UK))
     
     UK.data<- UK.data[UK.data$type %in% lines, ]
-    
-    p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
-      geom_line(aes(x=date, y=number, col=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +
-      scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c", "total_deaths"="#ff7f00", 
-                                             "new_deaths"="#a65628"),
-                          breaks=c("new_cases","total_cases","new_deaths","total_deaths"),
-                          labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
-      guides(linetype = guide_legend(override.aes = list(size = 20)))
-    if(input$log_UK=='log_yes'){
-      p <- p + scale_y_log10(labels = scales::comma)
-    }
-    p
+    if (input$pop_UK=="pop_yes"){
+      p <- ggplot(UK.data) + geom_point(aes(x=date, y=100000*number/66440000, col=type),size=1.5) +
+        geom_line(aes(x=date, y=100000*number/66440000, col=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases (per 100,000)") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-1.5),
+              axis.title.y = element_text(vjust=2),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) +
+        scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c", "total_deaths"="#ff7f00", 
+                                               "new_deaths"="#a65628"),
+                            breaks=c("new_cases","total_cases","new_deaths","total_deaths"),
+                            labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
+        guides(linetype = guide_legend(override.aes = list(size = 20)))
+      if(input$log_UK=='log_yes'){
+        p <- p + scale_y_log10(labels = scales::comma)
+      }
+      } else{
+        p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
+          geom_line(aes(x=date, y=number, col=type),size=1) +
+          scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases") +
+          theme_classic()+
+          theme(axis.text=element_text(size=13),
+                axis.title=element_text(size=16), 
+                axis.title.x = element_text(vjust=-1.5),
+                axis.title.y = element_text(vjust=2),
+                legend.text = element_text(size=13),
+                legend.position = 'top', 
+                legend.spacing.x = unit(0.4, 'cm'),
+                panel.grid.major.y=element_line(size=0.05)) +
+          scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c", "total_deaths"="#ff7f00", 
+                                                 "new_deaths"="#a65628"),
+                              breaks=c("new_cases","total_cases","new_deaths","total_deaths"),
+                              labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
+          guides(linetype = guide_legend(override.aes = list(size = 20)))
+        if(input$log_UK=='log_yes'){
+          p <- p + scale_y_log10(labels = scales::comma)
+        }
+      }
+      p
   })
   
   # UK plot
   output$UKPlot_by_country <- renderPlot({
-    lines <- c(as.character(input$checkGroup_UK_by_country))
+    lines <- c(as.character(input$checkGroup_UK))
     
     UK_by_country<- UK_by_country[UK_by_country$type %in% lines, ]
     
     if (input$pop_UK=="pop_yes"){
-      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
-        geom_line(aes(x=date, y=number, col=country, linetype=type),size=1) +
-        scale_x_date(limits=c(input$dateRange_UK_by_country[1],input$dateRange_UK_by_country[2])) + xlab(label = "") +ylab(label="Cases") +
+      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=100000*number/pop, col=country),size=1.5) +
+        geom_line(aes(x=date, y=100000*number/pop, col=country, linetype=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -462,13 +489,13 @@ shinyServer(function(input, output) {
         guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
         theme(legend.direction = "horizontal",legend.box = "vertical")
       
-      if(input$log_UK_by_country=='log_yes'){
+      if(input$log_UK=='log_yes'){
         p <- p + scale_y_log10(labels = scales::comma)
       }
     }else{
       p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
         geom_line(aes(x=date, y=number, col=country, linetype=type),size=1) +
-        scale_x_date(limits=c(input$dateRange_UK_by_country[1],input$dateRange_UK_by_country[2])) + xlab(label = "") +ylab(label="Cases") +
+        scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -484,7 +511,7 @@ shinyServer(function(input, output) {
         guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
         theme(legend.direction = "horizontal",legend.box = "vertical")
       
-      if(input$log_UK_by_country=='log_yes'){
+      if(input$log_UK=='log_yes'){
         p <- p + scale_y_log10(labels = scales::comma)
       }
       }
