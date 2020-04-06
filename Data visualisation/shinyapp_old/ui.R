@@ -146,7 +146,7 @@ shinyUI(fluidPage(
                                                   "Cases (total)" = "total_cases", 
                                                   "Deaths (daily)" = "new_deaths",
                                                   "Deaths (total)" = "total_deaths"),
-                                       selected = 1),
+                                       selected = 2),
                     dateRangeInput("dateRange", "Date range",
                                start  = min(data$date),
                                end    = max(data$date), 
@@ -155,7 +155,7 @@ shinyUI(fluidPage(
                     radioButtons("log", "y-axis scale:",
                                  choices=c('Linear'="log_no",
                                            'Log'='log_yes')),
-                    radioButtons("pop_country", "y-axis value",
+                    radioButtons("pop_country", "Cases",
                                  choices=c('Number of cases'="pop_no",
                                            'Per 100,000 population'='pop_yes'))
                   ),
@@ -168,37 +168,28 @@ shinyUI(fluidPage(
                   uiOutput("twitter"),
                   uiOutput("data_source"),
                   uiOutput("data_source_andrew"),
-                  h6("Population data source - United Nations Population Division estimates (2019)"),
-                  h5(textOutput("counter"))
+                  h6("Population data source - United Nations Population Division estimates (2019)")
                   )
                 ),
     ),
   tabPanel("Country comparison",
            h5("Please use the menu bar on the left to navigate to different sections"),    
            h3("Live comparison of countries from beginning of outbreaks"),
+              h5("Plotted for countries with at least 100 cases (day 0 is the first day >100 cases were reported)"),
                h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
                h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
              sidebarLayout(
                sidebarPanel(
-                 radioButtons("compare_by", "Compare by",
-                              choices=c('Cases'="cases",
-                                        'Deaths'='deaths')),
                  sliderInput("dateRange.100", "Number of days into outbreak (range)", 
                              min = min(data.100$date_rel), 
                              max = max(data.100$date_rel), value = c(min(data.100$date_rel), max(data.100$date_rel))),
                  radioButtons("log_compare", "y-axis scale:",
                               choices=c('Linear'="log_no",
                                         'Log'='log_yes')),
-                 radioButtons("compare_pop", "y-axis value",
-                              choices=c('Number of cases'="pop_no",
-                                        'Per 100,000 population'='pop_yes')),
                  
                  checkboxGroupInput("checkGroup_countryCompare", "Countries", choices = list.100, selected = 1)
                ), 
-               mainPanel(h5("Plotted for countries with at least 100 cases/10 deaths"),
-                         h5("Cases: day 0 is the first day >100 cases were reported)"),
-                         h5("Deaths: day 0 is the first day >10 deaths were reported)"),
-                         plotOutput("countryPlot_compare"),
+               mainPanel(plotOutput("countryPlot_compare"),
                          h6("Made by Max Eyre"),
                          h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                          uiOutput("twitter_comp"),
@@ -209,49 +200,7 @@ shinyUI(fluidPage(
              ),
   ),
   "United Kingdom",
-  tabPanel("UK overview",
-           h5("Please use the menu bar on the left to navigate to different sections"),
-           h3("UK Overview"),
-           h6("Data source: Public Health England (updated every 24hrs)"),
-           h6("Please note: Confirmed cases in the UK are now generally individuals presenting at hospitals and deaths can be reported with delays"),
-                         sidebarPanel(
-                           checkboxGroupInput("checkGroup_UK", "", choices = list("Cases (daily)" = "new_cases", 
-                                                                                  "Cases (total)" = "total_cases",
-                                                                                  "Deaths (daily)" = "new_deaths",
-                                                                                  "Deaths (total)" = "total_deaths"),selected = 2),
-                           dateRangeInput("dateRange_UK", "Date range",
-                                          start  = as.Date("09/03/2020", "%d/%m/%Y"),
-                                          end    = max(UK.data$date), 
-                                          min    = as.Date("09/03/2020", "%d/%m/%Y"),
-                                          max    = max(UK.data$date)),
-                           radioButtons("log_UK", "y-axis scale:",
-                                        choices=c('Linear'="log_no",
-                                                  'Log'='log_yes')),
-                           radioButtons("pop_UK", "Cases",
-                                        choices=c('Number of cases'="pop_no",
-                                                  'Per 100,000 population'='pop_yes'))
-                         ),
-                        mainPanel(tabsetPanel(type = "tabs", id="tabs_UK",
-                           tabPanel("UK - total", value = 1,
-                                    h3("Live epidemic curve of UK"),
-                                    h6("For a graph of data from before 09/03/2020 please visit the 'International - by country' page"),
-                                    plotOutput("UKPlot")
-                                    ),
-                           tabPanel("UK - countries", value = 2,
-                                    h3("Live epidemic curve of UK by country"),
-                                    h6("Death data only available from 27/03/2020"),
-                                    plotOutput("UKPlot_by_country")
-                                    )
-                          ),
-                          h6("Made by Max Eyre"),
-                          h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
-                          uiOutput("twitter_UK"),
-                          uiOutput("data_source_UK"),
-                          h6("Population data source - Office for National Statistics")
-                       ),
-               
-             ),
-           
+  
   tabPanel("NHS England regions",
            h5("Please use the menu bar on the left to navigate to different sections"),
            h3("Live epidemic curves by NHS England regions"),
@@ -354,7 +303,8 @@ shinyUI(fluidPage(
                        uiOutput("data_source4")
              )
            )
-           )
+           ),
+  h5(textOutput("counter"))
   )
 )
 )
