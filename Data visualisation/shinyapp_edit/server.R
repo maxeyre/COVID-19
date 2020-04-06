@@ -97,12 +97,18 @@ date.100 <- c(as.Date("2020-01-01","%Y-%m-%d"))
 for (i in 1:length(uni.country.100)){
   x <- data.100[data.100$country==uni.country.100[i],]
   out <- as.Date(x$date[which(x$number>=100)],"%Y-%m-%d")
+  out_pop <- as.Date(x$date[which(x$number_pop>=1)],"%Y-%m-%d")
   out <- min(out)
   x$date_rel <- x$date - out
+  if(length(out_pop)==0){
+    x$date_rel_pop <- c(rep(NA, length(x$date)))
+  } else{
+    out_pop <- min(out_pop)
+    x$date_rel_pop <- x$date - out_pop
+      }
   x <- x[x$date_rel>=0,]
   data.100.out <- rbind(data.100.out, x)
 }
-
 data.100 <- data.100.out
 
 # relative dates - deaths
@@ -114,13 +120,19 @@ date.deaths10 <- c(as.Date("2020-01-01","%Y-%m-%d"))
 for (i in 1:length(uni.country.deaths10)){
   x <- data.deaths10[data.deaths10$country==uni.country.deaths10[i],]
   out <- as.Date(x$date[which(x$number>=10)],"%Y-%m-%d")
+  out_pop <- as.Date(x$date[which(x$number_pop>=0.5)],"%Y-%m-%d")
+  if(length(out_pop)==0) out_pop <- 0
   out <- min(out)
+  out_pop <- min(out_pop)
   x$date_rel <- x$date - out
+  x$date_rel_pop <- x$date - out_pop
   x <- x[x$date_rel>=0,]
-  data.deaths10.out <- rbind(data.deaths10.out, x)
+  x_pop <- x[x$date_rel_pop>=0,]
+  data.deaths10.out <- rbind(data.deaths10.out, x, x_pop)
 }
 data.deaths10 <- data.deaths10.out
 data.deaths10$date_rel <- as.numeric(data.deaths10$date_rel)
+data.deaths10$date_rel_pop <- as.numeric(data.deaths10$date_rel_pop)
 
 # UK county data
 # read in UK county data
@@ -203,9 +215,27 @@ shinyServer(function(input, output, session) {
   
   # Change date range for by country UK graphs
   
-  output$test <- renderText({
-    paste("test",input$checkGroup,sep="")
+  observe({
+    val <- input$checkGroup_UK
+    if(length(val)<3 & input$tabs_UK==2){
+      x <- sum("new_deaths" %in% val, "total_deaths" %in% val)
+      if(x==length(val)) {
+        updateDateRangeInput(session, "dateRange_UK", 
+                             start  = as.Date("27/03/2020", "%d/%m/%Y"),
+                             end    = max(UK.data$date), 
+                             min    = as.Date("27/03/2020", "%d/%m/%Y"),
+                             max    = max(UK.data$date))
+      } else{
+        updateDateRangeInput(session, "dateRange_UK", 
+                             start  = as.Date("09/03/2020", "%d/%m/%Y"),
+                             end    = max(UK.data$date), 
+                             min    = as.Date("09/03/2020", "%d/%m/%Y"),
+                             max    = max(UK.data$date))
+        
+      }
+    }
   })
+  
   # Compute the forumla text in a reactive expression since it is 
   # shared by the output$caption and output$mpgPlot expressions
   formulaText <- reactive({
@@ -388,11 +418,18 @@ shinyServer(function(input, output, session) {
   output$countryPlot_compare <- renderPlot({
     lines2 <- c(as.character(input$checkGroup_countryCompare))
     
-    data.100<- data.100[data.100$country %in% lines2, ]
+    if(input$compare_by=="cases"){
+      data.100<- data.100[data.100$country %in% lines2, ]
+      y_min <- 1
+    }else{
+      data.100<- data.deaths10[data.deaths10$country %in% lines2, ]
+      y_min <- 0.5
+    }
     
+    if(input$compare_pop=="pop_no"){
       p2 <- ggplot(data.100) + geom_point(aes(x=date_rel, y=number, col=country),size=1.5) +
         geom_line(aes(x=date_rel, y=number, col=country),size=1) +
-        scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + xlab(label = "Days (after first 100 cases)") +
+        scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + xlab(label = "Days") +
         ylab(label="Cases") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
@@ -407,6 +444,26 @@ shinyServer(function(input, output, session) {
         guides(linetype = guide_legend(override.aes = list(size = 20))) 
       if(input$log_compare=='log_yes'){
         p2 <- p2 + scale_y_log10(labels = scales::comma)
+      }
+    } else{
+      p2 <- ggplot(data.100) + geom_point(aes(x=date_rel_pop, y=number_pop, col=country, ymin=y_min),size=1.5) +
+        geom_line(aes(x=date_rel_pop, y=number_pop, col=country),size=1) +
+        scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + xlab(label = "Days") +
+        ylab(label="Cases (per 100,000)") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-0.5),
+              axis.title.y = element_text(vjust=2),
+              legend.title = element_blank(),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) +
+        guides(linetype = guide_legend(override.aes = list(size = 20))) 
+      if(input$log_compare=='log_yes'){
+        p2 <- p2 + scale_y_log10(labels = scales::comma)
+      }
       }
       
     p2
@@ -470,10 +527,22 @@ shinyServer(function(input, output, session) {
     
     UK_by_country<- UK_by_country[UK_by_country$type %in% lines, ]
     
+    val <- input$checkGroup_UK
+    if(length(val)<3 & input$tabs_UK==2){
+      x <- sum("new_deaths" %in% val, "total_deaths" %in% val)
+      if(x==length(val)) {
+        date.min <- as.Date("27/03/2020", "%d/%m/%Y")
+      } else {
+        date.min <- as.Date("09/03/2020", "%d/%m/%Y")
+      }
+      } else {
+        date.min <- as.Date("09/03/2020", "%d/%m/%Y")
+      }
+    
     if (input$pop_UK=="pop_yes"){
       p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=100000*number/pop, col=country),size=1.5) +
         geom_line(aes(x=date, y=100000*number/pop, col=country, linetype=type),size=1) +
-        scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases (per 100,000)") +
+        scale_x_date(limits=c(date.min,input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -495,7 +564,7 @@ shinyServer(function(input, output, session) {
     }else{
       p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
         geom_line(aes(x=date, y=number, col=country, linetype=type),size=1) +
-        scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases") +
+        scale_x_date(limits=c(date.min,input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -544,7 +613,8 @@ shinyServer(function(input, output, session) {
             panel.grid.major.y=element_line(size=0.05)) + scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2),
                                                                                 breaks=c("total_cases","new_cases"),
                                                                                 labels=c("Cases (total)","Cases (daily)")) +
-      guides(linetype = guide_legend(label.position = "top", keywidth = 2))
+      guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+      theme(legend.direction = "horizontal",legend.box = "vertical")
     if (input$pop=="pop_yes"){
       p.pop <- p.pop +  ylab(label="Cases (per 100,000)")
     }
