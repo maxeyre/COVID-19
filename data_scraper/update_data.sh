@@ -1,5 +1,6 @@
 #!/bin/sh
-cd Documents/4.\ Other\ projects/COVID-19/Data\ visualisation/data_scraper
+PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin
+cd Documents/4_Projects/COVID-19/data_scraper
 Rscript 01_download-daily-PHE_data.R
 git add -A
 git commit -m "updated daily PHE data“
