@@ -10,15 +10,35 @@ url <- "https://fingertips.phe.org.uk/documents/Historic%20COVID-19%20Dashboard%
 
 # Download file and load it in R
 download.file(url, destfile = "data/original/PHE_main_data.xlsx")
-cases <- readxl::read_xlsx(path = "data/original/daily_cum_cases.xlsx", 
-                           sheet = 6, 
-                           skip = 7) 
+
+# UK total
+UK_total.n <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
+                           sheet = 2, 
+                           skip = 8)
+UK_countries_deaths.n <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
+                                      sheet = 3, 
+                                      skip = 7)
+
+UK_countries_cases.n <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
+                                         sheet = 4, 
+                                         skip = 7)
+
+england_region.n <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
+                                    sheet = 5, 
+                                    skip = 7)
+
+england_countyUA.n <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
+                                    sheet = 6, 
+                                    skip = 7)
+
+
 
 # DATA PROCESSING --------------------------------------------------------------
 
-# Give robust column names
-# names(cases)[1:2] <- c("area_code", "area_name")
-# 
+# UK_total
+
+
+ 
 # # Convert to long format and 
 # cases_long <- cases %>% 
 #   filter(area_name != "England") %>% 
