@@ -366,7 +366,7 @@ shinyServer(function(input, output, session) {
     if(input$pop_country=="pop_yes"){
       p <- ggplot(data[data$country==paste(formulaText(),sep=""),]) + geom_point(aes(x=date, y=number_pop, col=type),size=1.5) +
         geom_line(aes(x=date, y=number_pop, col=type),size=1) +
-        scale_x_date(limits=c(input$dateRange[1],input$dateRange[2])) + xlab(label = "") +ylab(label="Cases (per 100,000)") +
+        scale_x_date(limits=c(input$dateRange[1],input$dateRange[2])) + xlab(label = "") +ylab(label="Number (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -388,7 +388,7 @@ shinyServer(function(input, output, session) {
     else{
         p <- ggplot(data[data$country==paste(formulaText(),sep=""),]) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
           geom_line(aes(x=date, y=number, col=type),size=1) +
-          scale_x_date(limits=c(input$dateRange[1],input$dateRange[2])) + xlab(label = "") +ylab(label="Cases") +
+          scale_x_date(limits=c(input$dateRange[1],input$dateRange[2])) + xlab(label = "") +ylab(label="Number") +
           theme_classic()+
           theme(axis.text=element_text(size=13),
                 axis.title=element_text(size=16), 
@@ -416,10 +416,11 @@ shinyServer(function(input, output, session) {
     
     if(input$compare_by=="cases"){
       data.100<- data.100[data.100$country %in% lines2, ]
+      lab_y <- "Cases"
 
     }else{
       data.100<- data.deaths10[data.deaths10$country %in% lines2, ]
-      
+      lab_y <- "Deaths"
     }
     
     if(input$compare_pop=="pop_no"){
@@ -428,8 +429,9 @@ shinyServer(function(input, output, session) {
       
       p2 <- ggplot(data.100) + geom_point(aes(x=date_rel, y=number, col=country),size=1.5) +
         geom_line(aes(x=date_rel, y=number, col=country),size=1) +
-        scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + scale_y_continuous(limits=c(y_min,y_max), labels= scales::comma) + xlab(label = "Days") +
-        ylab(label="Cases") +
+        scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + scale_y_continuous(limits=c(y_min,y_max), labels= scales::comma) + 
+        xlab(label = "Days") +
+        ylab(label=paste(lab_y)) +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -451,7 +453,7 @@ shinyServer(function(input, output, session) {
       p2 <- ggplot(data.100) + geom_point(aes(x=date_rel_pop, y=number_pop, col=country),size=1.5) +
         geom_line(aes(x=date_rel_pop, y=number_pop, col=country),size=1) +
         scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + scale_y_continuous(limits=c(y_min,y_max)) + xlab(label = "Days") +
-        ylab(label="Cases (per 100,000)") +
+        ylab(label=paste(lab_y," (per 100,000)",sep="")) +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -480,7 +482,7 @@ shinyServer(function(input, output, session) {
     if (input$pop_UK=="pop_yes"){
       p <- ggplot(UK.data) + geom_point(aes(x=date, y=100000*number/66440000, col=type),size=1.5) +
         geom_line(aes(x=date, y=100000*number/66440000, col=type),size=1) +
-        scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases (per 100,000)") +
+        scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Number (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -501,7 +503,7 @@ shinyServer(function(input, output, session) {
       } else{
         p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
           geom_line(aes(x=date, y=number, col=type),size=1) +
-          scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases") +
+          scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Number") +
           theme_classic()+
           theme(axis.text=element_text(size=13),
                 axis.title=element_text(size=16), 
@@ -544,7 +546,7 @@ shinyServer(function(input, output, session) {
     if (input$pop_UK=="pop_yes"){
       p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=100000*number/pop, col=country),size=1.5) +
         geom_line(aes(x=date, y=100000*number/pop, col=country, linetype=type),size=1) +
-        scale_x_date(limits=c(date.min,input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases (per 100,000)") +
+        scale_x_date(limits=c(date.min,input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Number (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -566,7 +568,7 @@ shinyServer(function(input, output, session) {
     }else{
       p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
         geom_line(aes(x=date, y=number, col=country, linetype=type),size=1) +
-        scale_x_date(limits=c(date.min,input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Cases") +
+        scale_x_date(limits=c(date.min,input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Number") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -602,7 +604,7 @@ shinyServer(function(input, output, session) {
   
     p.pop <- ggplot(data.region) + geom_point(aes(x=date, y=number, col=region),size=1.5) +
       geom_line(aes(x=date, y=number, col=region, linetype=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_region[1],input$dateRange_region[2])) + xlab(label = "") +ylab(label="Cases") +
+      scale_x_date(limits=c(input$dateRange_region[1],input$dateRange_region[2])) + xlab(label = "") +ylab(label="Number") +
       theme_classic()+
       theme(axis.text=element_text(size=13),
             axis.title=element_text(size=16), 
@@ -618,7 +620,7 @@ shinyServer(function(input, output, session) {
       guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
       theme(legend.direction = "horizontal",legend.box = "vertical")
     if (input$pop=="pop_yes"){
-      p.pop <- p.pop +  ylab(label="Cases (per 100,000)")
+      p.pop <- p.pop +  ylab(label="Number (per 100,000)")
     }
     
     if(input$log_region=='log_yes'){
@@ -635,7 +637,7 @@ shinyServer(function(input, output, session) {
     
     ggplot(data.county[data.county$county_UA==paste(formulaText_county(),sep=""),]) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
       geom_line(aes(x=date, y=number, col=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_county[1],input$dateRange_county[2])) + xlab(label = "") +ylab(label="Cases") +
+      scale_x_date(limits=c(input$dateRange_county[1],input$dateRange_county[2])) + xlab(label = "") +ylab(label="Number") +
       theme_classic()+
       theme(axis.text=element_text(size=13),
             axis.title=element_text(size=16), 
