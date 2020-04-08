@@ -14,6 +14,12 @@
 month/02/2020
 - During February various health information campaigns about handwashing etc. implemented.
 
+04/03/2020
+- Update to NHS 111 online launched so reduce the number of NHS 111 phone calls (source)[https://www.digitalhealth.net/2020/03/nhs-111-online-coronavirus/]
+
+06/03/2020
+- NHS England urges GP surgeries to carry out consulations over telephone or video (source)[https://www.digitalhealth.net/2020/03/gps-urged-to-go-digital-to-prevent-spread-of-coronavirus/]
+
 12/03/2020
 - Move from Contain phase to Delay phase (i.e. increasing push for public health measures and population response in addition to contact tracing and isolation)
 
@@ -33,6 +39,8 @@ month/02/2020
 
 22/03/2020
 - Guidance on what essential travel includes is published i.e. no travel to second homes or holiday premises (source)[https://www.gov.uk/government/news/covid-19-essential-travel-guidance]
+- 1.5 million higher risk people told to self-isolate for 12 weeks.
+- Members of public told to stay at home if they suspect they have COVID-19 and not visit a GP, pharmacy or hospital. Asked to use online self-assessment form before calling NHS 111 (source)[https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_United_Kingdom#Government:%20'As%20soon%20as%20cases%20appeared%20in%20the%20U]
 
 23/03/2020 
 - Lockdown begins this evening. The government directed people to stay at home throughout this period except for essential purchases, essential work travel (if remote work was not possible), medical needs, one exercise per day (alone or with household members), and providing care for others. Many other non-essential activities, including all public gatherings and social events except funerals, were prohibited, with many categories of retail businesses ordered to be closed. (details)[https://www.theguardian.com/world/2020/mar/23/uk-lockdown-what-are-new-coronavirus-restrictions]. Enforced in law by the Coronavirus Act 2020 (https://en.wikipedia.org/wiki/Coronavirus_Act_2020), the Health Protection (Coronavirus, Restrictions) (England) Regulations 2020 (https://en.wikipedia.org/wiki/Health_Protection_(Coronavirus,_Restrictions)_(England)_Regulations_2020) 
