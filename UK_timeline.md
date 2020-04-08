@@ -5,6 +5,7 @@
 
 31/01/2020
 - Public health information campaign was launched to advise people how to lessen the risk of spreading the virus
+- Travellers from Hubei province in China, including the capital Wuhan were advised to self-isolate, "stay at home, not go to work, school or public places, not use public transport or taxis, ask friends, family members or delivery services to do errands", and call NHS 111 if they had arrived in the UK in previous 14 days, regardless of whether they were unwell or not.
 - Contact tracing begins after 2 cases confirmed in UK
 
 10/02/2020
