@@ -1,7 +1,7 @@
 # Timeline of UK interventions
 
 20/01/2020
-- Guidance issued for returning travellers from China/Wuhan
+- Guidance issued for returning travellers from China/Wuhan (report to NHS 111 if have respiratory symptoms)
 
 31/01/2020
 - Public health information campaign was launched to advise people how to lessen the risk of spreading the virus
@@ -40,6 +40,6 @@ and other similar statutory instruments covering the other home nations.
 26/03/2020
 - Measures to support self-employed announced but costs not given (source)[https://www.gov.uk/government/speeches/chancellor-outlines-new-coronavirus-support-measures-for-the-self-employed]
 
-Sources: \
+Other sources: 
 1. Oxford COVID-19 Government Response Tracker (https://www.bsg.ox.ac.uk/research/research-projects/oxford-covid-19-government-response-tracker)
 2. Wikipedia (https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_United_Kingdom#Government:%20'As%20soon%20as%20cases%20appeared%20in%20the%20U)
