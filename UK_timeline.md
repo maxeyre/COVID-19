@@ -15,7 +15,7 @@ month/02/2020
 - During February various health information campaigns about handwashing etc. implemented.
 
 04/03/2020
-- Update to NHS 111 online launched so reduce the number of NHS 111 phone calls [[source]](https://www.digitalhealth.net/2020/03/nhs-111-online-coronavirus/)
+- Update to NHS 111 online launched to reduce the number of NHS 111 phone calls [[source]](https://www.digitalhealth.net/2020/03/nhs-111-online-coronavirus/)
 
 06/03/2020
 - NHS England urges GP surgeries to carry out consulations over telephone or video [[source]](https://www.digitalhealth.net/2020/03/gps-urged-to-go-digital-to-prevent-spread-of-coronavirus/)
