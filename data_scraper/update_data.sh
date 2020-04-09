@@ -6,4 +6,4 @@ Rscript 02_download-daily-JHU_data.R
 git add -A
 git commit -m "updated daily PHE data“
 git push
-echo "Task has been run :)"
+echo “Data scraped“
