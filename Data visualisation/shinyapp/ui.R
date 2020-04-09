@@ -107,6 +107,7 @@ shinyUI(fluidPage(
                   h6("Made by Max Eyre"),
                   h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                   uiOutput("twitter"),
+                  uiOutput("git1"),
                   uiOutput("data_source"),
                   h6("Population data source - United Nations Population Division estimates (2019)"),
                   h5(textOutput("counter"))
@@ -143,6 +144,7 @@ shinyUI(fluidPage(
                          h6("Made by Max Eyre"),
                          h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                          uiOutput("twitter_comp"),
+                         uiOutput("git2"),
                          uiOutput("data_source_comp"),
                          h6("Population data source - United Nations Population Division estimates (2019)")
                 )
@@ -185,6 +187,7 @@ shinyUI(fluidPage(
                           h6("Made by Max Eyre"),
                           h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                           uiOutput("twitter_UK"),
+                          uiOutput("git3"),
                           uiOutput("data_source_UK"),
                           h6("Population data source - Office for National Statistics")
                        ),
@@ -217,6 +220,7 @@ shinyUI(fluidPage(
                h6("Made by Max Eyre"),
                h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                uiOutput("twitter2"),
+               uiOutput("git4"),
                uiOutput("data_source2"),
                h6("Population data source - Office for National Statistics")
              )
@@ -247,6 +251,7 @@ shinyUI(fluidPage(
                h6("Made by Max Eyre"),
                h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                uiOutput("twitter3"),
+               uiOutput("git5"),
                uiOutput("data_source3")
                )
            )
@@ -289,6 +294,7 @@ shinyUI(fluidPage(
                        h6("Made by Max Eyre"),
                        h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                        uiOutput("twitter4"),
+                       uiOutput("git6"),
                        uiOutput("data_source4")
              )
            )

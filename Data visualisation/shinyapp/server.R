@@ -141,7 +141,7 @@ shinyServer(function(input, output, session) {
   })
   
   url_data <- a("JHU CSSE Data sources", href="https://github.com/CSSEGISandData/COVID-19")
-  url_data_andrew <- a("Thanks to Andrew Lilley for scraping international data", href="https://twitter.com/alil9145")
+  url_github <- a("GitHub", href="https://github.com/maxeyre/COVID-19")
   url_data2 <- a("Data source", href="https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public")
   
   output$data_source <- renderUI({
@@ -149,13 +149,6 @@ shinyServer(function(input, output, session) {
   })
   output$data_source_comp <- renderUI({
     tagList(url_data)
-  })
-  
-  output$data_source_andrew <- renderUI({
-    tagList(url_data_andrew)
-  })
-  output$data_source_andrew_comp <- renderUI({
-    tagList(url_data_andrew)
   })
   
   output$data_source2 <- renderUI({
@@ -170,6 +163,25 @@ shinyServer(function(input, output, session) {
   })
   output$data_source4 <- renderUI({
     tagList(url_data2)
+  })
+  
+  output$git1 <- renderUI({
+    tagList(url_github)
+  })
+  output$git2 <- renderUI({
+    tagList(url_github)
+  })
+  output$git3 <- renderUI({
+    tagList(url_github)
+  })
+  output$git4 <- renderUI({
+    tagList(url_github)
+  })
+  output$git5 <- renderUI({
+    tagList(url_github)
+  })
+  output$git6 <- renderUI({
+    tagList(url_github)
   })
   
   output$checkGroup <- renderText({

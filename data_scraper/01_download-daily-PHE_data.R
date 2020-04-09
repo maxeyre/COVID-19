@@ -111,6 +111,7 @@ data.region$new_cases <- out
 
 # get per 100,000 population results
 region.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/NHS_england_regions_pop.csv")
+
 data.region.pop <- left_join(data.region,region.pop.data, by="region")
 data.region.pop <- data.region.pop %>%
   mutate(total_cases = 100000*total_cases/pop, new_cases=100000*new_cases/pop)
