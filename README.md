@@ -6,7 +6,8 @@
 - Daily updated data files for UK COVID-19 cases (broken down into multiple .csv files)
  
  ## App 
- Please visit https://maxeyre.shinyapps.io/shinyapp/
+ Please visit https://maxeyre.shinyapps.io/shinyapp/ to use the app.
+ 
  The following viewing features are currently available:
 #### Global 
   - View time series data for cumulative and daily figures of confirmed cases, deaths and recoveries for all countries reporting at least one confirmed case (can view per 100,000 population)
