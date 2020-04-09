@@ -4,33 +4,12 @@ library(shiny)
 library(dplyr)
 library(tidyverse)
 
-# read in Andrew Lilley data
-data <- read_csv("https://raw.githubusercontent.com/andrewlilley/tool_COVID-19/master/output_data/country_level.csv?token=ANJMHSDWF7URVBXFWA5I47K6SAWOG")
-
-if(any(colnames(data)=="X1")){
-  data <- data %>%
-    select(-X1)
-}
-
-data <- data %>%
-  rename(country = Region, total_cases = Transmissions, total_deaths = Deaths)
-
-data <- data[data$country!="UK",]
-data$date = as.Date(data$date, "%Y-%m-%d")
-
-UK.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_total.csv")
-UK.data$date = as.Date(UK.data$date, "%d/%m/%Y")
-UK.data$country <- "United Kingdom"
-
-data <- rbind(data, UK.data)
-
-data$country[data$country=="US"]<-"United States"
-data$country[data$country=="UAE"]<-"United Arab Emirates"
-
-data <- data[order(data$country),]
+# read in global data
+data <- read_csv("data/processed/JHU_full.csv")
+data.100 <- read_csv("data/processed/JHU_100-cases.csv")
+data.deaths10 <- read_csv("data/processed/JHU_5-deaths.csv")
 
 # list of countries
-data$country <- as.character(data$country)
 country.list <- c(unique(data$country))
 list.50 <- list()
 for (i in 1:length(country.list)){
@@ -39,7 +18,6 @@ for (i in 1:length(country.list)){
 names(list.50) <- country.list
 
 # list of countries with >100 cases
-data.100 <- data[data$total_cases>=100,]
 country.list.100 <- c(unique(data.100$country))
 list.100 <- list()
 for (i in 1:length(country.list.100)){
@@ -47,49 +25,15 @@ for (i in 1:length(country.list.100)){
 }
 names(list.100) <- country.list.100
 
-data <- gather(data, key="type", value="number",3:ncol(data))
+# UK data
+UK.data <- read_csv("data/processed/UK_total.csv")
 
-UK.data <- data[data$country=="United Kingdom",]
+# UK breakdown data
+UK_by_country <- read_csv("data/processed/UK_by_country.csv")
 
-# relative dates - cases
-data.100 <- data[data$type=="total_cases",]
-data.100 <- data.100[data.100$number>=100,]
-uni.country.100 <- c(unique(data.100$country))
-data.100.out <- NULL
-date.100 <- c(as.Date("2020-01-01","%Y-%m-%d"))
-for (i in 1:length(uni.country.100)){
-  x <- data.100[data.100$country==uni.country.100[i],]
-  out <- as.Date(x$date[which(x$number>=100)],"%Y-%m-%d")
-  out <- min(out)
-  x$date_rel <- x$date - out
-  x <- x[x$date_rel>=0,]
-  data.100.out <- rbind(data.100.out, x)
-}
-data.100 <- data.100.out
-data.100$date_rel <- as.numeric(data.100$date_rel)
-
-# relative dates - deaths
-data.deaths10 <- data[data$type=="total_deaths",]
-data.deaths10 <- data.deaths10[data.deaths10$number>=10,]
-uni.country.deaths10 <- c(unique(data.deaths10$country))
-data.deaths10.out <- NULL
-date.deaths10 <- c(as.Date("2020-01-01","%Y-%m-%d"))
-for (i in 1:length(uni.country.deaths10)){
-  x <- data.deaths10[data.deaths10$country==uni.country.deaths10[i],]
-  out <- as.Date(x$date[which(x$number>=10)],"%Y-%m-%d")
-  out <- min(out)
-  x$date_rel <- x$date - out
-  x <- x[x$date_rel>=0,]
-  data.deaths10.out <- rbind(data.deaths10.out, x)
-}
-data.deaths10 <- data.deaths10.out
-data.deaths10$date_rel <- as.numeric(data.deaths10$date_rel)
-
+# UK county data
 # read in UK county data
-data.county <- "https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/england_countyUA.csv"
-data.county <- read_csv(data.county)
-data.county <- gather(data.county, key="date", value="cases",3:ncol(data.county))
-data.county$date = as.Date(data.county$date, "%d/%m/%Y")
+data.county <- read_csv("data/processed/england_UTLA.csv")
 
 # get list of counties
 data.county$county_UA <- as.character(data.county$county_UA)
@@ -101,19 +45,8 @@ for (i in 1:length(county_LA.list)){
 names(list.county) <- county_LA.list
 
 # read in England region data
-data.region <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/england_region.csv")
-data.region <- gather(data.region, key="date", value="cases",3:ncol(data.region))
-data.region$date = as.Date(data.region$date, "%d/%m/%Y")
-data.region <- data.region %>%
-  rename(region = NHSRNm)
-# get list of regions
-data.region$region <- as.character(data.region$region)
-region.list <- c(unique(data.region$region))
-list.region <- list()
-for (i in 1:length(region.list)){
-  list.region[i] <- region.list[i]
-}
-names(list.region) <- region.list
+data.region <- read_csv("data/processed/NHS_england_regions.csv")
+data.region.pop <- read_csv("data/processed/NHS_england_regions_pop.csv")
 
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
@@ -135,13 +68,9 @@ shinyUI(fluidPage(
     "Worldwide",  
     tabPanel("By country",
              h5("Please use the menu bar on the left to navigate to different sections"),
-             h4("Updates (06/04/2020):"),
-             h6("- Country comparisons now also possible by deaths, and by per 100,000 population rates for cases and deaths"),
-             h6("- UK breakdown by country"),
-             br(),
              
              h3("Live epidemic curves by country"),
-              h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
+              h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)"),
               h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
                 sidebarLayout(
                   sidebarPanel(
@@ -150,7 +79,9 @@ shinyUI(fluidPage(
                     checkboxGroupInput("checkGroup", "", choices = list("Cases (daily)" = "new_cases", 
                                                   "Cases (total)" = "total_cases", 
                                                   "Deaths (daily)" = "new_deaths",
-                                                  "Deaths (total)" = "total_deaths"),
+                                                  "Deaths (total)" = "total_deaths",
+                                                  "Recoveries (daily)" = "new_recoveries",
+                                                  "Recoveries (total)" = "total_recoveries"),
                                        selected = 1),
                     dateRangeInput("dateRange", "Date range",
                                start  = min(data$date),
@@ -172,7 +103,6 @@ shinyUI(fluidPage(
                   h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                   uiOutput("twitter"),
                   uiOutput("data_source"),
-                  uiOutput("data_source_andrew"),
                   h6("Population data source - United Nations Population Division estimates (2019)"),
                   h5(textOutput("counter"))
                   )
@@ -181,7 +111,7 @@ shinyUI(fluidPage(
   tabPanel("Country comparison",
            h5("Please use the menu bar on the left to navigate to different sections"),    
            h3("Live comparison of countries from beginning of outbreaks"),
-               h6("Data source: Collected directly from JHU CSSE sources by Andrew Lilley (updated every 24hrs)"),
+               h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)"),
                h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
              sidebarLayout(
                sidebarPanel(
@@ -209,7 +139,6 @@ shinyUI(fluidPage(
                          h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
                          uiOutput("twitter_comp"),
                          uiOutput("data_source_comp"),
-                         uiOutput("data_source_andrew_comp"),
                          h6("Population data source - United Nations Population Division estimates (2019)")
                 )
              ),
@@ -226,9 +155,9 @@ shinyUI(fluidPage(
                                                                                   "Deaths (daily)" = "new_deaths",
                                                                                   "Deaths (total)" = "total_deaths"),selected = 2),
                            dateRangeInput("dateRange_UK", "Date range",
-                                          start  = as.Date("09/03/2020", "%d/%m/%Y"),
+                                          start  = min(UK.data$date),
                                           end    = max(UK.data$date), 
-                                          min    = as.Date("09/03/2020", "%d/%m/%Y"),
+                                          min    = min(UK.data$date),
                                           max    = max(UK.data$date)),
                            radioButtons("log_UK", "y-axis scale:",
                                         choices=c('Linear'="log_no",
@@ -240,7 +169,6 @@ shinyUI(fluidPage(
                         mainPanel(tabsetPanel(type = "tabs", id="tabs_UK",
                            tabPanel("UK - total", value = 1,
                                     h3("Live epidemic curve of UK"),
-                                    h6("For a graph of data from before 09/03/2020 please visit the 'International - by country' page"),
                                     plotOutput("UKPlot")
                                     ),
                            tabPanel("UK - countries", value = 2,
@@ -289,13 +217,11 @@ shinyUI(fluidPage(
              )
            )
   ),
-    tabPanel("England counties",
+    tabPanel("England - Local authorities",
              h5("Please use the menu bar on the left to navigate to different sections"),
-           h3("Live epidemic curves for counties of England (Unitary Areas)"),
+           h3("Live epidemic curves for Local Authorities of England"),
            h6("Data source: Public Health England (updated every 24hrs)"),
-           h6("Please note:"),
-           h6("1. PHE data sometimes lose cases between days (hence negative new cases), hopefully this will improve with time."),
-           h6("2. Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
+           h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
             sidebarLayout(
              sidebarPanel(
                selectInput("county", "County (UA):",list.county),
@@ -304,7 +230,7 @@ shinyUI(fluidPage(
                
                dateRangeInput("dateRange_county", "Date range",
                               start  = min(data.county$date),
-                              end    = max(data.county$date), #max(data.confirmed$date)
+                              end    = max(data.county$date),
                               min    = min(data.county$date),
                               max    = max(data.county$date))
                ),
@@ -327,6 +253,7 @@ shinyUI(fluidPage(
            sidebarLayout(
              sidebarPanel(
                h4("Testing rates"),
+               h6("This is the number of individuals tested (not the number of tests carried out)"),
                checkboxGroupInput("checkGroup_test", "", choices = list("Tested (daily)" = "new_tested", 
                                                                           "Tested (total)" = "total_tested"),selected = 1),
                dateRangeInput("dateRange_test", "Date range",
@@ -344,7 +271,7 @@ shinyUI(fluidPage(
            br(),
            sidebarLayout(
              sidebarPanel(
-               h4("Proportion positive"),
+               h4("Proportion of tested individuals positive"),
                checkboxGroupInput("checkGroup_test2", "", choices = list("% positive (daily)" = "new_prop_pos", 
                                                                         "% positive (total)" = "total_prop_pos"),selected = 1),
                dateRangeInput("dateRange_test2", "Date range",

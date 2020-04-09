@@ -4,152 +4,19 @@ library(tidyverse)
 library(ggplot2)
 
 # read in global data
-data <- read_csv("https://raw.githubusercontent.com/andrewlilley/tool_COVID-19/master/output_data/country_level.csv?token=ANJMHSDWF7URVBXFWA5I47K6SAWOG")
+data <- read_csv("data/processed/JHU_full.csv")
+data.100 <- read_csv("data/processed/JHU_100-cases.csv")
+data.deaths10 <- read_csv("data/processed/JHU_5-deaths.csv")
 
-if(any(colnames(data)=="X1")){
-  data <- data %>%
-    select(-X1)
-}
-
-data <- data %>%
-  rename(country = Region, total_cases = Transmissions, total_deaths = Deaths)
-
-data <- data[data$country!="UK",]
-data$date = as.Date(data$date, "%Y-%m-%d")
-
-UK.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_total.csv")
-UK.data$date = as.Date(UK.data$date, "%d/%m/%Y")
-UK.data$country <- "United Kingdom"
-
-data <- rbind(data, UK.data)
-
-data$country[data$country=="US"]<-"United States"
-data$country[data$country=="UAE"]<-"United Arab Emirates"
-
-data <- data[order(data$country),]
-
-# calculate new daily cases, deaths, recoveries
-data$new_cases <- c()
-data$new_deaths <- c()
-
-uni.country <- unique(data$country)
-out.cases <- c()
-out.deaths <- c()
-
-for (i in 1:length(uni.country)){
-  x <- data[data$country==uni.country[i],]
-  out.cases <- c(out.cases,0,diff(x$total_cases))
-  out.deaths <- c(out.deaths,0,diff(x$total_deaths))
-}
-data$new_cases <- out.cases
-data$new_deaths <- out.deaths
-data <- gather(data, key="type", value="number",3:ncol(data))
-
-UK.data <- data[data$country=="United Kingdom",]
+# UK data
+UK.data <- read_csv("data/processed/UK_total.csv")
 
 # UK breakdown data
-UK_by_country_cases <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_countries_cases.csv")
-UK_by_country_pop <- data.frame(country=c("England","Scotland","Wales","Northern Ireland"), pop=c(55980000,5438000,3139000,1882000))
-UK_by_country_cases$pop <- UK_by_country_pop$pop
-UK_by_country_cases <- gather(UK_by_country_cases, key="date", value="total_cases",2:(ncol(UK_by_country_cases)-1))
-
-UK_by_country_deaths <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_countries_deaths.csv")
-UK_by_country_deaths <- UK_by_country_deaths[,c(1,3:6)]
-UK_by_country_deaths <- gather(UK_by_country_deaths, key="country", value="total_deaths",2:(ncol(UK_by_country_deaths)))
-UK_by_country_deaths <- UK_by_country_deaths %>%
-  rename(date = Date)
-  
-UK_by_country <- left_join(UK_by_country_cases,UK_by_country_deaths,by=c("date","country"))
-UK_by_country <- UK_by_country[order(UK_by_country$country),]
-
-out.cases <- c()
-out.deaths <- c()
-for (i in 1:nrow(UK_by_country_pop)){
-  x <- UK_by_country[UK_by_country$country==UK_by_country_pop$country[order(UK_by_country_pop$country)][i],]
-  out.cases <- c(out.cases,0,diff(x$total_cases))
-  out.deaths <- c(out.deaths,NA,diff(x$total_deaths))
-}
-UK_by_country$new_cases <- out.cases
-UK_by_country$new_deaths <- out.deaths
-
-UK_by_country <- gather(UK_by_country, key="type", value="number", 4:7)
-UK_by_country$date <- as.Date(UK_by_country$date, "%d/%m/%Y")
-
-
-
-# read in country population data
-country.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/country_pop.csv")
-data <- left_join(data,country.pop.data, by="country")
-data$number_pop <- 100000*data$number/data$pop
-
-# list of countries with >=100 cases
-data.100 <- data[data$type=="total_cases",]
-data.100 <- data.100[data.100$number>=100,]
-uni.country.100 <- c(unique(data.100$country))
-data.100.out <- NULL
-date.100 <- c(as.Date("2020-01-01","%Y-%m-%d"))
-for (i in 1:length(uni.country.100)){
-  x <- data.100[data.100$country==uni.country.100[i],]
-  out <- as.Date(x$date[which(x$number>=100)],"%Y-%m-%d")
-  out_pop <- as.Date(x$date[which(x$number_pop>=1)],"%Y-%m-%d")
-  out <- min(out)
-  x$date_rel <- x$date - out
-  if(length(out_pop)==0){
-    x$date_rel_pop <- c(rep(NA, length(x$date)))
-  } else{
-    out_pop <- min(out_pop)
-    x$date_rel_pop <- x$date - out_pop
-      }
-  x <- x[x$date_rel>=0,]
-  data.100.out <- rbind(data.100.out, x)
-}
-data.100 <- data.100.out
-
-# relative dates - deaths
-data.deaths10 <- data[data$type=="total_deaths",]
-data.deaths10 <- data.deaths10[data.deaths10$number>=5,]
-uni.country.deaths10 <- c(unique(data.deaths10$country))
-data.deaths10.out <- NULL
-date.deaths10 <- c(as.Date("2020-01-01","%Y-%m-%d"))
-for (i in 1:length(uni.country.deaths10)){
-  x <- data.deaths10[data.deaths10$country==uni.country.deaths10[i],]
-  out <- as.Date(x$date[which(x$number>=10)],"%Y-%m-%d")
-  out_pop <- as.Date(x$date[which(x$number_pop>=0.5)],"%Y-%m-%d")
-  out <- min(out)
-  x$date_rel <- x$date - out
-  if(length(out_pop)==0){
-    x$date_rel_pop <- c(rep(NA, length(x$date)))
-  } else{
-    out_pop <- min(out_pop)
-    x$date_rel_pop <- x$date - out_pop
-  }
-  x <- x[x$date_rel>=0,]
-  data.deaths10.out <- rbind(data.deaths10.out, x)
-}
-data.deaths10 <- data.deaths10.out
-data.deaths10$date_rel <- as.numeric(data.deaths10$date_rel)
-data.deaths10$date_rel_pop <- as.numeric(data.deaths10$date_rel_pop)
+UK_by_country <- read_csv("data/processed/UK_by_country.csv")
 
 # UK county data
 # read in UK county data
-data.county <- "https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/england_countyUA.csv"
-data.county <- read_csv(data.county)
-data.county <- gather(data.county, key="date", value="total_cases",3:ncol(data.county))
-data.county$date = as.Date(data.county$date, "%d/%m/%Y")
-
-data.county <- data.county[order(data.county$county_UA),]
-
-# calculate new daily cases
-data.county$new_case <- c()
-uni.county <- unique(data.county$county_UA)
-out <- c()
-for (i in 1:length(uni.county)){
-  x <- data.county[data.county$county_UA==uni.county[i],]
-  out <- c(out,0,diff(x$total_cases))
-}
-data.county$new_cases <- out
-#data.county$new_cases[data.county$new_cases<0]<- 0
-data.county <- gather(data.county,key="type",value="number",4:ncol(data.county))
+data.county <- read_csv("data/processed/england_UTLA.csv")
 
 # get list of counties
 data.county$county_UA <- as.character(data.county$county_UA)
@@ -161,49 +28,23 @@ for (i in 1:length(county_LA.list)){
 names(list.county) <- county_LA.list
 
 # read in England region data
-data.region <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/england_region.csv")
-data.region <- gather(data.region, key="date", value="cases",3:ncol(data.region))
-data.region$date = as.Date(data.region$date, "%d/%m/%Y")
-data.region <- data.region %>%
-  rename(region = NHSRNm, total_cases =cases)
-data.region <- data.region[order(data.region$region),]
-# get list of regions
-data.region$region <- as.character(data.region$region)
-region.list <- c(unique(data.region$region))
-list.region <- list()
-for (i in 1:length(region.list)){
-  list.region[i] <- region.list[i]
-}
-names(list.region) <- region.list
-# calculate new daily cases
-data.region$new_case <- c()
-uni.region <- unique(data.region$region)
-out <- c()
-for (i in 1:length(uni.region)){
-  x <- data.region[data.region$region==uni.region[i],]
-  out <- c(out,0,diff(x$total_cases))
-}
-data.region$new_cases <- out
-# get per 100,000 population results
-region.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/NHS_england_regions_pop.csv")
-data.region.pop <- left_join(data.region,region.pop.data, by="region")
-data.region.pop <- data.region.pop %>%
-  mutate(total_cases = 100000*total_cases/pop, new_cases=100000*new_cases/pop)
-
-data.region <- gather(data.region,key="type",value="number",4:ncol(data.region))
-data.region.pop <- gather(data.region.pop,key="type",value="number",4:(ncol(data.region.pop)-1))
+data.region <- read_csv("data/processed/NHS_england_regions.csv")
+data.region.pop <- read_csv("data/processed/NHS_england_regions_pop.csv")
 
 # Testing data
-data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
-data.test <- data.test[,1:4]
+data.test <- read_csv("data/processed/UK_testing.csv")
 data.test <- data.test %>%
-  select(date, total_tested = tested, total_cases=cases, new_cases)
+  select(date, total_tested = tested)
 data.test$date = as.Date(data.test$date, "%d/%m/%Y")
 data.test$new_tested <- c(NA,diff(data.test$total_tested))
+data.test$total_cases <- UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]
+data.test$new_cases <- UK.data$number[UK.data$type=="new_cases" & UK.data$date>="2020-03-17"]
+
 data.test$total_prop_pos <- 100*data.test$total_cases/data.test$total_tested
 data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_tested
 
-data.test <- gather(data.test, key="type", value="number",2:ncol(data.test))
+data.test <- data.test %>%
+  gather(key="type", value="number",-date)
 
 
 # Define server logic required to plot various variables against mpg
@@ -232,8 +73,6 @@ shinyServer(function(input, output, session) {
     }
   })
   
-  # Compute the forumla text in a reactive expression since it is 
-  # shared by the output$caption and output$mpgPlot expressions
   formulaText <- reactive({
     paste(input$country)
   })
@@ -377,12 +216,13 @@ shinyServer(function(input, output, session) {
               legend.spacing.x = unit(0.4, 'cm'),
               panel.grid.major.y=element_line(size=0.05)) +
         scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c", "total_deaths"="#ff7f00", 
-                                               "new_deaths"="#a65628"),
-                            breaks=c("new_cases","total_cases","new_deaths","total_deaths"),
-                            labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
-        guides(linetype = guide_legend(override.aes = list(size = 20)))
+                                               "new_deaths"="#a65628","total_recoveries"="#377eb8", "new_recoveries"="#4daf4a"),
+                            breaks=c("new_cases","total_cases","new_deaths","total_deaths","new_recoveries","total_recoveries"),
+                            labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)","Recoveries (daily)","Recoveries (total)")) +
+        guides(linetype = guide_legend(override.aes = list(size = 20))) +
+        theme(legend.direction = "horizontal",legend.box = "vertical")
       if(input$log=='log_yes'){
-        p <- p + scale_y_log10(labels = scales::comma)
+        p <- p + scale_y_log10()
       }
       }
     else{
@@ -399,9 +239,9 @@ shinyServer(function(input, output, session) {
                 legend.spacing.x = unit(0.4, 'cm'),
                 panel.grid.major.y=element_line(size=0.05)) +
           scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c", "total_deaths"="#ff7f00", 
-                                                 "new_deaths"="#a65628"),
-                              breaks=c("new_cases","total_cases","new_deaths","total_deaths"),
-                              labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
+                                                 "new_deaths"="#a65628","total_recoveries"="#377eb8", "new_recoveries"="#4daf4a"),
+                              breaks=c("new_cases","total_cases","new_deaths","total_deaths","new_recoveries","total_recoveries"),
+                              labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)","Recoveries (daily)","Recoveries (total)")) +
           guides(linetype = guide_legend(override.aes = list(size = 20)))
         if(input$log=='log_yes'){
           p <- p + scale_y_log10(labels = scales::comma) 
@@ -466,7 +306,7 @@ shinyServer(function(input, output, session) {
               panel.grid.major.y=element_line(size=0.05)) +
         guides(linetype = guide_legend(override.aes = list(size = 20))) 
       if(input$log_compare=='log_yes'){
-        p2 <- p2 + scale_y_log10(limits=c(y_min,y_max),labels = scales::comma)
+        p2 <- p2 + scale_y_log10(limits=c(y_min,y_max))
       }
       }
       
@@ -498,7 +338,7 @@ shinyServer(function(input, output, session) {
                             labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
         guides(linetype = guide_legend(override.aes = list(size = 20)))
       if(input$log_UK=='log_yes'){
-        p <- p + scale_y_log10(labels = scales::comma)
+        p <- p + scale_y_log10()
       }
       } else{
         p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
@@ -563,7 +403,7 @@ shinyServer(function(input, output, session) {
         theme(legend.direction = "horizontal",legend.box = "vertical")
       
       if(input$log_UK=='log_yes'){
-        p <- p + scale_y_log10(labels = scales::comma)
+        p <- p + scale_y_log10()
       }
     }else{
       p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
@@ -604,7 +444,7 @@ shinyServer(function(input, output, session) {
   
     p.pop <- ggplot(data.region) + geom_point(aes(x=date, y=number, col=region),size=1.5) +
       geom_line(aes(x=date, y=number, col=region, linetype=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_region[1],input$dateRange_region[2])) + xlab(label = "") +ylab(label="Number") +
+      scale_x_date(limits=c(input$dateRange_region[1],input$dateRange_region[2])) + xlab(label = "") +ylab(label="Cases") +
       theme_classic()+
       theme(axis.text=element_text(size=13),
             axis.title=element_text(size=16), 
@@ -620,7 +460,7 @@ shinyServer(function(input, output, session) {
       guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
       theme(legend.direction = "horizontal",legend.box = "vertical")
     if (input$pop=="pop_yes"){
-      p.pop <- p.pop +  ylab(label="Number (per 100,000)")
+      p.pop <- p.pop +  ylab(label="Cases (per 100,000)")
     }
     
     if(input$log_region=='log_yes'){

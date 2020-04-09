@@ -1,0 +1,497 @@
+country,date,pop,type,number
+England,2020-03-09,55980000,total_cases,280
+England,2020-03-10,55980000,total_cases,324
+England,2020-03-11,55980000,total_cases,387
+England,2020-03-12,55980000,total_cases,491
+England,2020-03-13,55980000,total_cases,645
+England,2020-03-14,55980000,total_cases,925
+England,2020-03-15,55980000,total_cases,1099
+England,2020-03-16,55980000,total_cases,1196
+England,2020-03-17,55980000,total_cases,1557
+England,2020-03-18,55980000,total_cases,2182
+England,2020-03-19,55980000,total_cases,2756
+England,2020-03-20,55980000,total_cases,3384
+England,2020-03-21,55980000,total_cases,4257
+England,2020-03-22,55980000,total_cases,4792
+England,2020-03-23,55980000,total_cases,5585
+England,2020-03-24,55980000,total_cases,6843
+England,2020-03-25,55980000,total_cases,7973
+England,2020-03-26,55980000,total_cases,9782
+England,2020-03-27,55980000,total_cases,12288
+England,2020-03-28,55980000,total_cases,14427
+England,2020-03-29,55980000,total_cases,16487
+England,2020-03-30,55980000,total_cases,18594
+England,2020-03-31,55980000,total_cases,21008
+England,2020-04-01,55980000,total_cases,24638
+England,2020-04-02,55980000,total_cases,28221
+England,2020-04-03,55980000,total_cases,31797
+England,2020-04-04,55980000,total_cases,34707
+England,2020-04-05,55980000,total_cases,39814
+England,2020-04-06,55980000,total_cases,42990
+England,2020-04-07,55980000,total_cases,45968
+England,2020-04-08,55980000,total_cases,50756
+Northern Ireland,2020-03-09,1882000,total_cases,NA
+Northern Ireland,2020-03-10,1882000,total_cases,16
+Northern Ireland,2020-03-11,1882000,total_cases,18
+Northern Ireland,2020-03-12,1882000,total_cases,19
+Northern Ireland,2020-03-13,1882000,total_cases,29
+Northern Ireland,2020-03-14,1882000,total_cases,34
+Northern Ireland,2020-03-15,1882000,total_cases,45
+Northern Ireland,2020-03-16,1882000,total_cases,52
+Northern Ireland,2020-03-17,1882000,total_cases,62
+Northern Ireland,2020-03-18,1882000,total_cases,68
+Northern Ireland,2020-03-19,1882000,total_cases,77
+Northern Ireland,2020-03-20,1882000,total_cases,86
+Northern Ireland,2020-03-21,1882000,total_cases,108
+Northern Ireland,2020-03-22,1882000,total_cases,128
+Northern Ireland,2020-03-23,1882000,total_cases,148
+Northern Ireland,2020-03-24,1882000,total_cases,172
+Northern Ireland,2020-03-25,1882000,total_cases,209
+Northern Ireland,2020-03-26,1882000,total_cases,241
+Northern Ireland,2020-03-27,1882000,total_cases,275
+Northern Ireland,2020-03-28,1882000,total_cases,324
+Northern Ireland,2020-03-29,1882000,total_cases,410
+Northern Ireland,2020-03-30,1882000,total_cases,533
+Northern Ireland,2020-03-31,1882000,total_cases,586
+Northern Ireland,2020-04-01,1882000,total_cases,689
+Northern Ireland,2020-04-02,1882000,total_cases,774
+Northern Ireland,2020-04-03,1882000,total_cases,904
+Northern Ireland,2020-04-04,1882000,total_cases,998
+Northern Ireland,2020-04-05,1882000,total_cases,1089
+Northern Ireland,2020-04-06,1882000,total_cases,1158
+Northern Ireland,2020-04-07,1882000,total_cases,1255
+Northern Ireland,2020-04-08,1882000,total_cases,1339
+Scotland,2020-03-09,5438000,total_cases,NA
+Scotland,2020-03-10,5438000,total_cases,27
+Scotland,2020-03-11,5438000,total_cases,36
+Scotland,2020-03-12,5438000,total_cases,60
+Scotland,2020-03-13,5438000,total_cases,85
+Scotland,2020-03-14,5438000,total_cases,121
+Scotland,2020-03-15,5438000,total_cases,153
+Scotland,2020-03-16,5438000,total_cases,171
+Scotland,2020-03-17,5438000,total_cases,195
+Scotland,2020-03-18,5438000,total_cases,227
+Scotland,2020-03-19,5438000,total_cases,266
+Scotland,2020-03-20,5438000,total_cases,322
+Scotland,2020-03-21,5438000,total_cases,373
+Scotland,2020-03-22,5438000,total_cases,416
+Scotland,2020-03-23,5438000,total_cases,499
+Scotland,2020-03-24,5438000,total_cases,584
+Scotland,2020-03-25,5438000,total_cases,719
+Scotland,2020-03-26,5438000,total_cases,894
+Scotland,2020-03-27,5438000,total_cases,1059
+Scotland,2020-03-28,5438000,total_cases,1245
+Scotland,2020-03-29,5438000,total_cases,1384
+Scotland,2020-03-30,5438000,total_cases,1563
+Scotland,2020-03-31,5438000,total_cases,1993
+Scotland,2020-04-01,5438000,total_cases,2310
+Scotland,2020-04-02,5438000,total_cases,2602
+Scotland,2020-04-03,5438000,total_cases,3001
+Scotland,2020-04-04,5438000,total_cases,3345
+Scotland,2020-04-05,5438000,total_cases,3706
+Scotland,2020-04-06,5438000,total_cases,3961
+Scotland,2020-04-07,5438000,total_cases,4229
+Scotland,2020-04-08,5438000,total_cases,4565
+Wales,2020-03-09,3139000,total_cases,NA
+Wales,2020-03-10,3139000,total_cases,6
+Wales,2020-03-11,3139000,total_cases,15
+Wales,2020-03-12,3139000,total_cases,25
+Wales,2020-03-13,3139000,total_cases,38
+Wales,2020-03-14,3139000,total_cases,60
+Wales,2020-03-15,3139000,total_cases,94
+Wales,2020-03-16,3139000,total_cases,124
+Wales,2020-03-17,3139000,total_cases,136
+Wales,2020-03-18,3139000,total_cases,149
+Wales,2020-03-19,3139000,total_cases,170
+Wales,2020-03-20,3139000,total_cases,191
+Wales,2020-03-21,3139000,total_cases,280
+Wales,2020-03-22,3139000,total_cases,347
+Wales,2020-03-23,3139000,total_cases,418
+Wales,2020-03-24,3139000,total_cases,478
+Wales,2020-03-25,3139000,total_cases,628
+Wales,2020-03-26,3139000,total_cases,741
+Wales,2020-03-27,3139000,total_cases,921
+Wales,2020-03-28,3139000,total_cases,1093
+Wales,2020-03-29,3139000,total_cases,1241
+Wales,2020-03-30,3139000,total_cases,1451
+Wales,2020-03-31,3139000,total_cases,1563
+Wales,2020-04-01,3139000,total_cases,1837
+Wales,2020-04-02,3139000,total_cases,2121
+Wales,2020-04-03,3139000,total_cases,2466
+Wales,2020-04-04,3139000,total_cases,2853
+Wales,2020-04-05,3139000,total_cases,3197
+Wales,2020-04-06,3139000,total_cases,3499
+Wales,2020-04-07,3139000,total_cases,3790
+Wales,2020-04-08,3139000,total_cases,4073
+England,2020-03-09,55980000,total_deaths,NA
+England,2020-03-10,55980000,total_deaths,NA
+England,2020-03-11,55980000,total_deaths,NA
+England,2020-03-12,55980000,total_deaths,NA
+England,2020-03-13,55980000,total_deaths,NA
+England,2020-03-14,55980000,total_deaths,NA
+England,2020-03-15,55980000,total_deaths,NA
+England,2020-03-16,55980000,total_deaths,NA
+England,2020-03-17,55980000,total_deaths,NA
+England,2020-03-18,55980000,total_deaths,NA
+England,2020-03-19,55980000,total_deaths,NA
+England,2020-03-20,55980000,total_deaths,NA
+England,2020-03-21,55980000,total_deaths,NA
+England,2020-03-22,55980000,total_deaths,NA
+England,2020-03-23,55980000,total_deaths,NA
+England,2020-03-24,55980000,total_deaths,NA
+England,2020-03-25,55980000,total_deaths,NA
+England,2020-03-26,55980000,total_deaths,NA
+England,2020-03-27,55980000,total_deaths,679
+England,2020-03-28,55980000,total_deaths,926
+England,2020-03-29,55980000,total_deaths,1125
+England,2020-03-30,55980000,total_deaths,1284
+England,2020-03-31,55980000,total_deaths,1651
+England,2020-04-01,55980000,total_deaths,2166
+England,2020-04-02,55980000,total_deaths,2698
+England,2020-04-03,55980000,total_deaths,3302
+England,2020-04-04,55980000,total_deaths,3939
+England,2020-04-05,55980000,total_deaths,4494
+England,2020-04-06,55980000,total_deaths,4897
+England,2020-04-07,55980000,total_deaths,5655
+England,2020-04-08,55980000,total_deaths,6483
+Northern Ireland,2020-03-09,1882000,total_deaths,NA
+Northern Ireland,2020-03-10,1882000,total_deaths,NA
+Northern Ireland,2020-03-11,1882000,total_deaths,NA
+Northern Ireland,2020-03-12,1882000,total_deaths,NA
+Northern Ireland,2020-03-13,1882000,total_deaths,NA
+Northern Ireland,2020-03-14,1882000,total_deaths,NA
+Northern Ireland,2020-03-15,1882000,total_deaths,NA
+Northern Ireland,2020-03-16,1882000,total_deaths,NA
+Northern Ireland,2020-03-17,1882000,total_deaths,NA
+Northern Ireland,2020-03-18,1882000,total_deaths,NA
+Northern Ireland,2020-03-19,1882000,total_deaths,NA
+Northern Ireland,2020-03-20,1882000,total_deaths,NA
+Northern Ireland,2020-03-21,1882000,total_deaths,NA
+Northern Ireland,2020-03-22,1882000,total_deaths,NA
+Northern Ireland,2020-03-23,1882000,total_deaths,NA
+Northern Ireland,2020-03-24,1882000,total_deaths,NA
+Northern Ireland,2020-03-25,1882000,total_deaths,NA
+Northern Ireland,2020-03-26,1882000,total_deaths,NA
+Northern Ireland,2020-03-27,1882000,total_deaths,13
+Northern Ireland,2020-03-28,1882000,total_deaths,15
+Northern Ireland,2020-03-29,1882000,total_deaths,15
+Northern Ireland,2020-03-30,1882000,total_deaths,21
+Northern Ireland,2020-03-31,1882000,total_deaths,22
+Northern Ireland,2020-04-01,1882000,total_deaths,28
+Northern Ireland,2020-04-02,1882000,total_deaths,30
+Northern Ireland,2020-04-03,1882000,total_deaths,36
+Northern Ireland,2020-04-04,1882000,total_deaths,48
+Northern Ireland,2020-04-05,1882000,total_deaths,56
+Northern Ireland,2020-04-06,1882000,total_deaths,63
+Northern Ireland,2020-04-07,1882000,total_deaths,70
+Northern Ireland,2020-04-08,1882000,total_deaths,73
+Scotland,2020-03-09,5438000,total_deaths,NA
+Scotland,2020-03-10,5438000,total_deaths,NA
+Scotland,2020-03-11,5438000,total_deaths,NA
+Scotland,2020-03-12,5438000,total_deaths,NA
+Scotland,2020-03-13,5438000,total_deaths,NA
+Scotland,2020-03-14,5438000,total_deaths,NA
+Scotland,2020-03-15,5438000,total_deaths,NA
+Scotland,2020-03-16,5438000,total_deaths,NA
+Scotland,2020-03-17,5438000,total_deaths,NA
+Scotland,2020-03-18,5438000,total_deaths,NA
+Scotland,2020-03-19,5438000,total_deaths,NA
+Scotland,2020-03-20,5438000,total_deaths,NA
+Scotland,2020-03-21,5438000,total_deaths,NA
+Scotland,2020-03-22,5438000,total_deaths,NA
+Scotland,2020-03-23,5438000,total_deaths,NA
+Scotland,2020-03-24,5438000,total_deaths,NA
+Scotland,2020-03-25,5438000,total_deaths,NA
+Scotland,2020-03-26,5438000,total_deaths,NA
+Scotland,2020-03-27,5438000,total_deaths,33
+Scotland,2020-03-28,5438000,total_deaths,40
+Scotland,2020-03-29,5438000,total_deaths,40
+Scotland,2020-03-30,5438000,total_deaths,41
+Scotland,2020-03-31,5438000,total_deaths,47
+Scotland,2020-04-01,5438000,total_deaths,60
+Scotland,2020-04-02,5438000,total_deaths,76
+Scotland,2020-04-03,5438000,total_deaths,126
+Scotland,2020-04-04,5438000,total_deaths,172
+Scotland,2020-04-05,5438000,total_deaths,218
+Scotland,2020-04-06,5438000,total_deaths,220
+Scotland,2020-04-07,5438000,total_deaths,222
+Scotland,2020-04-08,5438000,total_deaths,296
+Wales,2020-03-09,3139000,total_deaths,NA
+Wales,2020-03-10,3139000,total_deaths,NA
+Wales,2020-03-11,3139000,total_deaths,NA
+Wales,2020-03-12,3139000,total_deaths,NA
+Wales,2020-03-13,3139000,total_deaths,NA
+Wales,2020-03-14,3139000,total_deaths,NA
+Wales,2020-03-15,3139000,total_deaths,NA
+Wales,2020-03-16,3139000,total_deaths,NA
+Wales,2020-03-17,3139000,total_deaths,NA
+Wales,2020-03-18,3139000,total_deaths,NA
+Wales,2020-03-19,3139000,total_deaths,NA
+Wales,2020-03-20,3139000,total_deaths,NA
+Wales,2020-03-21,3139000,total_deaths,NA
+Wales,2020-03-22,3139000,total_deaths,NA
+Wales,2020-03-23,3139000,total_deaths,NA
+Wales,2020-03-24,3139000,total_deaths,NA
+Wales,2020-03-25,3139000,total_deaths,NA
+Wales,2020-03-26,3139000,total_deaths,NA
+Wales,2020-03-27,3139000,total_deaths,34
+Wales,2020-03-28,3139000,total_deaths,38
+Wales,2020-03-29,3139000,total_deaths,48
+Wales,2020-03-30,3139000,total_deaths,62
+Wales,2020-03-31,3139000,total_deaths,69
+Wales,2020-04-01,3139000,total_deaths,98
+Wales,2020-04-02,3139000,total_deaths,117
+Wales,2020-04-03,3139000,total_deaths,141
+Wales,2020-04-04,3139000,total_deaths,154
+Wales,2020-04-05,3139000,total_deaths,166
+Wales,2020-04-06,3139000,total_deaths,193
+Wales,2020-04-07,3139000,total_deaths,212
+Wales,2020-04-08,3139000,total_deaths,245
+England,2020-03-09,55980000,new_cases,0
+England,2020-03-10,55980000,new_cases,44
+England,2020-03-11,55980000,new_cases,63
+England,2020-03-12,55980000,new_cases,104
+England,2020-03-13,55980000,new_cases,154
+England,2020-03-14,55980000,new_cases,280
+England,2020-03-15,55980000,new_cases,174
+England,2020-03-16,55980000,new_cases,97
+England,2020-03-17,55980000,new_cases,361
+England,2020-03-18,55980000,new_cases,625
+England,2020-03-19,55980000,new_cases,574
+England,2020-03-20,55980000,new_cases,628
+England,2020-03-21,55980000,new_cases,873
+England,2020-03-22,55980000,new_cases,535
+England,2020-03-23,55980000,new_cases,793
+England,2020-03-24,55980000,new_cases,1258
+England,2020-03-25,55980000,new_cases,1130
+England,2020-03-26,55980000,new_cases,1809
+England,2020-03-27,55980000,new_cases,2506
+England,2020-03-28,55980000,new_cases,2139
+England,2020-03-29,55980000,new_cases,2060
+England,2020-03-30,55980000,new_cases,2107
+England,2020-03-31,55980000,new_cases,2414
+England,2020-04-01,55980000,new_cases,3630
+England,2020-04-02,55980000,new_cases,3583
+England,2020-04-03,55980000,new_cases,3576
+England,2020-04-04,55980000,new_cases,2910
+England,2020-04-05,55980000,new_cases,5107
+England,2020-04-06,55980000,new_cases,3176
+England,2020-04-07,55980000,new_cases,2978
+England,2020-04-08,55980000,new_cases,4788
+Northern Ireland,2020-03-09,1882000,new_cases,0
+Northern Ireland,2020-03-10,1882000,new_cases,NA
+Northern Ireland,2020-03-11,1882000,new_cases,2
+Northern Ireland,2020-03-12,1882000,new_cases,1
+Northern Ireland,2020-03-13,1882000,new_cases,10
+Northern Ireland,2020-03-14,1882000,new_cases,5
+Northern Ireland,2020-03-15,1882000,new_cases,11
+Northern Ireland,2020-03-16,1882000,new_cases,7
+Northern Ireland,2020-03-17,1882000,new_cases,10
+Northern Ireland,2020-03-18,1882000,new_cases,6
+Northern Ireland,2020-03-19,1882000,new_cases,9
+Northern Ireland,2020-03-20,1882000,new_cases,9
+Northern Ireland,2020-03-21,1882000,new_cases,22
+Northern Ireland,2020-03-22,1882000,new_cases,20
+Northern Ireland,2020-03-23,1882000,new_cases,20
+Northern Ireland,2020-03-24,1882000,new_cases,24
+Northern Ireland,2020-03-25,1882000,new_cases,37
+Northern Ireland,2020-03-26,1882000,new_cases,32
+Northern Ireland,2020-03-27,1882000,new_cases,34
+Northern Ireland,2020-03-28,1882000,new_cases,49
+Northern Ireland,2020-03-29,1882000,new_cases,86
+Northern Ireland,2020-03-30,1882000,new_cases,123
+Northern Ireland,2020-03-31,1882000,new_cases,53
+Northern Ireland,2020-04-01,1882000,new_cases,103
+Northern Ireland,2020-04-02,1882000,new_cases,85
+Northern Ireland,2020-04-03,1882000,new_cases,130
+Northern Ireland,2020-04-04,1882000,new_cases,94
+Northern Ireland,2020-04-05,1882000,new_cases,91
+Northern Ireland,2020-04-06,1882000,new_cases,69
+Northern Ireland,2020-04-07,1882000,new_cases,97
+Northern Ireland,2020-04-08,1882000,new_cases,84
+Scotland,2020-03-09,5438000,new_cases,0
+Scotland,2020-03-10,5438000,new_cases,NA
+Scotland,2020-03-11,5438000,new_cases,9
+Scotland,2020-03-12,5438000,new_cases,24
+Scotland,2020-03-13,5438000,new_cases,25
+Scotland,2020-03-14,5438000,new_cases,36
+Scotland,2020-03-15,5438000,new_cases,32
+Scotland,2020-03-16,5438000,new_cases,18
+Scotland,2020-03-17,5438000,new_cases,24
+Scotland,2020-03-18,5438000,new_cases,32
+Scotland,2020-03-19,5438000,new_cases,39
+Scotland,2020-03-20,5438000,new_cases,56
+Scotland,2020-03-21,5438000,new_cases,51
+Scotland,2020-03-22,5438000,new_cases,43
+Scotland,2020-03-23,5438000,new_cases,83
+Scotland,2020-03-24,5438000,new_cases,85
+Scotland,2020-03-25,5438000,new_cases,135
+Scotland,2020-03-26,5438000,new_cases,175
+Scotland,2020-03-27,5438000,new_cases,165
+Scotland,2020-03-28,5438000,new_cases,186
+Scotland,2020-03-29,5438000,new_cases,139
+Scotland,2020-03-30,5438000,new_cases,179
+Scotland,2020-03-31,5438000,new_cases,430
+Scotland,2020-04-01,5438000,new_cases,317
+Scotland,2020-04-02,5438000,new_cases,292
+Scotland,2020-04-03,5438000,new_cases,399
+Scotland,2020-04-04,5438000,new_cases,344
+Scotland,2020-04-05,5438000,new_cases,361
+Scotland,2020-04-06,5438000,new_cases,255
+Scotland,2020-04-07,5438000,new_cases,268
+Scotland,2020-04-08,5438000,new_cases,336
+Wales,2020-03-09,3139000,new_cases,0
+Wales,2020-03-10,3139000,new_cases,NA
+Wales,2020-03-11,3139000,new_cases,9
+Wales,2020-03-12,3139000,new_cases,10
+Wales,2020-03-13,3139000,new_cases,13
+Wales,2020-03-14,3139000,new_cases,22
+Wales,2020-03-15,3139000,new_cases,34
+Wales,2020-03-16,3139000,new_cases,30
+Wales,2020-03-17,3139000,new_cases,12
+Wales,2020-03-18,3139000,new_cases,13
+Wales,2020-03-19,3139000,new_cases,21
+Wales,2020-03-20,3139000,new_cases,21
+Wales,2020-03-21,3139000,new_cases,89
+Wales,2020-03-22,3139000,new_cases,67
+Wales,2020-03-23,3139000,new_cases,71
+Wales,2020-03-24,3139000,new_cases,60
+Wales,2020-03-25,3139000,new_cases,150
+Wales,2020-03-26,3139000,new_cases,113
+Wales,2020-03-27,3139000,new_cases,180
+Wales,2020-03-28,3139000,new_cases,172
+Wales,2020-03-29,3139000,new_cases,148
+Wales,2020-03-30,3139000,new_cases,210
+Wales,2020-03-31,3139000,new_cases,112
+Wales,2020-04-01,3139000,new_cases,274
+Wales,2020-04-02,3139000,new_cases,284
+Wales,2020-04-03,3139000,new_cases,345
+Wales,2020-04-04,3139000,new_cases,387
+Wales,2020-04-05,3139000,new_cases,344
+Wales,2020-04-06,3139000,new_cases,302
+Wales,2020-04-07,3139000,new_cases,291
+Wales,2020-04-08,3139000,new_cases,283
+England,2020-03-09,55980000,new_deaths,NA
+England,2020-03-10,55980000,new_deaths,NA
+England,2020-03-11,55980000,new_deaths,NA
+England,2020-03-12,55980000,new_deaths,NA
+England,2020-03-13,55980000,new_deaths,NA
+England,2020-03-14,55980000,new_deaths,NA
+England,2020-03-15,55980000,new_deaths,NA
+England,2020-03-16,55980000,new_deaths,NA
+England,2020-03-17,55980000,new_deaths,NA
+England,2020-03-18,55980000,new_deaths,NA
+England,2020-03-19,55980000,new_deaths,NA
+England,2020-03-20,55980000,new_deaths,NA
+England,2020-03-21,55980000,new_deaths,NA
+England,2020-03-22,55980000,new_deaths,NA
+England,2020-03-23,55980000,new_deaths,NA
+England,2020-03-24,55980000,new_deaths,NA
+England,2020-03-25,55980000,new_deaths,NA
+England,2020-03-26,55980000,new_deaths,NA
+England,2020-03-27,55980000,new_deaths,NA
+England,2020-03-28,55980000,new_deaths,247
+England,2020-03-29,55980000,new_deaths,199
+England,2020-03-30,55980000,new_deaths,159
+England,2020-03-31,55980000,new_deaths,367
+England,2020-04-01,55980000,new_deaths,515
+England,2020-04-02,55980000,new_deaths,532
+England,2020-04-03,55980000,new_deaths,604
+England,2020-04-04,55980000,new_deaths,637
+England,2020-04-05,55980000,new_deaths,555
+England,2020-04-06,55980000,new_deaths,403
+England,2020-04-07,55980000,new_deaths,758
+England,2020-04-08,55980000,new_deaths,828
+Northern Ireland,2020-03-09,1882000,new_deaths,NA
+Northern Ireland,2020-03-10,1882000,new_deaths,NA
+Northern Ireland,2020-03-11,1882000,new_deaths,NA
+Northern Ireland,2020-03-12,1882000,new_deaths,NA
+Northern Ireland,2020-03-13,1882000,new_deaths,NA
+Northern Ireland,2020-03-14,1882000,new_deaths,NA
+Northern Ireland,2020-03-15,1882000,new_deaths,NA
+Northern Ireland,2020-03-16,1882000,new_deaths,NA
+Northern Ireland,2020-03-17,1882000,new_deaths,NA
+Northern Ireland,2020-03-18,1882000,new_deaths,NA
+Northern Ireland,2020-03-19,1882000,new_deaths,NA
+Northern Ireland,2020-03-20,1882000,new_deaths,NA
+Northern Ireland,2020-03-21,1882000,new_deaths,NA
+Northern Ireland,2020-03-22,1882000,new_deaths,NA
+Northern Ireland,2020-03-23,1882000,new_deaths,NA
+Northern Ireland,2020-03-24,1882000,new_deaths,NA
+Northern Ireland,2020-03-25,1882000,new_deaths,NA
+Northern Ireland,2020-03-26,1882000,new_deaths,NA
+Northern Ireland,2020-03-27,1882000,new_deaths,NA
+Northern Ireland,2020-03-28,1882000,new_deaths,2
+Northern Ireland,2020-03-29,1882000,new_deaths,0
+Northern Ireland,2020-03-30,1882000,new_deaths,6
+Northern Ireland,2020-03-31,1882000,new_deaths,1
+Northern Ireland,2020-04-01,1882000,new_deaths,6
+Northern Ireland,2020-04-02,1882000,new_deaths,2
+Northern Ireland,2020-04-03,1882000,new_deaths,6
+Northern Ireland,2020-04-04,1882000,new_deaths,12
+Northern Ireland,2020-04-05,1882000,new_deaths,8
+Northern Ireland,2020-04-06,1882000,new_deaths,7
+Northern Ireland,2020-04-07,1882000,new_deaths,7
+Northern Ireland,2020-04-08,1882000,new_deaths,3
+Scotland,2020-03-09,5438000,new_deaths,NA
+Scotland,2020-03-10,5438000,new_deaths,NA
+Scotland,2020-03-11,5438000,new_deaths,NA
+Scotland,2020-03-12,5438000,new_deaths,NA
+Scotland,2020-03-13,5438000,new_deaths,NA
+Scotland,2020-03-14,5438000,new_deaths,NA
+Scotland,2020-03-15,5438000,new_deaths,NA
+Scotland,2020-03-16,5438000,new_deaths,NA
+Scotland,2020-03-17,5438000,new_deaths,NA
+Scotland,2020-03-18,5438000,new_deaths,NA
+Scotland,2020-03-19,5438000,new_deaths,NA
+Scotland,2020-03-20,5438000,new_deaths,NA
+Scotland,2020-03-21,5438000,new_deaths,NA
+Scotland,2020-03-22,5438000,new_deaths,NA
+Scotland,2020-03-23,5438000,new_deaths,NA
+Scotland,2020-03-24,5438000,new_deaths,NA
+Scotland,2020-03-25,5438000,new_deaths,NA
+Scotland,2020-03-26,5438000,new_deaths,NA
+Scotland,2020-03-27,5438000,new_deaths,NA
+Scotland,2020-03-28,5438000,new_deaths,7
+Scotland,2020-03-29,5438000,new_deaths,0
+Scotland,2020-03-30,5438000,new_deaths,1
+Scotland,2020-03-31,5438000,new_deaths,6
+Scotland,2020-04-01,5438000,new_deaths,13
+Scotland,2020-04-02,5438000,new_deaths,16
+Scotland,2020-04-03,5438000,new_deaths,50
+Scotland,2020-04-04,5438000,new_deaths,46
+Scotland,2020-04-05,5438000,new_deaths,46
+Scotland,2020-04-06,5438000,new_deaths,2
+Scotland,2020-04-07,5438000,new_deaths,2
+Scotland,2020-04-08,5438000,new_deaths,74
+Wales,2020-03-09,3139000,new_deaths,NA
+Wales,2020-03-10,3139000,new_deaths,NA
+Wales,2020-03-11,3139000,new_deaths,NA
+Wales,2020-03-12,3139000,new_deaths,NA
+Wales,2020-03-13,3139000,new_deaths,NA
+Wales,2020-03-14,3139000,new_deaths,NA
+Wales,2020-03-15,3139000,new_deaths,NA
+Wales,2020-03-16,3139000,new_deaths,NA
+Wales,2020-03-17,3139000,new_deaths,NA
+Wales,2020-03-18,3139000,new_deaths,NA
+Wales,2020-03-19,3139000,new_deaths,NA
+Wales,2020-03-20,3139000,new_deaths,NA
+Wales,2020-03-21,3139000,new_deaths,NA
+Wales,2020-03-22,3139000,new_deaths,NA
+Wales,2020-03-23,3139000,new_deaths,NA
+Wales,2020-03-24,3139000,new_deaths,NA
+Wales,2020-03-25,3139000,new_deaths,NA
+Wales,2020-03-26,3139000,new_deaths,NA
+Wales,2020-03-27,3139000,new_deaths,NA
+Wales,2020-03-28,3139000,new_deaths,4
+Wales,2020-03-29,3139000,new_deaths,10
+Wales,2020-03-30,3139000,new_deaths,14
+Wales,2020-03-31,3139000,new_deaths,7
+Wales,2020-04-01,3139000,new_deaths,29
+Wales,2020-04-02,3139000,new_deaths,19
+Wales,2020-04-03,3139000,new_deaths,24
+Wales,2020-04-04,3139000,new_deaths,13
+Wales,2020-04-05,3139000,new_deaths,12
+Wales,2020-04-06,3139000,new_deaths,27
+Wales,2020-04-07,3139000,new_deaths,19
+Wales,2020-04-08,3139000,new_deaths,33
