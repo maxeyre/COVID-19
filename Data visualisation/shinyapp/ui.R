@@ -5,9 +5,9 @@ library(dplyr)
 library(tidyverse)
 
 # read in global data
-data <- read_csv("data/processed/JHU_full.csv")
-data.100 <- read_csv("data/processed/JHU_100-cases.csv")
-data.deaths10 <- read_csv("data/processed/JHU_5-deaths.csv")
+data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_full.csv")
+data.100 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_100-cases.csv")
+data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_5-deaths.csv")
 
 # list of countries
 country.list <- c(unique(data$country))
@@ -26,14 +26,14 @@ for (i in 1:length(country.list.100)){
 names(list.100) <- country.list.100
 
 # UK data
-UK.data <- read_csv("data/processed/UK_total.csv")
+UK.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_total.csv")
 
 # UK breakdown data
-UK_by_country <- read_csv("data/processed/UK_by_country.csv")
+UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_by_country.csv")
 
 # UK county data
 # read in UK county data
-data.county <- read_csv("data/processed/england_UTLA.csv")
+data.county <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/england_UTLA.csv")
 
 # get list of counties
 data.county$county_UA <- as.character(data.county$county_UA)
@@ -45,18 +45,23 @@ for (i in 1:length(county_LA.list)){
 names(list.county) <- county_LA.list
 
 # read in England region data
-data.region <- read_csv("data/processed/NHS_england_regions.csv")
-data.region.pop <- read_csv("data/processed/NHS_england_regions_pop.csv")
+data.region <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions.csv")
+data.region.pop <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions_pop.csv")
 
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
-data.test <- data.test[,1:4]
-data.test <-na.omit(data.test)
 data.test <- data.test %>%
   select(date, total_tested = tested)
 data.test$date = as.Date(data.test$date, "%d/%m/%Y")
 data.test$new_tested <- c(NA,diff(data.test$total_tested))
-data.test <- gather(data.test, key="type", value="number",2:ncol(data.test))
+data.test$total_cases <- UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]
+data.test$new_cases <- UK.data$number[UK.data$type=="new_cases" & UK.data$date>="2020-03-17"]
+
+data.test$total_prop_pos <- 100*data.test$total_cases/data.test$total_tested
+data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_tested
+
+data.test <- data.test %>%
+  gather(key="type", value="number",-date)
 
 # Define UI 
 shinyUI(fluidPage(

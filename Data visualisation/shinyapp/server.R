@@ -4,19 +4,19 @@ library(tidyverse)
 library(ggplot2)
 
 # read in global data
-data <- read_csv("data/processed/JHU_full.csv")
-data.100 <- read_csv("data/processed/JHU_100-cases.csv")
-data.deaths10 <- read_csv("data/processed/JHU_5-deaths.csv")
+data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_full.csv")
+data.100 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_100-cases.csv")
+data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_5-deaths.csv")
 
 # UK data
-UK.data <- read_csv("data/processed/UK_total.csv")
+UK.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_total.csv")
 
 # UK breakdown data
-UK_by_country <- read_csv("data/processed/UK_by_country.csv")
+UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_by_country.csv")
 
 # UK county data
 # read in UK county data
-data.county <- read_csv("data/processed/england_UTLA.csv")
+data.county <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/england_UTLA.csv")
 
 # get list of counties
 data.county$county_UA <- as.character(data.county$county_UA)
@@ -28,11 +28,11 @@ for (i in 1:length(county_LA.list)){
 names(list.county) <- county_LA.list
 
 # read in England region data
-data.region <- read_csv("data/processed/NHS_england_regions.csv")
-data.region.pop <- read_csv("data/processed/NHS_england_regions_pop.csv")
+data.region <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions.csv")
+data.region.pop <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions_pop.csv")
 
 # Testing data
-data.test <- read_csv("data/processed/UK_testing.csv")
+data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
 data.test <- data.test %>%
   select(date, total_tested = tested)
 data.test$date = as.Date(data.test$date, "%d/%m/%Y")
@@ -477,7 +477,7 @@ shinyServer(function(input, output, session) {
     
     ggplot(data.county[data.county$county_UA==paste(formulaText_county(),sep=""),]) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
       geom_line(aes(x=date, y=number, col=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_county[1],input$dateRange_county[2])) + xlab(label = "") +ylab(label="Number") +
+      scale_x_date(limits=c(input$dateRange_county[1],input$dateRange_county[2])) + xlab(label = "") +ylab(label="Cases") +
       theme_classic()+
       theme(axis.text=element_text(size=13),
             axis.title=element_text(size=16), 
