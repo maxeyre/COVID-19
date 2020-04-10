@@ -30,6 +30,7 @@ England,2020-04-05,55980000,total_cases,39814
 England,2020-04-06,55980000,total_cases,42990
 England,2020-04-07,55980000,total_cases,45968
 England,2020-04-08,55980000,total_cases,50756
+England,2020-04-09,55980000,total_cases,54554
 Northern Ireland,2020-03-09,1882000,total_cases,NA
 Northern Ireland,2020-03-10,1882000,total_cases,16
 Northern Ireland,2020-03-11,1882000,total_cases,18
@@ -61,6 +62,7 @@ Northern Ireland,2020-04-05,1882000,total_cases,1089
 Northern Ireland,2020-04-06,1882000,total_cases,1158
 Northern Ireland,2020-04-07,1882000,total_cases,1255
 Northern Ireland,2020-04-08,1882000,total_cases,1339
+Northern Ireland,2020-04-09,1882000,total_cases,1477
 Scotland,2020-03-09,5438000,total_cases,NA
 Scotland,2020-03-10,5438000,total_cases,27
 Scotland,2020-03-11,5438000,total_cases,36
@@ -92,6 +94,7 @@ Scotland,2020-04-05,5438000,total_cases,3706
 Scotland,2020-04-06,5438000,total_cases,3961
 Scotland,2020-04-07,5438000,total_cases,4229
 Scotland,2020-04-08,5438000,total_cases,4565
+Scotland,2020-04-09,5438000,total_cases,4957
 Wales,2020-03-09,3139000,total_cases,NA
 Wales,2020-03-10,3139000,total_cases,6
 Wales,2020-03-11,3139000,total_cases,15
@@ -123,6 +126,7 @@ Wales,2020-04-05,3139000,total_cases,3197
 Wales,2020-04-06,3139000,total_cases,3499
 Wales,2020-04-07,3139000,total_cases,3790
 Wales,2020-04-08,3139000,total_cases,4073
+Wales,2020-04-09,3139000,total_cases,4089
 England,2020-03-09,55980000,total_deaths,NA
 England,2020-03-10,55980000,total_deaths,NA
 England,2020-03-11,55980000,total_deaths,NA
@@ -154,6 +158,7 @@ England,2020-04-05,55980000,total_deaths,4494
 England,2020-04-06,55980000,total_deaths,4897
 England,2020-04-07,55980000,total_deaths,5655
 England,2020-04-08,55980000,total_deaths,6483
+England,2020-04-09,55980000,total_deaths,7248
 Northern Ireland,2020-03-09,1882000,total_deaths,NA
 Northern Ireland,2020-03-10,1882000,total_deaths,NA
 Northern Ireland,2020-03-11,1882000,total_deaths,NA
@@ -185,6 +190,7 @@ Northern Ireland,2020-04-05,1882000,total_deaths,56
 Northern Ireland,2020-04-06,1882000,total_deaths,63
 Northern Ireland,2020-04-07,1882000,total_deaths,70
 Northern Ireland,2020-04-08,1882000,total_deaths,73
+Northern Ireland,2020-04-09,1882000,total_deaths,78
 Scotland,2020-03-09,5438000,total_deaths,NA
 Scotland,2020-03-10,5438000,total_deaths,NA
 Scotland,2020-03-11,5438000,total_deaths,NA
@@ -216,6 +222,7 @@ Scotland,2020-04-05,5438000,total_deaths,218
 Scotland,2020-04-06,5438000,total_deaths,220
 Scotland,2020-04-07,5438000,total_deaths,222
 Scotland,2020-04-08,5438000,total_deaths,296
+Scotland,2020-04-09,5438000,total_deaths,366
 Wales,2020-03-09,3139000,total_deaths,NA
 Wales,2020-03-10,3139000,total_deaths,NA
 Wales,2020-03-11,3139000,total_deaths,NA
@@ -247,6 +254,7 @@ Wales,2020-04-05,3139000,total_deaths,166
 Wales,2020-04-06,3139000,total_deaths,193
 Wales,2020-04-07,3139000,total_deaths,212
 Wales,2020-04-08,3139000,total_deaths,245
+Wales,2020-04-09,3139000,total_deaths,286
 England,2020-03-09,55980000,new_cases,0
 England,2020-03-10,55980000,new_cases,44
 England,2020-03-11,55980000,new_cases,63
@@ -278,6 +286,7 @@ England,2020-04-05,55980000,new_cases,5107
 England,2020-04-06,55980000,new_cases,3176
 England,2020-04-07,55980000,new_cases,2978
 England,2020-04-08,55980000,new_cases,4788
+England,2020-04-09,55980000,new_cases,3798
 Northern Ireland,2020-03-09,1882000,new_cases,0
 Northern Ireland,2020-03-10,1882000,new_cases,NA
 Northern Ireland,2020-03-11,1882000,new_cases,2
@@ -309,6 +318,7 @@ Northern Ireland,2020-04-05,1882000,new_cases,91
 Northern Ireland,2020-04-06,1882000,new_cases,69
 Northern Ireland,2020-04-07,1882000,new_cases,97
 Northern Ireland,2020-04-08,1882000,new_cases,84
+Northern Ireland,2020-04-09,1882000,new_cases,138
 Scotland,2020-03-09,5438000,new_cases,0
 Scotland,2020-03-10,5438000,new_cases,NA
 Scotland,2020-03-11,5438000,new_cases,9
@@ -340,6 +350,7 @@ Scotland,2020-04-05,5438000,new_cases,361
 Scotland,2020-04-06,5438000,new_cases,255
 Scotland,2020-04-07,5438000,new_cases,268
 Scotland,2020-04-08,5438000,new_cases,336
+Scotland,2020-04-09,5438000,new_cases,392
 Wales,2020-03-09,3139000,new_cases,0
 Wales,2020-03-10,3139000,new_cases,NA
 Wales,2020-03-11,3139000,new_cases,9
@@ -371,6 +382,7 @@ Wales,2020-04-05,3139000,new_cases,344
 Wales,2020-04-06,3139000,new_cases,302
 Wales,2020-04-07,3139000,new_cases,291
 Wales,2020-04-08,3139000,new_cases,283
+Wales,2020-04-09,3139000,new_cases,16
 England,2020-03-09,55980000,new_deaths,NA
 England,2020-03-10,55980000,new_deaths,NA
 England,2020-03-11,55980000,new_deaths,NA
@@ -402,6 +414,7 @@ England,2020-04-05,55980000,new_deaths,555
 England,2020-04-06,55980000,new_deaths,403
 England,2020-04-07,55980000,new_deaths,758
 England,2020-04-08,55980000,new_deaths,828
+England,2020-04-09,55980000,new_deaths,765
 Northern Ireland,2020-03-09,1882000,new_deaths,NA
 Northern Ireland,2020-03-10,1882000,new_deaths,NA
 Northern Ireland,2020-03-11,1882000,new_deaths,NA
@@ -433,6 +446,7 @@ Northern Ireland,2020-04-05,1882000,new_deaths,8
 Northern Ireland,2020-04-06,1882000,new_deaths,7
 Northern Ireland,2020-04-07,1882000,new_deaths,7
 Northern Ireland,2020-04-08,1882000,new_deaths,3
+Northern Ireland,2020-04-09,1882000,new_deaths,5
 Scotland,2020-03-09,5438000,new_deaths,NA
 Scotland,2020-03-10,5438000,new_deaths,NA
 Scotland,2020-03-11,5438000,new_deaths,NA
@@ -464,6 +478,7 @@ Scotland,2020-04-05,5438000,new_deaths,46
 Scotland,2020-04-06,5438000,new_deaths,2
 Scotland,2020-04-07,5438000,new_deaths,2
 Scotland,2020-04-08,5438000,new_deaths,74
+Scotland,2020-04-09,5438000,new_deaths,70
 Wales,2020-03-09,3139000,new_deaths,NA
 Wales,2020-03-10,3139000,new_deaths,NA
 Wales,2020-03-11,3139000,new_deaths,NA
@@ -495,3 +510,4 @@ Wales,2020-04-05,3139000,new_deaths,12
 Wales,2020-04-06,3139000,new_deaths,27
 Wales,2020-04-07,3139000,new_deaths,19
 Wales,2020-04-08,3139000,new_deaths,33
+Wales,2020-04-09,3139000,new_deaths,41

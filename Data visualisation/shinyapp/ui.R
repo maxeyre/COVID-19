@@ -54,9 +54,20 @@ data.test <- data.test %>%
   select(date, total_tested = tested)
 data.test$date = as.Date(data.test$date, "%d/%m/%Y")
 data.test$new_tested <- c(NA,diff(data.test$total_tested))
+
+# code to deal with mismatch in lengths for testing and UK data
 if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) < nrow(data.test)){
-  data.test <- data.test[1:(nrow(data.test)-1),]
+  data.test <- data.test[1:(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),]
+}
+
+if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) > nrow(data.test)){
+  x <- length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) - nrow(data.test)
+  data.test[((nrow(data.test)+1):length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),] <- NA
+  for (i in (nrow(data.test)-x+1):nrow(data.test)){
+    data.test[i,1]<- data.test[(i-1),1] + 1
   }
+}
+
 data.test$total_cases <- UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]
 data.test$new_cases <- UK.data$number[UK.data$type=="new_cases" & UK.data$date>="2020-03-17"]
 
