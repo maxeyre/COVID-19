@@ -8,3 +8,4 @@ rsconnect::setAccountInfo(name='maxeyre',
 
 rsconnect::deployApp('shinyapp/', account='maxeyre')
 
+ 
