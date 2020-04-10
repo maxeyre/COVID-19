@@ -37,6 +37,9 @@ data.test <- data.test %>%
   select(date, total_tested = tested)
 data.test$date = as.Date(data.test$date, "%d/%m/%Y")
 data.test$new_tested <- c(NA,diff(data.test$total_tested))
+if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) < nrow(data.test)){
+  data.test <- data.test[1:(nrow(data.test)-1),]
+}
 data.test$total_cases <- UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]
 data.test$new_cases <- UK.data$number[UK.data$type=="new_cases" & UK.data$date>="2020-03-17"]
 
