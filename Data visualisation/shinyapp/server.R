@@ -60,6 +60,20 @@ data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_tested
 data.test <- data.test %>%
   gather(key="type", value="number",-date)
 
+# Brazil data
+data.brazil <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/brazil_full.csv")
+
+data.brazil$date <- as.Date(data.brazil$date, "%Y-%m-%d")
+# get list of states
+data.brazil$state_name <- as.character(data.brazil$state_name)
+state.list <- c(unique(data.brazil$state_name))
+state.list <- state.list[order(state.list)]
+list.state <- list()
+for (i in 1:length(state.list)){
+  list.state[i] <- state.list[i]
+}
+names(list.state) <- state.list
+  
 
 # Define server logic required to plot various variables against mpg
 shinyServer(function(input, output, session) {
@@ -154,9 +168,15 @@ shinyServer(function(input, output, session) {
     tagList(url)
   })
   
+  output$twitter_br <- renderUI({
+    tagList(url)
+  })
+  
   url_data <- a("JHU CSSE Data sources", href="https://github.com/CSSEGISandData/COVID-19")
   url_github <- a("GitHub", href="https://github.com/maxeyre/COVID-19")
   url_data2 <- a("Data source", href="https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public")
+  
+  url_data_br <- a("Data source", href="https://github.com/wcota/covid19br")
   
   output$data_source <- renderUI({
     tagList(url_data)
@@ -179,6 +199,10 @@ shinyServer(function(input, output, session) {
     tagList(url_data2)
   })
   
+  output$data_source_br <- renderUI({
+    tagList(url_data_br)
+  })
+  
   output$git1 <- renderUI({
     tagList(url_github)
   })
@@ -195,6 +219,9 @@ shinyServer(function(input, output, session) {
     tagList(url_github)
   })
   output$git6 <- renderUI({
+    tagList(url_github)
+  })
+  output$git_br <- renderUI({
     tagList(url_github)
   })
   
@@ -572,6 +599,74 @@ shinyServer(function(input, output, session) {
     
   })
   
+  # Brazil state comparisons
+  output$statePlot_compare_br <- renderPlot({
+    lines_type <- c(as.character(input$checkGroup_br))
+    
+    data.br <- data.brazil[data.brazil$type %in% lines_type, ]
+    
+    lines2 <- c(as.character(input$checkGroup_stateCompare_br))
+    
+    data.br <- data.br[data.br$state_name %in% lines2, ]
+    
+    lab_y <- "Casos/óbitos relatados"
+
+    
+    if(input$compare_pop_br=="pop_no"){
+      
+      p2 <- ggplot(data.br) + geom_point(aes(x=date, y=number, col=state_name),size=1.5) +
+        geom_line(aes(x=date, y=number, col=state_name,linetype=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_br[1],input$dateRange_br[2])) + scale_y_continuous(labels= scales::comma) + 
+        ylab(label=paste(lab_y)) + xlab(label = "") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-0.5),
+              axis.title.y = element_text(vjust=2),
+              legend.title = element_blank(),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) +
+        scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
+                                 breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
+                                 labels=c("Casos (total)","Casos (diários)","Óbitos (total)","Óbitos (diários)")) +
+        guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+        theme(legend.direction = "horizontal",legend.box = "vertical") 
+      if(input$log_compare_br=='log_yes'){
+        p2 <- p2 + scale_y_log10()
+      }
+    } else{
+      
+      p2 <- ggplot(data.br) + geom_point(aes(x=date, y=number_pop, col=state_name),size=1.5) +
+        geom_line(aes(x=date, y=number_pop, col=state_name,linetype=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_br[1],input$dateRange_br[2])) +
+        ylab(label=paste(lab_y," (per 100,000)",sep="")) + xlab(label = "") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-0.5),
+              axis.title.y = element_text(vjust=2),
+              legend.title = element_blank(),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) +
+        scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
+                              breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
+                              labels=c("Casos (total)","Casos (diários)","Óbitos (total)","Óbitos (diários)")) +
+        guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+        theme(legend.direction = "horizontal",legend.box = "vertical")  
+      if(input$log_compare_br=='log_yes'){
+        p2 <- p2 + scale_y_log10()
+      }
+    }
+    
+    p2
+  })
+  
   
 })
+
+
 

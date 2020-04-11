@@ -77,6 +77,20 @@ data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_tested
 data.test <- data.test %>%
   gather(key="type", value="number",-date)
 
+# Brazil data
+data.brazil <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/brazil_full.csv")
+data.brazil$date <- as.Date(data.brazil$date, "%Y-%m-%d")
+# get list of states
+data.brazil$state_name <- as.character(data.brazil$state_name)
+state.list <- c(unique(data.brazil$state_name))
+state.list <- state.list[order(state.list)]
+list.state <- list()
+for (i in 1:length(state.list)){
+  list.state[i] <- state.list[i]
+}
+names(list.state) <- state.list
+
+
 # Define UI 
 shinyUI(fluidPage(
   headerPanel("COVID-19 Data Visualisation"),
@@ -90,17 +104,19 @@ shinyUI(fluidPage(
              
              h3("Live epidemic curves by country"),
               h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)"),
-              h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
+              h6("Please note:"),
+                 h6("1. Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals."),
+                 h6("2. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common internationally."),
                 sidebarLayout(
                   sidebarPanel(
                     selectInput("country", "Country:",list.50),
                     
-                    checkboxGroupInput("checkGroup", "", choices = list("Cases (daily)" = "new_cases", 
-                                                  "Cases (total)" = "total_cases", 
-                                                  "Deaths (daily)" = "new_deaths",
-                                                  "Deaths (total)" = "total_deaths",
-                                                  "Recoveries (daily)" = "new_recoveries",
-                                                  "Recoveries (total)" = "total_recoveries"),
+                    checkboxGroupInput("checkGroup", "", choices = list("Reported cases (daily)" = "new_cases", 
+                                                  "Reported cases (total)" = "total_cases", 
+                                                  "Reported deaths (daily)" = "new_deaths",
+                                                  "Reported deaths (total)" = "total_deaths",
+                                                  "Reported recoveries (daily)" = "new_recoveries",
+                                                  "Reported recoveries (total)" = "total_recoveries"),
                                        selected = 1),
                     dateRangeInput("dateRange", "Date range",
                                start  = min(data$date),
@@ -131,13 +147,14 @@ shinyUI(fluidPage(
   tabPanel("Country comparison",
            h5("Please use the menu bar on the left to navigate to different sections"),    
            h3("Live comparison of countries from beginning of outbreaks"),
-               h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)"),
-               h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
+               h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)."),
+           h6("1. Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals."),
+           h6("2. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common internationally."),
              sidebarLayout(
                sidebarPanel(
                  radioButtons("compare_by", "Compare by",
-                              choices=c('Cases'="cases",
-                                        'Deaths'='deaths')),
+                              choices=c('Reported cases'="cases",
+                                        'Reported deaths'='deaths')),
                  sliderInput("dateRange.100", "Number of days into outbreak (range)", 
                              min = min(data.100$date_rel), 
                              max = max(data.100$date_rel), value = c(min(data.100$date_rel), (max(data.100$date_rel)-20))),
@@ -169,12 +186,15 @@ shinyUI(fluidPage(
            h5("Please use the menu bar on the left to navigate to different sections"),
            h3("UK Overview"),
            h6("Data source: Public Health England (updated every 24hrs)"),
-           h6("Please note: Confirmed cases in the UK are now generally individuals presenting at hospitals and deaths can be reported with delays"),
+           h6("Please note:"),
+           h6("1. Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
+           h6("2. Deaths are only deaths within hospitals."),
+           h6("3. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common for the UK."),
                          sidebarPanel(
-                           checkboxGroupInput("checkGroup_UK", "", choices = list("Cases (daily)" = "new_cases", 
-                                                                                  "Cases (total)" = "total_cases",
-                                                                                  "Deaths (daily)" = "new_deaths",
-                                                                                  "Deaths (total)" = "total_deaths"),selected = 2),
+                           checkboxGroupInput("checkGroup_UK", "", choices = list("Reported cases (daily)" = "new_cases", 
+                                                                                  "Reported cases (total)" = "total_cases",
+                                                                                  "Reported deaths (daily)" = "new_deaths",
+                                                                                  "Reported deaths (total)" = "total_deaths"),selected = 2),
                            dateRangeInput("dateRange_UK", "Date range",
                                           start  = min(UK.data$date),
                                           end    = max(UK.data$date), 
@@ -212,11 +232,13 @@ shinyUI(fluidPage(
            h5("Please use the menu bar on the left to navigate to different sections"),
            h3("Live epidemic curves by NHS England regions"),
            h6("Data source: Public Health England (updated every 24hrs)"),
-           h6("Please note: Confirmed cases in the UK are now generally individuals presenting at hospitals"),
+           h6("1. Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
+           h6("2. Deaths are only deaths within hospitals."),
+           h6("3. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common for the UK."),
            sidebarLayout(
              sidebarPanel(
-               checkboxGroupInput("checkGroup_region", "", choices = list("Cases (daily)" = "new_cases", 
-                                                                          "Cases (total)" = "total_cases"),selected = 2),
+               checkboxGroupInput("checkGroup_region", "", choices = list("Reported dases (daily)" = "new_cases", 
+                                                                          "Reported cases (total)" = "total_cases"),selected = 2),
                dateRangeInput("dateRange_region", "Date range",
                               start  = min(data.region$date),
                               end    = max(data.region$date), 
@@ -244,12 +266,14 @@ shinyUI(fluidPage(
              h5("Please use the menu bar on the left to navigate to different sections"),
            h3("Live epidemic curves for Local Authorities of England"),
            h6("Data source: Public Health England (updated every 24hrs)"),
-           h6("Please note: Confirmed case data is entirely dependent on testing rates and will significantly underestimate actual number of infected individuals"),
+           h6("1. Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
+           h6("2. Deaths are only deaths within hospitals."),
+           h6("3. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common for the UK."),
             sidebarLayout(
              sidebarPanel(
                selectInput("county", "County (UA):",list.county),
-               checkboxGroupInput("checkGroup_county", "", choices = list("Cases (daily)" = "new_cases", 
-                                                                   "Cases (total)" = "total_cases"),selected = 1),
+               checkboxGroupInput("checkGroup_county", "", choices = list("Reported cases (daily)" = "new_cases", 
+                                                                   "Reported cases (total)" = "total_cases"),selected = 1),
                
                dateRangeInput("dateRange_county", "Date range",
                               start  = min(data.county$date),
@@ -274,6 +298,9 @@ shinyUI(fluidPage(
            h5("Please use the menu bar on the left to navigate to different sections"),
            h3("Live diagnostic testing rates for UK"),
            h6("Data source: Public Health England (updated every 24hrs)"),
+           h6("1. Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
+           h6("2. Deaths are only deaths within hospitals."),
+           h6("3. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common for the UK."),
            sidebarLayout(
              sidebarPanel(
                h4("Testing rates"),
@@ -312,9 +339,48 @@ shinyUI(fluidPage(
                        uiOutput("data_source4")
              )
            )
-           )
+           ),
+  "Brazil",  
+  tabPanel("Por estado",
+           h5("Please use the menu bar on the left to navigate to different sections"),
+           
+               h3("Curvas epidêmicas ao vivo por estado (atualiza a cada 24 horas)"),
+               sidebarLayout(
+                 sidebarPanel(
+                   checkboxGroupInput("checkGroup_br", "", choices = list("Casos relatados (diários)" = "new_cases", 
+                                                                          "Casos relatados (total)" = "total_cases",
+                                                                          "Óbitos relatados (diários)" = "new_deaths",
+                                                                          "Óbitos relatados (total)" = "total_deaths"),selected = 2),
+                   dateRangeInput("dateRange_br", "Período",
+                                  start  = min(data.brazil$date),
+                                  end    = max(data.brazil$date), 
+                                  min    = min(data.brazil$date),
+                                  max    = max(data.brazil$date)),
+
+
+                   radioButtons("log_compare_br", label="Escala do eixo vertical",
+                                choices=c('Linear'="log_no",
+                                          'Log'='log_yes')),
+                   radioButtons("compare_pop_br",label="Valor do eixo vertical",
+                                choices=c('Número de casos'="pop_no",
+                                          'Por 100,000 habitantes'='pop_yes')),
+                   
+                   checkboxGroupInput("checkGroup_stateCompare_br", "Estados", choices = list.state, selected = 1)
+                 ), 
+                 mainPanel( br(),
+                           h6("Fonte de dados: Ministério da Saúde do Brasil (coletados por Wesley Cota)"),
+                           plotOutput("statePlot_compare_br"),
+                           h6("Made by Max Eyre"),
+                           h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+                           uiOutput("twitter_br"),
+                           uiOutput("git_br"),
+                           uiOutput("data_source_br")
+                 )
+               ),
+           
   )
-)
+  )
+  )
 )
   
 

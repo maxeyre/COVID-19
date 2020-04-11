@@ -77,9 +77,6 @@ data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_tested
 data.test <- data.test %>%
   gather(key="type", value="number",-date)
 
-# Brazil data
-data.brazil <- read_csv("")
-
 # Define UI 
 shinyUI(fluidPage(
   headerPanel("COVID-19 Data Visualisation"),
