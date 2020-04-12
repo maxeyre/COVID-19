@@ -16,14 +16,14 @@ download.file(url, destfile = "data/original/PHE_main_data.xlsx")
 # LOAD FROM PHE
 UK_total <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
                            sheet = 2, 
-                           skip = 8)
+                           skip = 10)
 UK_by_country_deaths <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
                                       sheet = 3, 
                                       skip = 7)
 
 UK_by_country_cases <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
                                          sheet = 4, 
-                                         skip = 7)
+                                         skip = 9)
 
 england_region <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
                                     sheet = 5, 
