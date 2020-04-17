@@ -7,7 +7,7 @@ library(tidyverse)
 
 #=======#### DOWNLOAD DATA FROM PHE ####=======#
 
-# Link to historical cumalative daily cases for UTLA
+# Link to historical daily cases
 url <- "https://fingertips.phe.org.uk/documents/Historic%20COVID-19%20Dashboard%20Data.xlsx"
 
 # Download file and load it in R
