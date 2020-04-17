@@ -25,19 +25,22 @@ for (i in 1:length(country.list.100)){
 }
 names(list.100) <- country.list.100
 
-# UK data
+# UK data for epi curve
 UK.data <- data[data$country=="United Kingdom",]
+
+# PHE UK data
+UK <- read_csv("")
 
 # UK breakdown data
 UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_by_country.csv")
 
 # UK county data
 # read in UK county data
-data.county <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/england_UTLA.csv")
+data.county <- UK[UK$division=="UTLA",]
 
 # get list of counties
-data.county$county_UA <- as.character(data.county$county_UA)
-county_LA.list <- c(unique(data.county$county_UA))
+data.county$area <- as.character(data.county$area)
+county_LA.list <- c(unique(data.county$area))
 list.county <- list()
 for (i in 1:length(county_LA.list)){
   list.county[i] <- county_LA.list[i]
@@ -45,8 +48,7 @@ for (i in 1:length(county_LA.list)){
 names(list.county) <- county_LA.list
 
 # read in England region data
-data.region <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions.csv")
-data.region.pop <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions_pop.csv")
+data.region <- UK[UK$division=="Region",]
 
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")

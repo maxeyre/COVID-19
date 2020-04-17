@@ -29,16 +29,23 @@ UK$division[UK$division=="Country - UK"] <- "UK"
 #=======#### DATA PROCESSING ####=======#
 # Just adding population estimates to each entry
 pop_UTLA <- read_csv("data/original/area_populations.csv")
-pop_country <- data.frame(country=c("England","Scotland","Wales","Northern Ireland"), pop=c(55980000,5438000,3139000,1882000))
-pop_NHSregion <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/NHS_england_regions_pop.csv")
+pop_country <- data.frame(country=c("England","Scotland","Wales","Northern Ireland"), population=c(55980000,5438000,3139000,1882000))
+pop_NHSregion <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/NHS_england_regions_pop.csv") %>%
+  rename(population=pop)
 
 UK.UTLA <- UK[UK$division=="UTLA",]
 UK.NHSregion <- UK[UK$division=="Region",]
 UK.country <- UK[UK$division=="Country",]
+UK.UK <- UK[UK$division=="UK",]
 
 UK.UTLA <- left_join(UK.UTLA, pop_UTLA, by=c("id"="area_code"))
-UK.NHSregion<- left_join(UK.NHSregion, pop_NHSregion, by=c("area"="area_code"))
-UK.country<- left_join(UK.country, pop_country, by=c("area"="area_code"))
+UK.NHSregion<- left_join(UK.NHSregion, pop_NHSregion, by=c("area"="region"))
+UK.country<- left_join(UK.country, pop_country, by=c("area"="country"))
+UK.UK$population <- 66650000
+
+UK <- bind_rows(UK.UTLA,UK.NHSregion,UK.country,UK.UK)
+
+write_csv(UK, "data/processed/UK.csv")
 
 ### 2. UK countries ###
 # UK_countries_deaths
