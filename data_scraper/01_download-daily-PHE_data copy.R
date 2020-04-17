@@ -11,45 +11,34 @@ library(tidyverse)
 url <- "https://fingertips.phe.org.uk/documents/Historic%20COVID-19%20Dashboard%20Data.xlsx"
 
 # Download file and load it in R
-download.file(url, destfile = "data/original/PHE_main_data.xlsx")
+UK.cases <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/coronavirus-cases.csv")
+UK.deaths <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/coronavirus-deaths.csv")
 
-# LOAD FROM PHE
-UK_total <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
-                           sheet = 2, 
-                           skip = 10)
-UK_by_country_deaths <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
-                                      sheet = 3, 
-                                      skip = 7)
+UK.cases <- UK.cases %>%
+  select(area=`Area name`,id = `Area code`, division=`Area type`,date=`Specimen date`,new_cases=`Daily lab-confirmed cases`,total_cases=`Cumulative lab-confirmed cases`) %>%
+  gather(key="type", value="number", -area, -id, -division, -date)
 
-UK_by_country_cases <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
-                                         sheet = 4, 
-                                         skip = 9)
+UK.deaths <- UK.deaths %>%
+  select(area=`Area name`,id = `Area code`, division=`Area type`,date=`Reporting date`,new_deaths=`Daily hospital deaths`,total_deaths=`Cumulative hospital deaths`) %>%
+  gather(key="type", value="number", -area, -id, -division, -date)
 
-england_region <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
-                                    sheet = 5, 
-                                    skip = 7)
-
-england_countyUA <- readxl::read_xlsx(path = "data/original/PHE_main_data.xlsx", 
-                                    sheet = 6, 
-                                    skip = 7)
-UK_total_original <- read_csv("data/original/UK_total.csv")
-UK_total_original$date <- as.Date(UK_total_original$date, "%d/%m/%Y")
-
+UK <- bind_rows(UK.cases,UK.deaths)
+UK$division[UK$division=="Upper tier local authority"] <- "UTLA"
+UK$division[UK$division=="Country - UK"] <- "UK"
+	
 #=======#### DATA PROCESSING ####=======#
+# Just adding population estimates to each entry
+pop_UTLA <- read_csv("data/original/area_populations.csv")
+pop_country <- data.frame(country=c("England","Scotland","Wales","Northern Ireland"), pop=c(55980000,5438000,3139000,1882000))
+pop_NHSregion <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/NHS_england_regions_pop.csv")
 
-### 1. UK_total ###
-UK_total <- UK_total %>%
-  rename(date = Date, total_cases = `Cumulative Cases`)
-dat <- data.frame(date=UK_total$date[UK_total$date>"2020-03-13"], total_cases = UK_total$total_cases[UK_total$date>"2020-03-13"],
-                  total_deaths=UK_by_country_deaths$UK[UK_by_country_deaths$Date>"2020-03-13"])
+UK.UTLA <- UK[UK$division=="UTLA",]
+UK.NHSregion <- UK[UK$division=="Region",]
+UK.country <- UK[UK$division=="Country",]
 
-UK_total <- rbind(UK_total_original,dat)
-UK_total$new_cases <- c(0,diff(UK_total$total_cases))
-UK_total$new_deaths <- c(0,diff(UK_total$total_deaths))
-
-UK_total <- UK_total %>%
-  gather(value="number", key="type", -date)
-
+UK.UTLA <- left_join(UK.UTLA, pop_UTLA, by=c("id"="area_code"))
+UK.NHSregion<- left_join(UK.NHSregion, pop_NHSregion, by=c("area"="area_code"))
+UK.country<- left_join(UK.country, pop_country, by=c("area"="area_code"))
 
 ### 2. UK countries ###
 # UK_countries_deaths

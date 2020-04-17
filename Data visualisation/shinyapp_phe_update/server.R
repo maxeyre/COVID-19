@@ -9,7 +9,7 @@ data.100 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/
 data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_5-deaths.csv")
 
 # UK data
-UK.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_total.csv")
+UK.data <- data[data$country=="United Kingdom",]
 
 # UK breakdown data
 UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_by_country.csv")

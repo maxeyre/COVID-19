@@ -1,8 +1,8 @@
 # ui.R
 
 library(shiny)
-library(dplyr)
 library(tidyverse)
+
 
 # read in global data
 data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_full.csv")
@@ -26,7 +26,7 @@ for (i in 1:length(country.list.100)){
 names(list.100) <- country.list.100
 
 # UK data
-UK.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_total.csv")
+UK.data <- data[data$country=="United Kingdom",]
 
 # UK breakdown data
 UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_by_country.csv")
