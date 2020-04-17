@@ -80,29 +80,6 @@ names(list.state) <- state.list
 # Define server logic required to plot various variables against mpg
 shinyServer(function(input, output, session) {
   
-  # Change date range for by country UK graphs
-  
-  observe({
-    val <- input$checkGroup_UK
-    if(length(val)<3 & input$tabs_UK==2){
-      x <- sum("new_deaths" %in% val, "total_deaths" %in% val)
-      if(x==length(val)) {
-        updateDateRangeInput(session, "dateRange_UK", 
-                             start  = as.Date("27/03/2020", "%d/%m/%Y"),
-                             end    = max(UK.data$date), 
-                             min    = as.Date("27/03/2020", "%d/%m/%Y"),
-                             max    = max(UK.data$date))
-      } else{
-        updateDateRangeInput(session, "dateRange_UK", 
-                             start  = as.Date("09/03/2020", "%d/%m/%Y"),
-                             end    = max(UK.data$date), 
-                             min    = as.Date("09/03/2020", "%d/%m/%Y"),
-                             max    = max(UK.data$date))
-        
-      }
-    }
-  })
-  
   formulaText <- reactive({
     paste(input$country)
   })
@@ -375,8 +352,8 @@ shinyServer(function(input, output, session) {
     
     UK.data<- UK.data[UK.data$type %in% lines, ]
     if (input$pop_UK=="pop_yes"){
-      p <- ggplot(UK.data) + geom_point(aes(x=date, y=100000*number/66440000, col=type),size=1.5) +
-        geom_line(aes(x=date, y=100000*number/66440000, col=type),size=1) +
+      p <- ggplot(UK.data) + geom_point(aes(x=date, y=number_pop, col=type),size=1.5) +
+        geom_line(aes(x=date, y=number_pop, col=type),size=1) +
         scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Number (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
@@ -414,7 +391,7 @@ shinyServer(function(input, output, session) {
                               labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
           guides(linetype = guide_legend(override.aes = list(size = 20)))
         if(input$log_UK=='log_yes'){
-          p <- p + scale_y_log10(labels = scales::comma)
+          p <- p + scale_y_log10()
         }
       }
       p
