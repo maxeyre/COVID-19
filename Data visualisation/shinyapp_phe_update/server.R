@@ -403,21 +403,9 @@ shinyServer(function(input, output, session) {
     
     UK_by_country<- UK_by_country[UK_by_country$type %in% lines, ]
     
-    val <- input$checkGroup_UK
-    if(length(val)<3 & input$tabs_UK==2){
-      x <- sum("new_deaths" %in% val, "total_deaths" %in% val)
-      if(x==length(val)) {
-        date.min <- as.Date("27/03/2020", "%d/%m/%Y")
-      } else {
-        date.min <- as.Date("09/03/2020", "%d/%m/%Y")
-      }
-      } else {
-        date.min <- as.Date("09/03/2020", "%d/%m/%Y")
-      }
-    
     if (input$pop_UK=="pop_yes"){
-      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=100000*number/pop, col=country),size=1.5) +
-        geom_line(aes(x=date, y=100000*number/pop, col=country, linetype=type),size=1) +
+      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number_pop, col=area),size=1.5) +
+        geom_line(aes(x=date, y=number_pop, col=area, linetype=type),size=1) +
         scale_x_date(limits=c(date.min,input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Number (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
@@ -428,9 +416,9 @@ shinyServer(function(input, output, session) {
               legend.text = element_text(size=13),
               legend.position = 'top', 
               legend.spacing.x = unit(0.4, 'cm'),
-              panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
-                                                                                   breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
-                                                                                   labels=c("Cases (total)","Cases (daily)","Deaths (total)","Deaths (daily)")) +
+              panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_deaths" =3, "new_deaths"=4),
+                                                                                   breaks=c("total_deaths","new_deaths"),
+                                                                                   labels=c("Deaths (total)","Deaths (daily)")) +
         guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
         theme(legend.direction = "horizontal",legend.box = "vertical")
       
