@@ -41,7 +41,7 @@ UK.country<- left_join(UK.country, pop_country, by=c("area"="country"))
 UK.UK$population <- 66650000
 
 UK <- bind_rows(UK.UTLA,UK.NHSregion,UK.country,UK.UK)
-UK$number_pop <- UK$number/UK$population
+UK$number_pop <- 100000*UK$number/UK$population
 
 #=======#### DATA OUTPUTTING ####=======#
 readr::write_csv(UK, "data/processed/UK.csv")
