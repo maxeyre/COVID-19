@@ -12,10 +12,10 @@ data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/ma
 UK.data <- data[data$country=="United Kingdom",]
 
 # PHE UK data
-UK <- read_csv("")
+UK <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK.csv")
 
 # UK breakdown data
-UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_by_country.csv")
+UK_by_country <- UK[UK$division=="Country",]
 
 # UK county data
 # read in UK county data

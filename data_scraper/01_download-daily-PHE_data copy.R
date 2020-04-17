@@ -7,9 +7,6 @@ library(tidyverse)
 
 #=======#### DOWNLOAD DATA FROM PHE ####=======#
 
-# Link to historical daily cases
-url <- "https://fingertips.phe.org.uk/documents/Historic%20COVID-19%20Dashboard%20Data.xlsx"
-
 # Download file and load it in R
 UK.cases <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/coronavirus-cases.csv")
 UK.deaths <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/coronavirus-deaths.csv")

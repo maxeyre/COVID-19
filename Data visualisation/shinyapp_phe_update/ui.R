@@ -3,7 +3,6 @@
 library(shiny)
 library(tidyverse)
 
-
 # read in global data
 data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_full.csv")
 data.100 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_100-cases.csv")
@@ -29,10 +28,10 @@ names(list.100) <- country.list.100
 UK.data <- data[data$country=="United Kingdom",]
 
 # PHE UK data
-UK <- read_csv("")
+UK <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK.csv")
 
 # UK breakdown data
-UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_by_country.csv")
+UK_by_country <- UK[UK$division=="Country",]
 
 # UK county data
 # read in UK county data
