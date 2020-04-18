@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import urllib.request
+from urllib2 import urlopen
 import xml.etree.ElementTree as ET
 from datetime import datetime
 import os.path

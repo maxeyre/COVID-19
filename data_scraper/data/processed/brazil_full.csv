@@ -157,7 +157,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-14,CE,Ceará,8904459,total_cases,2072,23.26924072534895
 2020-04-15,CE,Ceará,8904459,total_cases,2292,25.73991300313697
 2020-04-16,CE,Ceará,8904459,total_cases,2417,27.143704070061975
-2020-04-17,CE,Ceará,8904459,total_cases,2747,30.849712486744
+2020-04-17,CE,Ceará,8904459,total_cases,2753,30.917094457956402
 2020-02-25,AM,Amazonas,3938336,total_cases,0,0
 2020-02-26,AM,Amazonas,3938336,total_cases,0,0
 2020-02-27,AM,Amazonas,3938336,total_cases,0,0
@@ -581,7 +581,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-14,DF,Distrito Federal,2914830,total_cases,651,22.334064079208737
 2020-04-15,DF,Distrito Federal,2914830,total_cases,688,23.603434848687574
 2020-04-16,DF,Distrito Federal,2914830,total_cases,727,24.941420254354455
-2020-04-17,DF,Distrito Federal,2914830,total_cases,754,25.867717842893068
+2020-04-17,DF,Distrito Federal,2914830,total_cases,756,25.936332479081113
 2020-02-25,ES,Espírito Santo,3929911,total_cases,0,0
 2020-02-26,ES,Espírito Santo,3929911,total_cases,0,0
 2020-02-27,ES,Espírito Santo,3929911,total_cases,0,0
@@ -1588,7 +1588,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-14,CE,Ceará,8904459,new_cases,136,1.5273246808144099
 2020-04-15,CE,Ceará,8904459,new_cases,220,2.470672277788016
 2020-04-16,CE,Ceará,8904459,new_cases,125,1.403791066925009
-2020-04-17,CE,Ceará,8904459,new_cases,330,3.706008416682024
+2020-04-17,CE,Ceará,8904459,new_cases,336,3.7733903878944246
 2020-02-25,AM,Amazonas,3938336,new_cases,0,0
 2020-02-26,AM,Amazonas,3938336,new_cases,0,0
 2020-02-27,AM,Amazonas,3938336,new_cases,0,0
@@ -2012,7 +2012,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-14,DF,Distrito Federal,2914830,new_cases,10,0.3430731809402264
 2020-04-15,DF,Distrito Federal,2914830,new_cases,37,1.2693707694788374
 2020-04-16,DF,Distrito Federal,2914830,new_cases,39,1.3379854056668827
-2020-04-17,DF,Distrito Federal,2914830,new_cases,27,0.9262975885386112
+2020-04-17,DF,Distrito Federal,2914830,new_cases,29,0.9949122247266564
 2020-02-25,ES,Espírito Santo,3929911,new_cases,0,0
 2020-02-26,ES,Espírito Santo,3929911,new_cases,0,0
 2020-02-27,ES,Espírito Santo,3929911,new_cases,0,0
@@ -3019,7 +3019,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-14,CE,Ceará,8904459,total_deaths,111,1.2465664674294081
 2020-04-15,CE,Ceará,8904459,total_deaths,124,1.392560738389609
 2020-04-16,CE,Ceará,8904459,total_deaths,135,1.5160943522790098
-2020-04-17,CE,Ceará,8904459,total_deaths,149,1.673318951774611
+2020-04-17,CE,Ceará,8904459,total_deaths,155,1.7407009229870114
 2020-02-25,AM,Amazonas,3938336,total_deaths,0,0
 2020-02-26,AM,Amazonas,3938336,total_deaths,0,0
 2020-02-27,AM,Amazonas,3938336,total_deaths,0,0
@@ -3443,7 +3443,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-14,DF,Distrito Federal,2914830,total_deaths,17,0.5832244075983848
 2020-04-15,DF,Distrito Federal,2914830,total_deaths,17,0.5832244075983848
 2020-04-16,DF,Distrito Federal,2914830,total_deaths,20,0.6861463618804527
-2020-04-17,DF,Distrito Federal,2914830,total_deaths,20,0.6861463618804527
+2020-04-17,DF,Distrito Federal,2914830,total_deaths,24,0.8233756342565433
 2020-02-25,ES,Espírito Santo,3929911,total_deaths,0,0
 2020-02-26,ES,Espírito Santo,3929911,total_deaths,0,0
 2020-02-27,ES,Espírito Santo,3929911,total_deaths,0,0
@@ -4450,7 +4450,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-14,CE,Ceará,8904459,new_deaths,11,0.1235336138894008
 2020-04-15,CE,Ceará,8904459,new_deaths,13,0.14599427096020096
 2020-04-16,CE,Ceará,8904459,new_deaths,11,0.1235336138894008
-2020-04-17,CE,Ceará,8904459,new_deaths,14,0.15722459949560103
+2020-04-17,CE,Ceará,8904459,new_deaths,20,0.22460657070800147
 2020-02-25,AM,Amazonas,3938336,new_deaths,0,0
 2020-02-26,AM,Amazonas,3938336,new_deaths,0,0
 2020-02-27,AM,Amazonas,3938336,new_deaths,0,0
@@ -4874,7 +4874,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-14,DF,Distrito Federal,2914830,new_deaths,2,0.06861463618804527
 2020-04-15,DF,Distrito Federal,2914830,new_deaths,0,0
 2020-04-16,DF,Distrito Federal,2914830,new_deaths,3,0.1029219542820679
-2020-04-17,DF,Distrito Federal,2914830,new_deaths,0,0
+2020-04-17,DF,Distrito Federal,2914830,new_deaths,4,0.13722927237609053
 2020-02-25,ES,Espírito Santo,3929911,new_deaths,0,0
 2020-02-26,ES,Espírito Santo,3929911,new_deaths,0,0
 2020-02-27,ES,Espírito Santo,3929911,new_deaths,0,0
