@@ -111,6 +111,25 @@ country.pop.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19
 data <- left_join(data,country.pop.data, by="country")
 data$number_pop <- 100000*data$number/data$pop
 
+### SORT UK
+UK.JHU <- data[data$country=="United Kingdom",]
+UK.JHU2 <- UK.JHU[UK.JHU$date>"2020-04-13",]
+UK.JHU2 <- UK.JHU2[UK.JHU2$type %in% c("new_cases","total_cases","new_deaths","total_deaths"),]
+UK.JHU_recov <- UK.JHU[UK.JHU$type %in% c("new_recoveries","total_recoveries"),]
+UK.JHU_recov$number <- NA
+UK.JHU_recov$number_pop <- NA
+
+UK.correct <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/UK_total.csv")
+UK.correct$country <- "United Kingdom"
+UK.correct$pop <- 67886011
+UK.correct$number_pop <- UK.correct$number/UK.correct$pop
+
+UK.data<- bind_rows(UK.JHU2,UK.correct, UK.JHU_recov)
+
+data <- data[data$country!="United Kingdom",]
+data <- bind_rows(data, UK.data)
+
+data <- data[order(data$country),]
 
 # list of countries with >=100 cases
 data.100 <- data[data$type=="total_cases",]

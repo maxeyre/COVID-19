@@ -1,7 +1,6 @@
 # ui.R
 
 library(shiny)
-library(dplyr)
 library(tidyverse)
 
 # read in global data
@@ -25,19 +24,22 @@ for (i in 1:length(country.list.100)){
 }
 names(list.100) <- country.list.100
 
-# UK data
-UK.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_total.csv")
+# UK data for epi curve
+UK.data <- data[data$country=="United Kingdom",]
+
+# PHE UK data
+UK <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK.csv")
 
 # UK breakdown data
-UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_by_country.csv")
+UK_by_country <- UK[UK$division=="Country",]
 
 # UK county data
 # read in UK county data
-data.county <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/england_UTLA.csv")
+data.county <- UK[UK$division=="UTLA",]
 
 # get list of counties
-data.county$county_UA <- as.character(data.county$county_UA)
-county_LA.list <- c(unique(data.county$county_UA))
+data.county$area <- as.character(data.county$area)
+county_LA.list <- c(unique(data.county$area))
 list.county <- list()
 for (i in 1:length(county_LA.list)){
   list.county[i] <- county_LA.list[i]
@@ -45,8 +47,7 @@ for (i in 1:length(county_LA.list)){
 names(list.county) <- county_LA.list
 
 # read in England region data
-data.region <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions.csv")
-data.region.pop <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions_pop.csv")
+data.region <- UK[UK$division=="Region",]
 
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
@@ -101,7 +102,10 @@ shinyUI(fluidPage(
     "Worldwide",  
     tabPanel("By country",
              h5("Please use the menu bar on the left to navigate to different sections"),
-             
+             p("Updates: ", style = "color:red"),
+             p("1. PHE data source now changed and up to date", style = "color:red"),
+             p("2. Cases per population available for English Local Authorities", style = "color:red"),
+             p("3. Only data up to two days before the current date is shown for NHS England and UTLA regions because they appear to be experiencing significant reporting delays", style = "color:red"),
              h3("Live epidemic curves by country"),
               h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)"),
               h6("Please note:"),
@@ -184,7 +188,6 @@ shinyUI(fluidPage(
   "United Kingdom",
   tabPanel("UK overview",
            h5("Please use the menu bar on the left to navigate to different sections"),
-           p("Updating: PHE data source & structure has changed - update will be completed by 12:00 BST 18/04/2020", style = "color:red"),
            h3("UK Overview"),
            h6("Data source: Public Health England (updated every 24hrs)"),
            h6("Please note:"),
@@ -213,9 +216,9 @@ shinyUI(fluidPage(
                                     h3("Live epidemic curve of UK"),
                                     plotOutput("UKPlot")
                                     ),
-                           tabPanel("UK - countries", value = 2,
-                                    h3("Live epidemic curve of UK by country"),
-                                    h6("Death data only available from 27/03/2020"),
+                           tabPanel("UK - deaths by countries", value = 2,
+                                    h3("UK deaths by country"),
+                                    h6("Death data only available from 27/03/2020; case data by country currently unavailable from PHE"),
                                     plotOutput("UKPlot_by_country")
                                     )
                           ),
@@ -231,21 +234,19 @@ shinyUI(fluidPage(
            
   tabPanel("NHS England regions",
            h5("Please use the menu bar on the left to navigate to different sections"),
-           p("Updating: PHE data source & structure has changed - update will be completed by 12:00 BST 18/04/2020", style = "color:red"),
            h3("Live epidemic curves by NHS England regions"),
+           p("Please note: delays in reporting of England regions have made daily results by region unreliable. For this reason, the maximum date shown is now two days behind the current day.", style = "color:red"),
            h6("Data source: Public Health England (updated every 24hrs)"),
-           h6("1. Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
-           h6("2. Deaths are only deaths within hospitals."),
-           h6("3. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common for the UK."),
+           h6("Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
            sidebarLayout(
              sidebarPanel(
-               checkboxGroupInput("checkGroup_region", "", choices = list("Reported dases (daily)" = "new_cases", 
+               checkboxGroupInput("checkGroup_region", "", choices = list("Reported cases (daily)" = "new_cases", 
                                                                           "Reported cases (total)" = "total_cases"),selected = 2),
                dateRangeInput("dateRange_region", "Date range",
-                              start  = min(data.region$date),
-                              end    = max(data.region$date), 
-                              min    = min(data.region$date),
-                              max    = max(data.region$date)),
+                              start  = as.Date("2020-03-01","%Y-%m-%d"),
+                              end    = as.Date(max(data.region$date)-2,"%Y-%m-%d"), 
+                              min    = as.Date("2020-03-01","%Y-%m-%d"),
+                              max    = as.Date(max(data.region$date)-2,"%Y-%m-%d")),
                radioButtons("pop", "Cases",
                             choices=c('Number of cases'="pop_no",
                                       'Per 100,000 population'='pop_yes')),
@@ -264,14 +265,12 @@ shinyUI(fluidPage(
              )
            )
   ),
-    tabPanel("England - Local authorities",
+    tabPanel("England - Local Authorities",
              h5("Please use the menu bar on the left to navigate to different sections"),
-             p("Updating: PHE data source & structure has changed - update will be completed by 12:00 BST 18/04/2020", style = "color:red"),
-             h3("Live epidemic curves for Local Authorities of England"),
-           h6("Data source: Public Health England (updated every 24hrs)"),
-           h6("1. Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
-           h6("2. Deaths are only deaths within hospitals."),
-           h6("3. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common for the UK."),
+             h3("Live epidemic curves for Upper Tier Local Authorities of England"),
+             p("Please note: delays in reporting of England UTLAs have made daily results by UTLA unreliable. For this reason, the maximum date shown is now two days behind the current day.", style = "color:red"),
+             h6("Data source: Public Health England (updated every 24hrs)"),
+           h6("Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
             sidebarLayout(
              sidebarPanel(
                selectInput("county", "County (UA):",list.county),
@@ -279,14 +278,21 @@ shinyUI(fluidPage(
                                                                    "Reported cases (total)" = "total_cases"),selected = 1),
                
                dateRangeInput("dateRange_county", "Date range",
-                              start  = min(data.county$date),
-                              end    = max(data.county$date),
-                              min    = min(data.county$date),
-                              max    = max(data.county$date))
+                              start  = as.Date("2020-03-01","%Y-%m-%d"),
+                              end    = as.Date(max(data.county$date)-2,"%Y-%m-%d"),
+                              min    = as.Date("2020-03-01","%Y-%m-%d"),
+                              max    = as.Date(max(data.county$date)-2,"%Y-%m-%d")),
+               radioButtons("pop_utla", "Cases",
+                            choices=c('Number of cases'="pop_no",
+                                      'Per 100,000 population'='pop_yes')),
+               radioButtons("log_utla", "y-axis scale:",
+                            choices=c('Linear'="log_no",
+                                      'Log'='log_yes'))
                ),
              mainPanel(
-               h5(textOutput("county_newcase_update")),
+               # h5(textOutput("county_newcase_update")),
                h5(textOutput("county_totalcase_update")),
+               h5(textOutput("county_totalcase_rate_update")),
                h3(textOutput("caption_county")),
                plotOutput("englandcountyPlot"),
                h6("Made by Max Eyre"),
@@ -299,7 +305,6 @@ shinyUI(fluidPage(
            ),
   tabPanel("UK Testing",
            h5("Please use the menu bar on the left to navigate to different sections"),
-           p("Updating: PHE data source & structure has changed - update will be completed by 12:00 BST 18/04/2020", style = "color:red"),
            h3("Live diagnostic testing rates for UK"),
            h6("Data source: Public Health England (updated every 24hrs)"),
            h6("1. Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),

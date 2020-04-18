@@ -8,19 +8,22 @@ data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data
 data.100 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_100-cases.csv")
 data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_5-deaths.csv")
 
-# UK data
-UK.data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_total.csv")
+# UK data for epi curve
+UK.data <- data[data$country=="United Kingdom",]
+
+# PHE UK data
+UK <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK.csv")
 
 # UK breakdown data
-UK_by_country <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/UK_by_country.csv")
+UK_by_country <- UK[UK$division=="Country",]
 
 # UK county data
 # read in UK county data
-data.county <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/england_UTLA.csv")
+data.county <- UK[UK$division=="UTLA",]
 
 # get list of counties
-data.county$county_UA <- as.character(data.county$county_UA)
-county_LA.list <- c(unique(data.county$county_UA))
+data.county$area <- as.character(data.county$area)
+county_LA.list <- c(unique(data.county$area))
 list.county <- list()
 for (i in 1:length(county_LA.list)){
   list.county[i] <- county_LA.list[i]
@@ -28,8 +31,7 @@ for (i in 1:length(county_LA.list)){
 names(list.county) <- county_LA.list
 
 # read in England region data
-data.region <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions.csv")
-data.region.pop <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/NHS_england_regions_pop.csv")
+data.region <- UK[UK$division=="Region",]
 
 # Testing data
 data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
@@ -78,29 +80,6 @@ names(list.state) <- state.list
 # Define server logic required to plot various variables against mpg
 shinyServer(function(input, output, session) {
   
-  # Change date range for by country UK graphs
-  
-  observe({
-    val <- input$checkGroup_UK
-    if(length(val)<3 & input$tabs_UK==2){
-      x <- sum("new_deaths" %in% val, "total_deaths" %in% val)
-      if(x==length(val)) {
-        updateDateRangeInput(session, "dateRange_UK", 
-                             start  = as.Date("27/03/2020", "%d/%m/%Y"),
-                             end    = max(UK.data$date), 
-                             min    = as.Date("27/03/2020", "%d/%m/%Y"),
-                             max    = max(UK.data$date))
-      } else{
-        updateDateRangeInput(session, "dateRange_UK", 
-                             start  = as.Date("09/03/2020", "%d/%m/%Y"),
-                             end    = max(UK.data$date), 
-                             min    = as.Date("09/03/2020", "%d/%m/%Y"),
-                             max    = max(UK.data$date))
-        
-      }
-    }
-  })
-  
   formulaText <- reactive({
     paste(input$country)
   })
@@ -128,20 +107,31 @@ shinyServer(function(input, output, session) {
   red2 <- data.county[data.county$date == max(data.county$date) & data.county$type == "total_cases",]
   red2 <- red2[order(red2$number,decreasing=TRUE),]
   
+  red3 <- data.county[data.county$date == max(data.county$date) & data.county$type == "total_cases",]
+  red3 <- red3[order(red3$number_pop,decreasing=TRUE),]
+  
   output$county_newcase_update <- renderText({
-    paste("Top 5 highest new daily cases: ", as.character(red$county_UA[1])," (", red$number[1],"), ",
-          as.character(red$county_UA[2])," (", red$number[2],"), ",
-          as.character(red$county_UA[3])," (", red$number[3],"), ",
-          as.character(red$county_UA[4])," (", red$number[4],"), ",
-          as.character(red$county_UA[5])," (", red$number[5],"), ", sep="")
+    paste("Top 5 highest new daily reported cases: ", as.character(red$area[1])," (", red$number[1],"), ",
+          as.character(red$area[2])," (", red$number[2],"), ",
+          as.character(red$area[3])," (", red$number[3],"), ",
+          as.character(red$area[4])," (", red$number[4],"), ",
+          as.character(red$area[5])," (", red$number[5],"), ", sep="")
   })
   
   output$county_totalcase_update <- renderText({
-    paste("Top 5 highest total cases: ", as.character(red2$county_UA[1])," (", red2$number[1],"), ",
-          as.character(red2$county_UA[2])," (", red2$number[2],"), ",
-          as.character(red2$county_UA[3])," (", red2$number[3],"), ",
-          as.character(red2$county_UA[4])," (", red2$number[4],"), ",
-          as.character(red2$county_UA[5])," (", red2$number[5],"), ", sep="")
+    paste("Top 5 highest total reported cases: ", as.character(red2$area[1])," (", red2$number[1],"), ",
+          as.character(red2$area[2])," (", red2$number[2],"), ",
+          as.character(red2$area[3])," (", red2$number[3],"), ",
+          as.character(red2$area[4])," (", red2$number[4],"), ",
+          as.character(red2$area[5])," (", red2$number[5],"), ", sep="")
+  })
+  
+  output$county_totalcase_rate_update <- renderText({
+    paste("Top 5 highest total reported cases per 100,000 population: ", as.character(red3$area[1])," (", round(red3$number_pop[1],0),"), ",
+          as.character(red3$area[2])," (", round(red3$number_pop[2],0),"), ",
+          as.character(red3$area[3])," (", round(red3$number_pop[3],0),"), ",
+          as.character(red3$area[4])," (", round(red3$number_pop[4],0),"), ",
+          as.character(red3$area[5])," (", round(red3$number_pop[5],0),"), ", sep="")
   })
   
   
@@ -373,8 +363,8 @@ shinyServer(function(input, output, session) {
     
     UK.data<- UK.data[UK.data$type %in% lines, ]
     if (input$pop_UK=="pop_yes"){
-      p <- ggplot(UK.data) + geom_point(aes(x=date, y=100000*number/66440000, col=type),size=1.5) +
-        geom_line(aes(x=date, y=100000*number/66440000, col=type),size=1) +
+      p <- ggplot(UK.data) + geom_point(aes(x=date, y=number_pop, col=type),size=1.5) +
+        geom_line(aes(x=date, y=number_pop, col=type),size=1) +
         scale_x_date(limits=c(input$dateRange_UK[1],input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Number (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
@@ -391,7 +381,7 @@ shinyServer(function(input, output, session) {
                             labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
         guides(linetype = guide_legend(override.aes = list(size = 20)))
       if(input$log_UK=='log_yes'){
-        p <- p + scale_y_log10()
+        p <- p + scale_y_log10(labels = scales::number_format(accuracy = 0.01))
       }
       } else{
         p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
@@ -412,7 +402,7 @@ shinyServer(function(input, output, session) {
                               labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
           guides(linetype = guide_legend(override.aes = list(size = 20)))
         if(input$log_UK=='log_yes'){
-          p <- p + scale_y_log10(labels = scales::comma)
+          p <- p + scale_y_log10()
         }
       }
       p
@@ -421,25 +411,13 @@ shinyServer(function(input, output, session) {
   # UK plot
   output$UKPlot_by_country <- renderPlot({
     lines <- c(as.character(input$checkGroup_UK))
-    
+    UK_by_country <- UK_by_country[UK_by_country$type %in% c("total_deaths","new_deaths"),]
     UK_by_country<- UK_by_country[UK_by_country$type %in% lines, ]
     
-    val <- input$checkGroup_UK
-    if(length(val)<3 & input$tabs_UK==2){
-      x <- sum("new_deaths" %in% val, "total_deaths" %in% val)
-      if(x==length(val)) {
-        date.min <- as.Date("27/03/2020", "%d/%m/%Y")
-      } else {
-        date.min <- as.Date("09/03/2020", "%d/%m/%Y")
-      }
-      } else {
-        date.min <- as.Date("09/03/2020", "%d/%m/%Y")
-      }
-    
     if (input$pop_UK=="pop_yes"){
-      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=100000*number/pop, col=country),size=1.5) +
-        geom_line(aes(x=date, y=100000*number/pop, col=country, linetype=type),size=1) +
-        scale_x_date(limits=c(date.min,input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Number (per 100,000)") +
+      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number_pop, col=area),size=1.5) +
+        geom_line(aes(x=date, y=number_pop, col=area, linetype=type),size=1) +
+        scale_x_date(limits=c(as.Date("2020-03-27","%Y-%m-%d"),input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Deaths (per 100,000)") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -449,19 +427,19 @@ shinyServer(function(input, output, session) {
               legend.text = element_text(size=13),
               legend.position = 'top', 
               legend.spacing.x = unit(0.4, 'cm'),
-              panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
-                                                                                   breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
-                                                                                   labels=c("Cases (total)","Cases (daily)","Deaths (total)","Deaths (daily)")) +
+              panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_deaths" =3, "new_deaths"=4),
+                                                                                   breaks=c("total_deaths","new_deaths"),
+                                                                                   labels=c("Deaths (total)","Deaths (daily)")) +
         guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
         theme(legend.direction = "horizontal",legend.box = "vertical")
       
       if(input$log_UK=='log_yes'){
-        p <- p + scale_y_log10()
+        p <- p + scale_y_log10(labels = scales::number_format(accuracy = 0.01))
       }
     }else{
-      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=country),size=1.5) +
-        geom_line(aes(x=date, y=number, col=country, linetype=type),size=1) +
-        scale_x_date(limits=c(date.min,input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Number") +
+      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=area),size=1.5) +
+        geom_line(aes(x=date, y=number, col=area, linetype=type),size=1) +
+        scale_x_date(limits=c(as.Date("2020-03-27","%Y-%m-%d"),input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Deaths") +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -490,35 +468,53 @@ shinyServer(function(input, output, session) {
     
     lines <- c(as.character(input$checkGroup_region))
     
-    if (input$pop=="pop_yes"){
-      data.region <- data.region.pop
-    }
     data.region<- data.region[data.region$type %in% lines, ]
   
-    p.pop <- ggplot(data.region) + geom_point(aes(x=date, y=number, col=region),size=1.5) +
-      geom_line(aes(x=date, y=number, col=region, linetype=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_region[1],input$dateRange_region[2])) + xlab(label = "") +ylab(label="Cases") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.title = element_blank(),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) + scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2),
-                                                                                breaks=c("total_cases","new_cases"),
-                                                                                labels=c("Cases (total)","Cases (daily)")) +
-      guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
-      theme(legend.direction = "horizontal",legend.box = "vertical")
     if (input$pop=="pop_yes"){
-      p.pop <- p.pop +  ylab(label="Cases (per 100,000)")
+      p.pop <- ggplot(data.region) + geom_point(aes(x=date, y=number_pop, col=area),size=1.5) +
+        geom_line(aes(x=date, y=number_pop, col=area, linetype=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_region[1],input$dateRange_region[2])) + xlab(label = "") +ylab(label="Cases (per 100,000)") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-1.5),
+              axis.title.y = element_text(vjust=2),
+              legend.title = element_blank(),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) + scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2),
+                                                                                  breaks=c("total_cases","new_cases"),
+                                                                                  labels=c("Cases (total)","Cases (daily)")) +
+        guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+        theme(legend.direction = "horizontal",legend.box = "vertical")
+      if(input$log_region=='log_yes'){
+        p.pop <- p.pop + scale_y_log10(labels = scales::number_format(accuracy = 0.01))
+      }
+      
+    } else{
+      p.pop <- ggplot(data.region) + geom_point(aes(x=date, y=number, col=area),size=1.5) +
+        geom_line(aes(x=date, y=number, col=area, linetype=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_region[1],input$dateRange_region[2])) + xlab(label = "") +ylab(label="Cases") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-1.5),
+              axis.title.y = element_text(vjust=2),
+              legend.title = element_blank(),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) + scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2),
+                                                                                  breaks=c("total_cases","new_cases"),
+                                                                                  labels=c("Cases (total)","Cases (daily)")) +
+        guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+        theme(legend.direction = "horizontal",legend.box = "vertical")
+      if(input$log_region=='log_yes'){
+        p.pop <- p.pop + scale_y_log10()
+      }
     }
     
-    if(input$log_region=='log_yes'){
-      p.pop <- p.pop + scale_y_log10(labels = scales::comma)
-    }
       p.pop
   })
   
@@ -528,22 +524,49 @@ shinyServer(function(input, output, session) {
     
     data.county <- data.county[data.county$type %in% lines, ]
     
-    ggplot(data.county[data.county$county_UA==paste(formulaText_county(),sep=""),]) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
-      geom_line(aes(x=date, y=number, col=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_county[1],input$dateRange_county[2])) + xlab(label = "") +ylab(label="Cases") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +
-      scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c"),
-                          breaks=c("new_cases","total_cases"),
-                          labels=c("Cases (daily)", "Cases (total)")) +
-      guides(linetype = guide_legend(override.aes = list(size = 20)))
+    if (input$pop_utla=="pop_yes"){
+      p.utla <- ggplot(data.county[data.county$area==paste(formulaText_county(),sep=""),]) + geom_point(aes(x=date, y=number_pop, col=type),size=1.5) +
+        geom_line(aes(x=date, y=number_pop, col=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_county[1],input$dateRange_county[2])) + xlab(label = "") +ylab(label="Cases") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-1.5),
+              axis.title.y = element_text(vjust=2),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) +
+        scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c"),
+                            breaks=c("new_cases","total_cases"),
+                            labels=c("Cases (daily)", "Cases (total)")) +
+        guides(linetype = guide_legend(override.aes = list(size = 20)))
+      if(input$log_utla=='log_yes'){
+        p.utla <- p.utla + scale_y_log10(labels = scales::number_format(accuracy = 0.01))
+      }
+    } else{
+      p.utla <- ggplot(data.county[data.county$area==paste(formulaText_county(),sep=""),]) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
+        geom_line(aes(x=date, y=number, col=type),size=1) +
+        scale_x_date(limits=c(input$dateRange_county[1],input$dateRange_county[2])) + xlab(label = "") +ylab(label="Cases") +
+        theme_classic()+
+        theme(axis.text=element_text(size=13),
+              axis.title=element_text(size=16), 
+              axis.title.x = element_text(vjust=-1.5),
+              axis.title.y = element_text(vjust=2),
+              legend.text = element_text(size=13),
+              legend.position = 'top', 
+              legend.spacing.x = unit(0.4, 'cm'),
+              panel.grid.major.y=element_line(size=0.05)) +
+        scale_colour_manual(name="",values = c("total_cases" = "#000000", "new_cases" = "#e41a1c"),
+                            breaks=c("new_cases","total_cases"),
+                            labels=c("Cases (daily)", "Cases (total)")) +
+        guides(linetype = guide_legend(override.aes = list(size = 20)))
+      if(input$log_utla=='log_yes'){
+        p.utla <- p.utla + scale_y_log10()
+      }
+    }
+    p.utla
+    
   })
   
   # UK testing plot
@@ -569,7 +592,7 @@ shinyServer(function(input, output, session) {
                           breaks=c("new_tested","total_tested"),
                           labels=c("Daily", "Total"))
     if(input$log_test=='log_yes'){
-      p.test <- p.test + scale_y_log10(labels = scales::comma)
+      p.test <- p.test + scale_y_log10()
     }
     p.test
   })
