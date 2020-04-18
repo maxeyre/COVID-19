@@ -91,5 +91,5 @@ import sys
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "json_to_csv":
-        json_to_csv(sys.argv[2])
+        json_to_csv(sys.argv[1])
     
