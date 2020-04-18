@@ -214,9 +214,9 @@ shinyUI(fluidPage(
                                     h3("Live epidemic curve of UK"),
                                     plotOutput("UKPlot")
                                     ),
-                           tabPanel("UK - countries", value = 2,
-                                    h3("Live epidemic curve of UK by country"),
-                                    h6("Death data only available from 27/03/2020"),
+                           tabPanel("UK - deaths by countries", value = 2,
+                                    h3("UK deaths by country"),
+                                    h6("Death data only available from 27/03/2020; case data by country currently unavailable from PHE"),
                                     plotOutput("UKPlot_by_country")
                                     )
                           ),
@@ -240,7 +240,7 @@ shinyUI(fluidPage(
            h6("3. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common for the UK."),
            sidebarLayout(
              sidebarPanel(
-               checkboxGroupInput("checkGroup_region", "", choices = list("Reported dases (daily)" = "new_cases", 
+               checkboxGroupInput("checkGroup_region", "", choices = list("Reported cases (daily)" = "new_cases", 
                                                                           "Reported cases (total)" = "total_cases"),selected = 2),
                dateRangeInput("dateRange_region", "Date range",
                               start  = min(data.region$date),
@@ -265,10 +265,10 @@ shinyUI(fluidPage(
              )
            )
   ),
-    tabPanel("England - Local authorities",
+    tabPanel("England - Local Authorities",
              h5("Please use the menu bar on the left to navigate to different sections"),
              p("Updating: PHE data source has changed - graphs will have latest data by 15:00 BST 17/04/2020", style = "color:red"),
-             h3("Live epidemic curves for Local Authorities of England"),
+             h3("Live epidemic curves for Upper Tier Local Authorities of England"),
            h6("Data source: Public Health England (updated every 24hrs)"),
            h6("1. Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
            h6("2. Deaths are only deaths within hospitals."),
@@ -280,14 +280,21 @@ shinyUI(fluidPage(
                                                                    "Reported cases (total)" = "total_cases"),selected = 1),
                
                dateRangeInput("dateRange_county", "Date range",
-                              start  = min(data.county$date),
+                              start  = as.Date("2020-03-01","%Y-%m-%d"),
                               end    = max(data.county$date),
-                              min    = min(data.county$date),
-                              max    = max(data.county$date))
+                              min    = as.Date("2020-03-01","%Y-%m-%d"),
+                              max    = max(data.county$date)),
+               radioButtons("pop_utla", "Cases",
+                            choices=c('Number of cases'="pop_no",
+                                      'Per 100,000 population'='pop_yes')),
+               radioButtons("log_utla", "y-axis scale:",
+                            choices=c('Linear'="log_no",
+                                      'Log'='log_yes'))
                ),
              mainPanel(
                h5(textOutput("county_newcase_update")),
                h5(textOutput("county_totalcase_update")),
+               h5(textOutput("county_totalcase_rate_update")),
                h3(textOutput("caption_county")),
                plotOutput("englandcountyPlot"),
                h6("Made by Max Eyre"),
