@@ -25,7 +25,7 @@ UK$division[UK$division=="Country - UK"] <- "UK"
 	
 #=======#### DATA PROCESSING ####=======#
 # Just adding population estimates to each entry
-pop_UTLA <- read_csv("data/original/area_populations.csv")
+pop_UTLA <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/area_populations.csv")
 pop_country <- data.frame(country=c("England","Scotland","Wales","Northern Ireland"), population=c(55980000,5438000,3139000,1882000))
 pop_NHSregion <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/NHS_england_regions_pop.csv") %>%
   rename(population=pop)

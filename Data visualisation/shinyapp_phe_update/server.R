@@ -127,11 +127,11 @@ shinyServer(function(input, output, session) {
   })
   
   output$county_totalcase_rate_update <- renderText({
-    paste("Top 5 highest total reported cases per 100,000 population: ", as.character(red3$area[1])," (", red3$number_pop[1],"), ",
-          as.character(red3$area[2])," (", red3$number_pop[2],"), ",
-          as.character(red3$area[3])," (", red3$number_pop[3],"), ",
-          as.character(red3$area[4])," (", red3$number_pop[4],"), ",
-          as.character(red3$area[5])," (", red3$number_pop[5],"), ", sep="")
+    paste("Top 5 highest total reported cases per 100,000 population: ", as.character(red3$area[1])," (", round(red3$number_pop[1],0),"), ",
+          as.character(red3$area[2])," (", round(red3$number_pop[2],0),"), ",
+          as.character(red3$area[3])," (", round(red3$number_pop[3],0),"), ",
+          as.character(red3$area[4])," (", round(red3$number_pop[4],0),"), ",
+          as.character(red3$area[5])," (", round(red3$number_pop[5],0),"), ", sep="")
   })
   
   
@@ -381,7 +381,7 @@ shinyServer(function(input, output, session) {
                             labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
         guides(linetype = guide_legend(override.aes = list(size = 20)))
       if(input$log_UK=='log_yes'){
-        p <- p + scale_y_log10()
+        p <- p + scale_y_log10(labels = scales::number_format(accuracy = 0.01))
       }
       } else{
         p <- ggplot(UK.data) + geom_point(aes(x=date, y=number, col=type),size=1.5) +
@@ -402,7 +402,7 @@ shinyServer(function(input, output, session) {
                               labels=c("Cases (daily)", "Cases (total)", "Deaths (daily)","Deaths (total)")) +
           guides(linetype = guide_legend(override.aes = list(size = 20)))
         if(input$log_UK=='log_yes'){
-          p <- p + scale_y_log10(labels = scales::number_format(accuracy = 0.01))
+          p <- p + scale_y_log10()
         }
       }
       p
