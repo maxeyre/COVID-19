@@ -11,12 +11,16 @@ DATAURL="https://c19pub.azureedge.net/" # + data_{date}.json
 
 
 def get_listing():
+    """ get the XML from the data source """
     response = urllib.request.urlopen(DATALISTURL)
     xmldata = response.read()
     text = xmldata.decode("utf-8")
     return text
 
 def get_datafiles(xmltext):
+    """ get sorted list of data files from listing XML 
+    First one is most recent
+    Each element is a dict with Name and Date"""
     root = ET.fromstring(xmltext)
     datablobs = root.find("Blobs").findall("Blob")
     datadata = [
@@ -92,3 +96,12 @@ if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "json_to_csv":
         json_to_csv(sys.argv[2])
+    if cmd == "get_latest_csv":
+        pass
+    if cmd == "build":
+        listing = get_listing()
+        datafiles = get_datafiles(listing)
+        download_datafiles(datafiles, "./public")
+        latest = datafiles[0]
+        latestpath = os.path.join("./public",latest['Name'])
+        json_to_csv(latestpath)
