@@ -13,10 +13,12 @@
   - View time series data for cumulative and daily figures of confirmed cases, deaths and recoveries for all countries reporting at least one confirmed case (can view per 100,000 population)
   - Compare time series data for cumulative and daily figures of confirmed cases, deaths and recoveries of multiple countries starting from the day when: 100 cases/5 deaths/1 case per 100,000/0.5 deaths per 100,000 were reached
 #### UK
-  - View time series data for cumulative and daily figures of confirmed cases and deaths for the UK and by each country: England, Wales, Northern Ireland and Scotland (can view per 100,000 population)
+  - View time series data for cumulative and daily figures of confirmed deaths for the UK by each country: England, Wales, Northern Ireland and Scotland (can view per 100,000 population)
   - View time series data for cumulative and daily figures of confirmed cases for each NHS England region (can view per 100,000 population)
   - View time series data for cumulative and daily figures of confirmed cases for each UTLA - Local Authority in England (can view per 100,000 population)
   - View time series data for cumulative and daily figures of number of people tested for COVID-19 in the UK and the proportion of these individuals who were confirmed as being positive.
+#### Brazil
+- View time series data by Brazilian state (data source: [Wesley Cota](https://github.com/wcota/covid19br))
  
  ## Data
  Please feel free to use any data in this public repository. You will find the daily scraped data in tidy form in [this folder](https://github.com/maxeyre/COVID-19/tree/master/data_scraper/data/processed) as follows:
@@ -25,9 +27,6 @@
  - [For countries with over 100 confirmed cases (dates relative to the date they reach this number)](https://github.com/maxeyre/COVID-19/blob/master/data_scraper/data/processed/JHU_100-cases.csv)
  - [For countries with over 5 confirmed deaths (dates relative to the date they reach this number)](https://github.com/maxeyre/COVID-19/blob/master/data_scraper/data/processed/JHU_5-deaths.csv)
  #### Public Health England data
- - [Overview of UK cases and deaths](https://github.com/maxeyre/COVID-19/blob/master/data_scraper/data/processed/UK_total.csv)
- - [Case and death data for England, Wales, Northern Ireland and Scotland](https://github.com/maxeyre/COVID-19/blob/master/data_scraper/data/processed/UK_by_country.csv)
- - [Case data for NHS England regions](https://github.com/maxeyre/COVID-19/blob/master/data_scraper/data/processed/NHS_england_regions.csv)
- - [Cases per 100,000 population data for NHS England regions](https://github.com/maxeyre/COVID-19/blob/master/data_scraper/data/processed/NHS_england_regions_pop.csv)
- - [Case data for England UTLA](https://github.com/maxeyre/COVID-19/blob/master/data_scraper/data/processed/england_UTLA.csv)
+ - [Tidy full UK dataset](https://github.com/maxeyre/COVID-19/blob/master/data_scraper/data/processed/UK.csv)
+
  
