@@ -12,6 +12,11 @@ Rscript 01_download-daily-PHE_data.R
 Rscript 02_download-daily-JHU_data.R
 Rscript 03_download-daily-brazil_data.R
 
+git add -A
+git commit -m “scrape”
+git push origin master
+echo “Data scraped”
+
 cd public
 echo "<h1>Coronavirus data</h1>" > index.html
 cat >>index.html <<EOF
