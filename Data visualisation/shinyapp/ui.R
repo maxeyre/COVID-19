@@ -103,7 +103,7 @@ shinyUI(fluidPage(
     tabPanel("By country",
              h5("Please use the menu bar on the left to navigate to different sections"),
              p("Updates: ", style = "color:red"),
-             p("1. PHE data source now changed and up to date", style = "color:red"),
+             p("1. PHE data source now changed and up to date and data issues resolved (20/04/2020)", style = "color:red"),
              p("2. Cases per population available for English Local Authorities", style = "color:red"),
              p("3. Only data up to two days before the current date is shown for NHS England and UTLA regions because they appear to be experiencing significant reporting delays", style = "color:red"),
              h3("Live epidemic curves by country"),
