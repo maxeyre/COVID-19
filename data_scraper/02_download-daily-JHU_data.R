@@ -122,7 +122,7 @@ UK.JHU_recov$number_pop <- NA
 UK.correct <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/UK_total.csv")
 UK.correct$country <- "United Kingdom"
 UK.correct$pop <- 67886011
-UK.correct$number_pop <- UK.correct$number/UK.correct$pop
+UK.correct$number_pop <- 100000*UK.correct$number/UK.correct$pop
 
 UK.data<- bind_rows(UK.JHU2,UK.correct, UK.JHU_recov)
 
