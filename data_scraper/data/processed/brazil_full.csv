@@ -655,7 +655,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-18,DF,Distrito Federal,2914830,total_cases,796,27.30862520284202
 2020-04-19,DF,Distrito Federal,2914830,total_cases,860,29.504293560859466
 2020-04-20,DF,Distrito Federal,2914830,total_cases,875,30.018903332269808
-2020-04-21,DF,Distrito Federal,2914830,total_cases,909,31.185352147466578
+2020-04-21,DF,Distrito Federal,2914830,total_cases,913,31.322581419842667
 2020-04-22,DF,Distrito Federal,2914830,total_cases,959,32.90071805216771
 2020-04-23,DF,Distrito Federal,2914830,total_cases,968,33.20948391501391
 2020-04-24,DF,Distrito Federal,2914830,total_cases,1140,39.11034262718581
@@ -2275,8 +2275,8 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-18,DF,Distrito Federal,2914830,new_cases,40,1.3722927237609055
 2020-04-19,DF,Distrito Federal,2914830,new_cases,64,2.1956683580174485
 2020-04-20,DF,Distrito Federal,2914830,new_cases,15,0.5146097714103396
-2020-04-21,DF,Distrito Federal,2914830,new_cases,34,1.1664488151967696
-2020-04-22,DF,Distrito Federal,2914830,new_cases,50,1.7153659047011318
+2020-04-21,DF,Distrito Federal,2914830,new_cases,38,1.3036780875728602
+2020-04-22,DF,Distrito Federal,2914830,new_cases,46,1.5781366323250412
 2020-04-23,DF,Distrito Federal,2914830,new_cases,9,0.3087658628462037
 2020-04-24,DF,Distrito Federal,2914830,new_cases,172,5.900858712171893
 2020-02-25,ES,Espírito Santo,3929911,new_cases,0,0
@@ -3838,7 +3838,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-21,BA,Bahia,15203934,total_deaths,48,0.3157077635301495
 2020-04-22,BA,Bahia,15203934,total_deaths,53,0.3485939888978734
 2020-04-23,BA,Bahia,15203934,total_deaths,62,0.4077891945597764
-2020-04-24,BA,Bahia,15203934,total_deaths,64,0.420943684706866
+2020-04-24,BA,Bahia,15203934,total_deaths,67,0.44067541992750037
 2020-02-25,DF,Distrito Federal,2914830,total_deaths,0,0
 2020-02-26,DF,Distrito Federal,2914830,total_deaths,0,0
 2020-02-27,DF,Distrito Federal,2914830,total_deaths,0,0
@@ -4138,7 +4138,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-21,PA,Pará,8175113,total_deaths,38,0.46482537917212885
 2020-04-22,PA,Pará,8175113,total_deaths,43,0.5259866132737248
 2020-04-23,PA,Pará,8175113,total_deaths,53,0.6483090814769166
-2020-04-24,PA,Pará,8175113,total_deaths,75,0.9174185115239386
+2020-04-24,PA,Pará,8175113,total_deaths,86,1.0519732265474495
 2020-02-25,GO,Goiás,6610681,total_deaths,0,0
 2020-02-26,GO,Goiás,6610681,total_deaths,0,0
 2020-02-27,GO,Goiás,6610681,total_deaths,0,0
@@ -4438,7 +4438,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-21,PB,Paraíba,3972202,total_deaths,39,0.9818231801907356
 2020-04-22,PB,Paraíba,3972202,total_deaths,40,1.0069981335289595
 2020-04-23,PB,Paraíba,3972202,total_deaths,44,1.1076979468818555
-2020-04-24,PB,Paraíba,3972202,total_deaths,44,1.1076979468818555
+2020-04-24,PB,Paraíba,3972202,total_deaths,46,1.1580478535583034
 2020-02-25,RR,Roraima,505665,total_deaths,0,0
 2020-02-26,RR,Roraima,505665,total_deaths,0,0
 2020-02-27,RR,Roraima,505665,total_deaths,0,0
@@ -4738,7 +4738,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-21,PI,Piauí,3204028,total_deaths,15,0.4681607027154569
 2020-04-22,PI,Piauí,3204028,total_deaths,15,0.4681607027154569
 2020-04-23,PI,Piauí,3204028,total_deaths,16,0.49937141622982073
-2020-04-24,PI,Piauí,3204028,total_deaths,16,0.49937141622982073
+2020-04-24,PI,Piauí,3204028,total_deaths,17,0.5305821297441845
 2020-02-25,RO,Rondônia,1768204,total_deaths,0,0
 2020-02-26,RO,Rondônia,1768204,total_deaths,0,0
 2020-02-27,RO,Rondônia,1768204,total_deaths,0,0
@@ -5458,7 +5458,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-21,BA,Bahia,15203934,new_deaths,1,0.006577245073544781
 2020-04-22,BA,Bahia,15203934,new_deaths,5,0.032886225367723905
 2020-04-23,BA,Bahia,15203934,new_deaths,9,0.05919520566190303
-2020-04-24,BA,Bahia,15203934,new_deaths,2,0.013154490147089562
+2020-04-24,BA,Bahia,15203934,new_deaths,5,0.032886225367723905
 2020-02-25,DF,Distrito Federal,2914830,new_deaths,0,0
 2020-02-26,DF,Distrito Federal,2914830,new_deaths,0,0
 2020-02-27,DF,Distrito Federal,2914830,new_deaths,0,0
@@ -5758,7 +5758,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-21,PA,Pará,8175113,new_deaths,3,0.03669674046095754
 2020-04-22,PA,Pará,8175113,new_deaths,5,0.06116123410159591
 2020-04-23,PA,Pará,8175113,new_deaths,10,0.12232246820319181
-2020-04-24,PA,Pará,8175113,new_deaths,22,0.269109430047022
+2020-04-24,PA,Pará,8175113,new_deaths,33,0.40366414507053294
 2020-02-25,GO,Goiás,6610681,new_deaths,0,0
 2020-02-26,GO,Goiás,6610681,new_deaths,0,0
 2020-02-27,GO,Goiás,6610681,new_deaths,0,0
@@ -6058,7 +6058,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-21,PB,Paraíba,3972202,new_deaths,6,0.15104972002934391
 2020-04-22,PB,Paraíba,3972202,new_deaths,1,0.025174953338223987
 2020-04-23,PB,Paraíba,3972202,new_deaths,4,0.10069981335289595
-2020-04-24,PB,Paraíba,3972202,new_deaths,0,0
+2020-04-24,PB,Paraíba,3972202,new_deaths,2,0.050349906676447974
 2020-02-25,RR,Roraima,505665,new_deaths,0,0
 2020-02-26,RR,Roraima,505665,new_deaths,0,0
 2020-02-27,RR,Roraima,505665,new_deaths,0,0
@@ -6358,7 +6358,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-21,PI,Piauí,3204028,new_deaths,1,0.031210713514363796
 2020-04-22,PI,Piauí,3204028,new_deaths,0,0
 2020-04-23,PI,Piauí,3204028,new_deaths,1,0.031210713514363796
-2020-04-24,PI,Piauí,3204028,new_deaths,0,0
+2020-04-24,PI,Piauí,3204028,new_deaths,1,0.031210713514363796
 2020-02-25,RO,Rondônia,1768204,new_deaths,0,0
 2020-02-26,RO,Rondônia,1768204,new_deaths,0,0
 2020-02-27,RO,Rondônia,1768204,new_deaths,0,0
