@@ -494,7 +494,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,PR,Paraná,11163018,total_cases,1096,9.81813341159174
 2020-04-24,PR,Paraná,11163018,total_cases,1133,10.149584995742192
 2020-04-25,PR,Paraná,11163018,total_cases,1155,10.346664316047864
-2020-04-26,PR,Paraná,11163018,total_cases,1156,10.35562246697085
+2020-04-26,PR,Paraná,11163018,total_cases,1171,10.489994730815628
 2020-02-25,RS,Rio Grande do Sul,11247972,total_cases,0,0
 2020-02-26,RS,Rio Grande do Sul,11247972,total_cases,0,0
 2020-02-27,RS,Rio Grande do Sul,11247972,total_cases,0,0
@@ -2168,7 +2168,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,PR,Paraná,11163018,new_cases,19,0.17020486753671812
 2020-04-24,PR,Paraná,11163018,new_cases,37,0.33145158415045106
 2020-04-25,PR,Paraná,11163018,new_cases,22,0.1970793203056736
-2020-04-26,PR,Paraná,11163018,new_cases,1,0.008958150922985164
+2020-04-26,PR,Paraná,11163018,new_cases,16,0.14333041476776262
 2020-02-25,RS,Rio Grande do Sul,11247972,new_cases,0,0
 2020-02-26,RS,Rio Grande do Sul,11247972,new_cases,0,0
 2020-02-27,RS,Rio Grande do Sul,11247972,new_cases,0,0
@@ -3842,7 +3842,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,PR,Paraná,11163018,total_deaths,62,0.5554053572250802
 2020-04-24,PR,Paraná,11163018,total_deaths,67,0.600196111840006
 2020-04-25,PR,Paraná,11163018,total_deaths,71,0.6360287155319466
-2020-04-26,PR,Paraná,11163018,total_deaths,72,0.6449868664549319
+2020-04-26,PR,Paraná,11163018,total_deaths,75,0.6718613192238873
 2020-02-25,RS,Rio Grande do Sul,11247972,total_deaths,0,0
 2020-02-26,RS,Rio Grande do Sul,11247972,total_deaths,0,0
 2020-02-27,RS,Rio Grande do Sul,11247972,total_deaths,0,0
@@ -4090,7 +4090,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,ES,Espírito Santo,3929911,total_deaths,43,1.09417236166417
 2020-04-24,ES,Espírito Santo,3929911,total_deaths,47,1.1959558371678136
 2020-04-25,ES,Espírito Santo,3929911,total_deaths,52,1.3231851815473683
-2020-04-26,ES,Espírito Santo,3929911,total_deaths,52,1.3231851815473683
+2020-04-26,ES,Espírito Santo,3929911,total_deaths,57,1.450414525926923
 2020-02-25,MA,Maranhão,6904241,total_deaths,0,0
 2020-02-26,MA,Maranhão,6904241,total_deaths,0,0
 2020-02-27,MA,Maranhão,6904241,total_deaths,0,0
@@ -4276,7 +4276,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,PA,Pará,8175113,total_deaths,53,0.6483090814769166
 2020-04-24,PA,Pará,8175113,total_deaths,86,1.0519732265474495
 2020-04-25,PA,Pará,8175113,total_deaths,95,1.1620634479303222
-2020-04-26,PA,Pará,8175113,total_deaths,100,1.2232246820319181
+2020-04-26,PA,Pará,8175113,total_deaths,114,1.3944761375163865
 2020-02-25,GO,Goiás,6610681,total_deaths,0,0
 2020-02-26,GO,Goiás,6610681,total_deaths,0,0
 2020-02-27,GO,Goiás,6610681,total_deaths,0,0
@@ -4400,7 +4400,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,AP,Amapá,766679,total_deaths,16,2.086922949500378
 2020-04-24,AP,Amapá,766679,total_deaths,18,2.347788318187925
 2020-04-25,AP,Amapá,766679,total_deaths,20,2.608653686875472
-2020-04-26,AP,Amapá,766679,total_deaths,21,2.7390863712192455
+2020-04-26,AP,Amapá,766679,total_deaths,23,2.999951739906793
 2020-02-25,MT,Mato Grosso,3265486,total_deaths,0,0
 2020-02-26,MT,Mato Grosso,3265486,total_deaths,0,0
 2020-02-27,MT,Mato Grosso,3265486,total_deaths,0,0
@@ -4896,7 +4896,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,PI,Piauí,3204028,total_deaths,16,0.49937141622982073
 2020-04-24,PI,Piauí,3204028,total_deaths,17,0.5305821297441845
 2020-04-25,PI,Piauí,3204028,total_deaths,18,0.5617928432585483
-2020-04-26,PI,Piauí,3204028,total_deaths,18,0.5617928432585483
+2020-04-26,PI,Piauí,3204028,total_deaths,20,0.6242142702872759
 2020-02-25,RO,Rondônia,1768204,total_deaths,0,0
 2020-02-26,RO,Rondônia,1768204,total_deaths,0,0
 2020-02-27,RO,Rondônia,1768204,total_deaths,0,0
@@ -5516,7 +5516,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,PR,Paraná,11163018,new_deaths,2,0.017916301845970328
 2020-04-24,PR,Paraná,11163018,new_deaths,5,0.04479075461492582
 2020-04-25,PR,Paraná,11163018,new_deaths,4,0.035832603691940655
-2020-04-26,PR,Paraná,11163018,new_deaths,1,0.008958150922985164
+2020-04-26,PR,Paraná,11163018,new_deaths,4,0.035832603691940655
 2020-02-25,RS,Rio Grande do Sul,11247972,new_deaths,0,0
 2020-02-26,RS,Rio Grande do Sul,11247972,new_deaths,0,0
 2020-02-27,RS,Rio Grande do Sul,11247972,new_deaths,0,0
@@ -5764,7 +5764,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,ES,Espírito Santo,3929911,new_deaths,6,0.15267521325546557
 2020-04-24,ES,Espírito Santo,3929911,new_deaths,4,0.10178347550364372
 2020-04-25,ES,Espírito Santo,3929911,new_deaths,5,0.12722934437955466
-2020-04-26,ES,Espírito Santo,3929911,new_deaths,0,0
+2020-04-26,ES,Espírito Santo,3929911,new_deaths,5,0.12722934437955466
 2020-02-25,MA,Maranhão,6904241,new_deaths,0,0
 2020-02-26,MA,Maranhão,6904241,new_deaths,0,0
 2020-02-27,MA,Maranhão,6904241,new_deaths,0,0
@@ -5950,7 +5950,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,PA,Pará,8175113,new_deaths,10,0.12232246820319181
 2020-04-24,PA,Pará,8175113,new_deaths,33,0.40366414507053294
 2020-04-25,PA,Pará,8175113,new_deaths,9,0.11009022138287262
-2020-04-26,PA,Pará,8175113,new_deaths,5,0.06116123410159591
+2020-04-26,PA,Pará,8175113,new_deaths,19,0.23241268958606442
 2020-02-25,GO,Goiás,6610681,new_deaths,0,0
 2020-02-26,GO,Goiás,6610681,new_deaths,0,0
 2020-02-27,GO,Goiás,6610681,new_deaths,0,0
@@ -6074,7 +6074,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,AP,Amapá,766679,new_deaths,2,0.26086536868754723
 2020-04-24,AP,Amapá,766679,new_deaths,2,0.26086536868754723
 2020-04-25,AP,Amapá,766679,new_deaths,2,0.26086536868754723
-2020-04-26,AP,Amapá,766679,new_deaths,1,0.13043268434377361
+2020-04-26,AP,Amapá,766679,new_deaths,3,0.3912980530313208
 2020-02-25,MT,Mato Grosso,3265486,new_deaths,0,0
 2020-02-26,MT,Mato Grosso,3265486,new_deaths,0,0
 2020-02-27,MT,Mato Grosso,3265486,new_deaths,0,0
@@ -6570,7 +6570,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-04-23,PI,Piauí,3204028,new_deaths,1,0.031210713514363796
 2020-04-24,PI,Piauí,3204028,new_deaths,1,0.031210713514363796
 2020-04-25,PI,Piauí,3204028,new_deaths,1,0.031210713514363796
-2020-04-26,PI,Piauí,3204028,new_deaths,0,0
+2020-04-26,PI,Piauí,3204028,new_deaths,2,0.06242142702872759
 2020-02-25,RO,Rondônia,1768204,new_deaths,0,0
 2020-02-26,RO,Rondônia,1768204,new_deaths,0,0
 2020-02-27,RO,Rondônia,1768204,new_deaths,0,0
