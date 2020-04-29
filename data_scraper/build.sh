@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin
-cd Documents/4_Projects/COVID-19/data_scraper
+cd Documents/1_Projects/COVID/COVID-19/data_scraper
 
 mkdir -p public
 
