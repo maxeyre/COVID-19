@@ -5,6 +5,9 @@ cd Documents/1_Projects/2_COVID/COVID-19/data_scraper
 
 mkdir -p public
 
+python3 getdata.py build > ./data/original/coronavirus-cases.csv
+python3 getdata_deaths.py build > ./data/original/coronavirus-deaths.csv
+
 Rscript 01_download-daily-PHE_data.R
 Rscript 02_download-daily-JHU_data.R
 Rscript 03_download-daily-brazil_data.R

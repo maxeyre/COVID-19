@@ -8,8 +8,11 @@ library(tidyverse)
 #=======#### DOWNLOAD DATA FROM PHE ####=======#
 
 # Download file and load it in R
-UK.cases <- read_csv("data/original/coronavirus-cases.csv")
-UK.deaths <- read_csv("data/original/coronavirus-deaths.csv")
+UK.cases <- read_csv("https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv")
+UK.deaths <- read_csv("https://coronavirus.data.gov.uk/downloads/csv/coronavirus-deaths_latest.csv")
+
+write_csv(UK.cases, "data/original/coronavirus-cases.csv")
+write_csv(UK.deaths, "data/original/coronavirus-deaths.csv")
 
 UK.cases <- UK.cases %>%
   select(area=`Area name`,id = `Area code`, division=`Area type`,date=`Specimen date`,new_cases=`Daily lab-confirmed cases`,total_cases=`Cumulative lab-confirmed cases`) %>%
