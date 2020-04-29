@@ -7,6 +7,8 @@ library(tidyverse)
 #=======#### READ DATA IN ####=======#
 # Brazil states
 data.brazil <- read_csv("https://raw.githubusercontent.com/wcota/covid19br/master/cases-brazil-states.csv")
+a1 <- which(colnames(data.brazil)=="newDeaths")
+a2 <- which(colnames(data.brazil)=="totalCases")
 
 #=======#### DATA PROCESSING ####=======#
 # List of Brazilian states
@@ -19,7 +21,7 @@ states.names <- tibble(ID=c("SP","RJ","CE","AM","SC","MG","PE","PR","RS","BA","D
 
 # Add zeros for early dates
 extra.dates <- data.brazil[1,]
-extra.dates[1,5:(ncol(extra.dates)-1)] <- 0
+extra.dates[1,a1:a2] <- 0
 
 date.min <- min(data.brazil$date)
 min.dates <- data.brazil %>%
@@ -30,7 +32,7 @@ date.max <- max(min.dates$date)
 n <- as.numeric(date.max - date.min)
 
 for (i in 1:n){
-  extra.dates[1+i,5:(ncol(extra.dates)-1)] <- 0
+  extra.dates[1+i,a1:a2] <- 0
   extra.dates[1+i,1] <- extra.dates[i,1] +1
 }
 
