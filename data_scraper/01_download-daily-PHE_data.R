@@ -19,7 +19,7 @@ UK.cases <- UK.cases %>%
   gather(key="type", value="number", -area, -id, -division, -date)
 
 UK.deaths <- UK.deaths %>%
-  select(area=`Area name`,id = `Area code`, division=`Area type`,date=`Reporting date`,new_deaths=`Daily hospital deaths`,total_deaths=`Cumulative hospital deaths`) %>%
+  select(area=`Area name`,id = `Area code`, division=`Area type`,date=`Reporting date`,new_deaths=`Daily change in deaths`,total_deaths=`Cumulative deaths`) %>%
   gather(key="type", value="number", -area, -id, -division, -date)
 
 UK <- bind_rows(UK.cases,UK.deaths)
