@@ -35,7 +35,8 @@ pop_NHSregion <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/ma
 
 UK.UTLA <- UK[UK$division=="UTLA",]
 UK.NHSregion <- UK[UK$division=="Region",]
-UK.country <- UK[UK$division=="Country",]
+UK.country <- UK[UK$division=="Nation",]
+UK.country$division[UK.country$division=="Nation"] <- "Country"
 UK.UK <- UK[UK$division=="UK",]
 
 UK.UTLA <- left_join(UK.UTLA, pop_UTLA, by=c("id"="area_code"))
