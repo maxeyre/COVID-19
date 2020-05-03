@@ -12,8 +12,8 @@ data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/ma
 ghs <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/GHS_index.csv") %>%
   mutate(country = as.factor(country))
 
-x <- data$country
-x <- unique(x)
+x <- tibble(country = unique(data$country)) %>%
+  left_join(ghs, by="country")
 
 # UK data for epi curve
 UK.data <- data[data$country=="United Kingdom",]
