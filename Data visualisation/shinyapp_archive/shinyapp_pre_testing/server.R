@@ -34,28 +34,30 @@ names(list.county) <- county_LA.list
 data.region <- UK[UK$division=="Region",]
 
 # Testing data
-data.test <- read_csv("https://raw.githubusercontent.com/tomwhite/covid-19-uk-data/master/data/covid-19-tests-uk.csv") %>%
-  select(date=Date, -Country, new_tests = DailyTestsPerformed, total_tests= TotalTestsPerformed, new_test_ppl = DailyPeopleTested, total_test_ppl = TotalPeopleTested) %>%
-  mutate(date=as.Date(date, "%Y-%m-%d")) 
+data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
+data.test <- data.test %>%
+  select(date, total_tested = tested)
+data.test$date = as.Date(data.test$date, "%d/%m/%Y")
+data.test$new_tested <- c(NA,diff(data.test$total_tested))
 
-# # code to deal with mismatch in lengths for testing and UK data
-# if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) < nrow(data.test)){
-#   data.test <- data.test[1:(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),]
-# }
-# 
-# if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) > nrow(data.test)){
-#   x <- length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) - nrow(data.test)
-#   data.test[((nrow(data.test)+1):length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),] <- NA
-#   for (i in (nrow(data.test)-x+1):nrow(data.test)){
-#     data.test[i,1]<- data.test[(i-1),1] + 1
-#   }
-# }
-# 
-# data.test$total_cases <- UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]
-# data.test$new_cases <- UK.data$number[UK.data$type=="new_cases" & UK.data$date>="2020-03-17"]
-# 
-# data.test$total_prop_pos <- 100*data.test$total_cases/data.test$total_test_ppl
-# data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_test_ppl
+# code to deal with mismatch in lengths for testing and UK data
+if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) < nrow(data.test)){
+  data.test <- data.test[1:(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),]
+}
+
+if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) > nrow(data.test)){
+  x <- length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) - nrow(data.test)
+  data.test[((nrow(data.test)+1):length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),] <- NA
+  for (i in (nrow(data.test)-x+1):nrow(data.test)){
+    data.test[i,1]<- data.test[(i-1),1] + 1
+  }
+}
+
+data.test$total_cases <- UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]
+data.test$new_cases <- UK.data$number[UK.data$type=="new_cases" & UK.data$date>="2020-03-17"]
+
+data.test$total_prop_pos <- 100*data.test$total_cases/data.test$total_tested
+data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_tested
 
 data.test <- data.test %>%
   gather(key="type", value="number",-date)
@@ -576,8 +578,7 @@ shinyServer(function(input, output, session) {
     
     p.test <- ggplot(data.test) + geom_point(aes(x=date, y=number, col=type),size=1.5)+ 
       geom_line(aes(x=date, y=number, col=type, group=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_test[1],input$dateRange_test[2])) + 
-      scale_y_continuous(labels = scales::comma) + xlab(label = "") +ylab(label="People tested") +
+      scale_x_date(limits=c(input$dateRange_test[1],input$dateRange_test[2])) + xlab(label = "") +ylab(label="Number tested") +
       theme_classic()+
       theme(axis.text=element_text(size=13),
             axis.title=element_text(size=16), 
@@ -587,10 +588,12 @@ shinyServer(function(input, output, session) {
             legend.position = 'top', 
             legend.spacing.x = unit(0.4, 'cm'),
             panel.grid.major.y=element_line(size=0.05)) +
-      scale_colour_manual(name="",values = c("total_tests" = "#000000", "new_tests" = "#e41a1c","total_test_ppl"="#ff7f00", 
-                                             "new_test_ppl"="#a65628"),
-                          breaks=c("new_tests","total_tests","new_test_ppl","total_test_ppl"),
-                          labels=c("Daily", "Cumulative", "Daily", "Cumulative"))
+      scale_colour_manual(name="",values = c("total_tested" = "#000000", "new_tested" = "#e41a1c"),
+                          breaks=c("new_tested","total_tested"),
+                          labels=c("Daily", "Total"))
+    if(input$log_test=='log_yes'){
+      p.test <- p.test + scale_y_log10()
+    }
     p.test
   })
   
@@ -602,8 +605,7 @@ shinyServer(function(input, output, session) {
     
     p.test <- ggplot(data.test) + geom_point(aes(x=date, y=number, col=type),size=1.5)+ 
       geom_line(aes(x=date, y=number, col=type, group=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_test[1],input$dateRange_test[2])) + 
-      scale_y_continuous(labels = scales::comma) + xlab(label = "") +ylab(label="Tests performed") +
+      scale_x_date(limits=c(input$dateRange_test2[1],input$dateRange_test2[2])) + xlab(label = "") +ylab(label="Prop. positive (%)") +
       theme_classic()+
       theme(axis.text=element_text(size=13),
             axis.title=element_text(size=16), 
@@ -613,10 +615,9 @@ shinyServer(function(input, output, session) {
             legend.position = 'top', 
             legend.spacing.x = unit(0.4, 'cm'),
             panel.grid.major.y=element_line(size=0.05)) +
-      scale_colour_manual(name="",values = c("total_tests" = "#000000", "new_tests" = "#e41a1c","total_test_ppl"="#ff7f00", 
-                                             "new_test_ppl"="#a65628"),
-                          breaks=c("new_tests","total_tests","new_test_ppl","total_test_ppl"),
-                          labels=c("Daily", "Cumulative", "Daily", "Cumulative"))
+      scale_colour_manual(name="",values = c("total_prop_pos" = "#000000", "new_prop_pos" = "#e41a1c"),
+                          breaks=c("new_prop_pos","total_prop_pos"),
+                          labels=c("Daily", "Total"))
     p.test
     
   })

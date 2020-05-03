@@ -50,28 +50,30 @@ names(list.county) <- county_LA.list
 data.region <- UK[UK$division=="Region",]
 
 # Testing data
-data.test <- read_csv("https://raw.githubusercontent.com/tomwhite/covid-19-uk-data/master/data/covid-19-tests-uk.csv") %>%
-  select(date=Date, -Country, new_tests = DailyTestsPerformed, total_tests= TotalTestsPerformed, new_test_ppl = DailyPeopleTested, total_test_ppl = TotalPeopleTested) %>%
-  mutate(date=as.Date(date, "%Y-%m-%d")) 
+data.test <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/UK%20data/UK_testing.csv")
+data.test <- data.test %>%
+  select(date, total_tested = tested)
+data.test$date = as.Date(data.test$date, "%d/%m/%Y")
+data.test$new_tested <- c(NA,diff(data.test$total_tested))
 
-# # code to deal with mismatch in lengths for testing and UK data
-# if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) < nrow(data.test)){
-#   data.test <- data.test[1:(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),]
-# }
-# 
-# if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) > nrow(data.test)){
-#   x <- length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) - nrow(data.test)
-#   data.test[((nrow(data.test)+1):length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),] <- NA
-#   for (i in (nrow(data.test)-x+1):nrow(data.test)){
-#     data.test[i,1]<- data.test[(i-1),1] + 1
-#   }
-# }
-# 
-# data.test$total_cases <- UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]
-# data.test$new_cases <- UK.data$number[UK.data$type=="new_cases" & UK.data$date>="2020-03-17"]
-# 
-# data.test$total_prop_pos <- 100*data.test$total_cases/data.test$total_test_ppl
-# data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_test_ppl
+# code to deal with mismatch in lengths for testing and UK data
+if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) < nrow(data.test)){
+  data.test <- data.test[1:(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),]
+}
+
+if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) > nrow(data.test)){
+  x <- length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) - nrow(data.test)
+  data.test[((nrow(data.test)+1):length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"])),] <- NA
+  for (i in (nrow(data.test)-x+1):nrow(data.test)){
+    data.test[i,1]<- data.test[(i-1),1] + 1
+  }
+}
+
+data.test$total_cases <- UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]
+data.test$new_cases <- UK.data$number[UK.data$type=="new_cases" & UK.data$date>="2020-03-17"]
+
+data.test$total_prop_pos <- 100*data.test$total_cases/data.test$total_tested
+data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_tested
 
 data.test <- data.test %>%
   gather(key="type", value="number",-date)
@@ -100,7 +102,7 @@ shinyUI(fluidPage(
     "Worldwide",  
     tabPanel("By country",
              h5("Please use the menu bar on the left to navigate to different sections"),
-             p("UK testing data now shown for i) tests performed and ii) people tested", style = "color:red"),
+             p("Some issues with JHU CSSE data source - now resolved and back up to date", style = "color:red"),
              h3("Live epidemic curves by country"),
               h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)"),
               h6("Please note:"),
@@ -302,16 +304,23 @@ shinyUI(fluidPage(
            h5("Please use the menu bar on the left to navigate to different sections"),
            h3("Live diagnostic testing rates for UK"),
            h6("Data source: Public Health England (updated every 24hrs)"),
+           h6("1. Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
+           h6("2. Deaths are only deaths within hospitals."),
+           h6("3. Cases and deaths shown in graphs are the number reported on that date. Delays in reporting are common for the UK."),
            sidebarLayout(
              sidebarPanel(
-               h4("Number of people tested"),
-               checkboxGroupInput("checkGroup_test", "", choices = list("Daily" = "new_test_ppl", 
-                                                                        "Cumulative" = "total_test_ppl"),selected = 1),
+               h4("Testing rates"),
+               h6("This is the number of individuals tested (not the number of tests carried out)"),
+               checkboxGroupInput("checkGroup_test", "", choices = list("Tested (daily)" = "new_tested", 
+                                                                          "Tested (total)" = "total_tested"),selected = 1),
                dateRangeInput("dateRange_test", "Date range",
-                              start  = min(data.test$date[data.test$type=="new_test_ppl" & is.na(data.test$number)==FALSE]),
-                              end    = max(data.test$date[data.test$type=="new_test_ppl" & is.na(data.test$number)==FALSE]), 
-                              min    = min(data.test$date[data.test$type=="new_test_ppl" & is.na(data.test$number)==FALSE]),
-                              max    = max(data.test$date[data.test$type=="new_test_ppl" & is.na(data.test$number)==FALSE])),
+                              start  = min(data.test$date),
+                              end    = max(data.test$date), 
+                              min    = min(data.test$date),
+                              max    = max(data.test$date)),
+               radioButtons("log_test", "y-axis scale:",
+                            choices=c('Linear'="log_no",
+                                      'Log'='log_yes'))
              ),
              mainPanel(plotOutput("UKtestingPlot")
                        )
@@ -319,9 +328,9 @@ shinyUI(fluidPage(
            br(),
            sidebarLayout(
              sidebarPanel(
-               h4("Number of tests performed"),
-               checkboxGroupInput("checkGroup_test2", "", choices = list("Daily" = "new_tests", 
-                                                                        "Cumulative" = "total_tests"),selected = 1),
+               h4("Proportion of tested individuals positive"),
+               checkboxGroupInput("checkGroup_test2", "", choices = list("% positive (daily)" = "new_prop_pos", 
+                                                                        "% positive (total)" = "total_prop_pos"),selected = 1),
                dateRangeInput("dateRange_test2", "Date range",
                               start  = min(data.test$date),
                               end    = max(data.test$date), 
