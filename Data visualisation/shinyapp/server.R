@@ -8,6 +8,13 @@ data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data
 data.100 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_100-cases.csv")
 data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_5-deaths.csv")
 
+# add GHS Index
+ghs <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/GHS_index.csv") %>%
+  mutate(country = as.factor(country))
+
+x <- data$country
+x <- unique(x)
+
 # UK data for epi curve
 UK.data <- data[data$country=="United Kingdom",]
 
@@ -170,7 +177,7 @@ shinyServer(function(input, output, session) {
   url_data <- a("JHU CSSE Data sources", href="https://github.com/CSSEGISandData/COVID-19")
   url_github <- a("GitHub", href="https://github.com/maxeyre/COVID-19")
   url_data2 <- a("Data source", href="https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public")
-  
+  url_data_ghs <- a("GHS Index", href="https://www.ghsindex.org/about/")
   url_data_br <- a("Data source", href="https://github.com/wcota/covid19br")
   
   output$data_source <- renderUI({
@@ -218,6 +225,10 @@ shinyServer(function(input, output, session) {
   })
   output$git_br <- renderUI({
     tagList(url_github)
+  })
+  
+  output$ghs <- renderUI({
+    tagList(url_data_ghs)
   })
   
   output$checkGroup <- renderText({

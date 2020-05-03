@@ -109,7 +109,7 @@ shinyUI(fluidPage(
     "Worldwide",  
     tabPanel("By country",
              h5("Please use the menu bar on the left to navigate to different sections"),
-             #p("UK testing data now shown for i) tests performed and ii) people tested", style = "color:red"),
+             p("Update: Global Health Security Index (a measure of pandemic preparedness) added to country comparison", style = "color:red"),
              h3("Live epidemic curves by country"),
               h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)"),
               h6("Please note:"),
