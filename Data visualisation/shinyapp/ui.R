@@ -77,10 +77,19 @@ data.test <- data.test %>%
   gather(key="type", value="number",-date)
 
 # Brazil data
+states.names <- tibble(ID=c("SP","RJ","CE","AM","SC","MG","PE","PR","RS","BA","DF","ES","MA","RN","PA","GO","AP","MT","MS","PB","RR","AC","AL","SE","PI","RO","TO"),
+                       state_name=c("São Paulo","Rio de Janeiro","Ceará","Amazonas","Santa Catarina","Minas Gerais","Pernambuco","Paraná","Rio Grande do Sul",
+                                    "Bahia","Distrito Federal","Espírito Santo","Maranhão","Rio Grande do Norte","Pará","Goiás","Amapá","Mato Grosso","Mato Grosso do Sul",
+                                    "Paraíba","Roraima","Acre","Alagoas","Sergipe","Piauí","Rondônia","Tocantins"))
 data.brazil <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/brazil_full.csv")
 data.brazil$date <- as.Date(data.brazil$date, "%Y-%m-%d")
+data.brazil <- data.brazil %>%
+  select(-state_name) %>%
+  left_join(states.names, by=c("state"="ID"))
+  
 # get list of states
 data.brazil$state_name <- as.character(data.brazil$state_name)
+
 state.list <- c(unique(data.brazil$state_name))
 state.list <- state.list[order(state.list)]
 list.state <- list()
@@ -100,7 +109,7 @@ shinyUI(fluidPage(
     "Worldwide",  
     tabPanel("By country",
              h5("Please use the menu bar on the left to navigate to different sections"),
-             p("UK testing data now shown for i) tests performed and ii) people tested", style = "color:red"),
+             #p("UK testing data now shown for i) tests performed and ii) people tested", style = "color:red"),
              h3("Live epidemic curves by country"),
               h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)"),
               h6("Please note:"),
