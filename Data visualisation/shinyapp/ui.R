@@ -39,7 +39,7 @@ data.county <- UK[UK$division=="UTLA",]
 
 # get list of counties
 data.county$area <- as.character(data.county$area)
-county_LA.list <- c(unique(data.county$area))
+county_LA.list <- c(data.county$area[order(unique(data.county$area))])
 list.county <- list()
 for (i in 1:length(county_LA.list)){
   list.county[i] <- county_LA.list[i]
