@@ -12,9 +12,12 @@ data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/ma
 ghs <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/GHS_index.csv") %>%
   mutate(country = as.factor(country))
 
-x <- tibble(country = unique(data$country)) %>%
+data.100 <- data.100 %>%
   left_join(ghs, by="country")
 
+data.deaths10 <- data.deaths10  %>%
+  left_join(ghs, by="country")
+  
 # UK data for epi curve
 UK.data <- data[data$country=="United Kingdom",]
 
@@ -330,7 +333,7 @@ shinyServer(function(input, output, session) {
         geom_line(aes(x=date_rel, y=number, col=country),size=1) +
         scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + scale_y_continuous(limits=c(y_min,y_max), labels= scales::comma) + 
         xlab(label = "Days") +
-        ylab(label=paste(lab_y)) +
+        ylab(label=paste(lab_y)) + geom_text(aes(x=date_rel, y=number, col=country, label=rank)) +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
