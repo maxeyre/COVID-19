@@ -179,7 +179,7 @@ shinyUI(fluidPage(
                          h6("Only available for countries with at least 100 cases or 5 deaths (some countries only have one or the other and will only show for cases or deaths)"),
                          h6("Cases: day 0 is the first day >100 cases were reported (or 1 per 100,000 if viewing by pop. rate)"),
                          h6("Deaths: day 0 is the first day >10 deaths were reported (or 0.5 per 100,000 if viewing by pop. rate)"),
-                         h6("Global Health Security Index: The ranking of each country is now included on the graph. This a measure of a country's health system capacity and epidemic and pandemic preparedness'"),
+                         h6("Global Health Security Index: The ranking of each country is now included on the graph. This a measure of a country's health system capacity and 'epidemic and pandemic preparedness'"),
                          plotOutput("countryPlot_compare"),
                          h6("Made by Max Eyre"),
                          h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),

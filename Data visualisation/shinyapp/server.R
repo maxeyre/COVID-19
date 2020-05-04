@@ -5,12 +5,17 @@ library(ggplot2)
 
 # read in global data
 data <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_full.csv")
-data.100 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_100-cases.csv")
-data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_5-deaths.csv")
+data$country[data$country=="Cote d'Ivoire"] <- "Cote d\'Ivoire"
 
+data.100 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_100-cases.csv")
+data.100$country[data.100$country=="Cote d'Ivoire"] <- "Cote d\'Ivoire"
+data.deaths10 <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/JHU_5-deaths.csv")
+data.deaths10$country[data.deaths10$country=="Cote d'Ivoire"] <- "Cote d\'Ivoire"
 # add GHS Index
 ghs <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/Data%20visualisation/Other/GHS_index.csv") %>%
-  mutate(country = as.factor(country))
+  mutate(rank=paste0("GHS:",rank))
+ghs$country[106] <- "Cote d\'Ivoire"
+ghs$country <- as.factor(ghs$country)
 
 data.100 <- data.100 %>%
   left_join(ghs, by="country")
@@ -331,9 +336,11 @@ shinyServer(function(input, output, session) {
       
       p2 <- ggplot(data.100) + geom_point(aes(x=date_rel, y=number, col=country),size=1.5) +
         geom_line(aes(x=date_rel, y=number, col=country),size=1) +
-        scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + scale_y_continuous(limits=c(y_min,y_max), labels= scales::comma) + 
+        scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + scale_y_continuous(labels= scales::comma) + 
         xlab(label = "Days") +
-        ylab(label=paste(lab_y)) + geom_text(aes(x=date_rel, y=number, col=country, label=rank)) +
+        ylab(label=paste(lab_y)) + geom_text(data = data.100 %>% arrange(country, date) %>% 
+                                               group_by(country) %>% 
+                                               summarise_all(last), aes(x=date_rel + 4, y=number, col=country, label=rank),show.legend = FALSE) +
         theme_classic()+
         theme(axis.text=element_text(size=13),
               axis.title=element_text(size=16), 
@@ -354,7 +361,11 @@ shinyServer(function(input, output, session) {
       
       p2 <- ggplot(data.100) + geom_point(aes(x=date_rel_pop, y=number_pop, col=country),size=1.5) +
         geom_line(aes(x=date_rel_pop, y=number_pop, col=country),size=1) +
-        scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + scale_y_continuous(limits=c(y_min,y_max)) + xlab(label = "Days") +
+        scale_x_continuous(limits=c(input$dateRange.100[1],input$dateRange.100[2])) + 
+        geom_text(data = data.100 %>% arrange(country, date) %>% 
+                    group_by(country) %>% 
+                    summarise_all(last), aes(x=date_rel_pop +4 , y=number_pop, col=country, label=rank),show.legend = FALSE) +
+        xlab(label = "Days") +
         ylab(label=paste(lab_y," (per 100,000)",sep="")) +
         theme_classic()+
         theme(axis.text=element_text(size=13),
@@ -374,7 +385,7 @@ shinyServer(function(input, output, session) {
       
     p2
   })
-
+  
   
   # UK plot
   output$UKPlot <- renderPlot({
