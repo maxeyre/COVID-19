@@ -235,7 +235,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,CE,Cear<c3><a1>,8904459,total_cases,16692,187.45664391289802
 2020-05-11,CE,Cear<c3><a1>,8904459,total_cases,17599,197.64255189450589
 2020-05-12,CE,Cear<c3><a1>,8904459,total_cases,18412,206.77280899378616
-2020-05-13,CE,Cear<c3><a1>,8904459,total_cases,18688,209.87237966955658
+2020-05-13,CE,Cear<c3><a1>,8904459,total_cases,18971,213.0505626450748
 2020-02-25,AM,Amazonas,3938336,total_cases,0,0
 2020-02-26,AM,Amazonas,3938336,total_cases,0,0
 2020-02-27,AM,Amazonas,3938336,total_cases,0,0
@@ -867,7 +867,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,DF,Distrito Federal,2914830,total_cases,2682,92.0122271281687
 2020-05-11,DF,Distrito Federal,2914830,total_cases,2799,96.02618334516936
 2020-05-12,DF,Distrito Federal,2914830,total_cases,2979,102.20150060209343
-2020-05-13,DF,Distrito Federal,2914830,total_cases,2979,102.20150060209343
+2020-05-13,DF,Distrito Federal,2914830,total_cases,3053,104.74024214105111
 2020-02-25,ES,Esp<c3><ad>rito Santo,3929911,total_cases,0,0
 2020-02-26,ES,Esp<c3><ad>rito Santo,3929911,total_cases,0,0
 2020-02-27,ES,Esp<c3><ad>rito Santo,3929911,total_cases,0,0
@@ -1262,7 +1262,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,GO,Goi<c3><a1>s,6610681,total_cases,1093,16.533848781993868
 2020-05-11,GO,Goi<c3><a1>s,6610681,total_cases,1100,16.63973802396455
 2020-05-12,GO,Goi<c3><a1>s,6610681,total_cases,1115,16.86664354247316
-2020-05-13,GO,Goi<c3><a1>s,6610681,total_cases,1115,16.86664354247316
+2020-05-13,GO,Goi<c3><a1>s,6610681,total_cases,1225,18.530617344869615
 2020-02-25,AP,Amap<c3><a1>,766679,total_cases,0,0
 2020-02-26,AP,Amap<c3><a1>,766679,total_cases,0,0
 2020-02-27,AP,Amap<c3><a1>,766679,total_cases,0,0
@@ -1499,7 +1499,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,MS,Mato Grosso do Sul,2651235,total_cases,362,13.65401407268688
 2020-05-11,MS,Mato Grosso do Sul,2651235,total_cases,385,14.521534303824444
 2020-05-12,MS,Mato Grosso do Sul,2651235,total_cases,405,15.275899722204935
-2020-05-13,MS,Mato Grosso do Sul,2651235,total_cases,405,15.275899722204935
+2020-05-13,MS,Mato Grosso do Sul,2651235,total_cases,430,16.21885649518055
 2020-02-25,PB,Para<c3><ad>ba,3972202,total_cases,0,0
 2020-02-26,PB,Para<c3><ad>ba,3972202,total_cases,0,0
 2020-02-27,PB,Para<c3><ad>ba,3972202,total_cases,0,0
@@ -2368,7 +2368,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,CE,Cear<c3><a1>,8904459,new_cases,813,9.130257099280259
 2020-05-11,CE,Cear<c3><a1>,8904459,new_cases,907,10.185907981607865
 2020-05-12,CE,Cear<c3><a1>,8904459,new_cases,813,9.130257099280259
-2020-05-13,CE,Cear<c3><a1>,8904459,new_cases,276,3.09957067577042
+2020-05-13,CE,Cear<c3><a1>,8904459,new_cases,559,6.2777536512886405
 2020-02-25,AM,Amazonas,3938336,new_cases,0,0
 2020-02-26,AM,Amazonas,3938336,new_cases,0,0
 2020-02-27,AM,Amazonas,3938336,new_cases,0,0
@@ -3000,7 +3000,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,DF,Distrito Federal,2914830,new_cases,106,3.6365757179663993
 2020-05-11,DF,Distrito Federal,2914830,new_cases,117,4.013956217000648
 2020-05-12,DF,Distrito Federal,2914830,new_cases,180,6.175317256924075
-2020-05-13,DF,Distrito Federal,2914830,new_cases,0,0
+2020-05-13,DF,Distrito Federal,2914830,new_cases,74,2.538741538957675
 2020-02-25,ES,Esp<c3><ad>rito Santo,3929911,new_cases,0,0
 2020-02-26,ES,Esp<c3><ad>rito Santo,3929911,new_cases,0,0
 2020-02-27,ES,Esp<c3><ad>rito Santo,3929911,new_cases,0,0
@@ -3395,7 +3395,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,GO,Goi<c3><a1>s,6610681,new_cases,24,0.363048829613772
 2020-05-11,GO,Goi<c3><a1>s,6610681,new_cases,7,0.1058892419706835
 2020-05-12,GO,Goi<c3><a1>s,6610681,new_cases,15,0.22690551850860752
-2020-05-13,GO,Goi<c3><a1>s,6610681,new_cases,0,0
+2020-05-13,GO,Goi<c3><a1>s,6610681,new_cases,110,1.663973802396455
 2020-02-25,AP,Amap<c3><a1>,766679,new_cases,0,0
 2020-02-26,AP,Amap<c3><a1>,766679,new_cases,0,0
 2020-02-27,AP,Amap<c3><a1>,766679,new_cases,0,0
@@ -3632,7 +3632,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,MS,Mato Grosso do Sul,2651235,new_cases,16,0.6034923347043925
 2020-05-11,MS,Mato Grosso do Sul,2651235,new_cases,23,0.8675202311375642
 2020-05-12,MS,Mato Grosso do Sul,2651235,new_cases,20,0.7543654183804906
-2020-05-13,MS,Mato Grosso do Sul,2651235,new_cases,0,0
+2020-05-13,MS,Mato Grosso do Sul,2651235,new_cases,25,0.9429567729756132
 2020-02-25,PB,Para<c3><ad>ba,3972202,new_cases,0,0
 2020-02-26,PB,Para<c3><ad>ba,3972202,new_cases,0,0
 2020-02-27,PB,Para<c3><ad>ba,3972202,new_cases,0,0
