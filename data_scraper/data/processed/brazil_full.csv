@@ -638,7 +638,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-11,PR,Paran<c3><a1>,11163018,total_cases,1873,16.778616678751213
 2020-05-12,PR,Paran<c3><a1>,11163018,total_cases,1930,17.289231281361367
 2020-05-13,PR,Paran<c3><a1>,11163018,total_cases,2023,18.122339317198985
-2020-05-14,PR,Paran<c3><a1>,11163018,total_cases,2063,18.480665354118393
+2020-05-14,PR,Paran<c3><a1>,11163018,total_cases,2091,18.731493579961978
 2020-02-25,RS,Rio Grande do Sul,11247972,total_cases,0,0
 2020-02-26,RS,Rio Grande do Sul,11247972,total_cases,0,0
 2020-02-27,RS,Rio Grande do Sul,11247972,total_cases,0,0
@@ -798,7 +798,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-11,BA,Bahia,15203934,total_cases,5808,38.20063938714809
 2020-05-12,BA,Bahia,15203934,total_cases,6205,40.81180568134537
 2020-05-13,BA,Bahia,15203934,total_cases,6549,43.07437798664477
-2020-05-14,BA,Bahia,15203934,total_cases,6955,45.74473948650395
+2020-05-14,BA,Bahia,15203934,total_cases,6956,45.7513167315775
 2020-02-25,DF,Distrito Federal,2914830,total_cases,0,0
 2020-02-26,DF,Distrito Federal,2914830,total_cases,0,0
 2020-02-27,DF,Distrito Federal,2914830,total_cases,0,0
@@ -2157,7 +2157,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,TO,Tocantins,1515126,total_cases,747,49.302830259661576
 2020-05-11,TO,Tocantins,1515126,total_cases,828,54.648920287817646
 2020-05-12,TO,Tocantins,1515126,total_cases,932,61.51303587952421
-2020-05-13,TO,Tocantins,1515126,total_cases,932,61.51303587952421
+2020-05-13,TO,Tocantins,1515126,total_cases,1029,67.91514369101975
 2020-05-14,TO,Tocantins,1515126,total_cases,1029,67.91514369101975
 2020-02-25,SP,S<c3><a3>o Paulo,44396484,new_cases,1,0.0022524306204067873
 2020-02-26,SP,S<c3><a3>o Paulo,44396484,new_cases,0,0
@@ -2798,7 +2798,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-11,PR,Paran<c3><a1>,11163018,new_cases,14,0.1254141129217923
 2020-05-12,PR,Paran<c3><a1>,11163018,new_cases,57,0.5106146026101543
 2020-05-13,PR,Paran<c3><a1>,11163018,new_cases,93,0.8331080358376203
-2020-05-14,PR,Paran<c3><a1>,11163018,new_cases,40,0.35832603691940657
+2020-05-14,PR,Paran<c3><a1>,11163018,new_cases,68,0.6091542627629911
 2020-02-25,RS,Rio Grande do Sul,11247972,new_cases,0,0
 2020-02-26,RS,Rio Grande do Sul,11247972,new_cases,0,0
 2020-02-27,RS,Rio Grande do Sul,11247972,new_cases,0,0
@@ -2958,7 +2958,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-11,BA,Bahia,15203934,new_cases,249,1.6377340233126505
 2020-05-12,BA,Bahia,15203934,new_cases,397,2.611166294197278
 2020-05-13,BA,Bahia,15203934,new_cases,344,2.262572305299405
-2020-05-14,BA,Bahia,15203934,new_cases,406,2.6703614998591814
+2020-05-14,BA,Bahia,15203934,new_cases,407,2.676938744932726
 2020-02-25,DF,Distrito Federal,2914830,new_cases,0,0
 2020-02-26,DF,Distrito Federal,2914830,new_cases,0,0
 2020-02-27,DF,Distrito Federal,2914830,new_cases,0,0
@@ -4317,8 +4317,8 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,TO,Tocantins,1515126,new_cases,59,3.894065576064301
 2020-05-11,TO,Tocantins,1515126,new_cases,81,5.346090028156074
 2020-05-12,TO,Tocantins,1515126,new_cases,104,6.864115591706565
-2020-05-13,TO,Tocantins,1515126,new_cases,0,0
-2020-05-14,TO,Tocantins,1515126,new_cases,97,6.402107811495545
+2020-05-13,TO,Tocantins,1515126,new_cases,97,6.402107811495545
+2020-05-14,TO,Tocantins,1515126,new_cases,0,0
 2020-02-25,SP,S<c3><a3>o Paulo,44396484,total_deaths,0,0
 2020-02-26,SP,S<c3><a3>o Paulo,44396484,total_deaths,0,0
 2020-02-27,SP,S<c3><a3>o Paulo,44396484,total_deaths,0,0
@@ -4958,7 +4958,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-11,PR,Paran<c3><a1>,11163018,total_deaths,114,1.0212292052203087
 2020-05-12,PR,Paran<c3><a1>,11163018,total_deaths,116,1.039145507066279
 2020-05-13,PR,Paran<c3><a1>,11163018,total_deaths,120,1.0749781107582197
-2020-05-14,PR,Paran<c3><a1>,11163018,total_deaths,119,1.0660199598352345
+2020-05-14,PR,Paran<c3><a1>,11163018,total_deaths,122,1.09289441260419
 2020-02-25,RS,Rio Grande do Sul,11247972,total_deaths,0,0
 2020-02-26,RS,Rio Grande do Sul,11247972,total_deaths,0,0
 2020-02-27,RS,Rio Grande do Sul,11247972,total_deaths,0,0
@@ -6477,7 +6477,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,TO,Tocantins,1515126,total_deaths,12,0.7920133375046036
 2020-05-11,TO,Tocantins,1515126,total_deaths,14,0.9240155604220375
 2020-05-12,TO,Tocantins,1515126,total_deaths,21,1.3860233406330562
-2020-05-13,TO,Tocantins,1515126,total_deaths,21,1.3860233406330562
+2020-05-13,TO,Tocantins,1515126,total_deaths,23,1.5180255635504902
 2020-05-14,TO,Tocantins,1515126,total_deaths,23,1.5180255635504902
 2020-02-25,SP,S<c3><a3>o Paulo,44396484,new_deaths,0,0
 2020-02-26,SP,S<c3><a3>o Paulo,44396484,new_deaths,0,0
@@ -7118,7 +7118,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-11,PR,Paran<c3><a1>,11163018,new_deaths,2,0.017916301845970328
 2020-05-12,PR,Paran<c3><a1>,11163018,new_deaths,2,0.017916301845970328
 2020-05-13,PR,Paran<c3><a1>,11163018,new_deaths,4,0.035832603691940655
-2020-05-14,PR,Paran<c3><a1>,11163018,new_deaths,-1,-0.008958150922985164
+2020-05-14,PR,Paran<c3><a1>,11163018,new_deaths,2,0.017916301845970328
 2020-02-25,RS,Rio Grande do Sul,11247972,new_deaths,0,0
 2020-02-26,RS,Rio Grande do Sul,11247972,new_deaths,0,0
 2020-02-27,RS,Rio Grande do Sul,11247972,new_deaths,0,0
@@ -8637,5 +8637,5 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-10,TO,Tocantins,1515126,new_deaths,1,0.06600111145871697
 2020-05-11,TO,Tocantins,1515126,new_deaths,2,0.13200222291743394
 2020-05-12,TO,Tocantins,1515126,new_deaths,7,0.46200778021101874
-2020-05-13,TO,Tocantins,1515126,new_deaths,0,0
-2020-05-14,TO,Tocantins,1515126,new_deaths,2,0.13200222291743394
+2020-05-13,TO,Tocantins,1515126,new_deaths,2,0.13200222291743394
+2020-05-14,TO,Tocantins,1515126,new_deaths,0,0
