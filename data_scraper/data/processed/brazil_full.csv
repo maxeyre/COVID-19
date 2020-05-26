@@ -1271,7 +1271,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-21,RN,Rio Grande do Norte,3442175,total_cases,4250,123.46844654905692
 2020-05-22,RN,Rio Grande do Norte,3442175,total_cases,4598,133.5783334664856
 2020-05-23,RN,Rio Grande do Norte,3442175,total_cases,4599,133.6073848656736
-2020-05-24,RN,Rio Grande do Norte,3442175,total_cases,4697,136.4544219860989
+2020-05-24,RN,Rio Grande do Norte,3442175,total_cases,4773,138.66232832438791
 2020-05-25,RN,Rio Grande do Norte,3442175,total_cases,4774,138.69137972357595
 2020-02-25,PA,Par<c3><a1>,8175113,total_cases,0,0
 2020-02-26,PA,Par<c3><a1>,8175113,total_cases,0,0
@@ -1726,7 +1726,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-21,MS,Mato Grosso do Sul,2651235,total_cases,746,28.1378301055923
 2020-05-22,MS,Mato Grosso do Sul,2651235,total_cases,805,30.363208089814748
 2020-05-23,MS,Mato Grosso do Sul,2651235,total_cases,858,32.36227644852305
-2020-05-24,MS,Mato Grosso do Sul,2651235,total_cases,924,34.851682329178665
+2020-05-24,MS,Mato Grosso do Sul,2651235,total_cases,1023,38.585791150162095
 2020-05-25,MS,Mato Grosso do Sul,2651235,total_cases,1023,38.585791150162095
 2020-02-25,PB,Para<c3><ad>ba,3972202,total_cases,0,0
 2020-02-26,PB,Para<c3><ad>ba,3972202,total_cases,0,0
@@ -1909,7 +1909,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-22,RR,Roraima,505665,total_cases,2306,456.03314447311953
 2020-05-23,RR,Roraima,505665,total_cases,2439,482.33514283171667
 2020-05-24,RR,Roraima,505665,total_cases,2439,482.33514283171667
-2020-05-25,RR,Roraima,505665,total_cases,2514,497.16709679333155
+2020-05-25,RR,Roraima,505665,total_cases,2564,507.05506610107483
 2020-02-25,AC,Acre,803513,total_cases,0,0
 2020-02-26,AC,Acre,803513,total_cases,0,0
 2020-02-27,AC,Acre,803513,total_cases,0,0
@@ -2454,8 +2454,8 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-21,TO,Tocantins,1515126,total_cases,2205,145.5324507664709
 2020-05-22,TO,Tocantins,1515126,total_cases,2430,160.38270084468223
 2020-05-23,TO,Tocantins,1515126,total_cases,2430,160.38270084468223
-2020-05-24,TO,Tocantins,1515126,total_cases,2592,171.07488090099437
-2020-05-25,TO,Tocantins,1515126,total_cases,2697,178.00499760415966
+2020-05-24,TO,Tocantins,1515126,total_cases,2591,171.00887978953565
+2020-05-25,TO,Tocantins,1515126,total_cases,2696,177.93899649270094
 2020-02-25,SP,S<c3><a3>o Paulo,44396484,new_cases,1,0.0022524306204067873
 2020-02-26,SP,S<c3><a3>o Paulo,44396484,new_cases,0,0
 2020-02-27,SP,S<c3><a3>o Paulo,44396484,new_cases,0,0
@@ -3728,8 +3728,8 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-21,RN,Rio Grande do Norte,3442175,new_cases,191,5.548817244910558
 2020-05-22,RN,Rio Grande do Norte,3442175,new_cases,348,10.10988691742866
 2020-05-23,RN,Rio Grande do Norte,3442175,new_cases,1,0.02905139918801339
-2020-05-24,RN,Rio Grande do Norte,3442175,new_cases,98,2.8470371204253127
-2020-05-25,RN,Rio Grande do Norte,3442175,new_cases,77,2.2369577374770313
+2020-05-24,RN,Rio Grande do Norte,3442175,new_cases,174,5.05494345871433
+2020-05-25,RN,Rio Grande do Norte,3442175,new_cases,1,0.02905139918801339
 2020-02-25,PA,Par<c3><a1>,8175113,new_cases,0,0
 2020-02-26,PA,Par<c3><a1>,8175113,new_cases,0,0
 2020-02-27,PA,Par<c3><a1>,8175113,new_cases,0,0
@@ -4183,8 +4183,8 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-21,MS,Mato Grosso do Sul,2651235,new_cases,53,1.9990683587083
 2020-05-22,MS,Mato Grosso do Sul,2651235,new_cases,59,2.2253779842224475
 2020-05-23,MS,Mato Grosso do Sul,2651235,new_cases,53,1.9990683587083
-2020-05-24,MS,Mato Grosso do Sul,2651235,new_cases,66,2.489405880655619
-2020-05-25,MS,Mato Grosso do Sul,2651235,new_cases,99,3.7341088209834283
+2020-05-24,MS,Mato Grosso do Sul,2651235,new_cases,165,6.223514701639047
+2020-05-25,MS,Mato Grosso do Sul,2651235,new_cases,0,0
 2020-02-25,PB,Para<c3><ad>ba,3972202,new_cases,0,0
 2020-02-26,PB,Para<c3><ad>ba,3972202,new_cases,0,0
 2020-02-27,PB,Para<c3><ad>ba,3972202,new_cases,0,0
@@ -4366,7 +4366,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-22,RR,Roraima,505665,new_cases,160,31.64150178477846
 2020-05-23,RR,Roraima,505665,new_cases,133,26.301998358597096
 2020-05-24,RR,Roraima,505665,new_cases,0,0
-2020-05-25,RR,Roraima,505665,new_cases,75,14.831953961614904
+2020-05-25,RR,Roraima,505665,new_cases,125,24.719923269358173
 2020-02-25,AC,Acre,803513,new_cases,0,0
 2020-02-26,AC,Acre,803513,new_cases,0,0
 2020-02-27,AC,Acre,803513,new_cases,0,0
@@ -4911,7 +4911,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-21,TO,Tocantins,1515126,new_cases,229,15.114254524046185
 2020-05-22,TO,Tocantins,1515126,new_cases,225,14.850250078211317
 2020-05-23,TO,Tocantins,1515126,new_cases,0,0
-2020-05-24,TO,Tocantins,1515126,new_cases,162,10.692180056312148
+2020-05-24,TO,Tocantins,1515126,new_cases,161,10.62617894485343
 2020-05-25,TO,Tocantins,1515126,new_cases,105,6.9301167031652815
 2020-02-25,SP,S<c3><a3>o Paulo,44396484,total_deaths,0,0
 2020-02-26,SP,S<c3><a3>o Paulo,44396484,total_deaths,0,0
@@ -6185,7 +6185,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-21,RN,Rio Grande do Norte,3442175,total_deaths,181,5.258303253030424
 2020-05-22,RN,Rio Grande do Norte,3442175,total_deaths,184,5.3454574505944645
 2020-05-23,RN,Rio Grande do Norte,3442175,total_deaths,184,5.3454574505944645
-2020-05-24,RN,Rio Grande do Norte,3442175,total_deaths,200,5.810279837602678
+2020-05-24,RN,Rio Grande do Norte,3442175,total_deaths,212,6.158896627858839
 2020-05-25,RN,Rio Grande do Norte,3442175,total_deaths,212,6.158896627858839
 2020-02-25,PA,Par<c3><a1>,8175113,total_deaths,0,0
 2020-02-26,PA,Par<c3><a1>,8175113,total_deaths,0,0
@@ -8642,8 +8642,8 @@ date,state,state_name,pop,type,number,number_pop
 2020-05-21,RN,Rio Grande do Norte,3442175,new_deaths,3,0.08715419756404018
 2020-05-22,RN,Rio Grande do Norte,3442175,new_deaths,3,0.08715419756404018
 2020-05-23,RN,Rio Grande do Norte,3442175,new_deaths,0,0
-2020-05-24,RN,Rio Grande do Norte,3442175,new_deaths,16,0.46482238700821427
-2020-05-25,RN,Rio Grande do Norte,3442175,new_deaths,12,0.3486167902561607
+2020-05-24,RN,Rio Grande do Norte,3442175,new_deaths,28,0.813439177264375
+2020-05-25,RN,Rio Grande do Norte,3442175,new_deaths,0,0
 2020-02-25,PA,Par<c3><a1>,8175113,new_deaths,0,0
 2020-02-26,PA,Par<c3><a1>,8175113,new_deaths,0,0
 2020-02-27,PA,Par<c3><a1>,8175113,new_deaths,0,0
