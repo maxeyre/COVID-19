@@ -1,4 +1,5 @@
 Area name,Area code,Area type,Reporting date,Daily change in deaths,Cumulative deaths
+England,E92000001,nation,2020-08-07,91,41886
 England,E92000001,nation,2020-08-06,46,41795
 England,E92000001,nation,2020-08-05,63,41749
 England,E92000001,nation,2020-08-04,88,41686
@@ -214,6 +215,7 @@ England,E92000001,nation,2020-01-08,0,NA
 England,E92000001,nation,2020-01-07,0,NA
 England,E92000001,nation,2020-01-06,0,NA
 England,E92000001,nation,2020-01-05,0,NA
+Northern Ireland,N92000002,nation,2020-08-07,0,556
 Northern Ireland,N92000002,nation,2020-08-06,0,556
 Northern Ireland,N92000002,nation,2020-08-05,0,556
 Northern Ireland,N92000002,nation,2020-08-04,0,556
@@ -429,6 +431,7 @@ Northern Ireland,N92000002,nation,2020-01-08,0,NA
 Northern Ireland,N92000002,nation,2020-01-07,0,NA
 Northern Ireland,N92000002,nation,2020-01-06,0,NA
 Northern Ireland,N92000002,nation,2020-01-05,0,NA
+Scotland,S92000003,nation,2020-08-07,0,2491
 Scotland,S92000003,nation,2020-08-06,0,2491
 Scotland,S92000003,nation,2020-08-05,0,2491
 Scotland,S92000003,nation,2020-08-04,0,2491
@@ -644,6 +647,7 @@ Scotland,S92000003,nation,2020-01-08,0,NA
 Scotland,S92000003,nation,2020-01-07,0,NA
 Scotland,S92000003,nation,2020-01-06,0,NA
 Scotland,S92000003,nation,2020-01-05,0,NA
+Wales,W92000004,nation,2020-08-07,7,1578
 Wales,W92000004,nation,2020-08-06,3,1571
 Wales,W92000004,nation,2020-08-05,2,1568
 Wales,W92000004,nation,2020-08-04,1,1566
@@ -859,6 +863,7 @@ Wales,W92000004,nation,2020-01-08,0,NA
 Wales,W92000004,nation,2020-01-07,0,NA
 Wales,W92000004,nation,2020-01-06,0,NA
 Wales,W92000004,nation,2020-01-05,0,NA
+United Kingdom,K02000001,UK,2020-08-07,98,46511
 United Kingdom,K02000001,UK,2020-08-06,49,46413
 United Kingdom,K02000001,UK,2020-08-05,65,46364
 United Kingdom,K02000001,UK,2020-08-04,89,46299
