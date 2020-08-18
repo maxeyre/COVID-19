@@ -121,7 +121,7 @@ shinyServer(function(input, output, session) {
     formulaText_county()
   })
   
-  red <- data.county[data.county$date == max(data.county$date) & data.county$type == "new_cases",]
+  red <- data.county[data.county$date == max(data.county$date, na.rm=TRUE) & data.county$type == "new_cases",]
   red <- red[order(red$number,decreasing=TRUE),]
   
   red2 <- data.county[data.county$date == max(data.county$date) & data.county$type == "total_cases",]
