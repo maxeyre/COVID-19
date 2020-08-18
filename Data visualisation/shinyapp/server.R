@@ -49,9 +49,9 @@ names(list.county) <- county_LA.list
 data.region <- UK[UK$division=="Region",]
 
 # Testing data
-data.test <- read_csv("https://raw.githubusercontent.com/tomwhite/covid-19-uk-data/master/data/covid-19-tests-uk.csv") %>%
-  select(date=Date, -Country, new_tests = DailyTestsPerformed, total_tests= TotalTestsPerformed, new_test_ppl = DailyPeopleTested, total_test_ppl = TotalPeopleTested) %>%
-  mutate(date=as.Date(date, "%Y-%m-%d")) 
+#data.test <- read_csv("https://raw.githubusercontent.com/tomwhite/covid-19-uk-data/master/data/covid-19-tests-uk.csv") %>%
+ # select(date=Date, -Country, new_tests = DailyTestsPerformed, total_tests= TotalTestsPerformed, new_test_ppl = DailyPeopleTested, total_test_ppl = TotalPeopleTested) %>%
+  #mutate(date=as.Date(date, "%Y-%m-%d")) 
 
 # # code to deal with mismatch in lengths for testing and UK data
 # if(length(UK.data$number[UK.data$type=="total_cases" & UK.data$date>="2020-03-17"]) < nrow(data.test)){
@@ -72,8 +72,8 @@ data.test <- read_csv("https://raw.githubusercontent.com/tomwhite/covid-19-uk-da
 # data.test$total_prop_pos <- 100*data.test$total_cases/data.test$total_test_ppl
 # data.test$new_prop_pos <- 100*data.test$new_cases/data.test$new_test_ppl
 
-data.test <- data.test %>%
-  gather(key="type", value="number",-date)
+#data.test <- data.test %>%
+ # gather(key="type", value="number",-date)
 
 # Brazil data
 states.names <- tibble(ID=c("SP","RJ","CE","AM","SC","MG","PE","PR","RS","BA","DF","ES","MA","RN","PA","GO","AP","MT","MS","PB","RR","AC","AL","SE","PI","RO","TO"),
@@ -439,59 +439,59 @@ shinyServer(function(input, output, session) {
   })
   
   # UK plot
-  output$UKPlot_by_country <- renderPlot({
-    lines <- c(as.character(input$checkGroup_UK))
-    UK_by_country <- UK_by_country[UK_by_country$type %in% c("total_deaths","new_deaths"),]
-    UK_by_country<- UK_by_country[UK_by_country$type %in% lines, ]
-    
-    if (input$pop_UK=="pop_yes"){
-      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number_pop, col=area),size=1.5) +
-        geom_line(aes(x=date, y=number_pop, col=area, linetype=type),size=1) +
-        scale_x_date(limits=c(as.Date("2020-03-27","%Y-%m-%d"),input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Deaths (per 100,000)") +
-        theme_classic()+
-        theme(axis.text=element_text(size=13),
-              axis.title=element_text(size=16), 
-              axis.title.x = element_text(vjust=-1.5),
-              axis.title.y = element_text(vjust=2),
-              legend.title = element_blank(),
-              legend.text = element_text(size=13),
-              legend.position = 'top', 
-              legend.spacing.x = unit(0.4, 'cm'),
-              panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_deaths" =3, "new_deaths"=4),
-                                                                                   breaks=c("total_deaths","new_deaths"),
-                                                                                   labels=c("Deaths (total)","Deaths (daily)")) +
-        guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
-        theme(legend.direction = "horizontal",legend.box = "vertical")
-      
-      if(input$log_UK=='log_yes'){
-        p <- p + scale_y_log10(labels = scales::number_format(accuracy = 0.01))
-      }
-    }else{
-      p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=area),size=1.5) +
-        geom_line(aes(x=date, y=number, col=area, linetype=type),size=1) +
-        scale_x_date(limits=c(as.Date("2020-03-27","%Y-%m-%d"),input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Deaths") +
-        theme_classic()+
-        theme(axis.text=element_text(size=13),
-              axis.title=element_text(size=16), 
-              axis.title.x = element_text(vjust=-1.5),
-              axis.title.y = element_text(vjust=2),
-              legend.title = element_blank(),
-              legend.text = element_text(size=13),
-              legend.position = 'top', 
-              legend.spacing.x = unit(0.4, 'cm'),
-              panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
-                                                                                   breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
-                                                                                   labels=c("Cases (total)","Cases (daily)","Deaths (total)","Deaths (daily)")) +
-        guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
-        theme(legend.direction = "horizontal",legend.box = "vertical")
-      
-      if(input$log_UK=='log_yes'){
-        p <- p + scale_y_log10(labels = scales::comma)
-      }
-      }
-    
-    p
-  })
+  # output$UKPlot_by_country <- renderPlot({
+  #   lines <- c(as.character(input$checkGroup_UK))
+  #   UK_by_country <- UK_by_country[UK_by_country$type %in% c("total_deaths","new_deaths"),]
+  #   UK_by_country<- UK_by_country[UK_by_country$type %in% lines, ]
+  #   
+  #   if (input$pop_UK=="pop_yes"){
+  #     p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number_pop, col=area),size=1.5) +
+  #       geom_line(aes(x=date, y=number_pop, col=area, linetype=type),size=1) +
+  #       scale_x_date(limits=c(as.Date("2020-03-27","%Y-%m-%d"),input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Deaths (per 100,000)") +
+  #       theme_classic()+
+  #       theme(axis.text=element_text(size=13),
+  #             axis.title=element_text(size=16), 
+  #             axis.title.x = element_text(vjust=-1.5),
+  #             axis.title.y = element_text(vjust=2),
+  #             legend.title = element_blank(),
+  #             legend.text = element_text(size=13),
+  #             legend.position = 'top', 
+  #             legend.spacing.x = unit(0.4, 'cm'),
+  #             panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_deaths" =3, "new_deaths"=4),
+  #                                                                                  breaks=c("total_deaths","new_deaths"),
+  #                                                                                  labels=c("Deaths (total)","Deaths (daily)")) +
+  #       guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+  #       theme(legend.direction = "horizontal",legend.box = "vertical")
+  #     
+  #     if(input$log_UK=='log_yes'){
+  #       p <- p + scale_y_log10(labels = scales::number_format(accuracy = 0.01))
+  #     }
+  #   }else{
+  #     p <- ggplot(UK_by_country) + geom_point(aes(x=date, y=number, col=area),size=1.5) +
+  #       geom_line(aes(x=date, y=number, col=area, linetype=type),size=1) +
+  #       scale_x_date(limits=c(as.Date("2020-03-27","%Y-%m-%d"),input$dateRange_UK[2])) + xlab(label = "") +ylab(label="Deaths") +
+  #       theme_classic()+
+  #       theme(axis.text=element_text(size=13),
+  #             axis.title=element_text(size=16), 
+  #             axis.title.x = element_text(vjust=-1.5),
+  #             axis.title.y = element_text(vjust=2),
+  #             legend.title = element_blank(),
+  #             legend.text = element_text(size=13),
+  #             legend.position = 'top', 
+  #             legend.spacing.x = unit(0.4, 'cm'),
+  #             panel.grid.major.y=element_line(size=0.05)) +  scale_linetype_manual(name="", values=c("total_cases"=1, "new_cases" = 2, "total_deaths" =3, "new_deaths"=4),
+  #                                                                                  breaks=c("total_cases","new_cases","total_deaths","new_deaths"),
+  #                                                                                  labels=c("Cases (total)","Cases (daily)","Deaths (total)","Deaths (daily)")) +
+  #       guides(linetype = guide_legend(label.position = "top", keywidth = 2)) +
+  #       theme(legend.direction = "horizontal",legend.box = "vertical")
+  #     
+  #     if(input$log_UK=='log_yes'){
+  #       p <- p + scale_y_log10(labels = scales::comma)
+  #     }
+  #     }
+  #   
+  #   p
+  # })
   
   # England NHS regions plots
   output$EnglandRegionPlot <- renderPlot({
@@ -600,58 +600,58 @@ shinyServer(function(input, output, session) {
   })
   
   # UK testing plot
-  output$UKtestingPlot <- renderPlot({
-    
-    lines <- c(as.character(input$checkGroup_test))
-    
-    data.test <- data.test[data.test$type %in% lines, ]
-    
-    p.test <- ggplot(data.test) + geom_point(aes(x=date, y=number, col=type),size=1.5)+ 
-      geom_line(aes(x=date, y=number, col=type, group=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_test[1],input$dateRange_test[2])) + 
-      scale_y_continuous(labels = scales::comma) + xlab(label = "") +ylab(label="People tested") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +
-      scale_colour_manual(name="",values = c("total_tests" = "#000000", "new_tests" = "#e41a1c","total_test_ppl"="#ff7f00", 
-                                             "new_test_ppl"="#a65628"),
-                          breaks=c("new_tests","total_tests","new_test_ppl","total_test_ppl"),
-                          labels=c("Daily", "Cumulative", "Daily", "Cumulative"))
-    p.test
-  })
-  
-  output$UKtestingPlot2 <- renderPlot({
-    
-    lines <- c(as.character(input$checkGroup_test2))
-    
-    data.test <- data.test[data.test$type %in% lines, ]
-    
-    p.test <- ggplot(data.test) + geom_point(aes(x=date, y=number, col=type),size=1.5)+ 
-      geom_line(aes(x=date, y=number, col=type, group=type),size=1) +
-      scale_x_date(limits=c(input$dateRange_test[1],input$dateRange_test[2])) + 
-      scale_y_continuous(labels = scales::comma) + xlab(label = "") +ylab(label="Tests performed") +
-      theme_classic()+
-      theme(axis.text=element_text(size=13),
-            axis.title=element_text(size=16), 
-            axis.title.x = element_text(vjust=-1.5),
-            axis.title.y = element_text(vjust=2),
-            legend.text = element_text(size=13),
-            legend.position = 'top', 
-            legend.spacing.x = unit(0.4, 'cm'),
-            panel.grid.major.y=element_line(size=0.05)) +
-      scale_colour_manual(name="",values = c("total_tests" = "#000000", "new_tests" = "#e41a1c","total_test_ppl"="#ff7f00", 
-                                             "new_test_ppl"="#a65628"),
-                          breaks=c("new_tests","total_tests","new_test_ppl","total_test_ppl"),
-                          labels=c("Daily", "Cumulative", "Daily", "Cumulative"))
-    p.test
-    
-  })
+  # output$UKtestingPlot <- renderPlot({
+  #   
+  #   lines <- c(as.character(input$checkGroup_test))
+  #   
+  #   data.test <- data.test[data.test$type %in% lines, ]
+  #   
+  #   p.test <- ggplot(data.test) + geom_point(aes(x=date, y=number, col=type),size=1.5)+ 
+  #     geom_line(aes(x=date, y=number, col=type, group=type),size=1) +
+  #     scale_x_date(limits=c(input$dateRange_test[1],input$dateRange_test[2])) + 
+  #     scale_y_continuous(labels = scales::comma) + xlab(label = "") +ylab(label="People tested") +
+  #     theme_classic()+
+  #     theme(axis.text=element_text(size=13),
+  #           axis.title=element_text(size=16), 
+  #           axis.title.x = element_text(vjust=-1.5),
+  #           axis.title.y = element_text(vjust=2),
+  #           legend.text = element_text(size=13),
+  #           legend.position = 'top', 
+  #           legend.spacing.x = unit(0.4, 'cm'),
+  #           panel.grid.major.y=element_line(size=0.05)) +
+  #     scale_colour_manual(name="",values = c("total_tests" = "#000000", "new_tests" = "#e41a1c","total_test_ppl"="#ff7f00", 
+  #                                            "new_test_ppl"="#a65628"),
+  #                         breaks=c("new_tests","total_tests","new_test_ppl","total_test_ppl"),
+  #                         labels=c("Daily", "Cumulative", "Daily", "Cumulative"))
+  #   p.test
+  # })
+  # 
+  # output$UKtestingPlot2 <- renderPlot({
+  #   
+  #   lines <- c(as.character(input$checkGroup_test2))
+  #   
+  #   data.test <- data.test[data.test$type %in% lines, ]
+  #   
+  #   p.test <- ggplot(data.test) + geom_point(aes(x=date, y=number, col=type),size=1.5)+ 
+  #     geom_line(aes(x=date, y=number, col=type, group=type),size=1) +
+  #     scale_x_date(limits=c(input$dateRange_test[1],input$dateRange_test[2])) + 
+  #     scale_y_continuous(labels = scales::comma) + xlab(label = "") +ylab(label="Tests performed") +
+  #     theme_classic()+
+  #     theme(axis.text=element_text(size=13),
+  #           axis.title=element_text(size=16), 
+  #           axis.title.x = element_text(vjust=-1.5),
+  #           axis.title.y = element_text(vjust=2),
+  #           legend.text = element_text(size=13),
+  #           legend.position = 'top', 
+  #           legend.spacing.x = unit(0.4, 'cm'),
+  #           panel.grid.major.y=element_line(size=0.05)) +
+  #     scale_colour_manual(name="",values = c("total_tests" = "#000000", "new_tests" = "#e41a1c","total_test_ppl"="#ff7f00", 
+  #                                            "new_test_ppl"="#a65628"),
+  #                         breaks=c("new_tests","total_tests","new_test_ppl","total_test_ppl"),
+  #                         labels=c("Daily", "Cumulative", "Daily", "Cumulative"))
+  #   p.test
+  #   
+  # })
   
   # Brazil state comparisons
   output$statePlot_compare_br <- renderPlot({
