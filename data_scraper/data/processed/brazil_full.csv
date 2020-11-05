@@ -252,6 +252,7 @@ date,state,state_name,pop,type,number,number_pop
 2020-11-01,SP,S<c3><a3>o Paulo,44396484,total_cases,1117147,2516.296110295581
 2020-11-02,SP,S<c3><a3>o Paulo,44396484,total_cases,1117795,2517.7556853376045
 2020-11-03,SP,S<c3><a3>o Paulo,44396484,total_cases,1118544,2519.442755872289
+2020-11-04,SP,S<c3><a3>o Paulo,44396484,total_cases,1123299,2530.1530634723235
 2020-02-25,RJ,Rio de Janeiro,16550024,total_cases,0,0
 NA,RJ,Rio de Janeiro,16550024,total_cases,0,0
 NA,RJ,Rio de Janeiro,16550024,total_cases,0,0
@@ -505,6 +506,7 @@ NA,RJ,Rio de Janeiro,16550024,total_cases,0,0
 2020-11-01,RJ,Rio de Janeiro,16550024,total_cases,311014,1879.2359455188705
 2020-11-02,RJ,Rio de Janeiro,16550024,total_cases,311308,1881.0123779880923
 2020-11-03,RJ,Rio de Janeiro,16550024,total_cases,313089,1891.773691687698
+2020-11-04,RJ,Rio de Janeiro,16550024,total_cases,313089,1891.773691687698
 2020-02-25,CE,Cear<c3><a1>,8904459,total_cases,0,0
 NA,CE,Cear<c3><a1>,8904459,total_cases,0,0
 NA,CE,Cear<c3><a1>,8904459,total_cases,0,0
@@ -758,6 +760,7 @@ NA,CE,Cear<c3><a1>,8904459,total_cases,0,0
 2020-11-01,CE,Cear<c3><a1>,8904459,total_cases,274341,3080.9395607301913
 2020-11-02,CE,Cear<c3><a1>,8904459,total_cases,274673,3084.668029803944
 2020-11-03,CE,Cear<c3><a1>,8904459,total_cases,275025,3088.621105448405
+2020-11-04,CE,Cear<c3><a1>,8904459,total_cases,276012,3099.705439712845
 2020-02-25,AM,Amazonas,3938336,total_cases,0,0
 NA,AM,Amazonas,3938336,total_cases,0,0
 NA,AM,Amazonas,3938336,total_cases,0,0
@@ -1011,6 +1014,7 @@ NA,AM,Amazonas,3938336,total_cases,0,0
 2020-11-01,AM,Amazonas,3938336,total_cases,161974,4112.752187725984
 2020-11-02,AM,Amazonas,3938336,total_cases,162139,4116.9417743940585
 2020-11-03,AM,Amazonas,3938336,total_cases,162560,4127.631568256238
+2020-11-04,AM,Amazonas,3938336,total_cases,163399,4148.934981677541
 2020-02-25,SC,Santa Catarina,6819190,total_cases,0,0
 NA,SC,Santa Catarina,6819190,total_cases,0,0
 NA,SC,Santa Catarina,6819190,total_cases,0,0
@@ -1264,6 +1268,7 @@ NA,SC,Santa Catarina,6819190,total_cases,0,0
 2020-11-01,SC,Santa Catarina,6819190,total_cases,260057,3813.605428210682
 2020-11-02,SC,Santa Catarina,6819190,total_cases,261543,3835.3968726490975
 2020-11-03,SC,Santa Catarina,6819190,total_cases,263823,3868.831928718807
+2020-11-04,SC,Santa Catarina,6819190,total_cases,266637,3910.0978268680005
 2020-02-25,MG,Minas Gerais,20869101,total_cases,0,0
 NA,MG,Minas Gerais,20869101,total_cases,0,0
 NA,MG,Minas Gerais,20869101,total_cases,0,0
@@ -1517,6 +1522,7 @@ NA,MG,Minas Gerais,20869101,total_cases,0,0
 2020-11-01,MG,Minas Gerais,20869101,total_cases,359991,1724.995245362989
 2020-11-02,MG,Minas Gerais,20869101,total_cases,360830,1729.0155431228206
 2020-11-03,MG,Minas Gerais,20869101,total_cases,361156,1730.5776612035181
+2020-11-04,MG,Minas Gerais,20869101,total_cases,362340,1736.2511207358668
 2020-02-25,PE,Pernambuco,9345173,total_cases,0,0
 NA,PE,Pernambuco,9345173,total_cases,0,0
 NA,PE,Pernambuco,9345173,total_cases,0,0
@@ -1770,6 +1776,7 @@ NA,PE,Pernambuco,9345173,total_cases,0,0
 2020-11-01,PE,Pernambuco,9345173,total_cases,162977,1743.9698548116767
 2020-11-02,PE,Pernambuco,9345173,total_cases,163039,1744.6332989234122
 2020-11-03,PE,Pernambuco,9345173,total_cases,163156,1745.885282166526
+2020-11-04,PE,Pernambuco,9345173,total_cases,163642,1751.0858279456143
 2020-02-25,PR,Paran<c3><a1>,11163018,total_cases,0,0
 NA,PR,Paran<c3><a1>,11163018,total_cases,0,0
 NA,PR,Paran<c3><a1>,11163018,total_cases,0,0
@@ -2023,6 +2030,7 @@ NA,PR,Paran<c3><a1>,11163018,total_cases,0,0
 2020-11-01,PR,Paran<c3><a1>,11163018,total_cases,214210,1918.925509212652
 2020-11-02,PR,Paran<c3><a1>,11163018,total_cases,214450,1921.0754654341683
 2020-11-03,PR,Paran<c3><a1>,11163018,total_cases,215234,1928.0986557577887
+2020-11-04,PR,Paran<c3><a1>,11163018,total_cases,216266,1937.3434675103094
 2020-02-25,RS,Rio Grande do Sul,11247972,total_cases,0,0
 NA,RS,Rio Grande do Sul,11247972,total_cases,0,0
 NA,RS,Rio Grande do Sul,11247972,total_cases,0,0
@@ -2276,6 +2284,7 @@ NA,RS,Rio Grande do Sul,11247972,total_cases,0,0
 2020-11-01,RS,Rio Grande do Sul,11247972,total_cases,248482,2209.1271208712114
 2020-11-02,RS,Rio Grande do Sul,11247972,total_cases,249437,2217.617540299709
 2020-11-03,RS,Rio Grande do Sul,11247972,total_cases,250064,2223.1918785004086
+2020-11-04,RS,Rio Grande do Sul,11247972,total_cases,253272,2251.712575386923
 2020-02-25,BA,Bahia,15203934,total_cases,0,0
 NA,BA,Bahia,15203934,total_cases,0,0
 NA,BA,Bahia,15203934,total_cases,0,0
@@ -2529,6 +2538,7 @@ NA,BA,Bahia,15203934,total_cases,0,0
 2020-11-01,BA,Bahia,15203934,total_cases,354043,2328.627577573015
 2020-11-02,BA,Bahia,15203934,total_cases,354576,2332.1332491972144
 2020-11-03,BA,Bahia,15203934,total_cases,354983,2334.810187942147
+2020-11-04,BA,Bahia,15203934,total_cases,355753,2339.8746666487764
 2020-02-25,DF,Distrito Federal,2914830,total_cases,0,0
 NA,DF,Distrito Federal,2914830,total_cases,0,0
 NA,DF,Distrito Federal,2914830,total_cases,0,0
@@ -2782,6 +2792,7 @@ NA,DF,Distrito Federal,2914830,total_cases,0,0
 2020-11-01,DF,Distrito Federal,2914830,total_cases,213456,7323.102891077696
 2020-11-02,DF,Distrito Federal,2914830,total_cases,213636,7329.27820833462
 2020-11-03,DF,Distrito Federal,2914830,total_cases,214202,7348.696150375837
+2020-11-04,DF,Distrito Federal,2914830,total_cases,214655,7364.237365472429
 2020-02-25,ES,Esp<c3><ad>rito Santo,3929911,total_cases,0,0
 NA,ES,Esp<c3><ad>rito Santo,3929911,total_cases,0,0
 NA,ES,Esp<c3><ad>rito Santo,3929911,total_cases,0,0
@@ -3035,6 +3046,7 @@ NA,ES,Esp<c3><ad>rito Santo,3929911,total_cases,0,0
 2020-11-01,ES,Esp<c3><ad>rito Santo,3929911,total_cases,156018,3970.0135702818716
 2020-11-02,ES,Esp<c3><ad>rito Santo,3929911,total_cases,156681,3986.8841813466006
 2020-11-03,ES,Esp<c3><ad>rito Santo,3929911,total_cases,157750,4014.0858151749494
+2020-11-04,ES,Esp<c3><ad>rito Santo,3929911,total_cases,158768,4039.9897096906266
 2020-02-25,MA,Maranh<c3><a3>o,6904241,total_cases,0,0
 NA,MA,Maranh<c3><a3>o,6904241,total_cases,0,0
 NA,MA,Maranh<c3><a3>o,6904241,total_cases,0,0
@@ -3288,6 +3300,7 @@ NA,MA,Maranh<c3><a3>o,6904241,total_cases,0,0
 2020-11-01,MA,Maranh<c3><a3>o,6904241,total_cases,185917,2692.794182590092
 2020-11-02,MA,Maranh<c3><a3>o,6904241,total_cases,185986,2693.7935683299584
 2020-11-03,MA,Maranh<c3><a3>o,6904241,total_cases,186209,2697.0234671703956
+2020-11-04,MA,Maranh<c3><a3>o,6904241,total_cases,186572,2702.2811051931703
 2020-02-25,RN,Rio Grande do Norte,3442175,total_cases,0,0
 NA,RN,Rio Grande do Norte,3442175,total_cases,0,0
 NA,RN,Rio Grande do Norte,3442175,total_cases,0,0
@@ -3540,7 +3553,8 @@ NA,RN,Rio Grande do Norte,3442175,total_cases,0,0
 2020-10-31,RN,Rio Grande do Norte,3442175,total_cases,81518,2368.211959008476
 2020-11-01,RN,Rio Grande do Norte,3442175,total_cases,81836,2377.450303950264
 2020-11-02,RN,Rio Grande do Norte,3442175,total_cases,81901,2379.3386448974848
-2020-11-03,RN,Rio Grande do Norte,3442175,total_cases,81901,2379.3386448974848
+2020-11-03,RN,Rio Grande do Norte,3442175,total_cases,82220,2388.6060412384613
+2020-11-04,RN,Rio Grande do Norte,3442175,total_cases,82220,2388.6060412384613
 2020-02-25,PA,Par<c3><a1>,8175113,total_cases,0,0
 NA,PA,Par<c3><a1>,8175113,total_cases,0,0
 NA,PA,Par<c3><a1>,8175113,total_cases,0,0
@@ -3794,6 +3808,7 @@ NA,PA,Par<c3><a1>,8175113,total_cases,0,0
 2020-11-01,PA,Par<c3><a1>,8175113,total_cases,253229,3097.5596300626057
 2020-11-02,PA,Par<c3><a1>,8175113,total_cases,253449,3100.250724363076
 2020-11-03,PA,Par<c3><a1>,8175113,total_cases,254384,3111.6878751400745
+2020-11-04,PA,Par<c3><a1>,8175113,total_cases,255369,3123.736638258089
 2020-02-25,GO,Goi<c3><a1>s,6610681,total_cases,0,0
 NA,GO,Goi<c3><a1>s,6610681,total_cases,0,0
 NA,GO,Goi<c3><a1>s,6610681,total_cases,0,0
@@ -4047,6 +4062,7 @@ NA,GO,Goi<c3><a1>s,6610681,total_cases,0,0
 2020-11-01,GO,Goi<c3><a1>s,6610681,total_cases,255959,3871.900640796311
 2020-11-02,GO,Goi<c3><a1>s,6610681,total_cases,256256,3876.3933700627817
 2020-11-03,GO,Goi<c3><a1>s,6610681,total_cases,257422,3894.031492368184
+2020-11-04,GO,Goi<c3><a1>s,6610681,total_cases,258331,3907.7819667898057
 2020-02-25,AP,Amap<c3><a1>,766679,total_cases,0,0
 NA,AP,Amap<c3><a1>,766679,total_cases,0,0
 NA,AP,Amap<c3><a1>,766679,total_cases,0,0
@@ -4300,6 +4316,7 @@ NA,AP,Amap<c3><a1>,766679,total_cases,0,0
 2020-11-01,AP,Amap<c3><a1>,766679,total_cases,52500,6847.715928048114
 2020-11-02,AP,Amap<c3><a1>,766679,total_cases,52653,6867.672128752712
 2020-11-03,AP,Amap<c3><a1>,766679,total_cases,52832,6891.019579250247
+2020-11-04,AP,Amap<c3><a1>,766679,total_cases,52832,6891.019579250247
 2020-02-25,MT,Mato Grosso,3265486,total_cases,0,0
 NA,MT,Mato Grosso,3265486,total_cases,0,0
 NA,MT,Mato Grosso,3265486,total_cases,0,0
@@ -4553,6 +4570,7 @@ NA,MT,Mato Grosso,3265486,total_cases,0,0
 2020-11-01,MT,Mato Grosso,3265486,total_cases,143764,4402.529975629967
 2020-11-02,MT,Mato Grosso,3265486,total_cases,143978,4409.083364620152
 2020-11-03,MT,Mato Grosso,3265486,total_cases,144397,4421.914532783176
+2020-11-04,MT,Mato Grosso,3265486,total_cases,144999,4440.349767232197
 2020-02-25,MS,Mato Grosso do Sul,2651235,total_cases,0,0
 NA,MS,Mato Grosso do Sul,2651235,total_cases,0,0
 NA,MS,Mato Grosso do Sul,2651235,total_cases,0,0
@@ -4805,7 +4823,8 @@ NA,MS,Mato Grosso do Sul,2651235,total_cases,0,0
 2020-10-31,MS,Mato Grosso do Sul,2651235,total_cases,82618,3116.2081067879685
 2020-11-01,MS,Mato Grosso do Sul,2651235,total_cases,82884,3126.241166852429
 2020-11-02,MS,Mato Grosso do Sul,2651235,total_cases,83022,3131.4462882392545
-2020-11-03,MS,Mato Grosso do Sul,2651235,total_cases,83022,3131.4462882392545
+2020-11-03,MS,Mato Grosso do Sul,2651235,total_cases,83439,3147.174807212488
+2020-11-04,MS,Mato Grosso do Sul,2651235,total_cases,83439,3147.174807212488
 2020-02-25,PB,Para<c3><ad>ba,3972202,total_cases,0,0
 NA,PB,Para<c3><ad>ba,3972202,total_cases,0,0
 NA,PB,Para<c3><ad>ba,3972202,total_cases,0,0
@@ -5059,6 +5078,7 @@ NA,PB,Para<c3><ad>ba,3972202,total_cases,0,0
 2020-11-01,PB,Para<c3><ad>ba,3972202,total_cases,133220,3353.8072837181994
 2020-11-02,PB,Para<c3><ad>ba,3972202,total_cases,133286,3355.4688306385224
 2020-11-03,PB,Para<c3><ad>ba,3972202,total_cases,133379,3357.8101012989773
+2020-11-04,PB,Para<c3><ad>ba,3972202,total_cases,133958,3372.3863992818087
 2020-02-25,RR,Roraima,505665,total_cases,0,0
 NA,RR,Roraima,505665,total_cases,0,0
 NA,RR,Roraima,505665,total_cases,0,0
@@ -5311,7 +5331,8 @@ NA,RR,Roraima,505665,total_cases,0,0
 2020-10-31,RR,Roraima,505665,total_cases,57407,11352.773080992356
 2020-11-01,RR,Roraima,505665,total_cases,57488,11368.791591270901
 2020-11-02,RR,Roraima,505665,total_cases,57624,11395.686867787963
-2020-11-03,RR,Roraima,505665,total_cases,57624,11395.686867787963
+2020-11-03,RR,Roraima,505665,total_cases,57789,11428.317166503515
+2020-11-04,RR,Roraima,505665,total_cases,57789,11428.317166503515
 2020-02-25,AC,Acre,803513,total_cases,0,0
 NA,AC,Acre,803513,total_cases,0,0
 NA,AC,Acre,803513,total_cases,0,0
@@ -5565,6 +5586,7 @@ NA,AC,Acre,803513,total_cases,0,0
 2020-11-01,AC,Acre,803513,total_cases,30951,3851.960080297394
 2020-11-02,AC,Acre,803513,total_cases,30954,3852.3334407781826
 2020-11-03,AC,Acre,803513,total_cases,30962,3853.3290687269528
+2020-11-04,AC,Acre,803513,total_cases,31218,3885.1891630875916
 2020-02-25,AL,Alagoas,3340932,total_cases,0,0
 NA,AL,Alagoas,3340932,total_cases,0,0
 NA,AL,Alagoas,3340932,total_cases,0,0
@@ -5818,6 +5840,7 @@ NA,AL,Alagoas,3340932,total_cases,0,0
 2020-11-01,AL,Alagoas,3340932,total_cases,90820,2718.4031282288893
 2020-11-02,AL,Alagoas,3340932,total_cases,90918,2721.3364414480748
 2020-11-03,AL,Alagoas,3340932,total_cases,91016,2724.2697546672607
+2020-11-04,AL,Alagoas,3340932,total_cases,91142,2728.041157377642
 2020-02-25,SE,Sergipe,2242937,total_cases,0,0
 NA,SE,Sergipe,2242937,total_cases,0,0
 NA,SE,Sergipe,2242937,total_cases,0,0
@@ -6071,6 +6094,7 @@ NA,SE,Sergipe,2242937,total_cases,0,0
 2020-11-01,SE,Sergipe,2242937,total_cases,84362,3761.229138402015
 2020-11-02,SE,Sergipe,2242937,total_cases,84491,3766.9805259799987
 2020-11-03,SE,Sergipe,2242937,total_cases,84577,3770.814784365321
+2020-11-04,SE,Sergipe,2242937,total_cases,84709,3776.699925142793
 2020-02-25,PI,Piau<c3><ad>,3204028,total_cases,0,0
 NA,PI,Piau<c3><ad>,3204028,total_cases,0,0
 NA,PI,Piau<c3><ad>,3204028,total_cases,0,0
@@ -6324,6 +6348,7 @@ NA,PI,Piau<c3><ad>,3204028,total_cases,0,0
 2020-11-01,PI,Piau<c3><ad>,3204028,total_cases,113774,3550.9677193832263
 2020-11-02,PI,Piau<c3><ad>,3204028,total_cases,113942,3556.2111192536395
 2020-11-03,PI,Piau<c3><ad>,3204028,total_cases,114530,3574.5630188000855
+2020-11-04,PI,Piau<c3><ad>,3204028,total_cases,115026,3590.0435327032096
 2020-02-25,RO,Rond<c3><b4>nia,1768204,total_cases,0,0
 NA,RO,Rond<c3><b4>nia,1768204,total_cases,0,0
 NA,RO,Rond<c3><b4>nia,1768204,total_cases,0,0
@@ -6577,6 +6602,7 @@ NA,RO,Rond<c3><b4>nia,1768204,total_cases,0,0
 2020-11-01,RO,Rond<c3><b4>nia,1768204,total_cases,71889,4065.6507959488836
 2020-11-02,RO,Rond<c3><b4>nia,1768204,total_cases,71953,4069.270287817469
 2020-11-03,RO,Rond<c3><b4>nia,1768204,total_cases,72049,4074.699525620347
+2020-11-04,RO,Rond<c3><b4>nia,1768204,total_cases,72295,4088.6119474902216
 2020-02-25,TO,Tocantins,1515126,total_cases,0,0
 NA,TO,Tocantins,1515126,total_cases,0,0
 NA,TO,Tocantins,1515126,total_cases,0,0
@@ -6829,7 +6855,8 @@ NA,TO,Tocantins,1515126,total_cases,0,0
 2020-10-31,TO,Tocantins,1515126,total_cases,75625,4991.334054065471
 2020-11-01,TO,Tocantins,1515126,total_cases,75648,4992.852079629021
 2020-11-02,TO,Tocantins,1515126,total_cases,75680,4994.9641151957
-2020-11-03,TO,Tocantins,1515126,total_cases,75680,4994.9641151957
+2020-11-03,TO,Tocantins,1515126,total_cases,75991,5015.490460859361
+2020-11-04,TO,Tocantins,1515126,total_cases,75991,5015.490460859361
 2020-02-25,SP,S<c3><a3>o Paulo,44396484,new_cases,1,0.0022524306204067873
 2020-02-26,SP,S<c3><a3>o Paulo,44396484,new_cases,0,0
 2020-02-27,SP,S<c3><a3>o Paulo,44396484,new_cases,0,0
@@ -7083,6 +7110,7 @@ NA,TO,Tocantins,1515126,total_cases,0,0
 2020-11-01,SP,S<c3><a3>o Paulo,44396484,new_cases,1020,2.297479232814923
 2020-11-02,SP,S<c3><a3>o Paulo,44396484,new_cases,648,1.459575042023598
 2020-11-03,SP,S<c3><a3>o Paulo,44396484,new_cases,749,1.6870705346846835
+2020-11-04,SP,S<c3><a3>o Paulo,44396484,new_cases,4755,10.710307600034273
 2020-02-25,RJ,Rio de Janeiro,16550024,new_cases,0,0
 NA,RJ,Rio de Janeiro,16550024,new_cases,0,0
 NA,RJ,Rio de Janeiro,16550024,new_cases,0,0
@@ -7336,6 +7364,7 @@ NA,RJ,Rio de Janeiro,16550024,new_cases,0,0
 2020-11-01,RJ,Rio de Janeiro,16550024,new_cases,1037,6.265851940758515
 2020-11-02,RJ,Rio de Janeiro,16550024,new_cases,294,1.776432469221797
 2020-11-03,RJ,Rio de Janeiro,16550024,new_cases,1781,10.76131369960551
+2020-11-04,RJ,Rio de Janeiro,16550024,new_cases,0,0
 2020-02-25,CE,Cear<c3><a1>,8904459,new_cases,0,0
 NA,CE,Cear<c3><a1>,8904459,new_cases,0,0
 NA,CE,Cear<c3><a1>,8904459,new_cases,0,0
@@ -7589,6 +7618,7 @@ NA,CE,Cear<c3><a1>,8904459,new_cases,0,0
 2020-11-01,CE,Cear<c3><a1>,8904459,new_cases,156,1.7519312515224115
 2020-11-02,CE,Cear<c3><a1>,8904459,new_cases,332,3.7284690737528243
 2020-11-03,CE,Cear<c3><a1>,8904459,new_cases,352,3.9530756444608257
+2020-11-04,CE,Cear<c3><a1>,8904459,new_cases,987,11.084334264439873
 2020-02-25,AM,Amazonas,3938336,new_cases,0,0
 NA,AM,Amazonas,3938336,new_cases,0,0
 NA,AM,Amazonas,3938336,new_cases,0,0
@@ -7842,6 +7872,7 @@ NA,AM,Amazonas,3938336,new_cases,0,0
 2020-11-01,AM,Amazonas,3938336,new_cases,291,7.388907396423261
 2020-11-02,AM,Amazonas,3938336,new_cases,165,4.189586668075045
 2020-11-03,AM,Amazonas,3938336,new_cases,421,10.689793862179357
+2020-11-04,AM,Amazonas,3938336,new_cases,839,21.303413421302803
 2020-02-25,SC,Santa Catarina,6819190,new_cases,0,0
 NA,SC,Santa Catarina,6819190,new_cases,0,0
 NA,SC,Santa Catarina,6819190,new_cases,0,0
@@ -8095,6 +8126,7 @@ NA,SC,Santa Catarina,6819190,new_cases,0,0
 2020-11-01,SC,Santa Catarina,6819190,new_cases,1117,16.38024457450225
 2020-11-02,SC,Santa Catarina,6819190,new_cases,1486,21.791444438415706
 2020-11-03,SC,Santa Catarina,6819190,new_cases,2280,33.43505606970916
+2020-11-04,SC,Santa Catarina,6819190,new_cases,2814,41.265898149193674
 2020-02-25,MG,Minas Gerais,20869101,new_cases,0,0
 NA,MG,Minas Gerais,20869101,new_cases,0,0
 NA,MG,Minas Gerais,20869101,new_cases,0,0
@@ -8348,6 +8380,7 @@ NA,MG,Minas Gerais,20869101,new_cases,0,0
 2020-11-01,MG,Minas Gerais,20869101,new_cases,1020,4.887608718746438
 2020-11-02,MG,Minas Gerais,20869101,new_cases,839,4.020297759831629
 2020-11-03,MG,Minas Gerais,20869101,new_cases,326,1.5621180806973909
+2020-11-04,MG,Minas Gerais,20869101,new_cases,1184,5.673459532348806
 2020-02-25,PE,Pernambuco,9345173,new_cases,0,0
 NA,PE,Pernambuco,9345173,new_cases,0,0
 NA,PE,Pernambuco,9345173,new_cases,0,0
@@ -8601,6 +8634,7 @@ NA,PE,Pernambuco,9345173,new_cases,0,0
 2020-11-01,PE,Pernambuco,9345173,new_cases,84,0.8988597642868676
 2020-11-02,PE,Pernambuco,9345173,new_cases,62,0.6634441117355452
 2020-11-03,PE,Pernambuco,9345173,new_cases,117,1.2519832431138513
+2020-11-04,PE,Pernambuco,9345173,new_cases,486,5.200545779088306
 2020-02-25,PR,Paran<c3><a1>,11163018,new_cases,0,0
 NA,PR,Paran<c3><a1>,11163018,new_cases,0,0
 NA,PR,Paran<c3><a1>,11163018,new_cases,0,0
@@ -8854,6 +8888,7 @@ NA,PR,Paran<c3><a1>,11163018,new_cases,0,0
 2020-11-01,PR,Paran<c3><a1>,11163018,new_cases,728,6.521533871933199
 2020-11-02,PR,Paran<c3><a1>,11163018,new_cases,240,2.1499562215164394
 2020-11-03,PR,Paran<c3><a1>,11163018,new_cases,784,7.023190323620368
+2020-11-04,PR,Paran<c3><a1>,11163018,new_cases,1032,9.24481175252069
 2020-02-25,RS,Rio Grande do Sul,11247972,new_cases,0,0
 NA,RS,Rio Grande do Sul,11247972,new_cases,0,0
 NA,RS,Rio Grande do Sul,11247972,new_cases,0,0
@@ -9107,6 +9142,7 @@ NA,RS,Rio Grande do Sul,11247972,new_cases,0,0
 2020-11-01,RS,Rio Grande do Sul,11247972,new_cases,906,8.054785342637766
 2020-11-02,RS,Rio Grande do Sul,11247972,new_cases,955,8.490419428497866
 2020-11-03,RS,Rio Grande do Sul,11247972,new_cases,627,5.574338200699646
+2020-11-04,RS,Rio Grande do Sul,11247972,new_cases,3208,28.520696886514298
 2020-02-25,BA,Bahia,15203934,new_cases,0,0
 NA,BA,Bahia,15203934,new_cases,0,0
 NA,BA,Bahia,15203934,new_cases,0,0
@@ -9360,6 +9396,7 @@ NA,BA,Bahia,15203934,new_cases,0,0
 2020-11-01,BA,Bahia,15203934,new_cases,886,5.8274391351606765
 2020-11-02,BA,Bahia,15203934,new_cases,533,3.5056716241993686
 2020-11-03,BA,Bahia,15203934,new_cases,407,2.676938744932726
+2020-11-04,BA,Bahia,15203934,new_cases,770,5.064478706629481
 2020-02-25,DF,Distrito Federal,2914830,new_cases,0,0
 NA,DF,Distrito Federal,2914830,new_cases,0,0
 NA,DF,Distrito Federal,2914830,new_cases,0,0
@@ -9613,6 +9650,7 @@ NA,DF,Distrito Federal,2914830,new_cases,0,0
 2020-11-01,DF,Distrito Federal,2914830,new_cases,211,7.238844117838776
 2020-11-02,DF,Distrito Federal,2914830,new_cases,180,6.175317256924075
 2020-11-03,DF,Distrito Federal,2914830,new_cases,566,19.41794204121681
+2020-11-04,DF,Distrito Federal,2914830,new_cases,453,15.541215096592254
 2020-02-25,ES,Esp<c3><ad>rito Santo,3929911,new_cases,0,0
 NA,ES,Esp<c3><ad>rito Santo,3929911,new_cases,0,0
 NA,ES,Esp<c3><ad>rito Santo,3929911,new_cases,0,0
@@ -9866,6 +9904,7 @@ NA,ES,Esp<c3><ad>rito Santo,3929911,new_cases,0,0
 2020-11-01,ES,Esp<c3><ad>rito Santo,3929911,new_cases,297,7.557423056145546
 2020-11-02,ES,Esp<c3><ad>rito Santo,3929911,new_cases,663,16.870611064728948
 2020-11-03,ES,Esp<c3><ad>rito Santo,3929911,new_cases,1069,27.201633828348786
+2020-11-04,ES,Esp<c3><ad>rito Santo,3929911,new_cases,1018,25.903894515677326
 2020-02-25,MA,Maranh<c3><a3>o,6904241,new_cases,0,0
 NA,MA,Maranh<c3><a3>o,6904241,new_cases,0,0
 NA,MA,Maranh<c3><a3>o,6904241,new_cases,0,0
@@ -10119,6 +10158,7 @@ NA,MA,Maranh<c3><a3>o,6904241,new_cases,0,0
 2020-11-01,MA,Maranh<c3><a3>o,6904241,new_cases,90,1.303546617216867
 2020-11-02,MA,Maranh<c3><a3>o,6904241,new_cases,69,0.9993857398662648
 2020-11-03,MA,Maranh<c3><a3>o,6904241,new_cases,223,3.2298988404373485
+2020-11-04,MA,Maranh<c3><a3>o,6904241,new_cases,363,5.257638022774698
 2020-02-25,RN,Rio Grande do Norte,3442175,new_cases,0,0
 NA,RN,Rio Grande do Norte,3442175,new_cases,0,0
 NA,RN,Rio Grande do Norte,3442175,new_cases,0,0
@@ -10371,7 +10411,8 @@ NA,RN,Rio Grande do Norte,3442175,new_cases,0,0
 2020-10-31,RN,Rio Grande do Norte,3442175,new_cases,0,0
 2020-11-01,RN,Rio Grande do Norte,3442175,new_cases,318,9.23834494178826
 2020-11-02,RN,Rio Grande do Norte,3442175,new_cases,65,1.8883409472208705
-2020-11-03,RN,Rio Grande do Norte,3442175,new_cases,0,0
+2020-11-03,RN,Rio Grande do Norte,3442175,new_cases,319,9.267396340976273
+2020-11-04,RN,Rio Grande do Norte,3442175,new_cases,0,0
 2020-02-25,PA,Par<c3><a1>,8175113,new_cases,0,0
 NA,PA,Par<c3><a1>,8175113,new_cases,0,0
 NA,PA,Par<c3><a1>,8175113,new_cases,0,0
@@ -10625,6 +10666,7 @@ NA,PA,Par<c3><a1>,8175113,new_cases,0,0
 2020-11-01,PA,Par<c3><a1>,8175113,new_cases,149,1.822604776227558
 2020-11-02,PA,Par<c3><a1>,8175113,new_cases,220,2.69109430047022
 2020-11-03,PA,Par<c3><a1>,8175113,new_cases,935,11.437150776998434
+2020-11-04,PA,Par<c3><a1>,8175113,new_cases,985,12.048763118014394
 2020-02-25,GO,Goi<c3><a1>s,6610681,new_cases,0,0
 NA,GO,Goi<c3><a1>s,6610681,new_cases,0,0
 NA,GO,Goi<c3><a1>s,6610681,new_cases,0,0
@@ -10878,6 +10920,7 @@ NA,GO,Goi<c3><a1>s,6610681,new_cases,0,0
 2020-11-01,GO,Goi<c3><a1>s,6610681,new_cases,313,4.734761819546277
 2020-11-02,GO,Goi<c3><a1>s,6610681,new_cases,297,4.492729266470429
 2020-11-03,GO,Goi<c3><a1>s,6610681,new_cases,1166,17.638122305402423
+2020-11-04,GO,Goi<c3><a1>s,6610681,new_cases,909,13.750474421621615
 2020-02-25,AP,Amap<c3><a1>,766679,new_cases,0,0
 NA,AP,Amap<c3><a1>,766679,new_cases,0,0
 NA,AP,Amap<c3><a1>,766679,new_cases,0,0
@@ -11131,6 +11174,7 @@ NA,AP,Amap<c3><a1>,766679,new_cases,0,0
 2020-11-01,AP,Amap<c3><a1>,766679,new_cases,325,42.39062241172642
 2020-11-02,AP,Amap<c3><a1>,766679,new_cases,153,19.95620070459736
 2020-11-03,AP,Amap<c3><a1>,766679,new_cases,179,23.347450497535476
+2020-11-04,AP,Amap<c3><a1>,766679,new_cases,0,0
 2020-02-25,MT,Mato Grosso,3265486,new_cases,0,0
 NA,MT,Mato Grosso,3265486,new_cases,0,0
 NA,MT,Mato Grosso,3265486,new_cases,0,0
@@ -11384,6 +11428,7 @@ NA,MT,Mato Grosso,3265486,new_cases,0,0
 2020-11-01,MT,Mato Grosso,3265486,new_cases,126,3.8585374428186188
 2020-11-02,MT,Mato Grosso,3265486,new_cases,214,6.553388990184003
 2020-11-03,MT,Mato Grosso,3265486,new_cases,419,12.83116816302382
+2020-11-04,MT,Mato Grosso,3265486,new_cases,602,18.43523444902229
 2020-02-25,MS,Mato Grosso do Sul,2651235,new_cases,0,0
 NA,MS,Mato Grosso do Sul,2651235,new_cases,0,0
 NA,MS,Mato Grosso do Sul,2651235,new_cases,0,0
@@ -11636,7 +11681,8 @@ NA,MS,Mato Grosso do Sul,2651235,new_cases,0,0
 2020-10-31,MS,Mato Grosso do Sul,2651235,new_cases,274,10.33480623181272
 2020-11-01,MS,Mato Grosso do Sul,2651235,new_cases,266,10.033060064460525
 2020-11-02,MS,Mato Grosso do Sul,2651235,new_cases,138,5.205121386825385
-2020-11-03,MS,Mato Grosso do Sul,2651235,new_cases,0,0
+2020-11-03,MS,Mato Grosso do Sul,2651235,new_cases,417,15.728518973233228
+2020-11-04,MS,Mato Grosso do Sul,2651235,new_cases,0,0
 2020-02-25,PB,Para<c3><ad>ba,3972202,new_cases,0,0
 NA,PB,Para<c3><ad>ba,3972202,new_cases,0,0
 NA,PB,Para<c3><ad>ba,3972202,new_cases,0,0
@@ -11890,6 +11936,7 @@ NA,PB,Para<c3><ad>ba,3972202,new_cases,0,0
 2020-11-01,PB,Para<c3><ad>ba,3972202,new_cases,71,1.787421687013903
 2020-11-02,PB,Para<c3><ad>ba,3972202,new_cases,66,1.6615469203227833
 2020-11-03,PB,Para<c3><ad>ba,3972202,new_cases,93,2.341270660454831
+2020-11-04,PB,Para<c3><ad>ba,3972202,new_cases,579,14.576297982831688
 2020-02-25,RR,Roraima,505665,new_cases,0,0
 NA,RR,Roraima,505665,new_cases,0,0
 NA,RR,Roraima,505665,new_cases,0,0
@@ -12142,7 +12189,8 @@ NA,RR,Roraima,505665,new_cases,0,0
 2020-10-31,RR,Roraima,505665,new_cases,123,24.32440449704844
 2020-11-01,RR,Roraima,505665,new_cases,81,16.018510278544095
 2020-11-02,RR,Roraima,505665,new_cases,136,26.895276517061692
-2020-11-03,RR,Roraima,505665,new_cases,0,0
+2020-11-03,RR,Roraima,505665,new_cases,165,32.63029871555279
+2020-11-04,RR,Roraima,505665,new_cases,0,0
 2020-02-25,AC,Acre,803513,new_cases,0,0
 NA,AC,Acre,803513,new_cases,0,0
 NA,AC,Acre,803513,new_cases,0,0
@@ -12396,6 +12444,7 @@ NA,AC,Acre,803513,new_cases,0,0
 2020-11-01,AC,Acre,803513,new_cases,155,19.29029150741805
 2020-11-02,AC,Acre,803513,new_cases,3,0.37336048078873646
 2020-11-03,AC,Acre,803513,new_cases,8,0.9956279487699639
+2020-11-04,AC,Acre,803513,new_cases,256,31.860094360638843
 2020-02-25,AL,Alagoas,3340932,new_cases,0,0
 NA,AL,Alagoas,3340932,new_cases,0,0
 NA,AL,Alagoas,3340932,new_cases,0,0
@@ -12649,6 +12698,7 @@ NA,AL,Alagoas,3340932,new_cases,0,0
 2020-11-01,AL,Alagoas,3340932,new_cases,31,0.9278847938239988
 2020-11-02,AL,Alagoas,3340932,new_cases,98,2.9333132191855444
 2020-11-03,AL,Alagoas,3340932,new_cases,98,2.9333132191855444
+2020-11-04,AL,Alagoas,3340932,new_cases,126,3.7714027103814147
 2020-02-25,SE,Sergipe,2242937,new_cases,0,0
 NA,SE,Sergipe,2242937,new_cases,0,0
 NA,SE,Sergipe,2242937,new_cases,0,0
@@ -12902,6 +12952,7 @@ NA,SE,Sergipe,2242937,new_cases,0,0
 2020-11-01,SE,Sergipe,2242937,new_cases,36,1.605038393855913
 2020-11-02,SE,Sergipe,2242937,new_cases,129,5.751387577983689
 2020-11-03,SE,Sergipe,2242937,new_cases,86,3.834258385322459
+2020-11-04,SE,Sergipe,2242937,new_cases,132,5.8851407774716815
 2020-02-25,PI,Piau<c3><ad>,3204028,new_cases,0,0
 NA,PI,Piau<c3><ad>,3204028,new_cases,0,0
 NA,PI,Piau<c3><ad>,3204028,new_cases,0,0
@@ -13155,6 +13206,7 @@ NA,PI,Piau<c3><ad>,3204028,new_cases,0,0
 2020-11-01,PI,Piau<c3><ad>,3204028,new_cases,228,7.116042681274945
 2020-11-02,PI,Piau<c3><ad>,3204028,new_cases,168,5.243399870413118
 2020-11-03,PI,Piau<c3><ad>,3204028,new_cases,588,18.35189954644591
+2020-11-04,PI,Piau<c3><ad>,3204028,new_cases,496,15.480513903124443
 2020-02-25,RO,Rond<c3><b4>nia,1768204,new_cases,0,0
 NA,RO,Rond<c3><b4>nia,1768204,new_cases,0,0
 NA,RO,Rond<c3><b4>nia,1768204,new_cases,0,0
@@ -13408,6 +13460,7 @@ NA,RO,Rond<c3><b4>nia,1768204,new_cases,0,0
 2020-11-01,RO,Rond<c3><b4>nia,1768204,new_cases,223,12.611666979601901
 2020-11-02,RO,Rond<c3><b4>nia,1768204,new_cases,64,3.619491868585299
 2020-11-03,RO,Rond<c3><b4>nia,1768204,new_cases,96,5.429237802877949
+2020-11-04,RO,Rond<c3><b4>nia,1768204,new_cases,246,13.912421869874743
 2020-02-25,TO,Tocantins,1515126,new_cases,0,0
 NA,TO,Tocantins,1515126,new_cases,0,0
 NA,TO,Tocantins,1515126,new_cases,0,0
@@ -13660,7 +13713,8 @@ NA,TO,Tocantins,1515126,new_cases,0,0
 2020-10-31,TO,Tocantins,1515126,new_cases,56,3.69606224168815
 2020-11-01,TO,Tocantins,1515126,new_cases,23,1.5180255635504902
 2020-11-02,TO,Tocantins,1515126,new_cases,32,2.112035566678943
-2020-11-03,TO,Tocantins,1515126,new_cases,0,0
+2020-11-03,TO,Tocantins,1515126,new_cases,311,20.526345663660976
+2020-11-04,TO,Tocantins,1515126,new_cases,0,0
 2020-02-25,SP,S<c3><a3>o Paulo,44396484,total_deaths,0,0
 2020-02-26,SP,S<c3><a3>o Paulo,44396484,total_deaths,0,0
 2020-02-27,SP,S<c3><a3>o Paulo,44396484,total_deaths,0,0
@@ -13914,6 +13968,7 @@ NA,TO,Tocantins,1515126,new_cases,0,0
 2020-11-01,SP,S<c3><a3>o Paulo,44396484,total_deaths,39331,88.59034873121935
 2020-11-02,SP,S<c3><a3>o Paulo,44396484,total_deaths,39346,88.62413519052545
 2020-11-03,SP,S<c3><a3>o Paulo,44396484,total_deaths,39364,88.66467894169277
+2020-11-04,SP,S<c3><a3>o Paulo,44396484,total_deaths,39549,89.08137860646802
 2020-02-25,RJ,Rio de Janeiro,16550024,total_deaths,0,0
 NA,RJ,Rio de Janeiro,16550024,total_deaths,0,0
 NA,RJ,Rio de Janeiro,16550024,total_deaths,0,0
@@ -14167,6 +14222,7 @@ NA,RJ,Rio de Janeiro,16550024,total_deaths,0,0
 2020-11-01,RJ,Rio de Janeiro,16550024,total_deaths,20611,124.53758375214441
 2020-11-02,RJ,Rio de Janeiro,16550024,total_deaths,20636,124.68864093490136
 2020-11-03,RJ,Rio de Janeiro,16550024,total_deaths,20651,124.77927524455554
+2020-11-04,RJ,Rio de Janeiro,16550024,total_deaths,20759,125.43184227406559
 2020-02-25,CE,Cear<c3><a1>,8904459,total_deaths,0,0
 NA,CE,Cear<c3><a1>,8904459,total_deaths,0,0
 NA,CE,Cear<c3><a1>,8904459,total_deaths,0,0
@@ -14420,6 +14476,7 @@ NA,CE,Cear<c3><a1>,8904459,total_deaths,0,0
 2020-11-01,CE,Cear<c3><a1>,8904459,total_deaths,9360,105.11587509134469
 2020-11-02,CE,Cear<c3><a1>,8904459,total_deaths,9362,105.13833574841549
 2020-11-03,CE,Cear<c3><a1>,8904459,total_deaths,9365,105.17202673402169
+2020-11-04,CE,Cear<c3><a1>,8904459,total_deaths,9385,105.39663330472969
 2020-02-25,AM,Amazonas,3938336,total_deaths,0,0
 NA,AM,Amazonas,3938336,total_deaths,0,0
 NA,AM,Amazonas,3938336,total_deaths,0,0
@@ -14673,6 +14730,7 @@ NA,AM,Amazonas,3938336,total_deaths,0,0
 2020-11-01,AM,Amazonas,3938336,total_deaths,4555,115.65798347322321
 2020-11-02,AM,Amazonas,3938336,total_deaths,4565,115.91189781674291
 2020-11-03,AM,Amazonas,3938336,total_deaths,4573,116.11502929155867
+2020-11-04,AM,Amazonas,3938336,total_deaths,4588,116.49590080683822
 2020-02-25,SC,Santa Catarina,6819190,total_deaths,0,0
 NA,SC,Santa Catarina,6819190,total_deaths,0,0
 NA,SC,Santa Catarina,6819190,total_deaths,0,0
@@ -14926,6 +14984,7 @@ NA,SC,Santa Catarina,6819190,total_deaths,0,0
 2020-11-01,SC,Santa Catarina,6819190,total_deaths,3122,45.782563618259644
 2020-11-02,SC,Santa Catarina,6819190,total_deaths,3129,45.885215106192966
 2020-11-03,SC,Santa Catarina,6819190,total_deaths,3139,46.03186008895484
+2020-11-04,SC,Santa Catarina,6819190,total_deaths,3163,46.383808047583365
 2020-02-25,MG,Minas Gerais,20869101,total_deaths,0,0
 NA,MG,Minas Gerais,20869101,total_deaths,0,0
 NA,MG,Minas Gerais,20869101,total_deaths,0,0
@@ -15179,6 +15238,7 @@ NA,MG,Minas Gerais,20869101,total_deaths,0,0
 2020-11-01,MG,Minas Gerais,20869101,total_deaths,9038,43.30804666669638
 2020-11-02,MG,Minas Gerais,20869101,total_deaths,9047,43.35117262597943
 2020-11-03,MG,Minas Gerais,20869101,total_deaths,9050,43.36554794574045
+2020-11-04,MG,Minas Gerais,20869101,total_deaths,9069,43.45659163756024
 2020-02-25,PE,Pernambuco,9345173,total_deaths,0,0
 NA,PE,Pernambuco,9345173,total_deaths,0,0
 NA,PE,Pernambuco,9345173,total_deaths,0,0
@@ -15432,6 +15492,7 @@ NA,PE,Pernambuco,9345173,total_deaths,0,0
 2020-11-01,PE,Pernambuco,9345173,total_deaths,8632,92.36854149195526
 2020-11-02,PE,Pernambuco,9345173,total_deaths,8638,92.43274576083289
 2020-11-03,PE,Pernambuco,9345173,total_deaths,8643,92.48624931823092
+2020-11-04,PE,Pernambuco,9345173,total_deaths,8667,92.74306639374146
 2020-02-25,PR,Paran<c3><a1>,11163018,total_deaths,0,0
 NA,PR,Paran<c3><a1>,11163018,total_deaths,0,0
 NA,PR,Paran<c3><a1>,11163018,total_deaths,0,0
@@ -15685,6 +15746,7 @@ NA,PR,Paran<c3><a1>,11163018,total_deaths,0,0
 2020-11-01,PR,Paran<c3><a1>,11163018,total_deaths,5222,46.779464119828525
 2020-11-02,PR,Paran<c3><a1>,11163018,total_deaths,5232,46.86904562905838
 2020-11-03,PR,Paran<c3><a1>,11163018,total_deaths,5258,47.10195755305599
+2020-11-04,PR,Paran<c3><a1>,11163018,total_deaths,5269,47.20049721320883
 2020-02-25,RS,Rio Grande do Sul,11247972,total_deaths,0,0
 NA,RS,Rio Grande do Sul,11247972,total_deaths,0,0
 NA,RS,Rio Grande do Sul,11247972,total_deaths,0,0
@@ -15938,6 +16000,7 @@ NA,RS,Rio Grande do Sul,11247972,total_deaths,0,0
 2020-11-01,RS,Rio Grande do Sul,11247972,total_deaths,5804,51.600412945551426
 2020-11-02,RS,Rio Grande do Sul,11247972,total_deaths,5805,51.6093034370996
 2020-11-03,RS,Rio Grande do Sul,11247972,total_deaths,5844,51.95603260747804
+2020-11-04,RS,Rio Grande do Sul,11247972,total_deaths,5903,52.480571608819794
 2020-02-25,BA,Bahia,15203934,total_deaths,0,0
 NA,BA,Bahia,15203934,total_deaths,0,0
 NA,BA,Bahia,15203934,total_deaths,0,0
@@ -16191,6 +16254,7 @@ NA,BA,Bahia,15203934,total_deaths,0,0
 2020-11-01,BA,Bahia,15203934,total_deaths,7645,50.283038587249855
 2020-11-02,BA,Bahia,15203934,total_deaths,7667,50.42773797886784
 2020-11-03,BA,Bahia,15203934,total_deaths,7690,50.579014615559366
+2020-11-04,BA,Bahia,15203934,total_deaths,7711,50.717136762103806
 2020-02-25,DF,Distrito Federal,2914830,total_deaths,0,0
 NA,DF,Distrito Federal,2914830,total_deaths,0,0
 NA,DF,Distrito Federal,2914830,total_deaths,0,0
@@ -16444,6 +16508,7 @@ NA,DF,Distrito Federal,2914830,total_deaths,0,0
 2020-11-01,DF,Distrito Federal,2914830,total_deaths,3688,126.52538913075549
 2020-11-02,DF,Distrito Federal,2914830,total_deaths,3695,126.76554035741364
 2020-11-03,DF,Distrito Federal,2914830,total_deaths,3707,127.17722817454191
+2020-11-04,DF,Distrito Federal,2914830,total_deaths,3719,127.58891599167018
 2020-02-25,ES,Esp<c3><ad>rito Santo,3929911,total_deaths,0,0
 NA,ES,Esp<c3><ad>rito Santo,3929911,total_deaths,0,0
 NA,ES,Esp<c3><ad>rito Santo,3929911,total_deaths,0,0
@@ -16697,6 +16762,7 @@ NA,ES,Esp<c3><ad>rito Santo,3929911,total_deaths,0,0
 2020-11-01,ES,Esp<c3><ad>rito Santo,3929911,total_deaths,3862,98.27194559876801
 2020-11-02,ES,Esp<c3><ad>rito Santo,3929911,total_deaths,3864,98.32283733651984
 2020-11-03,ES,Esp<c3><ad>rito Santo,3929911,total_deaths,3876,98.62818776303077
+2020-11-04,ES,Esp<c3><ad>rito Santo,3929911,total_deaths,3884,98.83175471403806
 2020-02-25,MA,Maranh<c3><a3>o,6904241,total_deaths,0,0
 NA,MA,Maranh<c3><a3>o,6904241,total_deaths,0,0
 NA,MA,Maranh<c3><a3>o,6904241,total_deaths,0,0
@@ -16950,6 +17016,7 @@ NA,MA,Maranh<c3><a3>o,6904241,total_deaths,0,0
 2020-11-01,MA,Maranh<c3><a3>o,6904241,total_deaths,4061,58.81892013908553
 2020-11-02,MA,Maranh<c3><a3>o,6904241,total_deaths,4070,58.94927480080722
 2020-11-03,MA,Maranh<c3><a3>o,6904241,total_deaths,4081,59.10859716513372
+2020-11-04,MA,Maranh<c3><a3>o,6904241,total_deaths,4091,59.253435678157814
 2020-02-25,RN,Rio Grande do Norte,3442175,total_deaths,0,0
 NA,RN,Rio Grande do Norte,3442175,total_deaths,0,0
 NA,RN,Rio Grande do Norte,3442175,total_deaths,0,0
@@ -17202,7 +17269,8 @@ NA,RN,Rio Grande do Norte,3442175,total_deaths,0,0
 2020-10-31,RN,Rio Grande do Norte,3442175,total_deaths,2586,75.12691830020263
 2020-11-01,RN,Rio Grande do Norte,3442175,total_deaths,2591,75.2721752961427
 2020-11-02,RN,Rio Grande do Norte,3442175,total_deaths,2592,75.30122669533071
-2020-11-03,RN,Rio Grande do Norte,3442175,total_deaths,2592,75.30122669533071
+2020-11-03,RN,Rio Grande do Norte,3442175,total_deaths,2597,75.44648369127079
+2020-11-04,RN,Rio Grande do Norte,3442175,total_deaths,2597,75.44648369127079
 2020-02-25,PA,Par<c3><a1>,8175113,total_deaths,0,0
 NA,PA,Par<c3><a1>,8175113,total_deaths,0,0
 NA,PA,Par<c3><a1>,8175113,total_deaths,0,0
@@ -17456,6 +17524,7 @@ NA,PA,Par<c3><a1>,8175113,total_deaths,0,0
 2020-11-01,PA,Par<c3><a1>,8175113,total_deaths,6758,82.66552401171703
 2020-11-02,PA,Par<c3><a1>,8175113,total_deaths,6762,82.7144529989983
 2020-11-03,PA,Par<c3><a1>,8175113,total_deaths,6767,82.7756142330999
+2020-11-04,PA,Par<c3><a1>,8175113,total_deaths,6773,82.84900771402181
 2020-02-25,GO,Goi<c3><a1>s,6610681,total_deaths,0,0
 NA,GO,Goi<c3><a1>s,6610681,total_deaths,0,0
 NA,GO,Goi<c3><a1>s,6610681,total_deaths,0,0
@@ -17709,6 +17778,7 @@ NA,GO,Goi<c3><a1>s,6610681,total_deaths,0,0
 2020-11-01,GO,Goi<c3><a1>s,6610681,total_deaths,5762,87.16197317643976
 2020-11-02,GO,Goi<c3><a1>s,6610681,total_deaths,5762,87.16197317643976
 2020-11-03,GO,Goi<c3><a1>s,6610681,total_deaths,5790,87.5855301443225
+2020-11-04,GO,Goi<c3><a1>s,6610681,total_deaths,5825,88.11497635417592
 2020-02-25,AP,Amap<c3><a1>,766679,total_deaths,0,0
 NA,AP,Amap<c3><a1>,766679,total_deaths,0,0
 NA,AP,Amap<c3><a1>,766679,total_deaths,0,0
@@ -17962,6 +18032,7 @@ NA,AP,Amap<c3><a1>,766679,total_deaths,0,0
 2020-11-01,AP,Amap<c3><a1>,766679,total_deaths,748,97.56364788914266
 2020-11-02,AP,Amap<c3><a1>,766679,total_deaths,749,97.69408057348643
 2020-11-03,AP,Amap<c3><a1>,766679,total_deaths,751,97.95494594217398
+2020-11-04,AP,Amap<c3><a1>,766679,total_deaths,751,97.95494594217398
 2020-02-25,MT,Mato Grosso,3265486,total_deaths,0,0
 NA,MT,Mato Grosso,3265486,total_deaths,0,0
 NA,MT,Mato Grosso,3265486,total_deaths,0,0
@@ -18215,6 +18286,7 @@ NA,MT,Mato Grosso,3265486,total_deaths,0,0
 2020-11-01,MT,Mato Grosso,3265486,total_deaths,3857,118.11411838850327
 2020-11-02,MT,Mato Grosso,3265486,total_deaths,3862,118.26723495369448
 2020-11-03,MT,Mato Grosso,3265486,total_deaths,3874,118.6347147101534
+2020-11-04,MT,Mato Grosso,3265486,total_deaths,3883,118.9103245274976
 2020-02-25,MS,Mato Grosso do Sul,2651235,total_deaths,0,0
 NA,MS,Mato Grosso do Sul,2651235,total_deaths,0,0
 NA,MS,Mato Grosso do Sul,2651235,total_deaths,0,0
@@ -18467,7 +18539,8 @@ NA,MS,Mato Grosso do Sul,2651235,total_deaths,0,0
 2020-10-31,MS,Mato Grosso do Sul,2651235,total_deaths,1602,60.424670012277296
 2020-11-01,MS,Mato Grosso do Sul,2651235,total_deaths,1609,60.688697908710466
 2020-11-02,MS,Mato Grosso do Sul,2651235,total_deaths,1612,60.80185272146754
-2020-11-03,MS,Mato Grosso do Sul,2651235,total_deaths,1612,60.80185272146754
+2020-11-03,MS,Mato Grosso do Sul,2651235,total_deaths,1622,61.17903543065779
+2020-11-04,MS,Mato Grosso do Sul,2651235,total_deaths,1622,61.17903543065779
 2020-02-25,PB,Para<c3><ad>ba,3972202,total_deaths,0,0
 NA,PB,Para<c3><ad>ba,3972202,total_deaths,0,0
 NA,PB,Para<c3><ad>ba,3972202,total_deaths,0,0
@@ -18721,6 +18794,7 @@ NA,PB,Para<c3><ad>ba,3972202,total_deaths,0,0
 2020-11-01,PB,Para<c3><ad>ba,3972202,total_deaths,3107,78.21858002186192
 2020-11-02,PB,Para<c3><ad>ba,3972202,total_deaths,3108,78.24375497520015
 2020-11-03,PB,Para<c3><ad>ba,3972202,total_deaths,3119,78.52067946192062
+2020-11-04,PB,Para<c3><ad>ba,3972202,total_deaths,3130,78.79760394864108
 2020-02-25,RR,Roraima,505665,total_deaths,0,0
 NA,RR,Roraima,505665,total_deaths,0,0
 NA,RR,Roraima,505665,total_deaths,0,0
@@ -18973,7 +19047,8 @@ NA,RR,Roraima,505665,total_deaths,0,0
 2020-10-31,RR,Roraima,505665,total_deaths,692,136.84949521916684
 2020-11-01,RR,Roraima,505665,total_deaths,692,136.84949521916684
 2020-11-02,RR,Roraima,505665,total_deaths,692,136.84949521916684
-2020-11-03,RR,Roraima,505665,total_deaths,692,136.84949521916684
+2020-11-03,RR,Roraima,505665,total_deaths,693,137.0472546053217
+2020-11-04,RR,Roraima,505665,total_deaths,693,137.0472546053217
 2020-02-25,AC,Acre,803513,total_deaths,0,0
 NA,AC,Acre,803513,total_deaths,0,0
 NA,AC,Acre,803513,total_deaths,0,0
@@ -19227,6 +19302,7 @@ NA,AC,Acre,803513,total_deaths,0,0
 2020-11-01,AC,Acre,803513,total_deaths,693,86.24627106219812
 2020-11-02,AC,Acre,803513,total_deaths,693,86.24627106219812
 2020-11-03,AC,Acre,803513,total_deaths,695,86.49517804939062
+2020-11-04,AC,Acre,803513,total_deaths,696,86.61963154298685
 2020-02-25,AL,Alagoas,3340932,total_deaths,0,0
 NA,AL,Alagoas,3340932,total_deaths,0,0
 NA,AL,Alagoas,3340932,total_deaths,0,0
@@ -19480,6 +19556,7 @@ NA,AL,Alagoas,3340932,total_deaths,0,0
 2020-11-01,AL,Alagoas,3340932,total_deaths,2242,67.10702283075501
 2020-11-02,AL,Alagoas,3340932,total_deaths,2246,67.22674990092585
 2020-11-03,AL,Alagoas,3340932,total_deaths,2250,67.34647697109669
+2020-11-04,AL,Alagoas,3340932,total_deaths,2254,67.46620404126753
 2020-02-25,SE,Sergipe,2242937,total_deaths,0,0
 NA,SE,Sergipe,2242937,total_deaths,0,0
 NA,SE,Sergipe,2242937,total_deaths,0,0
@@ -19733,6 +19810,7 @@ NA,SE,Sergipe,2242937,total_deaths,0,0
 2020-11-01,SE,Sergipe,2242937,total_deaths,2211,98.57610802265066
 2020-11-02,SE,Sergipe,2242937,total_deaths,2217,98.84361442162664
 2020-11-03,SE,Sergipe,2242937,total_deaths,2223,99.11112082060264
+2020-11-04,SE,Sergipe,2242937,total_deaths,2228,99.33404281974929
 2020-02-25,PI,Piau<c3><ad>,3204028,total_deaths,0,0
 NA,PI,Piau<c3><ad>,3204028,total_deaths,0,0
 NA,PI,Piau<c3><ad>,3204028,total_deaths,0,0
@@ -19986,6 +20064,7 @@ NA,PI,Piau<c3><ad>,3204028,total_deaths,0,0
 2020-11-01,PI,Piau<c3><ad>,3204028,total_deaths,2420,75.52992670476038
 2020-11-02,PI,Piau<c3><ad>,3204028,total_deaths,2432,75.90445526693274
 2020-11-03,PI,Piau<c3><ad>,3204028,total_deaths,2441,76.18535168856202
+2020-11-04,PI,Piau<c3><ad>,3204028,total_deaths,2450,76.4662481101913
 2020-02-25,RO,Rond<c3><b4>nia,1768204,total_deaths,0,0
 NA,RO,Rond<c3><b4>nia,1768204,total_deaths,0,0
 NA,RO,Rond<c3><b4>nia,1768204,total_deaths,0,0
@@ -20239,6 +20318,7 @@ NA,RO,Rond<c3><b4>nia,1768204,total_deaths,0,0
 2020-11-01,RO,Rond<c3><b4>nia,1768204,total_deaths,1457,82.3999945707622
 2020-11-02,RO,Rond<c3><b4>nia,1768204,total_deaths,1457,82.3999945707622
 2020-11-03,RO,Rond<c3><b4>nia,1768204,total_deaths,1460,82.56965825210213
+2020-11-04,RO,Rond<c3><b4>nia,1768204,total_deaths,1464,82.79587649388871
 2020-02-25,TO,Tocantins,1515126,total_deaths,0,0
 NA,TO,Tocantins,1515126,total_deaths,0,0
 NA,TO,Tocantins,1515126,total_deaths,0,0
@@ -20491,7 +20571,8 @@ NA,TO,Tocantins,1515126,total_deaths,0,0
 2020-10-31,TO,Tocantins,1515126,total_deaths,1097,72.40321927021252
 2020-11-01,TO,Tocantins,1515126,total_deaths,1097,72.40321927021252
 2020-11-02,TO,Tocantins,1515126,total_deaths,1100,72.60122260458866
-2020-11-03,TO,Tocantins,1515126,total_deaths,1100,72.60122260458866
+2020-11-03,TO,Tocantins,1515126,total_deaths,1105,72.93122816188225
+2020-11-04,TO,Tocantins,1515126,total_deaths,1105,72.93122816188225
 2020-02-25,SP,S<c3><a3>o Paulo,44396484,new_deaths,0,0
 2020-02-26,SP,S<c3><a3>o Paulo,44396484,new_deaths,0,0
 2020-02-27,SP,S<c3><a3>o Paulo,44396484,new_deaths,0,0
@@ -20745,6 +20826,7 @@ NA,TO,Tocantins,1515126,total_deaths,0,0
 2020-11-01,SP,S<c3><a3>o Paulo,44396484,new_deaths,20,0.04504861240813574
 2020-11-02,SP,S<c3><a3>o Paulo,44396484,new_deaths,15,0.03378645930610181
 2020-11-03,SP,S<c3><a3>o Paulo,44396484,new_deaths,18,0.040543751167322166
+2020-11-04,SP,S<c3><a3>o Paulo,44396484,new_deaths,185,0.4166996647752556
 2020-02-25,RJ,Rio de Janeiro,16550024,new_deaths,0,0
 NA,RJ,Rio de Janeiro,16550024,new_deaths,0,0
 NA,RJ,Rio de Janeiro,16550024,new_deaths,0,0
@@ -20998,6 +21080,7 @@ NA,RJ,Rio de Janeiro,16550024,new_deaths,0,0
 2020-11-01,RJ,Rio de Janeiro,16550024,new_deaths,11,0.06646516041306043
 2020-11-02,RJ,Rio de Janeiro,16550024,new_deaths,25,0.1510571827569555
 2020-11-03,RJ,Rio de Janeiro,16550024,new_deaths,15,0.09063430965417331
+2020-11-04,RJ,Rio de Janeiro,16550024,new_deaths,108,0.6525670295100479
 2020-02-25,CE,Cear<c3><a1>,8904459,new_deaths,0,0
 NA,CE,Cear<c3><a1>,8904459,new_deaths,0,0
 NA,CE,Cear<c3><a1>,8904459,new_deaths,0,0
@@ -21251,6 +21334,7 @@ NA,CE,Cear<c3><a1>,8904459,new_deaths,0,0
 2020-11-01,CE,Cear<c3><a1>,8904459,new_deaths,7,0.07861229974780051
 2020-11-02,CE,Cear<c3><a1>,8904459,new_deaths,2,0.022460657070800145
 2020-11-03,CE,Cear<c3><a1>,8904459,new_deaths,3,0.03369098560620022
+2020-11-04,CE,Cear<c3><a1>,8904459,new_deaths,20,0.22460657070800147
 2020-02-25,AM,Amazonas,3938336,new_deaths,0,0
 NA,AM,Amazonas,3938336,new_deaths,0,0
 NA,AM,Amazonas,3938336,new_deaths,0,0
@@ -21504,6 +21588,7 @@ NA,AM,Amazonas,3938336,new_deaths,0,0
 2020-11-01,AM,Amazonas,3938336,new_deaths,12,0.3046972122236396
 2020-11-02,AM,Amazonas,3938336,new_deaths,10,0.2539143435196997
 2020-11-03,AM,Amazonas,3938336,new_deaths,8,0.20313147481575974
+2020-11-04,AM,Amazonas,3938336,new_deaths,15,0.38087151527954954
 2020-02-25,SC,Santa Catarina,6819190,new_deaths,0,0
 NA,SC,Santa Catarina,6819190,new_deaths,0,0
 NA,SC,Santa Catarina,6819190,new_deaths,0,0
@@ -21757,6 +21842,7 @@ NA,SC,Santa Catarina,6819190,new_deaths,0,0
 2020-11-01,SC,Santa Catarina,6819190,new_deaths,8,0.11731598620950583
 2020-11-02,SC,Santa Catarina,6819190,new_deaths,7,0.10265148793331759
 2020-11-03,SC,Santa Catarina,6819190,new_deaths,10,0.1466449827618823
+2020-11-04,SC,Santa Catarina,6819190,new_deaths,24,0.35194795862851747
 2020-02-25,MG,Minas Gerais,20869101,new_deaths,0,0
 NA,MG,Minas Gerais,20869101,new_deaths,0,0
 NA,MG,Minas Gerais,20869101,new_deaths,0,0
@@ -22010,6 +22096,7 @@ NA,MG,Minas Gerais,20869101,new_deaths,0,0
 2020-11-01,MG,Minas Gerais,20869101,new_deaths,23,0.11021078483447849
 2020-11-02,MG,Minas Gerais,20869101,new_deaths,9,0.043125959283056806
 2020-11-03,MG,Minas Gerais,20869101,new_deaths,3,0.014375319761018935
+2020-11-04,MG,Minas Gerais,20869101,new_deaths,19,0.09104369181978658
 2020-02-25,PE,Pernambuco,9345173,new_deaths,0,0
 NA,PE,Pernambuco,9345173,new_deaths,0,0
 NA,PE,Pernambuco,9345173,new_deaths,0,0
@@ -22263,6 +22350,7 @@ NA,PE,Pernambuco,9345173,new_deaths,0,0
 2020-11-01,PE,Pernambuco,9345173,new_deaths,5,0.05350355739802784
 2020-11-02,PE,Pernambuco,9345173,new_deaths,6,0.0642042688776334
 2020-11-03,PE,Pernambuco,9345173,new_deaths,5,0.05350355739802784
+2020-11-04,PE,Pernambuco,9345173,new_deaths,24,0.2568170755105336
 2020-02-25,PR,Paran<c3><a1>,11163018,new_deaths,0,0
 NA,PR,Paran<c3><a1>,11163018,new_deaths,0,0
 NA,PR,Paran<c3><a1>,11163018,new_deaths,0,0
@@ -22516,6 +22604,7 @@ NA,PR,Paran<c3><a1>,11163018,new_deaths,0,0
 2020-11-01,PR,Paran<c3><a1>,11163018,new_deaths,6,0.053748905537910986
 2020-11-02,PR,Paran<c3><a1>,11163018,new_deaths,10,0.08958150922985164
 2020-11-03,PR,Paran<c3><a1>,11163018,new_deaths,26,0.23291192399761426
+2020-11-04,PR,Paran<c3><a1>,11163018,new_deaths,11,0.0985396601528368
 2020-02-25,RS,Rio Grande do Sul,11247972,new_deaths,0,0
 NA,RS,Rio Grande do Sul,11247972,new_deaths,0,0
 NA,RS,Rio Grande do Sul,11247972,new_deaths,0,0
@@ -22769,6 +22858,7 @@ NA,RS,Rio Grande do Sul,11247972,new_deaths,0,0
 2020-11-01,RS,Rio Grande do Sul,11247972,new_deaths,7,0.062233440837157136
 2020-11-02,RS,Rio Grande do Sul,11247972,new_deaths,1,0.008890491548165305
 2020-11-03,RS,Rio Grande do Sul,11247972,new_deaths,39,0.34672917037844686
+2020-11-04,RS,Rio Grande do Sul,11247972,new_deaths,59,0.524539001341753
 2020-02-25,BA,Bahia,15203934,new_deaths,0,0
 NA,BA,Bahia,15203934,new_deaths,0,0
 NA,BA,Bahia,15203934,new_deaths,0,0
@@ -23022,6 +23112,7 @@ NA,BA,Bahia,15203934,new_deaths,0,0
 2020-11-01,BA,Bahia,15203934,new_deaths,23,0.15127663669152996
 2020-11-02,BA,Bahia,15203934,new_deaths,22,0.14469939161798517
 2020-11-03,BA,Bahia,15203934,new_deaths,23,0.15127663669152996
+2020-11-04,BA,Bahia,15203934,new_deaths,21,0.1381221465444404
 2020-02-25,DF,Distrito Federal,2914830,new_deaths,0,0
 NA,DF,Distrito Federal,2914830,new_deaths,0,0
 NA,DF,Distrito Federal,2914830,new_deaths,0,0
@@ -23275,6 +23366,7 @@ NA,DF,Distrito Federal,2914830,new_deaths,0,0
 2020-11-01,DF,Distrito Federal,2914830,new_deaths,5,0.1715365904701132
 2020-11-02,DF,Distrito Federal,2914830,new_deaths,7,0.24015122665815844
 2020-11-03,DF,Distrito Federal,2914830,new_deaths,12,0.4116878171282716
+2020-11-04,DF,Distrito Federal,2914830,new_deaths,12,0.4116878171282716
 2020-02-25,ES,Esp<c3><ad>rito Santo,3929911,new_deaths,0,0
 NA,ES,Esp<c3><ad>rito Santo,3929911,new_deaths,0,0
 NA,ES,Esp<c3><ad>rito Santo,3929911,new_deaths,0,0
@@ -23528,6 +23620,7 @@ NA,ES,Esp<c3><ad>rito Santo,3929911,new_deaths,0,0
 2020-11-01,ES,Esp<c3><ad>rito Santo,3929911,new_deaths,7,0.1781210821313765
 2020-11-02,ES,Esp<c3><ad>rito Santo,3929911,new_deaths,2,0.05089173775182186
 2020-11-03,ES,Esp<c3><ad>rito Santo,3929911,new_deaths,12,0.30535042651093114
+2020-11-04,ES,Esp<c3><ad>rito Santo,3929911,new_deaths,8,0.20356695100728744
 2020-02-25,MA,Maranh<c3><a3>o,6904241,new_deaths,0,0
 NA,MA,Maranh<c3><a3>o,6904241,new_deaths,0,0
 NA,MA,Maranh<c3><a3>o,6904241,new_deaths,0,0
@@ -23781,6 +23874,7 @@ NA,MA,Maranh<c3><a3>o,6904241,new_deaths,0,0
 2020-11-01,MA,Maranh<c3><a3>o,6904241,new_deaths,8,0.11587081041927708
 2020-11-02,MA,Maranh<c3><a3>o,6904241,new_deaths,9,0.13035466172168672
 2020-11-03,MA,Maranh<c3><a3>o,6904241,new_deaths,11,0.15932236432650598
+2020-11-04,MA,Maranh<c3><a3>o,6904241,new_deaths,10,0.14483851302409634
 2020-02-25,RN,Rio Grande do Norte,3442175,new_deaths,0,0
 NA,RN,Rio Grande do Norte,3442175,new_deaths,0,0
 NA,RN,Rio Grande do Norte,3442175,new_deaths,0,0
@@ -24033,7 +24127,8 @@ NA,RN,Rio Grande do Norte,3442175,new_deaths,0,0
 2020-10-31,RN,Rio Grande do Norte,3442175,new_deaths,0,0
 2020-11-01,RN,Rio Grande do Norte,3442175,new_deaths,5,0.14525699594006697
 2020-11-02,RN,Rio Grande do Norte,3442175,new_deaths,1,0.02905139918801339
-2020-11-03,RN,Rio Grande do Norte,3442175,new_deaths,0,0
+2020-11-03,RN,Rio Grande do Norte,3442175,new_deaths,5,0.14525699594006697
+2020-11-04,RN,Rio Grande do Norte,3442175,new_deaths,0,0
 2020-02-25,PA,Par<c3><a1>,8175113,new_deaths,0,0
 NA,PA,Par<c3><a1>,8175113,new_deaths,0,0
 NA,PA,Par<c3><a1>,8175113,new_deaths,0,0
@@ -24287,6 +24382,7 @@ NA,PA,Par<c3><a1>,8175113,new_deaths,0,0
 2020-11-01,PA,Par<c3><a1>,8175113,new_deaths,7,0.08562572774223427
 2020-11-02,PA,Par<c3><a1>,8175113,new_deaths,4,0.048928987281276724
 2020-11-03,PA,Par<c3><a1>,8175113,new_deaths,5,0.06116123410159591
+2020-11-04,PA,Par<c3><a1>,8175113,new_deaths,6,0.07339348092191508
 2020-02-25,GO,Goi<c3><a1>s,6610681,new_deaths,0,0
 NA,GO,Goi<c3><a1>s,6610681,new_deaths,0,0
 NA,GO,Goi<c3><a1>s,6610681,new_deaths,0,0
@@ -24540,6 +24636,7 @@ NA,GO,Goi<c3><a1>s,6610681,new_deaths,0,0
 2020-11-01,GO,Goi<c3><a1>s,6610681,new_deaths,7,0.1058892419706835
 2020-11-02,GO,Goi<c3><a1>s,6610681,new_deaths,0,0
 2020-11-03,GO,Goi<c3><a1>s,6610681,new_deaths,28,0.423556967882734
+2020-11-04,GO,Goi<c3><a1>s,6610681,new_deaths,35,0.5294462098534175
 2020-02-25,AP,Amap<c3><a1>,766679,new_deaths,0,0
 NA,AP,Amap<c3><a1>,766679,new_deaths,0,0
 NA,AP,Amap<c3><a1>,766679,new_deaths,0,0
@@ -24793,6 +24890,7 @@ NA,AP,Amap<c3><a1>,766679,new_deaths,0,0
 2020-11-01,AP,Amap<c3><a1>,766679,new_deaths,0,0
 2020-11-02,AP,Amap<c3><a1>,766679,new_deaths,1,0.13043268434377361
 2020-11-03,AP,Amap<c3><a1>,766679,new_deaths,2,0.26086536868754723
+2020-11-04,AP,Amap<c3><a1>,766679,new_deaths,0,0
 2020-02-25,MT,Mato Grosso,3265486,new_deaths,0,0
 NA,MT,Mato Grosso,3265486,new_deaths,0,0
 NA,MT,Mato Grosso,3265486,new_deaths,0,0
@@ -25046,6 +25144,7 @@ NA,MT,Mato Grosso,3265486,new_deaths,0,0
 2020-11-01,MT,Mato Grosso,3265486,new_deaths,4,0.12249325215297202
 2020-11-02,MT,Mato Grosso,3265486,new_deaths,5,0.15311656519121503
 2020-11-03,MT,Mato Grosso,3265486,new_deaths,12,0.36747975645891606
+2020-11-04,MT,Mato Grosso,3265486,new_deaths,9,0.27560981734418705
 2020-02-25,MS,Mato Grosso do Sul,2651235,new_deaths,0,0
 NA,MS,Mato Grosso do Sul,2651235,new_deaths,0,0
 NA,MS,Mato Grosso do Sul,2651235,new_deaths,0,0
@@ -25298,7 +25397,8 @@ NA,MS,Mato Grosso do Sul,2651235,new_deaths,0,0
 2020-10-31,MS,Mato Grosso do Sul,2651235,new_deaths,10,0.3771827091902453
 2020-11-01,MS,Mato Grosso do Sul,2651235,new_deaths,7,0.2640278964331717
 2020-11-02,MS,Mato Grosso do Sul,2651235,new_deaths,3,0.11315481275707359
-2020-11-03,MS,Mato Grosso do Sul,2651235,new_deaths,0,0
+2020-11-03,MS,Mato Grosso do Sul,2651235,new_deaths,10,0.3771827091902453
+2020-11-04,MS,Mato Grosso do Sul,2651235,new_deaths,0,0
 2020-02-25,PB,Para<c3><ad>ba,3972202,new_deaths,0,0
 NA,PB,Para<c3><ad>ba,3972202,new_deaths,0,0
 NA,PB,Para<c3><ad>ba,3972202,new_deaths,0,0
@@ -25552,6 +25652,7 @@ NA,PB,Para<c3><ad>ba,3972202,new_deaths,0,0
 2020-11-01,PB,Para<c3><ad>ba,3972202,new_deaths,6,0.15104972002934391
 2020-11-02,PB,Para<c3><ad>ba,3972202,new_deaths,1,0.025174953338223987
 2020-11-03,PB,Para<c3><ad>ba,3972202,new_deaths,11,0.2769244867204639
+2020-11-04,PB,Para<c3><ad>ba,3972202,new_deaths,11,0.2769244867204639
 2020-02-25,RR,Roraima,505665,new_deaths,0,0
 NA,RR,Roraima,505665,new_deaths,0,0
 NA,RR,Roraima,505665,new_deaths,0,0
@@ -25804,7 +25905,8 @@ NA,RR,Roraima,505665,new_deaths,0,0
 2020-10-31,RR,Roraima,505665,new_deaths,0,0
 2020-11-01,RR,Roraima,505665,new_deaths,0,0
 2020-11-02,RR,Roraima,505665,new_deaths,0,0
-2020-11-03,RR,Roraima,505665,new_deaths,0,0
+2020-11-03,RR,Roraima,505665,new_deaths,1,0.19775938615486538
+2020-11-04,RR,Roraima,505665,new_deaths,0,0
 2020-02-25,AC,Acre,803513,new_deaths,0,0
 NA,AC,Acre,803513,new_deaths,0,0
 NA,AC,Acre,803513,new_deaths,0,0
@@ -26058,6 +26160,7 @@ NA,AC,Acre,803513,new_deaths,0,0
 2020-11-01,AC,Acre,803513,new_deaths,0,0
 2020-11-02,AC,Acre,803513,new_deaths,0,0
 2020-11-03,AC,Acre,803513,new_deaths,2,0.24890698719249096
+2020-11-04,AC,Acre,803513,new_deaths,1,0.12445349359624548
 2020-02-25,AL,Alagoas,3340932,new_deaths,0,0
 NA,AL,Alagoas,3340932,new_deaths,0,0
 NA,AL,Alagoas,3340932,new_deaths,0,0
@@ -26311,6 +26414,7 @@ NA,AL,Alagoas,3340932,new_deaths,0,0
 2020-11-01,AL,Alagoas,3340932,new_deaths,4,0.11972707017083856
 2020-11-02,AL,Alagoas,3340932,new_deaths,4,0.11972707017083856
 2020-11-03,AL,Alagoas,3340932,new_deaths,4,0.11972707017083856
+2020-11-04,AL,Alagoas,3340932,new_deaths,4,0.11972707017083856
 2020-02-25,SE,Sergipe,2242937,new_deaths,0,0
 NA,SE,Sergipe,2242937,new_deaths,0,0
 NA,SE,Sergipe,2242937,new_deaths,0,0
@@ -26564,6 +26668,7 @@ NA,SE,Sergipe,2242937,new_deaths,0,0
 2020-11-01,SE,Sergipe,2242937,new_deaths,5,0.2229219991466546
 2020-11-02,SE,Sergipe,2242937,new_deaths,6,0.2675063989759855
 2020-11-03,SE,Sergipe,2242937,new_deaths,6,0.2675063989759855
+2020-11-04,SE,Sergipe,2242937,new_deaths,5,0.2229219991466546
 2020-02-25,PI,Piau<c3><ad>,3204028,new_deaths,0,0
 NA,PI,Piau<c3><ad>,3204028,new_deaths,0,0
 NA,PI,Piau<c3><ad>,3204028,new_deaths,0,0
@@ -26817,6 +26922,7 @@ NA,PI,Piau<c3><ad>,3204028,new_deaths,0,0
 2020-11-01,PI,Piau<c3><ad>,3204028,new_deaths,16,0.49937141622982073
 2020-11-02,PI,Piau<c3><ad>,3204028,new_deaths,12,0.3745285621723655
 2020-11-03,PI,Piau<c3><ad>,3204028,new_deaths,9,0.28089642162927414
+2020-11-04,PI,Piau<c3><ad>,3204028,new_deaths,9,0.28089642162927414
 2020-02-25,RO,Rond<c3><b4>nia,1768204,new_deaths,0,0
 NA,RO,Rond<c3><b4>nia,1768204,new_deaths,0,0
 NA,RO,Rond<c3><b4>nia,1768204,new_deaths,0,0
@@ -27070,6 +27176,7 @@ NA,RO,Rond<c3><b4>nia,1768204,new_deaths,0,0
 2020-11-01,RO,Rond<c3><b4>nia,1768204,new_deaths,0,0
 2020-11-02,RO,Rond<c3><b4>nia,1768204,new_deaths,0,0
 2020-11-03,RO,Rond<c3><b4>nia,1768204,new_deaths,3,0.1696636813399359
+2020-11-04,RO,Rond<c3><b4>nia,1768204,new_deaths,4,0.22621824178658118
 2020-02-25,TO,Tocantins,1515126,new_deaths,0,0
 NA,TO,Tocantins,1515126,new_deaths,0,0
 NA,TO,Tocantins,1515126,new_deaths,0,0
@@ -27322,4 +27429,5 @@ NA,TO,Tocantins,1515126,new_deaths,0,0
 2020-10-31,TO,Tocantins,1515126,new_deaths,0,0
 2020-11-01,TO,Tocantins,1515126,new_deaths,0,0
 2020-11-02,TO,Tocantins,1515126,new_deaths,3,0.1980033343761509
-2020-11-03,TO,Tocantins,1515126,new_deaths,0,0
+2020-11-03,TO,Tocantins,1515126,new_deaths,5,0.33000555729358483
+2020-11-04,TO,Tocantins,1515126,new_deaths,0,0
