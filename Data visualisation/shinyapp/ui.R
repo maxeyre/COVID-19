@@ -35,7 +35,7 @@ UK_by_country <- UK[UK$division=="Country",]
 
 # UK county data
 # read in UK county data
-data.county <- UK[UK$division=="UTLA",]
+data.county <- UK[UK$division=="LTLA",]
 
 # get list of counties
 data.county$area <- as.character(data.county$area)
@@ -85,7 +85,7 @@ states.names <- tibble(ID=c("SP","RJ","CE","AM","SC","MG","PE","PR","RS","BA","D
 data.brazil <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/brazil_full.csv")
 data.brazil$date <- as.Date(data.brazil$date, "%Y-%m-%d")
 data.brazil <- data.brazil %>%
-  select(-state_name) %>%
+  dplyr::select(-state_name) %>%
   left_join(states.names, by=c("state"="ID"))
   
 # get list of states
@@ -110,7 +110,7 @@ shinyUI(fluidPage(
     "Worldwide",  
     tabPanel("By country",
              h5("Please use the menu bar on the left to navigate to different sections"),
-             p(strong("Update: "),"Sorry for previous issue (a result of a change in PHE data structure) - all fully functioning now", style = "color:red"),
+             #p(strong("Update: "),"Sorry for previous issue (a result of a change in PHE data structure) - all fully functioning now", style = "color:red"),
              h3("Live epidemic curves by country"),
               h6("Data source: Automatically collected from JHU CSSE (updated every 24hrs)"),
               h6("Please note:"),
@@ -238,38 +238,38 @@ shinyUI(fluidPage(
                
              ),
            
-  tabPanel("NHS England regions",
-           h5("Please use the menu bar on the left to navigate to different sections"),
-           h3("Live epidemic curves by NHS England regions"),
-           h6("Data source: Public Health England (updated every 24hrs)"),
-           h6("Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
-           sidebarLayout(
-             sidebarPanel(
-               checkboxGroupInput("checkGroup_region", "", choices = list("Reported cases (daily)" = "new_cases", 
-                                                                          "Reported cases (total)" = "total_cases"),selected = 2),
-               dateRangeInput("dateRange_region", "Date range",
-                              start  = as.Date("2020-03-01","%Y-%m-%d"),
-                              end    = as.Date(max(data.region$date),"%Y-%m-%d"), 
-                              min    = as.Date("2020-03-01","%Y-%m-%d"),
-                              max    = as.Date(max(data.region$date),"%Y-%m-%d")),
-               radioButtons("pop", "Cases",
-                            choices=c('Number of cases'="pop_no",
-                                      'Per 100,000 population'='pop_yes')),
-               radioButtons("log_region", "y-axis scale:",
-                            choices=c('Linear'="log_no",
-                                      'Log'='log_yes'))
-             ),
-             mainPanel(
-               plotOutput("EnglandRegionPlot"),
-               h6("Made by Max Eyre"),
-               h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
-               uiOutput("twitter2"),
-               uiOutput("git4"),
-               uiOutput("data_source2"),
-               h6("Population data source - Office for National Statistics")
-             )
-           )
-  ),
+  # tabPanel("NHS England regions",
+  #          h5("Please use the menu bar on the left to navigate to different sections"),
+  #          h3("Live epidemic curves by NHS England regions"),
+  #          h6("Data source: Public Health England (updated every 24hrs)"),
+  #          h6("Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
+  #          sidebarLayout(
+  #            sidebarPanel(
+  #              checkboxGroupInput("checkGroup_region", "", choices = list("Reported cases (daily)" = "new_cases", 
+  #                                                                         "Reported cases (total)" = "total_cases"),selected = 2),
+  #              dateRangeInput("dateRange_region", "Date range",
+  #                             start  = as.Date("2020-03-01","%Y-%m-%d"),
+  #                             end    = as.Date(max(data.region$date),"%Y-%m-%d"), 
+  #                             min    = as.Date("2020-03-01","%Y-%m-%d"),
+  #                             max    = as.Date(max(data.region$date),"%Y-%m-%d")),
+  #              radioButtons("pop", "Cases",
+  #                           choices=c('Number of cases'="pop_no",
+  #                                     'Per 100,000 population'='pop_yes')),
+  #              radioButtons("log_region", "y-axis scale:",
+  #                           choices=c('Linear'="log_no",
+  #                                     'Log'='log_yes'))
+  #            ),
+  #            mainPanel(
+  #              plotOutput("EnglandRegionPlot"),
+  #              h6("Made by Max Eyre"),
+  #              h6("Any comments, questions or suggestions please contact via twitter or max.eyre@lstmed.ac.uk"),
+  #              uiOutput("twitter2"),
+  #              uiOutput("git4"),
+  #              uiOutput("data_source2"),
+  #              h6("Population data source - Office for National Statistics")
+  #            )
+  #          )
+  # ),
     tabPanel("England - Local Authorities",
              h5("Please use the menu bar on the left to navigate to different sections"),
              h3("Live epidemic curves for Upper Tier Local Authorities of England"),
@@ -277,7 +277,7 @@ shinyUI(fluidPage(
            h6("Confirmed case data is entirely dependent on testing rates. In the UK this is generally individuals presenting at hospital. It will significantly underestimate actual number of infected individuals."),
             sidebarLayout(
              sidebarPanel(
-               selectInput("county", "County (UA):",list.county),
+               selectInput("county", "County (LA):",list.county),
                checkboxGroupInput("checkGroup_county", "", choices = list("Reported cases (daily)" = "new_cases", 
                                                                    "Reported cases (total)" = "total_cases"),selected = 1),
                

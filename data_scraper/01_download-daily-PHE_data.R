@@ -15,7 +15,7 @@ write_csv(UK.cases, "data/original/coronavirus-cases.csv")
 #write_csv(UK.deaths, "data/original/coronavirus-deaths.csv")
 
 UK.cases <- UK.cases %>%
-  select(area=`Area name`,id = `Area code`, division=`Area type`,date=`Specimen date`,new_cases=`Daily lab-confirmed cases`,total_cases=`Cumulative lab-confirmed cases`) %>%
+  dplyr::select(area=`Area name`,id = `Area code`, division=`Area type`,date=`Specimen date`,new_cases=`Daily lab-confirmed cases`,total_cases=`Cumulative lab-confirmed cases`) %>%
   gather(key="type", value="number", -area, -id, -division, -date)
 
 #UK.deaths <- UK.deaths %>%
@@ -23,7 +23,7 @@ UK.cases <- UK.cases %>%
   #gather(key="type", value="number", -area, -id, -division, -date)
 
 UK <- UK.cases
-UK$division[UK$division=="utla"] <- "UTLA"
+UK$division[UK$division=="ltla"] <- "LTLA"
 UK$division[UK$division=="region"] <- "Region"
 UK$division[UK$division=="nation"] <- "Nation"
 	
@@ -34,7 +34,7 @@ pop_country <- data.frame(country=c("England","Scotland","Wales","Northern Irela
 pop_NHSregion <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/original/NHS_england_regions_pop.csv") %>%
   rename(population=pop)
 
-UK.UTLA <- UK[UK$division=="UTLA",]
+UK.UTLA <- UK[UK$division=="LTLA",]
 UK.NHSregion <- UK[UK$division=="Region",]
 UK.country <- UK[UK$division=="Nation",]
 UK.country$division[UK.country$division=="Nation"] <- "Country"

@@ -83,7 +83,7 @@ states.names <- tibble(ID=c("SP","RJ","CE","AM","SC","MG","PE","PR","RS","BA","D
 data.brazil <- read_csv("https://raw.githubusercontent.com/maxeyre/COVID-19/master/data_scraper/data/processed/brazil_full.csv")
 data.brazil$date <- as.Date(data.brazil$date, "%Y-%m-%d")
 data.brazil <- data.brazil %>%
-  select(-state_name) %>%
+  dplyr::select(-state_name) %>%
   left_join(states.names, by=c("state"="ID"))
 
 # get list of states
